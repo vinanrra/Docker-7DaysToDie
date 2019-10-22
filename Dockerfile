@@ -8,7 +8,7 @@ ENV LANG en_US.utf8
 ENV DEBIAN_FRONTEND noninteractive
 
 #Dependencies
-RUN dpkg --add-architecture i386; apt update; apt install -y nano iproute curl wget file bzip2 gzip unzip bsdmainutils python3 util-linux ca-certificates binutils bc jq t    mux lib32gcc1 libstdc++6 libstdc++6:i386 telnet expect
+RUN dpkg --add-architecture i386; apt update; apt install -y nano iproute curl wget file bzip2 gzip unzip bsdmainutils python3 util-linux ca-certificates binutils bc jq tmux lib32gcc1 libstdc++6 libstdc++6:i386 telnet expect
 
 #USER
 RUN useradd -ms /bin/bash sdtdserver
