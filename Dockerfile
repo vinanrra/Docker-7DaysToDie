@@ -16,7 +16,7 @@ WORKDIR /home/sdtdserver
 
 #Directory and permissions
 RUN mkdir -p /home/sdtdserver/serverfiles/ && mkdir -p /home/sdtdserver/.local/share/7DaysToDie/
-RUN chown -R sdtdserver:sdtdserver /home/sdtdserver/serverfiles/&& chown -R sdtdserver:sdtdserver /home/sdtdserver/.local/share/7DaysToDie/
+RUN chown -R sdtdserver:sdtdserver /home/sdtdserver/serverfiles/ && chown -R sdtdserver:sdtdserver /home/sdtdserver/.local/share/7DaysToDie/
 
 #Change user
 USER sdtdserver
