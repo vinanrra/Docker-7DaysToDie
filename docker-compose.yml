@@ -1,0 +1,23 @@
+version: '3.3'
+services:
+  7dtd:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: 7dtd
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid
+    volumes:
+    - ./ServerFiles:/home/sdtdserver/serverfiles/
+    - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/
+    ports:
+    - 26900:26900/tcp
+    - 26900:26900/udp
+    - 26901:26901/udp
+    - 26902:26902/udp
+    - 8081:8081/tcp
+    - 8082:8082/tcp
+    command: tail -f /dev/null
+    restart: unless-stopped
