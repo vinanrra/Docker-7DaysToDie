@@ -32,6 +32,9 @@ RUN ./sdtdserver update
 # Update serverconfig
 RUN cp serverfiles/serverconfig.xml serverfiles/sdtdserver.xml
 
+# Start server
+RUN ./sdtdserver start
+
 #Ports
 EXPOSE 26900 26900/UDP 26901/UDP 26902/UDP 8082
 
