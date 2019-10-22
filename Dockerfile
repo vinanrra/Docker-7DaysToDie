@@ -1,4 +1,4 @@
-FROM cm2network/steamcmd:root
+FROM ubuntu:18.04
  
 # Locale
 RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
@@ -8,7 +8,7 @@ ENV LANG en_US.utf8
 ENV DEBIAN_FRONTEND noninteractive
 
 #Dependencies
-RUN dpkg --add-architecture i386; apt update; apt install -y nano iproute curl wget file bzip2 gzip unzip bsdmainutils python3 util-linux ca-certificates binutils bc jq tmux lib32gcc1 libstdc++6 libstdc++6:i386 telnet expect
+RUN dpkg --add-architecture i386; apt update; apt install -y nano iproute2 curl wget file bzip2 gzip unzip bsdmainutils python3 util-linux ca-certificates binutils bc jq tmux lib32gcc1 libstdc++6 libstdc++6:i386 telnet expect
 
 #USER
 RUN useradd -ms /bin/bash sdtdserver
@@ -39,4 +39,4 @@ RUN ./sdtdserver start
 EXPOSE 26900 26900/UDP 26901/UDP 26902/UDP 8082
 
 #Server files and maps
- VOLUME /home/sdtdserver/serverfiles/ /home/sdtdserver/.local/share/7DaysToDie/
+VOLUME /home/sdtdserver/serverfiles/ /home/sdtdserver/.local/share/7DaysToDie/
