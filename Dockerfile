@@ -22,6 +22,13 @@ USER sdtdserver
 RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
 RUN ./sdtdserver auto-install
 
+# Latest Experimental
+RUN echo 'branch="-beta latest_experimental"' >> /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+# Update server
+RUN ./sdtdserver update
+# Update serverconfig
+RUN cp serverfiles/serverconfig.xml serverfiles/sdtdserver.xml
+
 #Ports
 EXPOSE 26900 26900/UDP 26901/UDP 26902/UDP 8082
 
