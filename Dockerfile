@@ -7,8 +7,7 @@ ENV LANG en_US.utf8
 
 ENV DEBIAN_FRONTEND noninteractive
 
-#Base System
-
+#Dependencies
 RUN dpkg --add-architecture i386; apt update; apt install -y nano iproute curl wget file bzip2 gzip unzip bsdmainutils python3 util-linux ca-certificates binutils bc jq tmux lib32gcc1 libstdc++6 libstdc++6:i386 telnet expect
 
 #USER
@@ -19,9 +18,12 @@ RUN mkdir -p /home/sdtdserver/serverfiles/ && mkdir -p /home/sdtdserver/.local/s
 
 USER sdtdserver
 
-#Script and install (need to fix auto-install)
+#Get Script and install 7 days to die server
 RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
+RUN ./sdtdserver auto-install
 
 #Ports
 EXPOSE 26900 26900/UDP 26901/UDP 26902/UDP 8082
+
+#Server files and maps
 VOLUME /home/sdtdserver/serverfiles/ /home/sdtdserver/.local/share/7DaysToDie/
