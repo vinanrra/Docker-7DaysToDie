@@ -5,10 +5,6 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: 7dtd
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/Madrid
     volumes:
     - ./ServerFiles:/home/sdtdserver/serverfiles/
     - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/
