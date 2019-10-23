@@ -9,17 +9,37 @@ ENV LANG en_US.utf8
 ENV DEBIAN_FRONTEND noninteractive
 
 #Dependencies
-RUN dpkg --add-architecture i386; apt update; apt install -y nano iproute2 curl wget file bzip2 gzip unzip bsdmainutils python3 util-linux ca-certificates binutils bc jq tmux lib32gcc1 libstdc++6 libstdc++6:i386 telnet expect
+RUN dpkg --add-architecture i386 && \
+	apt update -y && \
+	apt install -y \
+		nano \
+		iproute2 \
+		curl \
+		wget \
+		file \
+		bzip2 \
+		gzip \
+		unzip \
+		bsdmainutils \
+		python3 \
+		util-linux \
+		ca-certificates \
+		binutils \
+		bc \
+		jq \
+		tmux \
+		lib32gcc1 \
+		libstdc++6 \
+        libstdc++6:i386 \
+        telnet \
+        expect
+# Clear unused files
+RUN rm -rf /var/lib/apt/lists/*     
 ##############BASE IMAGE##############
 
 ##############USER##############
 RUN useradd -ms /bin/bash sdtdserver
 WORKDIR /home/sdtdserver
-
-# Directory
-RUN mkdir -p /home/sdtdserver/serverfiles/ && mkdir -p /home/sdtdserver/.local/share/7DaysToDie/
-# Fix permissions
-RUN chown -R sdtdserver:sdtdserver /home/sdtdserver/serverfiles/ && chown -R sdtdserver:sdtdserver /home/sdtdserver/.local/share/7DaysToDie/
 ##############USER##############
 
 ##############SERVER INSTALL AND CONFIGURATION##############
