@@ -9,11 +9,9 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/Madrid #OPTIONAL, can be change to any TimeZone
-    ##############COMMENTED UNTIL VOLUME FIXED##############
-    #volumes:
-    #- ./ServerFiles:/home/sdtdserver/serverfiles/
-    #- ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/
-    ##############COMMENTED UNTIL VOLUME FIXED##############
+    volumes:
+    - ./ServerFiles:/home/sdtdserver/serverfiles/
+    - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/
     ports:
     - 26900:26900/tcp
     - 26900:26900/udp
