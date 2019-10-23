@@ -1,4 +1,5 @@
 ./sdtdserver auto-install;
+mv sdtdserver.cfg /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
 # Update server
 ./sdtdserver update;
 # Update serverconfig
