@@ -5,15 +5,19 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: 7dtd
-    volumes:
-    - ./ServerFiles:/home/sdtdserver/serverfiles/
-    - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/
+    ##############COMMENTED UNTIL VOLUME FIXED##############
+    #volumes:
+    #- ./ServerFiles:/home/sdtdserver/serverfiles/
+    #- ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/
+    ##############COMMENTED UNTIL VOLUME FIXED##############
     ports:
     - 26900:26900/tcp
     - 26900:26900/udp
     - 26901:26901/udp
     - 26902:26902/udp
-    - 8081:8081/tcp
-    - 8082:8082/tcp
+    - 8081:8081/tcp #OPTIONAL
+    - 8082:8082/tcp #OPTIONAL
+    #KEPP CONTAINER ALIVE - NEED TO CHANGE TO SHOW LOG AT PORTAINER
     command: tail -f /dev/null
+    #KEPP CONTAINER ALIVE - NEED TO CHANGE TO SHOW LOG AT PORTAINER
     restart: unless-stopped
