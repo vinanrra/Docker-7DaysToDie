@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: 7dtd
+    container_name: 7dtdtest
     environment:
       - PUID=1000
       - PGID=1000
@@ -20,6 +20,6 @@ services:
     - 8081:8081/tcp #OPTIONAL
     - 8082:8082/tcp #OPTIONAL
     #KEPP CONTAINER ALIVE - NEED TO CHANGE TO SHOW LOG AT PORTAINER
-    command: tail -f /dev/null
+    #command: tail -f /dev/null
     #KEPP CONTAINER ALIVE - NEED TO CHANGE TO SHOW LOG AT PORTAINER
     restart: unless-stopped

@@ -39,7 +39,9 @@ RUN rm -rf /var/lib/apt/lists/*
 ##############BASE IMAGE##############
 
 ##############USER##############
-RUN useradd -ms /bin/bash sdtdserver
+# Add the sdtdserver user
+RUN adduser --uid 1001 --disabled-password --shell /bin/bash --disabled-login --gecos "" sdtdserver
+RUN chown -R sdtdserver:sdtdserver /home/sdtdserver
 WORKDIR /home/sdtdserver
 ##############USER##############
 
@@ -49,22 +51,14 @@ USER sdtdserver
 
 #Script and install
 RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
-RUN ./sdtdserver auto-install
-
 # Update to latest Experimental
-ADD sdtdserver.cfg /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
-# Update server
-RUN ./sdtdserver update
-# Update serverconfig
-RUN cp serverfiles/serverconfig.xml serverfiles/sdtdserver.xml
-##############SERVER INSTALL AND CONFIGURATION##############
-
-##############START SERVER##############
-RUN ./sdtdserver start
+ADD sdtdserver.cfg /home/sdtdserver/sdtdserver.cfg
+ADD install.sh /home/sdtdserver/install.sh
 
 ##############EXTRA CONFIG##############
 #Ports
-EXPOSE 26900 26900/UDP 26901/UDP 26902/UDP 8082
+EXPOSE 26900 26900/UDP 26901/UDP 26902/UDP 8082 8081
 #Shared folders to host
 VOLUME /home/sdtdserver/serverfiles/ /home/sdtdserver/.local/share/7DaysToDie/
 ##############EXTRA CONFIG##############
+ENTRYPOINT ["./install.sh"]
