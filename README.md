@@ -1,11 +1,9 @@
 # Docker-7DaysToDie
 7 days to die LATEST EXPERIMENTAL server using LinuixGSM script in Docker
 
-######################MPORTANT######################
+## IMPORTANT
 
 Rigth now this image its working well, i have been using for a week without any problem, but i want to fix volumes to just simple run the docker command and avoid to create and change permissions to folders.
-
-######################MPORTANT######################
 
 ## Installation
 This will work both on linux and Docker for Windows. With Docker for Windows, skip the first command and make a folder the normal way. When running the container, Docker for Windows may ask for permission to access the folder. Simply allow this action.
