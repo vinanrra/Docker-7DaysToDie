@@ -5,6 +5,10 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: 7dtd
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Madrid #OPTIONAL, can be change to any TimeZone
     ##############COMMENTED UNTIL VOLUME FIXED##############
     #volumes:
     #- ./ServerFiles:/home/sdtdserver/serverfiles/
