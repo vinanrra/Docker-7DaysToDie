@@ -52,7 +52,7 @@ RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linu
 RUN ./sdtdserver auto-install
 
 # Update to latest Experimental
-RUN echo 'branch="-beta latest_experimental"' >> /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+ADD sdtdserver.cfg /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
 # Update server
 RUN ./sdtdserver update
 # Update serverconfig
