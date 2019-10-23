@@ -30,9 +30,9 @@ RUN dpkg --add-architecture i386 && \
 		tmux \
 		lib32gcc1 \
 		libstdc++6 \
-        libstdc++6:i386 \
-        telnet \
-        expect
+		libstdc++6:i386 \
+		telnet \
+		expect
 # Clear unused files
 RUN rm -rf /var/lib/apt/lists/*     
 ##############BASE IMAGE##############
