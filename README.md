@@ -41,7 +41,8 @@ Ports 8081 and 8082 are OPTIONAL
 $ mkdir -p /path/to/7DaysToDie && mkdir -p /path/to/ServerFiles && sudo chown -R 1001:1001 /path/to/7DaysToDie && sudo chown -R 1001:1001 /path/to/ServerFiles
 ```
 
-```version: '2'
+```
+version: '2'
 services:
   7dtd:
     image: vinanrra/7daystodie_latestexperimental
