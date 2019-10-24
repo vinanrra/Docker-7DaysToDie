@@ -1,24 +1,20 @@
 version: '2'
 services:
-  7dtd:
+  test7dtd:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: 7dtdtest
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/Madrid #OPTIONAL, can be change to any TimeZone
-    volumes:
-    - ./ServerFiles:/home/sdtdserver/serverfiles/
-    - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/
-    ports:
-    - 26900:26900/tcp
-    - 26900:26900/udp
-    - 26901:26901/udp
-    - 26902:26902/udp
-    - 8081:8081/tcp #OPTIONAL
-    - 8082:8082/tcp #OPTIONAL
+    #volumes:
+    #- ./ServerFiles:/home/sdtdserver/serverfiles/
+    #- ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/
+    #ports:
+    #- 26900:26900/tcp
+    #- 26900:26900/udp
+    #- 26901:26901/udp
+    #- 26902:26902/udp
+    #- 8081:8081/tcp #OPTIONAL
+    #- 8082:8082/tcp #OPTIONAL
     #KEPP CONTAINER ALIVE - NEED TO CHANGE TO SHOW LOG AT PORTAINER
     #command: tail -f /dev/null
     #KEPP CONTAINER ALIVE - NEED TO CHANGE TO SHOW LOG AT PORTAINER
