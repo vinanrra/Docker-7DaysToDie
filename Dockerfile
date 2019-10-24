@@ -53,6 +53,7 @@ USER sdtdserver
 RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
 # Update to latest Experimental
 ADD sdtdserver.cfg /home/sdtdserver/sdtdserver.cfg
+ADD sdtdserver.cfg.stable /home/sdtdserver/sdtdserver.cfg.stable
 ADD install.sh /home/sdtdserver/install.sh
 
 ##############EXTRA CONFIG##############
