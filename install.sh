@@ -16,7 +16,7 @@ if [ "$START_MODE" = "2" ]; then
     cp sdtdserver.cfg.stable /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
     ./sdtdserver update
     echo "7 Days to die server updated"
-	exit
+    exit
 fi
 
 if [ "$START_MODE" = "3" ]; then
@@ -24,7 +24,7 @@ if [ "$START_MODE" = "3" ]; then
     cp sdtdserver.cfg.stable /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
     ./sdtdserver update
     echo "7 Days to die server updated"
-	echo "Starting 7 Days to die server"
+    echo "Starting 7 Days to die server"
     ./sdtdserver start
 fi
 
@@ -34,7 +34,7 @@ if [ "$START_MODE" = "4" ]; then
     ./sdtdserver update
     cp serverfiles/serverconfig.xml serverfiles/sdtdserver.xml
     echo "7 Days to die server updated to LATEST_EXPERIMENTAL"
-	exit
+    exit
 fi
 
 if [ "$START_MODE" = "5" ]; then
@@ -45,5 +45,5 @@ if [ "$START_MODE" = "5" ]; then
     echo "7 Days to die server updated to LATEST_EXPERIMENTAL"
     echo "Starting 7 Days to die server"
     ./sdtdserver start
-	exit
+    exit
 fi
