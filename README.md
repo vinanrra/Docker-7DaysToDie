@@ -1,10 +1,6 @@
 # Docker-7DaysToDie
 7 days to die LATEST EXPERIMENTAL server using LinuixGSM script in Docker
 
-## IMPORTANT
-
-Rigth now this image its working well, i have been using for a week without any problem
-
 ## USAGE
 
 ### START MODES:
@@ -62,6 +58,10 @@ services:
     restart: unless-stopped
 ```
 
-# TODO
+## IMPORTANT
+
+Rigth now this image it is working, i have been using for a week without any problem
+
+### TODO
 
 Fix install.sh bucle
