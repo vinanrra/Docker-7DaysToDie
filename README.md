@@ -123,7 +123,7 @@ services:
 * Update the image: `docker pull vinanrra/7dtd-server`
 * Stop the running container: `docker stop 7dtdserver`
 * Delete the container: `docker rm 7dtdserver`
-* Recreate a new container with the same docker create parameters as instructed above (if mapped correctly to a host folder, your `/config` folder and settings will be preserved)
+* Recreate a new container with the same docker create parameters as instructed above (if mapped correctly to a host folder, your folders and settings will be preserved)
 * Start the new container: `docker start 7dtdserver`
 * You can also remove the old dangling images: `docker image 7dtdserver`
 
