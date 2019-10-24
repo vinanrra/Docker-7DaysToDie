@@ -24,10 +24,11 @@
 mkdir -p /path/to/7DaysToDie && mkdir -p /path/to/ServerFiles
 sudo chown -R 1001:1001 /path/to/7DaysToDie && sudo chown -R 1001:1001 /path/to/ServerFiles
 ```
+
 ```bash
 docker run \
   --name 7dtdserver \
-  --restart unless-stopped -it \
+  --restart unless-stopped \
   -v "/path/to/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/" \
   -v "/path/to/ServerFiles:/home/sdtdserver/serverfiles/" \
   -p 26900:26900/tcp \
@@ -45,7 +46,7 @@ docker run \
 ```bash
 docker run \
   --name 7dtdserver \
-  --restart unless-stopped -it \
+  --restart unless-stopped \
   -v "/path/to/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/" \
   -v "/path/to/ServerFiles:/home/sdtdserver/serverfiles/" \
   -p 26900:26900/tcp \
