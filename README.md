@@ -50,3 +50,12 @@ services:
 ```
 
 Just change volumes and ports if necessary, i am not sure if enviroments are working but the server it working so i am not going to change it.
+
+## TO-DO
+
+Add enviroments to choose between:
+
+Install
+Update
+Change to latest_experimental
+Change to stable
