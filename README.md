@@ -100,8 +100,6 @@ services:
 
 ## Parameters
 
-Container images are configured using parameters passed at runtime (such as those above). These parameters are separated by a colon and indicate `<external>:<internal>` respectively.
-
 | Parameter | Function |
 | :----: | --- |
 | `-v /home/sdtdserver/.local/share/7DaysToDie/` | 7DaysToDie saves, where maps store. |
