@@ -1,4 +1,4 @@
-# 7 days to die LATEST EXPERIMENTAL server using LinuixGSM script in Docker
+# 7 days to die server using LinuixGSM script in Docker
 
 ![Image of 7 Days To Die](https://7daystodie.com/images/header_g.png)
 
