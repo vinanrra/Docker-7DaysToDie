@@ -22,7 +22,7 @@ Ports 8081 and 8082 are OPTIONAL
 $ mkdir -p /path/to/7DaysToDie && mkdir -p /path/to/ServerFiles && sudo chown -R 1001:1001 /path/to/7DaysToDie && sudo chown -R 1001:1001 /path/to/ServerFiles
 ```
 
-```version: '3.3'
+```version: '2'
 services:
   7dtd:
     build:
@@ -30,22 +30,17 @@ services:
       dockerfile: Dockerfile
     container_name: 7dtd
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/Madrid #OPTIONAL, can be change to any TimeZone
-    volumes:
-    - ./ServerFiles:/home/sdtdserver/serverfiles/
-    - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/
-    ports:
+      - START_MODE=0
+    #volumes:
+    - ./ServerFiles:/home/sdtdserver/serverfiles/ #Optional if you dont care about serverfiles
+    - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/ #Optional if you dont care about maps files
+    #ports:
     - 26900:26900/tcp
     - 26900:26900/udp
     - 26901:26901/udp
     - 26902:26902/udp
-    - 8081:8081/tcp #OPTIONAL
-    - 8082:8082/tcp #OPTIONAL
-    #KEPP CONTAINER ALIVE - NEED TO CHANGE TO SHOW LOG AT PORTAINER
-    command: tail -f /dev/null
-    #KEPP CONTAINER ALIVE - NEED TO CHANGE TO SHOW LOG AT PORTAINER
+    - 8081:8081/tcp #OPTIONAL WEBUI
+    - 8082:8082/tcp #OPTIONAL WEBSERVER https://7dtd.illy.bz/wiki/Server%20fixes
     restart: unless-stopped
 ```
 
