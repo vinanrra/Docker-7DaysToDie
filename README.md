@@ -37,7 +37,6 @@ sudo chown -R 1001:1001 /path/to/7DaysToDie && sudo chown -R 1001:1001 /path/to/
 ```bash
 docker run \
   --name 7dtdserver \
-  --restart unless-stopped \
   -v "/path/to/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/" \
   -v "/path/to/ServerFiles:/home/sdtdserver/serverfiles/" \
   -p 26900:26900/tcp \
@@ -111,6 +110,7 @@ services:
 | `-p 8081:8081/tcp` | Default 7DaysToDie port, webui **optional** |
 | `-p 8082:8082/tcp` | Default 7DaysToDie port, webui (https://7dtd.illy.bz/wiki/Server%20fixes) **optional** |
 | `-e START_MODE=0` | Start mode of the container, you can choose between 0-5 more info upper **required** |
+| `--restart unless-stopped` | Restart container always unlesss stopped manually **NEVER USE WITH START_MODE=0, 2 or 4 |
 
 ## Support Info
 
