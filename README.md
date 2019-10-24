@@ -30,7 +30,7 @@ $ docker run --name 7dtdserver --restart unless-stopped -it -v "/path/to/7DaysTo
 ```
 ### SECOND START - CHOOSE BETWEEN START MODES
 ```bash
-$ docker run --name 7dtdserver --restart unless-stopped -it -v "/path/to/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/" -v "/path/to/ServerFiles:/home/sdtdserver/serverfiles/" -p 26900:26900/tcp -p 26900:26900/udp -p 26901:26901/udp -p 26902:26902/udp -p 8081:8081/tcp -p 8082:8082/tcp -e START_MODE=1 vinanrra/7dtd
+$ docker run --name 7dtdserver --restart unless-stopped -it -v "/path/to/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/" -v "/path/to/ServerFiles:/home/sdtdserver/serverfiles/" -p 26900:26900/tcp -p 26900:26900/udp -p 26901:26901/udp -p 26902:26902/udp -p 8081:8081/tcp -p 8082:8082/tcp -e START_MODE=CHANGE_ME vinanrra/7dtd
 ```
 
 Ports 8081 and 8082 are OPTIONAL
