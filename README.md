@@ -87,7 +87,6 @@ services:
     - 26902:26902/udp
     - 8081:8081/tcp #OPTIONAL WEBUI
     - 8082:8082/tcp #OPTIONAL WEBSERVER https://7dtd.illy.bz/wiki/Server%20fixes
-    restart: unless-stopped
 ```
 
 ### TODO
