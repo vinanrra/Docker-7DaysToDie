@@ -137,3 +137,7 @@ services:
 ## Versions
 
 * **24.10.2019:** - Initial Release.
+
+## Thanks
+
+* **https://www.linuxserver.io/** - For readme structure and all the info.
