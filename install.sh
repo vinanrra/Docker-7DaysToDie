@@ -46,5 +46,4 @@ if [ "$START_MODE" = "5" ]; then
     echo "7 Days to die server updated to LATEST_EXPERIMENTAL"
     echo "Starting 7 Days to die server"
     ./sdtdserver start
-    exit
 fi
