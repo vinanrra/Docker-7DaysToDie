@@ -1,10 +1,10 @@
 version: '2'
 services:
-  test7dtd:
+  7dtd:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: 7dtdtest
+    container_name: 7dtd
     environment:
       - START_MODE=0
     volumes:
