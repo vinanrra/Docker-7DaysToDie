@@ -68,7 +68,7 @@ Ports 8081 and 8082 are OPTIONAL
 mkdir -p /path/to/7DaysToDie && mkdir -p /path/to/ServerFiles
 sudo chown -R 1001:1001 /path/to/7DaysToDie && sudo chown -R 1001:1001 /path/to/ServerFiles
 ```
-Remember to start first with START_MODE=0 to install the serven, them you can change the mode when you want.
+Remember to start first with START_MODE=0 to install the server, them you can change the mode when you want.
 
 ```
 version: '2'
