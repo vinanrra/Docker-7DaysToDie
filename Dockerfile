@@ -46,18 +46,22 @@ WORKDIR /home/sdtdserver
 ##############USER##############
 
 ##############SERVER INSTALL AND CONFIGURATION##############
+
+# Copy config for stable and latest_experimental builds
+ADD sdtdserver.cfg sdtdserver.cfg
+ADD sdtdserver.cfg.stable sdtdserver.cfg.stable
+# Fix permissions
+RUN chown sdtdserver:sdtdserver sdtdserver.cfg
+RUN chown sdtdserver:sdtdserver sdtdserver.cfg.stable
+
 #Change user
 USER sdtdserver
 
-#Script and install
+# Script and install
 RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
 # Start to create default files
 RUN ./sdtdserver
-# Config for latest Experimental
-ADD sdtdserver.cfg /home/sdtdserver/sdtdserver.cfg
-# Config for stable
-ADD sdtdserver.cfg.stable /home/sdtdserver/sdtdserver.cfg.stable
-# Script for start/update
+# Update to latest Experimental
 ADD install.sh /home/sdtdserver/install.sh
 
 ##############EXTRA CONFIG##############

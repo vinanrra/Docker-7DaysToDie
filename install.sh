@@ -8,6 +8,9 @@ fi
 # Start server
 if [ "$START_MODE" = "1" ]; then
     ./sdtdserver start
+    sleep 2m
+    ./sdtdserver details
+    tail -f /dev/null
 fi
 
 # Update to stable
@@ -21,6 +24,9 @@ if [ "$START_MODE" = "3" ]; then
     cp -v sdtdserver.cfg.stable lgsm/config-lgsm/sdtdserver/
     ./sdtdserver update
     ./sdtdserver start
+    sleep 2m
+    ./sdtdserver details
+    tail -f /dev/null
 fi
 
 # Update to experimental
@@ -36,4 +42,7 @@ if [ "$START_MODE" = "5" ]; then
     ./sdtdserver update
     cp -v serverfiles/serverconfig.xml serverfiles/sdtdserver.xml
     ./sdtdserver start
+    sleep 2m
+    ./sdtdserver details
+    tail -f /dev/null
 fi
