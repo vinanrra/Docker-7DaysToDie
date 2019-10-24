@@ -55,7 +55,9 @@ Just change volumes and ports if necessary, i am not sure if enviroments are wor
 
 Add enviroments to choose between:
 
+```
 Install
 Update
 Change to latest_experimental
 Change to stable
+```
