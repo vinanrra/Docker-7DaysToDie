@@ -1,6 +1,6 @@
 # 7 days to die server using LinuixGSM script in Docker
 
-![Image of 7 Days To Die](https://7daystodie.com/images/header_g.png)
+![Image of 7 Days To Die](https://raw.githubusercontent.com/vinanrra/Docker-7DaysToDie/master/7dtd.png)
 
 ## USAGE
 
