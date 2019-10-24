@@ -51,6 +51,8 @@ USER sdtdserver
 
 #Script and install
 RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
+# Start to create default files
+RUN ./sdtdserver
 # Config for latest Experimental
 ADD sdtdserver.cfg /home/sdtdserver/sdtdserver.cfg
 # Config for stable
