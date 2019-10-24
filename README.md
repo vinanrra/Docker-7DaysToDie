@@ -61,3 +61,7 @@ services:
     - 8082:8082/tcp #OPTIONAL WEBSERVER https://7dtd.illy.bz/wiki/Server%20fixes
     restart: unless-stopped
 ```
+
+# TODO
+
+Fix install.sh bucle
