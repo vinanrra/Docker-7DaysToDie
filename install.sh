@@ -1,3 +1,4 @@
+#!/bin/bash
 if [ "$START_MODE" = "0" ]; then
     echo "Installing 7 days to die server"
     ./sdtdserver auto-install
