@@ -1,7 +1,9 @@
 version: '2'
 services:
   7dtd:
-    image: vinanrra/7daystodie_latestexperimental
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: 7dtd
     environment:
       - START_MODE=0 #Change between START MODES
