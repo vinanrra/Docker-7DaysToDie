@@ -90,10 +90,6 @@ services:
     restart: unless-stopped
 ```
 
-## IMPORTANT
-
-Rigth now this image it is working, i have been using for a week without any problem
-
 ### TODO
 
 Fix install.sh bucle
