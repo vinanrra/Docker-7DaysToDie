@@ -86,15 +86,15 @@ services:
     environment:
       - START_MODE=0 #Change between START MODES
     volumes:
-    - ./ServerFiles:/home/sdtdserver/serverfiles/ #Optional if you dont care about serverfiles
-    - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/ #Optional if you dont care about maps files
+      - ./ServerFiles:/home/sdtdserver/serverfiles/ #Optional if you dont care about serverfiles
+      - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/ #Optional if you dont care about maps files
     ports:
-    - 26900:26900/tcp
-    - 26900:26900/udp
-    - 26901:26901/udp
-    - 26902:26902/udp
-    - 8081:8081/tcp #OPTIONAL WEBUI
-    - 8082:8082/tcp #OPTIONAL WEBSERVER https://7dtd.illy.bz/wiki/Server%20fixes
+      - 26900:26900/tcp
+      - 26900:26900/udp
+      - 26901:26901/udp
+      - 26902:26902/udp
+      - 8081:8081/tcp #OPTIONAL WEBUI
+      - 8082:8082/tcp #OPTIONAL WEBSERVER https://7dtd.illy.bz/wiki/Server%20fixes
 ```
 
 ## Parameters
