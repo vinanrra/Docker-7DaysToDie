@@ -51,9 +51,11 @@ USER sdtdserver
 
 #Script and install
 RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
-# Update to latest Experimental
+# Config for latest Experimental
 ADD sdtdserver.cfg /home/sdtdserver/sdtdserver.cfg
+# Config for stable
 ADD sdtdserver.cfg.stable /home/sdtdserver/sdtdserver.cfg.stable
+# Script for start/update
 ADD install.sh /home/sdtdserver/install.sh
 
 ##############EXTRA CONFIG##############
