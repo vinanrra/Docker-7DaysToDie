@@ -3,7 +3,7 @@
 
 ## IMPORTANT
 
-Rigth now this image its working well, i have been using for a week without any problem, but i want to fix volumes to just simple run the docker command and avoid to create and change permissions to folders.
+Rigth now this image its working well
 
 ## USAGE
 
