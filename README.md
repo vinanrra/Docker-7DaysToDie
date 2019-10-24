@@ -1,22 +1,30 @@
+# [vinanrra/7days-server](https://github.com/vinanrra/Docker-7DaysToDie)
+
 # 7 days to die server using LinuixGSM script in Docker
 
 ![Image of 7 Days To Die](https://raw.githubusercontent.com/vinanrra/Docker-7DaysToDie/master/7dtd.png)
+
+## Supported Architectures
+
+The architectures supported by this image are:
+
+| Architecture |
+| :----: |
+| x86-64 |
+| x86 |
 
 ## USAGE
 
 ### START MODES:
 
-#### 0 = Install server
-
-#### 1 = Start server
-
-#### 2 = Update server TO STABLE
-
-#### 3 = Update server TO STABLE and start
-
-#### 4 = Update server TO LATEST_EXPERIMENTAL
-
-#### 5 = Update server TO LATEST_EXPERIMENTAL and start
+| START_MODE | Information |
+| :----: | :----: |
+| 0 | Install server |
+| 1 | Start server |
+| 2 | Update server TO STABLE |
+| 3 | Update server TO STABLE and start |
+| 4 | Update server TO LATEST_EXPERIMENTAL |
+| 5 | Update server TO LATEST_EXPERIMENTAL and start |
 
 ### Docker
 
@@ -89,3 +97,45 @@ services:
     - 8081:8081/tcp #OPTIONAL WEBUI
     - 8082:8082/tcp #OPTIONAL WEBSERVER https://7dtd.illy.bz/wiki/Server%20fixes
 ```
+
+## Parameters
+
+Container images are configured using parameters passed at runtime (such as those above). These parameters are separated by a colon and indicate `<external>:<internal>` respectively.
+
+| Parameter | Function |
+| :----: | --- |
+| `-v /home/sdtdserver/.local/share/7DaysToDie/` | 7DaysToDie saves, where maps store. |
+| `-v /path/to/ServerFiles:/home/sdtdserver/serverfiles/` | 7DaysToDie server config files. |
+| `-p 26900:26900/tcp` | Default 7DaysToDie port **required** |
+| `-p 26900:26900/udp` | Default 7DaysToDie port **required** |
+| `-p 26901:26901/udp` | Default 7DaysToDie port **required** |
+| `-p 26902:26902/udp` | Default 7DaysToDie port **required** |
+| `-p 8081:8081/tcp` | Default 7DaysToDie port, webui **optional** |
+| `-p 8082:8082/tcp` | Default 7DaysToDie port, webui (https://7dtd.illy.bz/wiki/Server%20fixes) **optional** |
+| `-e START_MODE=0` | Start mode of the container, you can choose between 0-5 more info upper **required** |
+
+## Support Info
+
+* Shell access whilst the container is running: `docker exec -it 7dtdserver /bin/bash`
+* To monitor the logs of the container in realtime: `docker logs -f 7dtdserver`
+
+## Updating Info
+
+### Via Docker Run/Create
+* Update the image: `docker pull vinanrra/7dtd-server`
+* Stop the running container: `docker stop 7dtdserver`
+* Delete the container: `docker rm 7dtdserver`
+* Recreate a new container with the same docker create parameters as instructed above (if mapped correctly to a host folder, your `/config` folder and settings will be preserved)
+* Start the new container: `docker start 7dtdserver`
+* You can also remove the old dangling images: `docker image 7dtdserver`
+
+### Via Docker Compose
+* Update all images: `docker-compose pull`
+  * or update a single image: `docker-compose pull 7dtdserver`
+* Let compose update all containers as necessary: `docker-compose up -d`
+  * or update a single container: `docker-compose up -d 7dtdserver`
+* You can also remove the old dangling images: `docker image prune`
+
+## Versions
+
+* **24.10.2019:** - Initial Release.
