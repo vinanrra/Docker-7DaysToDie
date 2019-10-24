@@ -7,11 +7,36 @@ Rigth now this image its working well, i have been using for a week without any 
 
 ## USAGE
 
+### START MODES:
+
+#### 0
+Install server
+
+#### 1
+Start server
+
+#### 2
+Update server TO STABLE
+
+#### 3
+Update server TO STABLE and start
+
+#### 4
+Update server TO LATEST_EXPERIMENTAL
+
+#### 5
+Update server TO LATEST_EXPERIMENTAL and start
+
 ### Docker
 
+### FIRST START - TO JUST INSTALL SERVER
 ```bash
 $ mkdir -p /path/to/7DaysToDie && mkdir -p /path/to/ServerFiles && sudo chown -R 1001:1001 /path/to/7DaysToDie && sudo chown -R 1001:1001 /path/to/ServerFiles
 $ docker run --name 7dtdserver --restart unless-stopped -it -v "/path/to/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/" -v "/path/to/ServerFiles:/home/sdtdserver/serverfiles/" -p 26900:26900/tcp -p 26900:26900/udp -p 26901:26901/udp -p 26902:26902/udp -p 8081:8081/tcp -p 8082:8082/tcp vinanrra/7dtd
+```
+### SECOND START - CHOOSE BETWEEN START MODES
+```bash
+$ docker run --name 7dtdserver --restart unless-stopped -it -v "/path/to/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/" -v "/path/to/ServerFiles:/home/sdtdserver/serverfiles/" -p 26900:26900/tcp -p 26900:26900/udp -p 26901:26901/udp -p 26902:26902/udp -p 8081:8081/tcp -p 8082:8082/tcp -e START_MODE=1 vinanrra/7dtd
 ```
 
 Ports 8081 and 8082 are OPTIONAL
