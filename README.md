@@ -9,23 +9,17 @@ Rigth now this image its working well, i have been using for a week without any 
 
 ### START MODES:
 
-#### 0
-Install server
+#### 0 = Install server
 
-#### 1
-Start server
+#### 1 = Start server
 
-#### 2
-Update server TO STABLE
+#### 2 = Update server TO STABLE
 
-#### 3
-Update server TO STABLE and start
+#### 3 = Update server TO STABLE and start
 
-#### 4
-Update server TO LATEST_EXPERIMENTAL
+#### 4 = Update server TO LATEST_EXPERIMENTAL
 
-#### 5
-Update server TO LATEST_EXPERIMENTAL and start
+#### 5 = Update server TO LATEST_EXPERIMENTAL and start
 
 ### Docker
 
