@@ -137,6 +137,7 @@ services:
 
 ## Versions
 
+* **25.10.2019:** - Added ENV START_MODE and fixed version config files path
 * **24.10.2019:** - Initial Release.
 
 ## Thanks
