@@ -80,9 +80,9 @@ Remember to start first with START_MODE=0 to install the server, them you can ch
 ```
 version: '2'
 services:
-  7dtd:
+  7dtdserver:
     image: vinanrra/7dtd-server
-    container_name: 7dtd
+    container_name: 7dtdserver
     environment:
       - START_MODE=0 #Change between START MODES
     volumes:
