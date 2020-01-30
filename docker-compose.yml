@@ -7,6 +7,8 @@ services:
     container_name: 7dtdserver
     environment:
       - START_MODE=1 #Change between START MODES
+      - PUID=1000 #Check the info
+      - PGID=1000 #Check the info
     volumes:
       - ./ServerFiles:/home/sdtdserver/serverfiles/ #Optional if you dont care about serverfiles
       - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/ #Optional if you dont care about maps files

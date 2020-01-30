@@ -71,5 +71,7 @@ EXPOSE 26900 26900/UDP 26901/UDP 26902/UDP 8082 8081
 VOLUME /home/sdtdserver/serverfiles/ /home/sdtdserver/.local/share/7DaysToDie/
 # Environment
 ENV START_MODE "0"
+ENV PUID
+ENV PGID
 ##############EXTRA CONFIG##############
 ENTRYPOINT ["sh", "/home/sdtdserver/install.sh"]
