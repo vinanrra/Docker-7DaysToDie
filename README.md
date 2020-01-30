@@ -155,10 +155,16 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 * You can also remove the old dangling images: `docker image prune`
 
 ## Versions
-
-* **25.10.2019:** - Added ENV START_MODE and fixed version config files path
-* **24.10.2019:** - Initial Release.
+* **30.01.2020:**
+    * Improved user creation with custom UID and GID
+    * Updated readme (PGID and PUID, docker-compose and docker ENVs)
+* **25.10.2019:**
+    * Added ENV START_MODE
+    * Fixed version config files path
+* **24.10.2019:**
+    * Initial Release.
 
 ## Thanks
 
-* **https://www.linuxserver.io/** - For readme structure and all the info.
+* **[Linuxserver](https://www.linuxserver.io/)** - For readme structure and all the info.
+* **[Linuxserver Base Image](https://github.com/linuxserver/docker-baseimage-ubuntu/blob/bionic/root/etc/cont-init.d/10-adduser)** - For the user script.
