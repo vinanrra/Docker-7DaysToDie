@@ -42,7 +42,9 @@ RUN rm -rf /var/lib/apt/lists/*
 # Add the sdtdserver user
 ENV PUID "1000"
 ENV PGID "1000"
-RUN adduser --disabled-password --shell /bin/bash --disabled-login --gecos "" sdtdserver
+ADD user.sh user.sh
+RUN sh user.sh
+RUN chown -R sdtdserver:sdtdserver /home/sdtdserver
 ##############USER##############
 
 ##############SERVER INSTALL AND CONFIGURATION##############
@@ -63,7 +65,6 @@ RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linu
 RUN ./sdtdserver
 # Update to latest Experimental
 ADD install.sh /home/sdtdserver/install.sh
-USER root
 
 ##############EXTRA CONFIG##############
 #Ports
