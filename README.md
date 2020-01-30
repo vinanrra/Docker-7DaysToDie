@@ -76,7 +76,7 @@ services:
     container_name: 7dtdserver
     environment:
       - START_MODE=0 #Change between START MODES
-	  -e PUID=1000 # Remember to use same as your user
+      -e PUID=1000 # Remember to use same as your user
       -e PUID=1000 # Remember to use same as your user
     volumes:
       - ./ServerFiles:/home/sdtdserver/serverfiles/ #Optional if you dont care about serverfiles
