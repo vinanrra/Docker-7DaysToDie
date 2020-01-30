@@ -15,23 +15,11 @@ The architectures supported by this image are:
 
 ## USAGE
 
-### START MODES:
-
-| START_MODE | Information |
-| :----: | :----: |
-| 0 | Install server |
-| 1 | Start server |
-| 2 | Update server TO STABLE |
-| 3 | Update server TO STABLE and start |
-| 4 | Update server TO LATEST_EXPERIMENTAL |
-| 5 | Update server TO LATEST_EXPERIMENTAL and start |
-
 ### Docker
 
 ### FIRST Start, to install server
 ```bash
 mkdir -p /path/to/7DaysToDie && mkdir -p /path/to/ServerFiles
-sudo chown -R 1001:1001 /path/to/7DaysToDie && sudo chown -R 1001:1001 /path/to/ServerFiles
 ```
 
 ```bash
@@ -46,6 +34,8 @@ docker run \
   -p 8081:8081/tcp \
   -p 8082:8082/tcp \
   -e START_MODE=0 \
+  -e PUID=1000 \
+  -e PUID=1000 \
   vinanrra/7dtd-server
 ```
 
@@ -64,6 +54,8 @@ docker run \
   -p 8081:8081/tcp \
   -p 8082:8082/tcp \
   -e START_MODE=CHANGE_ME \
+  -e PUID=1000 \
+  -e PUID=1000 \
   vinanrra/7dtd-server
 ```
 
@@ -73,7 +65,6 @@ Ports 8081 and 8082 are OPTIONAL
 
 ```bash
 mkdir -p /path/to/7DaysToDie && mkdir -p /path/to/ServerFiles
-sudo chown -R 1001:1001 /path/to/7DaysToDie && sudo chown -R 1001:1001 /path/to/ServerFiles
 ```
 Remember to start first with START_MODE=0 to install the server, them you can change the mode when you want.
 
@@ -85,6 +76,8 @@ services:
     container_name: 7dtdserver
     environment:
       - START_MODE=0 #Change between START MODES
+	  -e PUID=1000 # Remember to use same as your user
+      -e PUID=1000 # Remember to use same as your user
     volumes:
       - ./ServerFiles:/home/sdtdserver/serverfiles/ #Optional if you dont care about serverfiles
       - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/ #Optional if you dont care about maps files
@@ -110,8 +103,34 @@ services:
 | `-p 26902:26902/udp` | Default 7DaysToDie port **required** |
 | `-p 8081:8081/tcp` | Default 7DaysToDie port, webui **optional** |
 | `-p 8082:8082/tcp` | Default 7DaysToDie port, webui (https://7dtd.illy.bz/wiki/Server%20fixes) **optional** |
-| `-e START_MODE=0` | Start mode of the container, you can choose between 0-5 more info upper **required** |
+| `-e START_MODE=0` | Start mode of the container - see below for explanation  **required** |
+| `-e PUID=1000` | for UserID - see below for explanation |
+| `-e PGID=1000` | for GroupID - see below for explanation |
 | `--restart unless-stopped` | Restart container always unlesss stopped manually **NEVER USE WITH START_MODE=0, 2 or 4** |
+
+### START MODES:
+
+| START_MODE | Information |
+| :----: | :----: |
+| 0 | Install server |
+| 1 | Start server |
+| 2 | Update server TO STABLE |
+| 3 | Update server TO STABLE and start |
+| 4 | Update server TO LATEST_EXPERIMENTAL |
+| 5 | Update server TO LATEST_EXPERIMENTAL and start |
+
+## User / Group Identifiers
+
+When using volumes (`-v` flags) permissions issues can arise between the host OS and the container, we avoid this issue by allowing you to specify the user `PUID` and group `PGID`.
+
+Ensure any volume directories on the host are owned by the same user you specify and any permissions issues will vanish like magic.
+
+In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as below:
+
+```
+  $ id username
+    uid=1000(dockeruser) gid=1000(dockergroup) groups=1000(dockergroup)
+```
 
 ## Support Info
 

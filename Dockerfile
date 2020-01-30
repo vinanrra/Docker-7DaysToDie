@@ -40,13 +40,13 @@ RUN rm -rf /var/lib/apt/lists/*
 
 ##############USER##############
 # Add the sdtdserver user
-RUN adduser --uid 1001 --disabled-password --shell /bin/bash --disabled-login --gecos "" sdtdserver
+ADD user.sh user.sh
+RUN sh user.sh
 RUN chown -R sdtdserver:sdtdserver /home/sdtdserver
-WORKDIR /home/sdtdserver
 ##############USER##############
 
 ##############SERVER INSTALL AND CONFIGURATION##############
-
+WORKDIR /home/sdtdserver
 # Copy config for stable and latest_experimental builds
 ADD sdtdserver.cfg sdtdserver.cfg
 ADD sdtdserver.cfg.stable sdtdserver.cfg.stable
