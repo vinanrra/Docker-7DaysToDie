@@ -17,16 +17,19 @@ groupmod -o -g "$PGID" sdtdserver
 usermod -o -u "$PUID" sdtdserver
 chown -R sdtdserver:sdtdserver /home/sdtdserver
 
+# Changing user
+
+su stdserver -c "
+
+# Changing user
 
 # Install
 if [ "$START_MODE" = "0" ]; then
-    sudo su - sdtdserver
     ./sdtdserver auto-install
 fi
 
 # Start server
 if [ "$START_MODE" = "1" ]; then
-    sudo su - sdtdserver
     ./sdtdserver start
     sleep 2m
     ./sdtdserver details
@@ -35,14 +38,12 @@ fi
 
 # Update to stable
 if [ "$START_MODE" = "2" ]; then
-    sudo su - sdtdserver
     cp -v sdtdserver.cfg.stable lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
     ./sdtdserver update && exit
 fi
 
 # Update to stable and start
 if [ "$START_MODE" = "3" ]; then
-    sudo su - sdtdserver
     cp -v sdtdserver.cfg.stable lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
     ./sdtdserver update
     ./sdtdserver start
@@ -53,7 +54,6 @@ fi
 
 # Update to experimental
 if [ "$START_MODE" = "4" ]; then
-    sudo su - sdtdserver
     cp -v sdtdserver.cfg lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
     ./sdtdserver update
     cp -v serverfiles/serverconfig.xml serverfiles/sdtdserver.xml
@@ -61,7 +61,6 @@ fi
 
 # Update to experimental and start
 if [ "$START_MODE" = "5" ]; then
-    sudo su - sdtdserver
     cp -v sdtdserver.cfg lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
     ./sdtdserver update
     cp -v serverfiles/serverconfig.xml serverfiles/sdtdserver.xml
@@ -70,3 +69,4 @@ if [ "$START_MODE" = "5" ]; then
     ./sdtdserver details
     tail -f /dev/null
 fi
+"
