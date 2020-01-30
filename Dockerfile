@@ -40,6 +40,8 @@ RUN rm -rf /var/lib/apt/lists/*
 
 ##############USER##############
 # Add the sdtdserver user
+ENV PUID "1000"
+ENV PGID "1000"
 ADD user.sh user.sh
 RUN sh user.sh
 RUN chown -R sdtdserver:sdtdserver /home/sdtdserver
@@ -71,7 +73,5 @@ EXPOSE 26900 26900/UDP 26901/UDP 26902/UDP 8082 8081
 VOLUME /home/sdtdserver/serverfiles/ /home/sdtdserver/.local/share/7DaysToDie/
 # Environment
 ENV START_MODE "0"
-ENV PUID "1000"
-ENV PGID "1000"
 ##############EXTRA CONFIG##############
 ENTRYPOINT ["sh", "/home/sdtdserver/install.sh"]
