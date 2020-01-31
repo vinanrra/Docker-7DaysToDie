@@ -1,3 +1,7 @@
+#!/bin/sh
+
+set -eu
+
 echo "
 USER INFO:
 
@@ -11,6 +15,9 @@ Check it with "id" command
 If problem persist check: https://github.com/vinanrra/Docker-7DaysToDie/blob/master/README.md
 "
 
-adduser --disabled-password --shell /bin/bash --disabled-login --gecos "" sdtdserver
 groupmod -o -g "$PGID" sdtdserver
 usermod -o -u "$PUID" sdtdserver
+
+chown -R sdtdserver:sdtdserver /home/sdtdserver
+
+su-exec sdtdserver "$@"

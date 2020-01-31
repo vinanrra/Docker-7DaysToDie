@@ -1,13 +1,25 @@
 FROM ubuntu:18.04
 
 ##############BASE IMAGE##############
-# Locale
-RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
-    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-ENV LANG en_US.utf8
-# Need use xterm for LinuxGSM
+
+####Environments####
+
+ARG PUID=1000
+ARG PGID=1000
+ENV PUID=$PUID
+ENV PGID=$PGID
+ENV START_MODE "0"
+
+##Need use xterm for LinuxGSM##
 ENV TERM=xterm
 ENV DEBIAN_FRONTEND noninteractive
+
+####Environments####
+
+# Locale
+RUN apt-get update && apt-get install -y locales
+RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+ENV LANG en_US.utf8
 
 #Dependencies
 RUN dpkg --add-architecture i386 && \
@@ -34,44 +46,44 @@ RUN dpkg --add-architecture i386 && \
 		libstdc++6:i386 \
 		telnet \
 		expect
+
+# Install latest su-exec
+RUN  set -ex; \
+     \
+     curl -o /usr/local/bin/su-exec.c https://raw.githubusercontent.com/ncopa/su-exec/master/su-exec.c; \
+     \
+     fetch_deps='gcc libc-dev'; \
+     apt-get install -y --no-install-recommends $fetch_deps; \
+     rm -rf /var/lib/apt/lists/*; \
+     gcc -Wall \
+         /usr/local/bin/su-exec.c -o/usr/local/bin/su-exec; \
+     chown root:root /usr/local/bin/su-exec; \
+     chmod 0755 /usr/local/bin/su-exec; \
+     rm /usr/local/bin/su-exec.c; \
+     \
+     apt-get purge -y --auto-remove $fetch_deps
+
 # Clear unused files
-RUN rm -rf /var/lib/apt/lists/*     
+
+RUN apt clean && \
+    rm -rf \
+	/tmp/* \
+	/var/lib/apt/lists/* \
+	/var/tmp/*
+
+RUN adduser --disabled-password --shell /bin/bash --disabled-login --gecos "" sdtdserver
+
 ##############BASE IMAGE##############
 
-##############USER##############
-# Add the sdtdserver user
-ENV PUID "1000"
-ENV PGID "1000"
-ADD user.sh user.sh
-RUN sh user.sh
-RUN chown -R sdtdserver:sdtdserver /home/sdtdserver
-##############USER##############
-
-##############SERVER INSTALL AND CONFIGURATION##############
 WORKDIR /home/sdtdserver
-# Copy config for stable and latest_experimental builds
-ADD sdtdserver.cfg sdtdserver.cfg
-ADD sdtdserver.cfg.stable sdtdserver.cfg.stable
-# Fix permissions
-RUN chown sdtdserver:sdtdserver sdtdserver.cfg
-RUN chown sdtdserver:sdtdserver sdtdserver.cfg.stable
-
-#Change user
-USER sdtdserver
-
-# Script and install
-RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
-# Start to create default files
-RUN ./sdtdserver
-# Update to latest Experimental
+ADD user.sh /home/sdtdserver/user.sh
 ADD install.sh /home/sdtdserver/install.sh
+RUN chmod +x user.sh && chmod +x install.sh
 
 ##############EXTRA CONFIG##############
 #Ports
 EXPOSE 26900 26900/UDP 26901/UDP 26902/UDP 8082 8081
 #Shared folders to host
-VOLUME /home/sdtdserver/serverfiles/ /home/sdtdserver/.local/share/7DaysToDie/
-# Environment
-ENV START_MODE "0"
+VOLUME /home/sdtdserver/serverfiles/ /home/sdtdserver/.local/share/7DaysToDie
 ##############EXTRA CONFIG##############
-ENTRYPOINT ["sh", "/home/sdtdserver/install.sh"]
+CMD ["/home/sdtdserver/user.sh", "/home/sdtdserver/install.sh"]
