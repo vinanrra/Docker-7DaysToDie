@@ -18,9 +18,6 @@ The architectures supported by this image are:
 ### Docker
 
 ### FIRST Start, to install server
-```bash
-mkdir -p /path/to/7DaysToDie && mkdir -p /path/to/ServerFiles
-```
 
 ```bash
 docker run \
@@ -155,6 +152,11 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 * You can also remove the old dangling images: `docker image prune`
 
 ## Versions
+* **31.01.2020:**
+    * Cleaned and improved Dockerfile
+    * Added notification for each stage
+    * Fixed user creation and folder permissions
+
 * **30.01.2020:**
     * Improved user creation with custom UID and GID
     * Updated readme (PGID and PUID, docker-compose and docker ENVs)
