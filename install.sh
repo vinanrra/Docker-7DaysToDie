@@ -2,14 +2,27 @@
 
     echo "Current User:"
     whoami
-
-    # First Install
-    if [ "$START_MODE" = "0" ]; then
+    
+    if [ ! -f sdtdserver ]; then
+        
+	echo "
+            =======================================================================
+            IMPORTANT:
+            
+            LinuxGSM script is missing, downloading...
+            =======================================================================
+            "
+	
+        wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
+	
+    fi
+    
+    if [ ! -f /DONT_REMOVE.txt ]; then
+    
         # Start to create default files
-         wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
-         
         ./sdtdserver
         
+	# Install 7 Days To Die Server
         ./sdtdserver auto-install
 
         echo "
@@ -20,6 +33,8 @@
             More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
             =======================================================================
             "
+	    
+	echo "If this file is missing, server will be re-installed" > DONT_REMOVE.txt
     fi
 
     # Start server
@@ -147,7 +162,7 @@
         tail -f /dev/null
     fi
 
-if (($START_MODE >= 6)); then
+if (($START_MODE >= 6)) || (($START_MODE = 0)); then
 echo "
     =======================================================================
     IMPORTANT:
