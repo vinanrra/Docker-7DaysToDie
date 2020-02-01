@@ -21,27 +21,6 @@ The architectures supported by this image are:
 
 ### Docker
 
-### FIRST Start, to install server
-
-```bash
-docker run \
-  --name 7dtdserver \
-  -v "/path/to/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/" \
-  -v "/path/to/ServerFiles:/home/sdtdserver/serverfiles/" \
-  -p 26900:26900/tcp \
-  -p 26900:26900/udp \
-  -p 26901:26901/udp \
-  -p 26902:26902/udp \
-  -p 8081:8081/tcp \
-  -p 8082:8082/tcp \
-  -e START_MODE=0 \
-  -e PUID=1000 \
-  -e PUID=1000 \
-  vinanrra/7dtd-server
-```
-
-### SECOND start to start/update server
-
 ```bash
 docker run \
   --name 7dtdserver \
@@ -64,8 +43,6 @@ Ports 8081 and 8082 are OPTIONAL
 
 ### docker-compose
 
-REMEMBER to start first with START_MODE=0 to install the server, them you can change the mode when you want.
-
 ```
 version: '2'
 services:
@@ -73,7 +50,7 @@ services:
     image: vinanrra/7dtd-server
     container_name: 7dtdserver
     environment:
-      - START_MODE=0 #Change between START MODES
+      - START_MODE=1 #Change between START MODES
       - PUID=1000 # Remember to use same as your user
       - PGID=1000 # Remember to use same as your user
     volumes:
@@ -86,7 +63,7 @@ services:
       - 26902:26902/udp
       - 8081:8081/tcp #OPTIONAL WEBUI
       - 8082:8082/tcp #OPTIONAL WEBSERVER https://7dtd.illy.bz/wiki/Server%20fixes
-    restart: unless-stopped #NEVER USE WITH START_MODE=0, 2 or 4 
+    restart: unless-stopped #NEVER USE WITH START_MODE= 2 or 4 
 ```
 
 ## Parameters
@@ -104,13 +81,12 @@ services:
 | `-e START_MODE=0` | Start mode of the container - see below for explanation  **required** |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
-| `--restart unless-stopped` | Restart container always unlesss stopped manually **NEVER USE WITH START_MODE=0, 2 or 4** |
+| `--restart unless-stopped` | Restart container always unlesss stopped manually **NEVER USE WITH START_MODE= 2 or 4** |
 
 ### START MODES:
 
 | START_MODE | Information |
 | :----: | :----: |
-| 0 | Install server |
 | 1 | Start server |
 | 2 | Update server TO STABLE |
 | 3 | Update server TO STABLE and start |
@@ -153,9 +129,10 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 * You can also remove the old dangling images: `docker image prune`
 
 ## Versions
-* **01.01.2020:**
+* **01.02.2020:**
     * Fixed script path
     * Improved messages they are now more visual
+    * Improved install script, now the server will detect if its installed or not
 
 * **31.01.2020:**
     * Cleaned and improved Dockerfile
