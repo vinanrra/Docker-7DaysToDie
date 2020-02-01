@@ -152,7 +152,7 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 * You can also remove the old dangling images: `docker image prune`
 
 ## Versions
-* **01.01.2020**
+* **01.01.2020:**
     * Fixed script path
     * Improved messages they are now more visual
 
