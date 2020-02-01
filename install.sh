@@ -1,148 +1,156 @@
-#!/bin/sh
+#!/bin/bash
 
-echo "Current User:"
-whoami
+if (("$START_MODE" >= "1" && "$START_MODE" <= "5")); then
 
-wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
+    echo "Current User:"
+    whoami
 
-# Install
-if [ "$START_MODE" = "0" ]; then
-    # Start to create default files
-	
-    ./sdtdserver
-	
-    ./sdtdserver auto-install
-
-	echo "
-        =======================================================================
-        IMPORTANT:
+    # First Install
+    if [ "$START_MODE" = "0" ]; then
+        # Start to create default files
+         wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
+         
+        ./sdtdserver
         
-        The server have been installed, now switch between "START_MODE"
-        More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
-        =======================================================================
-        "
-fi
-
-# Start server
-if [ "$START_MODE" = "1" ]; then
-
-    ./sdtdserver start
+        ./sdtdserver auto-install
 
         echo "
-        =======================================================================
-        IMPORTANT:
+            =======================================================================
+            IMPORTANT:
+            
+            The server have been installed, now switch between "START_MODE"
+            More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
+            =======================================================================
+            "
+    fi
+
+    # Start server
+    if [ "$START_MODE" = "1" ]; then
+
+        ./sdtdserver start
+
+            echo "
+            =======================================================================
+            IMPORTANT:
+            
+            Starting server...
+            Soon you will see all the info
+            =======================================================================
+            "
+
+        sleep 2m
         
-        Starting server...
-        Soon you will see all the info
-        =======================================================================
-        "
+        ./sdtdserver details
+        
+        tail -f /dev/null
+    fi
 
-    sleep 2m
-	
-    ./sdtdserver details
-	
-    tail -f /dev/null
-fi
+    # Update to stable
+    if [ "$START_MODE" = "2" ]; then
 
-# Update to stable
-if [ "$START_MODE" = "2" ]; then
+        ./sdtdserver update
 
-    ./sdtdserver update
+        cp -v sdtdserver.cfg.stable lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
 
-    cp -v sdtdserver.cfg.stable lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+        ./sdtdserver update
 
-    ./sdtdserver update
+        echo "
+            =======================================================================
+            IMPORTANT:
 
-	echo "
-        =======================================================================
-        IMPORTANT:
+            The server have been updated to STABLE, now switch between "START_MODE"
+            More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
+            =======================================================================
+            "
 
-        The server have been updated to STABLE, now switch between "START_MODE"
-        More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
-        =======================================================================
-        "
+        exit
+    fi
 
+    # Update to stable and start
+    if [ "$START_MODE" = "3" ]; then
+
+        ./sdtdserver update
+
+        cp -v sdtdserver.cfg.stable lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+        
+        ./sdtdserver update
+
+        echo "The server have been updated to STABLE."
+
+        ./sdtdserver start
+
+
+            echo "
+            =======================================================================
+            IMPORTANT:
+            
+            Starting server...
+            Soon you will see all the info
+            =======================================================================
+            "
+        sleep 2m
+        
+        ./sdtdserver details
+        
+        tail -f /dev/null
+
+    fi
+
+    # Update to experimental
+    if [ "$START_MODE" = "4" ]; then
+
+        ./sdtdserver update
+
+        cp -v sdtdserver.cfg lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+        
+        ./sdtdserver update
+        
+        cp -v serverfiles/serverconfig.xml serverfiles/sdtdserver.xml
+
+        echo "
+            =======================================================================
+            IMPORTANT:
+
+            The server have been updated to EXPERIMENTAL, now switch between "START_MODE"
+            More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
+            =======================================================================
+            "
 	exit
-fi
+    fi
 
-# Update to stable and start
-if [ "$START_MODE" = "3" ]; then
+    # Update to experimental and start
+    if [ "$START_MODE" = "5" ]; then
 
-    ./sdtdserver update
+        ./sdtdserver update
 
-    cp -v sdtdserver.cfg.stable lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
-	
-    ./sdtdserver update
-
-	echo "The server have been updated to STABLE."
-
-    ./sdtdserver start
-
-
-        echo "
-        =======================================================================
-        IMPORTANT:
+        cp -v sdtdserver.cfg lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
         
-        Starting server...
-        Soon you will see all the info
-        =======================================================================
-        "
-    sleep 2m
-	
-    ./sdtdserver details
-	
-    tail -f /dev/null
-
-fi
-
-# Update to experimental
-if [ "$START_MODE" = "4" ]; then
-
-    ./sdtdserver update
-
-    cp -v sdtdserver.cfg lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
-	
-    ./sdtdserver update
-	
-    cp -v serverfiles/serverconfig.xml serverfiles/sdtdserver.xml
-
-    echo "
-        =======================================================================
-        IMPORTANT:
-
-        The server have been updated to EXPERIMENTAL, now switch between "START_MODE"
-        More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
-        =======================================================================
-        "
-fi
-
-# Update to experimental and start
-if [ "$START_MODE" = "5" ]; then
-
-    ./sdtdserver update
-
-    cp -v sdtdserver.cfg lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
-	
-    ./sdtdserver update
-	
-    cp -v serverfiles/serverconfig.xml serverfiles/sdtdserver.xml
-
-	echo "The server have been updated to EXPERIMENTAL."
-
-    ./sdtdserver start
-
-        echo "
-        =======================================================================
-        IMPORTANT:
+        ./sdtdserver update
         
-        Starting server...
-        Soon you will see all the info
-        =======================================================================
-        "
+        cp -v serverfiles/serverconfig.xml serverfiles/sdtdserver.xml
 
-    sleep 2m
-	
-    ./sdtdserver details
-	
-    tail -f /dev/null
+        echo "The server have been updated to EXPERIMENTAL."
+
+        ./sdtdserver start
+
+            echo "
+            =======================================================================
+            IMPORTANT:
+            
+            Starting server...
+            Soon you will see all the info
+            =======================================================================
+            "
+
+        sleep 2m
+        
+        ./sdtdserver details
+        
+        tail -f /dev/null
+    fi
 fi
+
+echo "
+    Check your START_MODE the number must be between 1 and 5
+    More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
+    "
