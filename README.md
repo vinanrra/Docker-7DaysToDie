@@ -161,3 +161,4 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 
 * **[Linuxserver](https://www.linuxserver.io/)** - For readme structure and all the info.
 * **[Linuxserver Base Image](https://github.com/linuxserver/docker-baseimage-ubuntu/blob/bionic/root/etc/cont-init.d/10-adduser)** - For the user script.
+* **[Codestation Reddit User](https://www.reddit.com/r/docker/comments/evn3st/permission_problems_with_volumes/fg16w87/)** - Permission problems with volumes
