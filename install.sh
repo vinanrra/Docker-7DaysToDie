@@ -159,7 +159,7 @@
         tail -f /dev/null
     fi
 
-if (($START_MODE >= 6)) || (($START_MODE = 0)); then
+if (($START_MODE >= 6 || $START_MODE == 0)); then echo "
 echo "
     =======================================================================
     IMPORTANT:
