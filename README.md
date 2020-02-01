@@ -77,8 +77,8 @@ services:
     container_name: 7dtdserver
     environment:
       - START_MODE=0 #Change between START MODES
-      -e PUID=1000 # Remember to use same as your user
-      -e PUID=1000 # Remember to use same as your user
+      - PUID=1000 # Remember to use same as your user
+      - PGID=1000 # Remember to use same as your user
     volumes:
       - ./ServerFiles:/home/sdtdserver/serverfiles/ #Optional if you dont care about serverfiles
       - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/ #Optional if you dont care about maps files
