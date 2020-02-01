@@ -20,6 +20,7 @@ The architectures supported by this image are:
 ## USAGE
 
 Remember to READ [PARAMETERS](https://github.com/vinanrra/Docker-7DaysToDie/tree/test#parameters)
+If you use WebAdmin remember to change paswword at: http://YOUR.IP:8080 (8080 if you use default port)
 
 ### Docker
 
@@ -33,6 +34,7 @@ docker run \
   -p 26900:26900/udp \
   -p 26901:26901/udp \
   -p 26902:26902/udp \
+  -p 8080:8080/udp \
   -p 8081:8081/tcp \
   -p 8082:8082/tcp \
   -e START_MODE=1 \
@@ -41,7 +43,7 @@ docker run \
   vinanrra/7dtd-server
 ```
 
-Ports 8081 and 8082 are OPTIONAL
+Ports 8080 and 8081, 8082 are OPTIONAL
 
 ### docker-compose
 
@@ -63,7 +65,8 @@ services:
       - 26900:26900/udp
       - 26901:26901/udp
       - 26902:26902/udp
-      - 8081:8081/tcp #OPTIONAL WEBUI
+      - 8080:8080/tcp #OPTIONAL WEBADMIN
+      - 8081:8081/tcp #OPTIONAL TELNET
       - 8082:8082/tcp #OPTIONAL WEBSERVER https://7dtd.illy.bz/wiki/Server%20fixes
     restart: unless-stopped #NEVER USE WITH START_MODE= 2 or 4 
 ```
@@ -78,8 +81,9 @@ services:
 | `-p 26900:26900/udp` | Default 7DaysToDie port **required** |
 | `-p 26901:26901/udp` | Default 7DaysToDie port **required** |
 | `-p 26902:26902/udp` | Default 7DaysToDie port **required** |
-| `-p 8081:8081/tcp` | Default 7DaysToDie port, webui **optional** |
-| `-p 8082:8082/tcp` | Default 7DaysToDie port, webui (https://7dtd.illy.bz/wiki/Server%20fixes) **optional** |
+| `-p 8080:8080/tcp` | Default 7DaysToDie port, webadmin **optional** |
+| `-p 8081:8081/tcp` | Default 7DaysToDie port, telnet **optional** |
+| `-p 8082:8082/tcp` | Default 7DaysToDie port, webserver (https://7dtd.illy.bz/wiki/Server%20fixes) **optional** |
 | `-e START_MODE=1` | Start mode of the container - see below for explanation  **required** |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
@@ -136,6 +140,7 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
     * Improved messages they are now more visual
     * Improved install script, now the server will detect if its installed or not
     * Cleanup Readme
+    * Added WebAdmin port
 
 * **31.01.2020:**
     * Cleaned and improved Dockerfile
