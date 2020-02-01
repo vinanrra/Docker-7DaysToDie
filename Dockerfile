@@ -78,6 +78,8 @@ RUN adduser --disabled-password --shell /bin/bash --disabled-login --gecos "" sd
 WORKDIR /home/sdtdserver
 ADD user.sh /home/sdtdserver/user.sh
 ADD install.sh /home/sdtdserver/install.sh
+ADD sdtdserver.cfg.stable sdtdserver.cfg.stable
+ADD sdtdserver.cfg sdtdserver.cfg
 RUN chmod +x user.sh && chmod +x install.sh
 
 ##############EXTRA CONFIG##############
