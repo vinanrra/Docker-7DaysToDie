@@ -6,11 +6,14 @@
             IMPORTANT:
     
             START_MODE $START_MODE UNKNOWN
+	    
+	    Stopping container...
     
             Check your START_MODE the number must be between 1 and 5
             More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
             =======================================================================
             "
+	exit
     fi
 
     if [ ! -f sdtdserver ]; then
@@ -27,7 +30,7 @@
 	
     fi
     
-    if [ ! -f DONT_REMOVE.txt ]; then
+    if [ ! -f serverfiles/DONT_REMOVE.txt ]; then
     
         # Start to create default files
         ./sdtdserver
@@ -44,7 +47,7 @@
             =======================================================================
             "
 	    
-	echo "If this file is missing, server will be re-installed" > DONT_REMOVE.txt
+	echo "If this file is missing, server will be re-installed" > serverfiles/DONT_REMOVE.txt
     fi
 
     # Start server
