@@ -33,6 +33,19 @@
 	    
 	echo "If this file is missing, server will be re-installed" > DONT_REMOVE.txt
     fi
+    
+    if (($START_MODE >= 6 || $START_MODE == 0)); then
+        echo "
+            =======================================================================
+            IMPORTANT:
+    
+            START_MODE $START_MODE UNKNOWN
+    
+            Check your START_MODE the number must be between 1 and 5
+            More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
+            =======================================================================
+            "
+    fi
 
     # Start server
     if [ "$START_MODE" = "1" ]; then
@@ -158,16 +171,3 @@
         
         tail -f /dev/null
     fi
-
-if (($START_MODE >= 6 || $START_MODE == 0)); then echo "
-echo "
-    =======================================================================
-    IMPORTANT:
-    
-    START_MODE $START_MODE UNKNOWN
-    
-    Check your START_MODE the number must be between 1 and 5
-    More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
-    =======================================================================
-    "
-fi
