@@ -2,6 +2,10 @@
 
 # 7 days to die server using LinuixGSM script in Docker
 
+[![Docker Pulls](https://img.shields.io/badge/dynamic/json?color=red&label=pulls&query=pull_count&url=https%3A%2F%2Fhub.docker.com%2Fv2%2Frepositories%2Fvinanrra%2F7dtd-server%2F?style=flat-square&color=E68523&logo=docker&logoColor=white)](https://hub.docker.com/r/vinanrra/7dtd-server)
+[![Docker Stars](https://img.shields.io/badge/dynamic/json?color=red&label=stars&query=star_count&url=https%3A%2F%2Fhub.docker.com%2Fv2%2Frepositories%2Fvinanrra%2F7dtd-server%2F?style=flat-square&color=E68523&logo=docker&logoColor=white)](https://hub.docker.com/r/vinanrra/7dtd-server)
+[![Docker Last Updated](https://img.shields.io/badge/dynamic/json?color=red&label=Last%20Update&query=last_updated&url=https%3A%2F%2Fhub.docker.com%2Fv2%2Frepositories%2Fvinanrra%2F7dtd-server%2F?style=flat-square&color=E68523&logo=docker&logoColor=white)](https://hub.docker.com/r/vinanrra/7dtd-server)
+
 ![Image of 7 Days To Die](https://raw.githubusercontent.com/vinanrra/Docker-7DaysToDie/master/7dtd.png)
 
 ## Supported Architectures
@@ -152,6 +156,10 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 * You can also remove the old dangling images: `docker image prune`
 
 ## Versions
+* **01.01.2020:**
+    * Fixed script path
+    * Improved messages they are now more visual
+
 * **31.01.2020:**
     * Cleaned and improved Dockerfile
     * Added notification for each stage
