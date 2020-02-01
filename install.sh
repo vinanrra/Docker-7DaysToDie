@@ -57,7 +57,7 @@ if [ "$START_MODE" = "2" ]; then
         =======================================================================
         IMPORTANT:
 
-        The server have been installed, now switch between "START_MODE"
+        The server have been updated to STABLE, now switch between "START_MODE"
         More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
         =======================================================================
         "
@@ -74,7 +74,7 @@ if [ "$START_MODE" = "3" ]; then
 	
     ./sdtdserver update
 
-	echo "Server updated."
+	echo "The server have been updated to STABLE."
 
     ./sdtdserver start
 
@@ -110,7 +110,7 @@ if [ "$START_MODE" = "4" ]; then
         =======================================================================
         IMPORTANT:
 
-        The server have been installed, now switch between "START_MODE"
+        The server have been updated to EXPERIMENTAL, now switch between "START_MODE"
         More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
         =======================================================================
         "
@@ -127,7 +127,7 @@ if [ "$START_MODE" = "5" ]; then
 	
     cp -v serverfiles/serverconfig.xml serverfiles/sdtdserver.xml
 
-	echo "Server updated."
+	echo "The server have been updated to EXPERIMENTAL."
 
     ./sdtdserver start
 
