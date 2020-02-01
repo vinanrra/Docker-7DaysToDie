@@ -64,10 +64,7 @@ Ports 8081 and 8082 are OPTIONAL
 
 ### docker-compose
 
-```bash
-mkdir -p /path/to/7DaysToDie && mkdir -p /path/to/ServerFiles
-```
-Remember to start first with START_MODE=0 to install the server, them you can change the mode when you want.
+REMEMBER to start first with START_MODE=0 to install the server, them you can change the mode when you want.
 
 ```
 version: '2'
@@ -96,7 +93,7 @@ services:
 
 | Parameter | Function |
 | :----: | --- |
-| `-v /home/sdtdserver/.local/share/7DaysToDie/` | 7DaysToDie saves, where maps store. |
+| `-v /home/sdtdserver/.local/share/7DaysToDie/` | 7DaysToDie saves, where maps are store. |
 | `-v /path/to/ServerFiles:/home/sdtdserver/serverfiles/` | 7DaysToDie server config files. |
 | `-p 26900:26900/tcp` | Default 7DaysToDie port **required** |
 | `-p 26900:26900/udp` | Default 7DaysToDie port **required** |
