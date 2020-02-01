@@ -19,6 +19,8 @@ The architectures supported by this image are:
 
 ## USAGE
 
+Remember to READ [PARAMETERS](https://github.com/vinanrra/Docker-7DaysToDie/tree/test#parameters)
+
 ### Docker
 
 ```bash
@@ -33,7 +35,7 @@ docker run \
   -p 26902:26902/udp \
   -p 8081:8081/tcp \
   -p 8082:8082/tcp \
-  -e START_MODE=CHANGE_ME \
+  -e START_MODE=1 \
   -e PUID=1000 \
   -e PUID=1000 \
   vinanrra/7dtd-server
@@ -78,7 +80,7 @@ services:
 | `-p 26902:26902/udp` | Default 7DaysToDie port **required** |
 | `-p 8081:8081/tcp` | Default 7DaysToDie port, webui **optional** |
 | `-p 8082:8082/tcp` | Default 7DaysToDie port, webui (https://7dtd.illy.bz/wiki/Server%20fixes) **optional** |
-| `-e START_MODE=0` | Start mode of the container - see below for explanation  **required** |
+| `-e START_MODE=1` | Start mode of the container - see below for explanation  **required** |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `--restart unless-stopped` | Restart container always unlesss stopped manually **NEVER USE WITH START_MODE= 2 or 4** |
@@ -133,6 +135,7 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
     * Fixed script path
     * Improved messages they are now more visual
     * Improved install script, now the server will detect if its installed or not
+    * Cleanup Readme
 
 * **31.01.2020:**
     * Cleaned and improved Dockerfile
