@@ -1,8 +1,5 @@
 #!/bin/bash
 
-    echo "Current User:"
-    whoami
-    
     if [ ! -f sdtdserver ]; then
         
 	echo "
