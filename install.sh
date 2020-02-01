@@ -1,7 +1,5 @@
 #!/bin/bash
 
-if (("$START_MODE" >= "1" && "$START_MODE" <= "5")); then
-
     echo "Current User:"
     whoami
 
@@ -148,9 +146,16 @@ if (("$START_MODE" >= "1" && "$START_MODE" <= "5")); then
         
         tail -f /dev/null
     fi
-fi
 
+if (($START_MODE >= 6)); then
 echo "
+    =======================================================================
+    IMPORTANT:
+    
+    START_MODE $START_MODE UNKNOWN
+    
     Check your START_MODE the number must be between 1 and 5
     More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
+    =======================================================================
     "
+fi
