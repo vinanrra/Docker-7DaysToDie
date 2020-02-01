@@ -146,3 +146,16 @@ if [ "$START_MODE" = "5" ]; then
 	
     tail -f /dev/null
 fi
+
+if (($START_MODE => 6)); then
+
+    echo "
+    =======================================================================
+    START_MODE $START_MODE INVALID
+    
+    Check your START_MODE the number must be between 1 and 5
+    More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
+    =======================================================================
+    "
+   
+fi
