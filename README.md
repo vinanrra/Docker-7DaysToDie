@@ -20,6 +20,7 @@ The architectures supported by this image are:
 ## USAGE
 
 Remember to READ [PARAMETERS](https://github.com/vinanrra/Docker-7DaysToDie/tree/test#parameters)
+
 If you use WebAdmin remember to change paswword at: http://YOUR.IP:8080 (8080 if you use default port)
 
 ### Docker
