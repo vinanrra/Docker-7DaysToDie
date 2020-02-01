@@ -93,7 +93,7 @@ services:
 ### START MODES:
 
 | START_MODE | Information |
-| :----: | :----: |
+| :----: | ---- |
 | 1 | Start server |
 | 2 | Update server TO STABLE |
 | 3 | Update server TO STABLE and start |
