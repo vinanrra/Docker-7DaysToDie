@@ -14,7 +14,7 @@
 	
     fi
     
-    if [ ! -f /DONT_REMOVE.txt ]; then
+    if [ ! -f DONT_REMOVE.txt ]; then
     
         # Start to create default files
         ./sdtdserver
