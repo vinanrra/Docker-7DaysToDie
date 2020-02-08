@@ -31,14 +31,32 @@
     fi
     
     if [ ! -f serverfiles/DONT_REMOVE.txt ]; then
-    
+
+        echo "
+            =======================================================================
+            IMPORTANT:
+            
+            It seems to be the first installation, making preparations...
+            =======================================================================
+            "
+
         # Start to create default files
         ./sdtdserver
         
+            echo "
+            =======================================================================
+            IMPORTANT:
+            
+            PREPARATIONS COMPLETED
+	    
+            Making first server installation.
+            =======================================================================
+            "
+	
 	# Install 7 Days To Die Server
         ./sdtdserver auto-install
 
-        echo "
+            echo "
             =======================================================================
             IMPORTANT:
             
@@ -47,7 +65,7 @@
             =======================================================================
             "
 	    
-	echo "If this file is missing, server will be re-installed" > serverfiles/DONT_REMOVE.txt
+            echo "If this file is missing, server will be re-installed" > serverfiles/DONT_REMOVE.txt
     fi
 
     # Start server
@@ -80,7 +98,7 @@
 
         ./sdtdserver update
 
-        echo "
+            echo "
             =======================================================================
             IMPORTANT:
 
@@ -101,7 +119,13 @@
         
         ./sdtdserver update
 
-        echo "The server have been updated to STABLE."
+            echo "
+            =======================================================================
+            IMPORTANT:
+            
+            The server have been updated to STABLE.
+            =======================================================================
+            "
 
         ./sdtdserver start
 
@@ -133,7 +157,7 @@
         
         cp -v serverfiles/serverconfig.xml serverfiles/sdtdserver.xml
 
-        echo "
+            echo "
             =======================================================================
             IMPORTANT:
 
@@ -155,7 +179,14 @@
         
         cp -v serverfiles/serverconfig.xml serverfiles/sdtdserver.xml
 
-        echo "The server have been updated to EXPERIMENTAL."
+
+            echo "
+            =======================================================================
+            IMPORTANT:
+            
+            The server have been updated to EXPERIMENTAL.
+            =======================================================================
+            "
 
         ./sdtdserver start
 
