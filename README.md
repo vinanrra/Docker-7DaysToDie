@@ -76,18 +76,18 @@ services:
 
 | Parameter | Function |
 | :----: | --- |
-| `-v /home/sdtdserver/.local/share/7DaysToDie/` | 7DaysToDie saves, where maps are store. |
-| `-v /path/to/ServerFiles:/home/sdtdserver/serverfiles/` | 7DaysToDie server config files. |
-| `-p 26900:26900/tcp` | Default 7DaysToDie port **required** |
-| `-p 26900:26900/udp` | Default 7DaysToDie port **required** |
-| `-p 26901:26901/udp` | Default 7DaysToDie port **required** |
-| `-p 26902:26902/udp` | Default 7DaysToDie port **required** |
-| `-p 8080:8080/tcp` | Default 7DaysToDie port, webadmin **optional** |
-| `-p 8081:8081/tcp` | Default 7DaysToDie port, telnet **optional** |
-| `-p 8082:8082/tcp` | Default 7DaysToDie port, webserver (https://7dtd.illy.bz/wiki/Server%20fixes) **optional** |
-| `-e START_MODE=1` | Start mode of the container - see below for explanation  **required** |
-| `-e PUID=1000` | for UserID - see below for explanation |
-| `-e PGID=1000` | for GroupID - see below for explanation |
+| `/path/to/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/` | 7DaysToDie saves, where maps are store. |
+| `/path/to/ServerFiles:/home/sdtdserver/serverfiles/` | 7DaysToDie server config files. |
+| `26900:26900/tcp` | Default 7DaysToDie port **required** |
+| `26900:26900/udp` | Default 7DaysToDie port **required** |
+| `26901:26901/udp` | Default 7DaysToDie port **required** |
+| `26902:26902/udp` | Default 7DaysToDie port **required** |
+| `8080:8080/tcp` | Default 7DaysToDie port, webadmin **optional** |
+| `8081:8081/tcp` | Default 7DaysToDie port, telnet **optional** |
+| `8082:8082/tcp` | Default 7DaysToDie port, webserver (https://7dtd.illy.bz/wiki/Server%20fixes) **optional** |
+| `START_MODE=1` | Start mode of the container - see below for explanation  **required** |
+| `PUID=1000` | for UserID - see below for explanation |
+| `PGID=1000` | for GroupID - see below for explanation |
 | `--restart unless-stopped` | Restart container always unlesss stopped manually **NEVER USE WITH START_MODE= 2 or 4** |
 
 ### START MODES:
@@ -166,3 +166,10 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 * **[Linuxserver](https://www.linuxserver.io/)** - For readme structure and all the info.
 * **[Linuxserver Base Image](https://github.com/linuxserver/docker-baseimage-ubuntu/blob/bionic/root/etc/cont-init.d/10-adduser)** - For the user script.
 * **[Codestation Reddit User](https://www.reddit.com/r/docker/comments/evn3st/permission_problems_with_volumes/fg16w87/)** - Permission problems with volumes
+
+## Donations
+
+   If you want to pay me a beer here you can
+
+   Paypal
+   <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=25XWMUHD8NZHG&source=url" rel="PayPal">![PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)
