@@ -22,7 +22,8 @@ RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 ENV LANG en_US.utf8
 
 #Dependencies
-RUN dpkg --add-architecture i386 && \
+RUN add-apt-repository multiverse && \
+    dpkg --add-architecture i386 && \
 	apt update -y && \
 	apt install -y \
 		nano \
@@ -42,10 +43,13 @@ RUN dpkg --add-architecture i386 && \
 		jq \
 		tmux \
 		lib32gcc1 \
+		lib32stdc++6 \
 		libstdc++6 \
 		libstdc++6:i386 \
 		telnet \
-		expect
+		expect \
+		netcat \
+		steamcmd
 
 # Install latest su-exec
 RUN  set -ex; \
