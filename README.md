@@ -136,6 +136,11 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 * You can also remove the old dangling images: `docker image prune`
 
 ## Versions
+* **18.03.2020:**
+    * Improved install method
+    * Change base image to SteamCMD
+    * Fixed dependencies
+
 * **08.02.2020:**
     * Improved messages they are now more precise and give better info.
 
