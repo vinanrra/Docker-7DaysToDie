@@ -1,24 +1,12 @@
 #!/bin/bash
 
-    if (($START_MODE >= 6 || $START_MODE == 0)); then
-        echo "
-            =======================================================================
-            IMPORTANT:
-    
-            START_MODE $START_MODE UNKNOWN
-	    
-	    Stopping container...
-    
-            Check your START_MODE the number must be between 1 and 5
-            More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
-            =======================================================================
-            "
-	exit
-    fi
+    # Check requeriments
+
+    # Check if script is missing
 
     if [ ! -f sdtdserver ]; then
         
-	echo "
+	          echo "
             =======================================================================
             IMPORTANT:
             
@@ -30,9 +18,11 @@
 	
     fi
     
+    # Check if server have been installed
+
     if [ ! -f serverfiles/DONT_REMOVE.txt ]; then
 
-        echo "
+            echo "
             =======================================================================
             IMPORTANT:
             
@@ -53,7 +43,8 @@
             =======================================================================
             "
 	
-	# Install 7 Days To Die Server
+	    # Install 7 Days To Die Server
+
         ./sdtdserver auto-install
 
             echo "
@@ -68,9 +59,10 @@
             echo "If this file is missing, server will be re-installed" > serverfiles/DONT_REMOVE.txt
     fi
 
-    # Start server
-    if [ "$START_MODE" = "1" ]; then
+# Use of case to avoid errors if used wrong START_MODE
 
+  case $START_MODE in
+     1)
         ./sdtdserver start
 
             echo "
@@ -87,11 +79,8 @@
         ./sdtdserver details
         
         tail -f /dev/null
-    fi
-
-    # Update to stable
-    if [ "$START_MODE" = "2" ]; then
-
+     ;;
+     2)
         ./sdtdserver update
 
         cp -v sdtdserver.cfg.stable lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
@@ -108,10 +97,8 @@
             "
 
         exit
-    fi
-
-    # Update to stable and start
-    if [ "$START_MODE" = "3" ]; then
+     ;;
+     3)
 
         ./sdtdserver update
 
@@ -144,12 +131,10 @@
         
         tail -f /dev/null
 
-    fi
+     ;;
+     4)
 
-    # Update to experimental
-    if [ "$START_MODE" = "4" ]; then
-
-        ./sdtdserver update
+       ./sdtdserver update
 
         cp -v sdtdserver.cfg lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
         
@@ -165,11 +150,10 @@
             More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
             =======================================================================
             "
-	exit
-    fi
+	      exit
 
-    # Update to experimental and start
-    if [ "$START_MODE" = "5" ]; then
+     ;;
+     5)
 
         ./sdtdserver update
 
@@ -204,4 +188,21 @@
         ./sdtdserver details
         
         tail -f /dev/null
-    fi
+
+     ;;
+     *)
+        echo "
+            =======================================================================
+            IMPORTANT:
+    
+            START_MODE $START_MODE UNKNOWN
+	    
+	          Stopping container...
+    
+            Check your START_MODE, the number must be between 1 and 5
+            More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
+            =======================================================================
+            "
+	      exit
+     ;;
+  esac
