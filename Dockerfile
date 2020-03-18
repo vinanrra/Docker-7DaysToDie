@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM steamcmd/steamcmd:ubuntu-18
 
 ##############BASE IMAGE##############
 
