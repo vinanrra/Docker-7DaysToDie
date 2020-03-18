@@ -1,30 +1,16 @@
 # [vinanrra/7days-server](https://github.com/vinanrra/Docker-7DaysToDie)
 
 # 7 days to die server using LinuxGSM script in Docker
-
 [![Docker Pulls](https://img.shields.io/badge/dynamic/json?color=red&label=pulls&query=pull_count&url=https%3A%2F%2Fhub.docker.com%2Fv2%2Frepositories%2Fvinanrra%2F7dtd-server%2F?style=flat-square&color=E68523&logo=docker&logoColor=white)](https://hub.docker.com/r/vinanrra/7dtd-server)
 [![Docker Stars](https://img.shields.io/badge/dynamic/json?color=red&label=stars&query=star_count&url=https%3A%2F%2Fhub.docker.com%2Fv2%2Frepositories%2Fvinanrra%2F7dtd-server%2F?style=flat-square&color=E68523&logo=docker&logoColor=white)](https://hub.docker.com/r/vinanrra/7dtd-server)
 [![Docker Last Updated](https://img.shields.io/badge/dynamic/json?color=red&label=Last%20Update&query=last_updated&url=https%3A%2F%2Fhub.docker.com%2Fv2%2Frepositories%2Fvinanrra%2F7dtd-server%2F?style=flat-square&color=E68523&logo=docker&logoColor=white)](https://hub.docker.com/r/vinanrra/7dtd-server)
 
 ![Image of 7 Days To Die](https://raw.githubusercontent.com/vinanrra/Docker-7DaysToDie/master/7dtd.png)
 
-## Supported Architectures
-
-The architectures supported by this image are:
-
-| Architecture |
-| :----: |
-| x86-64 |
-| x86 |
-
 ## USAGE
-
-Remember to READ [PARAMETERS](https://github.com/vinanrra/Docker-7DaysToDie/tree/test#parameters)
-
 If you use WebAdmin remember to change password at: http://YOUR.IP:8080 (8080 if you use default port)
 
 ### Docker
-
 ```bash
 docker run \
   --name 7dtdserver \
@@ -44,10 +30,7 @@ docker run \
   vinanrra/7dtd-server
 ```
 
-Ports 8080 and 8081, 8082 are OPTIONAL
-
 ### docker-compose
-
 ```
 version: '2'
 services:
@@ -73,7 +56,6 @@ services:
 ```
 
 ## Parameters
-
 | Parameter | Function |
 | :----: | --- |
 | `/path/to/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/` | 7DaysToDie saves, where maps are store. |
@@ -91,7 +73,6 @@ services:
 | `--restart unless-stopped` | Restart container always unlesss stopped manually **NEVER USE WITH START_MODE= 2 or 4** |
 
 ### START MODES:
-
 | START_MODE | Information |
 | :----: | ---- |
 | 1 | Start server |
@@ -113,13 +94,7 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
     uid=1000(dockeruser) gid=1000(dockergroup) groups=1000(dockergroup)
 ```
 
-## Support Info
-
-* Shell access whilst the container is running: `docker exec -it 7dtdserver /bin/bash`
-* To monitor the logs of the container in realtime: `docker logs -f 7dtdserver`
-
 ## Updating Info
-
 ### Via Docker Run/Create
 * Update the image: `docker pull vinanrra/7dtd-server`
 * Stop the running container: `docker stop 7dtdserver`
@@ -166,14 +141,12 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
     * Initial Release.
 
 ## Thanks
-
 * **[LinuxGSM](https://linuxgsm.com/)** - For the awesome script
 * **[Linuxserver](https://www.linuxserver.io/)** - For readme structure and all the info.
 * **[Linuxserver Base Image](https://github.com/linuxserver/docker-baseimage-ubuntu/blob/bionic/root/etc/cont-init.d/10-adduser)** - For the user script.
 * **[Codestation Reddit User](https://www.reddit.com/r/docker/comments/evn3st/permission_problems_with_volumes/fg16w87/)** - Permission problems with volumes
 
 ## Donations
-
    If you want to pay me a beer here you can
 
    Paypal
