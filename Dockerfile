@@ -22,8 +22,7 @@ RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
 ENV LANG en_US.utf8
 
 #Dependencies
-RUN add-apt-repository multiverse && \
-    dpkg --add-architecture i386 && \
+RUN dpkg --add-architecture i386 && \
 	apt update -y && \
 	apt install -y \
 		nano \
