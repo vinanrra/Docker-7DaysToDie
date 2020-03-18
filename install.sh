@@ -6,7 +6,7 @@
 
     if [ ! -f sdtdserver ]; then
         
-	          echo "
+	    echo "
             =======================================================================
             IMPORTANT:
             
@@ -14,7 +14,7 @@
             =======================================================================
             "
 	
-        wget -O linuxgsm.sh https://raw.githubusercontent.com/vinanrra/Docker-7DaysToDie/master/linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
+            wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
 	
     fi
     
