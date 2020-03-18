@@ -48,8 +48,7 @@ RUN add-apt-repository multiverse && \
 		libstdc++6:i386 \
 		telnet \
 		expect \
-		netcat \
-		steamcmd
+		netcat
 
 # Install latest su-exec
 RUN  set -ex; \
