@@ -67,6 +67,8 @@
     
     backupServer () {
     
+            sleep 5s
+    
             echo "
             =======================================================================
             IMPORTANT:
@@ -76,6 +78,8 @@
             =======================================================================
             "
             ./sdtdserver backup
+	    
+	    sleep 5s
 	    
 	    echo "
             =======================================================================
@@ -99,7 +103,7 @@
 	    
 	          Stopping container...
     
-            Check your START_MODE, the number must be between 1 and 5
+            Check your START_MODE, the number must be between 1 and 6
             More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
             =======================================================================
             "
