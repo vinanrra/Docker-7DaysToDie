@@ -1,5 +1,112 @@
 #!/bin/bash
 
+    # Functions
+    
+    startServer () {
+    
+        ./sdtdserver start
+
+            echo "
+            =======================================================================
+            IMPORTANT:
+            
+            Starting server...
+            Soon you will see all the info
+            =======================================================================
+            "
+
+        sleep 2m
+        
+        ./sdtdserver details
+        
+        tail -f /dev/null
+    
+    }
+    
+    updateStable () {
+    
+        ./sdtdserver update
+
+        cp -v sdtdserver.cfg.stable lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+
+        ./sdtdserver update
+
+            echo "
+            =======================================================================
+            IMPORTANT:
+
+            The server have been updated to STABLE, now switch between "START_MODE"
+            More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
+            =======================================================================
+            "
+
+        exit
+    }
+
+    updateExperimental () {
+    
+        ./sdtdserver update
+
+        cp -v sdtdserver.cfg lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+        
+        ./sdtdserver update
+        
+        cp -v serverfiles/serverconfig.xml serverfiles/sdtdserver.xml
+
+            echo "
+            =======================================================================
+            IMPORTANT:
+
+            The server have been updated to EXPERIMENTAL, now switch between "START_MODE"
+            More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
+            =======================================================================
+            "
+	      exit
+    
+    }
+    
+    backupServer () {
+    
+            echo "
+            =======================================================================
+            IMPORTANT:
+    
+            This backup will create a complete tar bzip2 archive of the whole server.
+            
+            =======================================================================
+            "
+            ./sdtdserver backup
+	    
+	    echo "
+            =======================================================================
+            IMPORTANT:
+    
+            Backup complete.
+            
+            =======================================================================
+            "
+	    
+            exit
+    }
+    
+    startModeError () {
+    
+            echo "
+            =======================================================================
+            IMPORTANT:
+    
+            START_MODE $START_MODE UNKNOWN
+	    
+	          Stopping container...
+    
+            Check your START_MODE, the number must be between 1 and 5
+            More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
+            =======================================================================
+            "
+	      exit
+    
+    }
+    
     # Check requeriments
 
     # Check if script is missing
@@ -63,146 +170,29 @@
 
   case $START_MODE in
      1)
-        ./sdtdserver start
-
-            echo "
-            =======================================================================
-            IMPORTANT:
-            
-            Starting server...
-            Soon you will see all the info
-            =======================================================================
-            "
-
-        sleep 2m
-        
-        ./sdtdserver details
-        
-        tail -f /dev/null
+        startServer
      ;;
      2)
-        ./sdtdserver update
-
-        cp -v sdtdserver.cfg.stable lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
-
-        ./sdtdserver update
-
-            echo "
-            =======================================================================
-            IMPORTANT:
-
-            The server have been updated to STABLE, now switch between "START_MODE"
-            More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
-            =======================================================================
-            "
-
-        exit
+        updateStable
      ;;
      3)
-
-        ./sdtdserver update
-
-        cp -v sdtdserver.cfg.stable lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+        updateStable
         
-        ./sdtdserver update
-
-            echo "
-            =======================================================================
-            IMPORTANT:
-            
-            The server have been updated to STABLE.
-            =======================================================================
-            "
-
-        ./sdtdserver start
-
-
-            echo "
-            =======================================================================
-            IMPORTANT:
-            
-            Starting server...
-            Soon you will see all the info
-            =======================================================================
-            "
-        sleep 2m
-        
-        ./sdtdserver details
-        
-        tail -f /dev/null
-
+        startServer
      ;;
      4)
-
-       ./sdtdserver update
-
-        cp -v sdtdserver.cfg lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
-        
-        ./sdtdserver update
-        
-        cp -v serverfiles/serverconfig.xml serverfiles/sdtdserver.xml
-
-            echo "
-            =======================================================================
-            IMPORTANT:
-
-            The server have been updated to EXPERIMENTAL, now switch between "START_MODE"
-            More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
-            =======================================================================
-            "
-	      exit
-
+        updateExperimental
      ;;
      5)
+        updateExperimental
 
-        ./sdtdserver update
-
-        cp -v sdtdserver.cfg lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
-        
-        ./sdtdserver update
-        
-        cp -v serverfiles/serverconfig.xml serverfiles/sdtdserver.xml
-
-
-            echo "
-            =======================================================================
-            IMPORTANT:
-            
-            The server have been updated to EXPERIMENTAL.
-            =======================================================================
-            "
-
-        ./sdtdserver start
-
-            echo "
-            =======================================================================
-            IMPORTANT:
-            
-            Starting server...
-            Soon you will see all the info
-            =======================================================================
-            "
-
-        sleep 2m
-        
-        ./sdtdserver details
-        
-        tail -f /dev/null
-
+        startServer
+     ;;
+     
+     6)
+        backupServer
      ;;
      *)
-        echo "
-            =======================================================================
-            IMPORTANT:
-    
-            START_MODE $START_MODE UNKNOWN
-	    
-	          Stopping container...
-    
-            Check your START_MODE, the number must be between 1 and 5
-            More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
-            =======================================================================
-            "
-	      exit
+        startModeError
      ;;
   esac
