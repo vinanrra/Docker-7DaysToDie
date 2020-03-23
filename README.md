@@ -17,6 +17,7 @@ docker run \
   --restart unless-stopped \
   -v "/path/to/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/" \
   -v "/path/to/ServerFiles:/home/sdtdserver/serverfiles/" \
+  -v "/path/to/LogFolder:/home/sdtdserver/log/" \
   -p 26900:26900/tcp \
   -p 26900:26900/udp \
   -p 26901:26901/udp \
@@ -44,6 +45,7 @@ services:
     volumes:
       - ./ServerFiles:/home/sdtdserver/serverfiles/ #Optional if you dont care about serverfiles
       - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/ #Optional if you dont care about maps files
+      - ./log:/home/sdtdserver/log/ #Optional if you dont care about logs
     ports:
       - 26900:26900/tcp
       - 26900:26900/udp
@@ -60,6 +62,7 @@ services:
 | :----: | --- |
 | `/path/to/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/` | 7DaysToDie saves, where maps are store. |
 | `/path/to/ServerFiles:/home/sdtdserver/serverfiles/` | 7DaysToDie server config files. |
+| `/path/to/Logs:/home/sdtdserver/log/` | 7DaysToDie server log files. |
 | `26900:26900/tcp` | Default 7DaysToDie port **required** |
 | `26900:26900/udp` | Default 7DaysToDie port **required** |
 | `26901:26901/udp` | Default 7DaysToDie port **required** |
@@ -80,6 +83,7 @@ services:
 | 3 | Update server TO STABLE and start |
 | 4 | Update server TO LATEST_EXPERIMENTAL |
 | 5 | Update server TO LATEST_EXPERIMENTAL and start |
+| 6 | Backup server |
 
 ## User / Group Identifiers
 
@@ -111,6 +115,11 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 * You can also remove the old dangling images: `docker image prune`
 
 ## Versions
+* **24/03/2020**
+    * Improved install script
+    * Added new START_MODE (Backup)
+    * Added log folder
+
 * **18.03.2020:**
     * Improved install method
     * Change base image to SteamCMD
