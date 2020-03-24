@@ -18,6 +18,7 @@ docker run \
   -v "/path/to/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/" \
   -v "/path/to/ServerFiles:/home/sdtdserver/serverfiles/" \
   -v "/path/to/LogFolder:/home/sdtdserver/log/" \
+  -v "/path/to/BackupFolder:/home/sdtdserver/backups/" \
   -p 26900:26900/tcp \
   -p 26900:26900/udp \
   -p 26901:26901/udp \
@@ -46,6 +47,7 @@ services:
       - ./ServerFiles:/home/sdtdserver/serverfiles/ #Optional if you dont care about serverfiles
       - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/ #Optional if you dont care about maps files
       - ./log:/home/sdtdserver/log/ #Optional if you dont care about logs
+      - ./backups:/home/sdtdserver/backups/ #Optional if you dont care about backups
     ports:
       - 26900:26900/tcp
       - 26900:26900/udp
@@ -63,6 +65,7 @@ services:
 | `/path/to/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/` | 7DaysToDie saves, where maps are store. |
 | `/path/to/ServerFiles:/home/sdtdserver/serverfiles/` | 7DaysToDie server config files. |
 | `/path/to/Logs:/home/sdtdserver/log/` | 7DaysToDie server log files. |
+| `/path/to/BackupFolder:/home/sdtdserver/backups/` | 7DaysToDie server backups files. |
 | `26900:26900/tcp` | Default 7DaysToDie port **required** |
 | `26900:26900/udp` | Default 7DaysToDie port **required** |
 | `26901:26901/udp` | Default 7DaysToDie port **required** |
