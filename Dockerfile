@@ -88,6 +88,6 @@ RUN chmod +x user.sh && chmod +x install.sh
 #Ports
 EXPOSE 26900 26900/UDP 26901/UDP 26902/UDP 8082 8081 8080
 #Shared folders to host
-VOLUME /home/sdtdserver/serverfiles/ /home/sdtdserver/.local/share/7DaysToDie /home/sdtdserver/log/ /home/sdtdserver/backups/
+VOLUME /home/sdtdserver/serverfiles/ /home/sdtdserver/.local/share/7DaysToDie /home/sdtdserver/log/ /home/sdtdserver/lgsm/backup/
 ##############EXTRA CONFIG##############
 CMD ["/home/sdtdserver/user.sh", "/home/sdtdserver/install.sh"]
