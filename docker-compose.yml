@@ -12,7 +12,7 @@ services:
     volumes:
       - ./7DaysToDie/serverfiles:/home/sdtdserver/serverfiles/ #Optional if you dont care about serverfiles
       - ./7DaysToDie/config:/home/sdtdserver/.local/share/7DaysToDie/
-      - ./log:/home/sdtdserver/log/ #Optional if you dont care about logs
+      - ./7DaysToDie/log:/home/sdtdserver/log/ #Optional if you dont care about logs
     ports:
       - 26900:26900/tcp
       - 26900:26900/udp
