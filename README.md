@@ -8,7 +8,7 @@
 ![Image of 7 Days To Die](https://raw.githubusercontent.com/vinanrra/Docker-7DaysToDie/master/7dtd.png)
 
 ## USAGE
-If you use WebAdmin remember to change password at: http://YOUR.IP:8080 (8080 if you use default port)
+If you use WebAdmin remember to change password at: http://YOUR.IP:8080 (8080 if you use default port) in *sdtdserver.xml*
 
 ### Docker
 ```bash
