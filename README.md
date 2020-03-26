@@ -9,6 +9,7 @@
 
 ## USAGE
 If you use WebAdmin remember to change password at: http://YOUR.IP:8080 (8080 if you use default port) in *sdtdserver.xml*
+If you want to change any server settings EDIT *sdtdserver.xml* in /path/to/ServerFiles/sdtdserver.xml
 
 ### Docker
 ```bash
@@ -87,6 +88,10 @@ services:
 | 4 | Update server TO LATEST_EXPERIMENTAL |
 | 5 | Update server TO LATEST_EXPERIMENTAL and start |
 | 6 | Backup server and STOP the container|
+
+ATTENTION:
+
+IF YOU UPDATE FROM STABLE TO EXPERIMENTAL OR VICE VERSA, REMEMBER TO BACKUP FIRST YOUR SERVER TO AVOID ANY ERRORS, and if you do not care about files atleast backup your */path/to/ServerFiles/sdtdserver.xml* yo save your server settings.
 
 ## User / Group Identifiers
 
