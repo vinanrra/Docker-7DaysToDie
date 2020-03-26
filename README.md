@@ -9,7 +9,7 @@
 
 ## USAGE
 If you use WebAdmin remember to change password at: http://YOUR.IP:8080 (8080 if you use default port) in *sdtdserver.xml*
-If you want to change any server settings, edit *sdtdserver.xml* in /path/to/ServerFiles/sdtdserver.xml
+If you want to change any server settings, edit *sdtdserver.xml* in */path/to/ServerFiles/sdtdserver.xml*
 
 ### Docker
 ```bash
