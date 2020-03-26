@@ -13,6 +13,7 @@ services:
       - ./7DaysToDie/serverfiles:/home/sdtdserver/serverfiles/ #Optional if you dont care about serverfiles
       - ./7DaysToDie/config:/home/sdtdserver/.local/share/7DaysToDie/
       - ./7DaysToDie/log:/home/sdtdserver/log/ #Optional if you dont care about logs
+      - ./7DaysToDie/backup:/home/sdtdserver/lgsm/backup/ #Optional if you dont care about backups
     ports:
       - 26900:26900/tcp
       - 26900:26900/udp
