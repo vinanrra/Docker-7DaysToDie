@@ -89,7 +89,7 @@ services:
 | 5 | Update server TO LATEST_EXPERIMENTAL and start |
 | 6 | Backup server and STOP the container|
 
-ATTENTION:
+#### WARNING:
 
 IF YOU UPDATE FROM STABLE TO EXPERIMENTAL OR VICE VERSA, REMEMBER TO BACKUP FIRST YOUR SERVER TO AVOID ANY ERRORS, and if you do not care about files atleast backup your */path/to/ServerFiles/sdtdserver.xml* yo save your server settings.
 
