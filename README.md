@@ -86,7 +86,7 @@ services:
 | 3 | Update server TO STABLE and start |
 | 4 | Update server TO LATEST_EXPERIMENTAL |
 | 5 | Update server TO LATEST_EXPERIMENTAL and start |
-| 6 | Backup server |
+| 6 | Backup server and STOP the container|
 
 ## User / Group Identifiers
 
