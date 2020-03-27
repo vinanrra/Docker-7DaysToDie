@@ -74,9 +74,9 @@ RUN apt clean && \
 
 # Locale, Timezone and user
 RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
-    LANG en_US.utf8 && \
     ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime && echo $TimeZone > /etc/timezone && \
     adduser --disabled-password --shell /bin/bash --disabled-login --gecos "" sdtdserver
+ENV LANG en_US.utf8
 
 ##############BASE IMAGE##############
 
