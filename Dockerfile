@@ -17,18 +17,11 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ####Environments####
 
-# Timezone
-RUN ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime && echo $TimeZone > /etc/timezone
+#####Dependencies####
 
-# Locale
-RUN apt-get update && apt-get install -y locales
-RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-ENV LANG en_US.utf8
-
-#Dependencies
 RUN dpkg --add-architecture i386 && \
 	apt update -y && \
-	apt install -y \
+	apt install -y --no-install-recommends \
 		nano \
 		iproute2 \
 		curl \
@@ -51,8 +44,9 @@ RUN dpkg --add-architecture i386 && \
 		libstdc++6:i386 \
 		telnet \
 		expect \
-		netcat
-
+		netcat \
+		locales
+		
 # Install latest su-exec
 RUN  set -ex; \
      \
@@ -60,7 +54,6 @@ RUN  set -ex; \
      \
      fetch_deps='gcc libc-dev'; \
      apt-get install -y --no-install-recommends $fetch_deps; \
-     rm -rf /var/lib/apt/lists/*; \
      gcc -Wall \
          /usr/local/bin/su-exec.c -o/usr/local/bin/su-exec; \
      chown root:root /usr/local/bin/su-exec; \
@@ -68,7 +61,7 @@ RUN  set -ex; \
      rm /usr/local/bin/su-exec.c; \
      \
      apt-get purge -y --auto-remove $fetch_deps
-
+     
 # Clear unused files
 
 RUN apt clean && \
@@ -76,16 +69,24 @@ RUN apt clean && \
 	/tmp/* \
 	/var/lib/apt/lists/* \
 	/var/tmp/*
+		
+#####Dependencies####
 
-RUN adduser --disabled-password --shell /bin/bash --disabled-login --gecos "" sdtdserver
+# Locale, Timezone and user
+RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
+    LANG en_US.utf8 && \
+    ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime && echo $TimeZone > /etc/timezone && \
+    adduser --disabled-password --shell /bin/bash --disabled-login --gecos "" sdtdserver
 
 ##############BASE IMAGE##############
 
+# Base dir
 WORKDIR /home/sdtdserver
-ADD user.sh /home/sdtdserver/user.sh
-ADD install.sh /home/sdtdserver/install.sh
-ADD sdtdserver.cfg.stable sdtdserver.cfg.stable
-ADD sdtdserver.cfg sdtdserver.cfg
+
+# Add files
+ADD install.sh user.sh sdtdserver.cfg.stable sdtdserver.cfg /home/sdtdserver/
+
+# Apply permissions
 RUN chmod +x user.sh && chmod +x install.sh
 
 ##############EXTRA CONFIG##############
