@@ -137,6 +137,8 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 ## Versions
 * **27/03/2020**
     * Added TimeZone
+    * Added back Support Info
+    * Improved Dockerfile
 
 * **24/03/2020**
     * Improved install script
