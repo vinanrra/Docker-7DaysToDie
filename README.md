@@ -109,6 +109,15 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
     uid=1000(dockeruser) gid=1000(dockergroup) groups=1000(dockergroup)
 ```
 
+## Support Info
+
+* Shell access whilst the container is running: `docker exec -it 7dtdserver /bin/bash`
+* To monitor the logs of the container in realtime: `docker logs -f 7dtdserver`
+* container version number
+  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' 7dtdserver`
+* image version number
+  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' vinanrra/7dtd-server`
+
 ## Updating Info
 ### Via Docker Run/Create
 * Update the image: `docker pull vinanrra/7dtd-server`
