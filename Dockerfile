@@ -9,12 +9,16 @@ ARG PGID=1000
 ENV PUID=$PUID
 ENV PGID=$PGID
 ENV START_MODE "0"
+ENV TimeZone=Europe/Madrid
 
 ##Need use xterm for LinuxGSM##
 ENV TERM=xterm
 ENV DEBIAN_FRONTEND noninteractive
 
 ####Environments####
+
+# Timezone
+RUN ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime && echo $TimeZone > /etc/timezone
 
 # Locale
 RUN apt-get update && apt-get install -y locales
