@@ -30,6 +30,7 @@ docker run \
   -e START_MODE=1 \
   -e PUID=1000 \
   -e PUID=1000 \
+  -e TimeZone=Europe/Madrid \
   vinanrra/7dtd-server
 ```
 
@@ -44,6 +45,7 @@ services:
       - START_MODE=1 #Change between START MODES
       - PUID=1000 # Remember to use same as your user
       - PGID=1000 # Remember to use same as your user
+      - TimeZone=Europe/Madrid
     volumes:
       - ./ServerFiles:/home/sdtdserver/serverfiles/ #Optional if you dont care about serverfiles
       - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/ #Optional if you dont care about maps files
@@ -73,10 +75,11 @@ services:
 | `26902:26902/udp` | Default 7DaysToDie port **required** |
 | `8080:8080/tcp` | Default 7DaysToDie port, webadmin **optional** |
 | `8081:8081/tcp` | Default 7DaysToDie port, telnet **optional** |
-| `8082:8082/tcp` | Default 7DaysToDie port, webserver (https://7dtd.illy.bz/wiki/Server%20fixes) **optional** |
+| `8082:8082/tcp` | Default 7DaysToDie port, [Server Fixes](https://7dtd.illy.bz/wiki/Server%20fixes) webserver **optional** |
 | `START_MODE=1` | Start mode of the container - see below for explanation  **required** |
 | `PUID=1000` | for UserID - see below for explanation |
 | `PGID=1000` | for GroupID - see below for explanation |
+| `TimeZone=Europe/Madrid` | for TimeZone - see [TZ Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) for time zones **recomendable**|
 | `--restart unless-stopped` | Restart container always unlesss stopped manually **NEVER USE WITH START_MODE= 2 or 4** |
 
 ### START MODES:
