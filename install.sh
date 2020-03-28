@@ -29,8 +29,12 @@
 
         if [ $VERSION == 'stable'  ]
         then
+	    # Remove branch line
             sed -i '/branch/d' /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
         else
+	    # Remove branch line if exist to avoid multiple branch lines
+	    sed -i '/branch/d' /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+	    
             echo branch="-beta $VERSION" >> /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
 	    
             echo "
