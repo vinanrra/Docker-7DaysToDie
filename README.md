@@ -28,6 +28,7 @@ docker run \
   -p 8081:8081/tcp \
   -p 8082:8082/tcp \
   -e START_MODE=1 \
+  -e VERSION=stable \
   -e PUID=1000 \
   -e PUID=1000 \
   -e TimeZone=Europe/Madrid \
@@ -43,6 +44,7 @@ services:
     container_name: 7dtdserver
     environment:
       - START_MODE=1 #Change between START MODES
+      - VERSION=stable # Change between 7 days to die versions
       - PUID=1000 # Remember to use same as your user
       - PGID=1000 # Remember to use same as your user
       - TimeZone=Europe/Madrid
@@ -77,6 +79,7 @@ services:
 | `8081:8081/tcp` | Default 7DaysToDie port, telnet **optional** |
 | `8082:8082/tcp` | Default 7DaysToDie port, [Server Fixes](https://7dtd.illy.bz/wiki/Server%20fixes) webserver **optional** |
 | `START_MODE=1` | Start mode of the container - see below for explanation  **required** |
+| `VERSION=stable` | Change between 7 days to die versions  **optional** |
 | `PUID=1000` | for UserID - see below for explanation |
 | `PGID=1000` | for GroupID - see below for explanation |
 | `TimeZone=Europe/Madrid` | for TimeZone - see [TZ Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) for time zones **recomendable**|
@@ -86,10 +89,8 @@ services:
 | START_MODE | Information |
 | :----: | ---- |
 | 1 | Start server |
-| 2 | Update server TO STABLE |
-| 3 | Update server TO STABLE and start |
-| 4 | Update server TO LATEST_EXPERIMENTAL |
-| 5 | Update server TO LATEST_EXPERIMENTAL and start |
+| 2 | Update server |
+| 3 | Update server and start |
 | 6 | Backup server and STOP the container|
 
 #### WARNING:
@@ -135,6 +136,10 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 * You can also remove the old dangling images: `docker image prune`
 
 ## Versions
+* **28/03/2020**
+    * Improved updated method
+    * Remove useless START_MODES because of new update method
+
 * **27/03/2020**
     * Added TimeZone
     * Added back Support Info
