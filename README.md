@@ -91,7 +91,7 @@ services:
 | 1 | Start server |
 | 2 | Update server |
 | 3 | Update server and start |
-| 6 | Backup server and STOP the container|
+| 4 | Backup server and STOP the container|
 
 #### WARNING:
 
