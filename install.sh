@@ -23,11 +23,17 @@
     
     }
     
-    updateStable () {
+    update () {
     
         ./sdtdserver update
 
-        cp -v sdtdserver.cfg.stable lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+        if [ $VERSION == 'stable'  ]
+        then
+            sed -i '/branch/d' sdtdserver.cfg
+        else
+            echo branch="-beta $version" >> sdtdserver.cfg
+            echo VERSION: $version
+        fi
 
         ./sdtdserver update
 
@@ -35,34 +41,12 @@
             =======================================================================
             IMPORTANT:
 
-            The server have been updated to STABLE, now switch between "START_MODE"
+            The server have been updated to $VERSION, now switch between "START_MODE"
             More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
             =======================================================================
             "
 
         exit
-    }
-
-    updateExperimental () {
-    
-        ./sdtdserver update
-
-        cp -v sdtdserver.cfg lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
-        
-        ./sdtdserver update
-        
-        cp -v serverfiles/serverconfig.xml serverfiles/sdtdserver.xml
-
-            echo "
-            =======================================================================
-            IMPORTANT:
-
-            The server have been updated to EXPERIMENTAL, now switch between "START_MODE"
-            More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
-            =======================================================================
-            "
-	      exit
-    
     }
     
     backupServer () {
@@ -177,23 +161,14 @@
         startServer
      ;;
      2)
-        updateStable
+        update
      ;;
      3)
-        updateStable
-        
-        startServer
-     ;;
-     4)
-        updateExperimental
-     ;;
-     5)
-        updateExperimental
-
+        update
         startServer
      ;;
      
-     6)
+     4)
         backupServer
      ;;
      *)
