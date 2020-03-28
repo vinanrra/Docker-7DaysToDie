@@ -166,8 +166,7 @@
      3)
         update
         startServer
-     ;;
-     
+     ;; 
      4)
         backupServer
      ;;
