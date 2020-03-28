@@ -31,8 +31,16 @@
         then
             sed -i '/branch/d' /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
         else
-            echo branch="-beta $version" >> /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
-            echo VERSION: $version
+            echo branch="-beta $VERSION" >> /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+	    
+            echo "
+            =======================================================================
+            IMPORTANT:
+            
+            Server version changed to: $VERSION
+            
+            =======================================================================
+            "
         fi
 
         ./sdtdserver update
