@@ -10,6 +10,7 @@ ENV PUID=$PUID
 ENV PGID=$PGID
 ENV START_MODE "0"
 ENV TimeZone=Europe/Madrid
+ENV VERSION=stable
 
 ##Need use xterm for LinuxGSM##
 ENV TERM=xterm
@@ -84,7 +85,7 @@ ENV LANG en_US.utf8
 WORKDIR /home/sdtdserver
 
 # Add files
-ADD install.sh user.sh sdtdserver.cfg.stable sdtdserver.cfg /home/sdtdserver/
+ADD install.sh user.sh /home/sdtdserver/
 
 # Apply permissions
 RUN chmod +x user.sh && chmod +x install.sh
