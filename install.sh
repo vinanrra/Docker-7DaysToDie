@@ -29,9 +29,9 @@
 
         if [ $VERSION == 'stable'  ]
         then
-            sed -i '/branch/d' sdtdserver.cfg
+            sed -i '/branch/d' /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
         else
-            echo branch="-beta $version" >> sdtdserver.cfg
+            echo branch="-beta $version" >> /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
             echo VERSION: $version
         fi
 
