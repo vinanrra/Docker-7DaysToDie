@@ -23,6 +23,21 @@
     
     }
     
+    AlertServer () {
+    
+        ./sdtdserver test-alert
+	
+	    echo "
+            =======================================================================
+            IMPORTANT:
+            
+            Testing alerts...
+            Check your alerts method
+            =======================================================================
+            "
+    
+    }
+    
     update () {
     
         ./sdtdserver update
@@ -176,6 +191,9 @@
   case $START_MODE in
      1)
         startServer
+	if [ $TEST_ALERT == 'YES'  ] then
+	AlertServer
+	fi
      ;;
      2)
         update
@@ -184,6 +202,9 @@
      3)
         update
         startServer
+	if [ $TEST_ALERT == 'YES'  ] then
+	AlertServer
+	fi
      ;; 
      4)
         backupServer
