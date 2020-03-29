@@ -101,7 +101,16 @@ IF YOU UPDATE FROM STABLE TO EXPERIMENTAL OR VICE VERSA, REMEMBER TO BACKUP FIRS
 
 ### ALERTS
 
-LinuxGSM allows alerts to be received using various methods, should the game server require your attention
+LinuxGSM allows alerts to be received using various methods, multiple alerts can be enable at same time:
+
+* Discord
+* Email (Not tested)
+* IFTTT
+* Mailgun
+* Pushbullet
+* Pushover
+* Telegram
+* Slack
 
 Alert settings can be changed in */path/to/Alerts/common.cfg*
 
