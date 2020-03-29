@@ -117,6 +117,8 @@ LinuxGSM allows alerts to be received using various methods, multiple alerts can
 
 Alert settings can be changed in */path/to/Alerts/common.cfg*
 
+You recieve alerts only if the server crashes or updates itself.
+
 ## User / Group Identifiers
 
 When using volumes (`-v` flags) permissions issues can arise between the host OS and the container, we avoid this issue by allowing you to specify the user `PUID` and group `PGID`.
