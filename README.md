@@ -78,8 +78,8 @@ services:
 | `26901:26901/udp` | Default 7DaysToDie port **required** |
 | `26902:26902/udp` | Default 7DaysToDie port **required** |
 | `8080:8080/tcp` | Default 7DaysToDie webadmin port **optional**, if you use webadmin remember to change password in */path/to/ServerFiles/sdtdserver.xml* |
-| `8081:8081/tcp` | Default 7DaysToDie port, telnet **optional** |
-| `8082:8082/tcp` | Default 7DaysToDie port, [Server Fixes](https://7dtd.illy.bz/wiki/Server%20fixes) webserver **optional** |
+| `8081:8081/tcp` | Default 7DaysToDie telnet port **optional** |
+| `8082:8082/tcp` | Default [Server Fixes](https://7dtd.illy.bz/wiki/Server%20fixes) webserver port **optional** |
 | `START_MODE=1` | Start mode of the container - see below for explanation  **required** |
 | `VERSION=stable` | Change between 7 days to die versions  **optional** |
 | `PUID=1000` | for UserID - see below for explanation |
