@@ -86,6 +86,7 @@ WORKDIR /home/sdtdserver
 
 # Add files
 ADD install.sh user.sh /home/sdtdserver/
+ADD lgsm/config-lgsm/sdtdserver/common.cfg /home/sdtdserver/
 
 # Apply permissions
 RUN chmod +x user.sh && chmod +x install.sh
