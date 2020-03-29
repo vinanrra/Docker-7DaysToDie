@@ -62,7 +62,7 @@
     
     backupServer () {
     
-            sleep 5s
+            
     
             echo "
             =======================================================================
@@ -72,9 +72,12 @@
             
             =======================================================================
             "
+	    
+	    sleep 3s
+	    
             ./sdtdserver backup
 	    
-	    sleep 5s
+	    sleep 3s
 	    
 	    echo "
             =======================================================================
@@ -101,7 +104,7 @@
             More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
             =======================================================================
             "
-	      exit
+	    exit
     
     }
     
@@ -148,9 +151,13 @@
             =======================================================================
             "
 	
-	    # Install 7 Days To Die Server
+	# Add alerts examples
+	
+	    mv -f common.cfg /home/sdtdserver/lgsm/config-lgsm/sdtdserver/common.cfg
+	
+	# Install 7 Days To Die Server
 
-        ./sdtdserver auto-install
+            ./sdtdserver auto-install
 
             echo "
             =======================================================================
