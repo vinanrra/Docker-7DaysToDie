@@ -9,7 +9,6 @@
 
 ## USAGE
 * The first time you start the container it will be auto-installed stable version.
-* If you use WebAdmin remember to change password at: http://YOUR.IP:8080 (8080 if you use default port) in *sdtdserver.xml*
 * If you want to change any server settings, edit *sdtdserver.xml* in */path/to/ServerFiles/sdtdserver.xml*
 * If you want to recieve alerts check [ALERTS](https://github.com/vinanrra/Docker-7DaysToDie#alerts).
 * If you get any errors, read everything before posting an issue.
@@ -78,7 +77,7 @@ services:
 | `26900:26900/udp` | Default 7DaysToDie port **required** |
 | `26901:26901/udp` | Default 7DaysToDie port **required** |
 | `26902:26902/udp` | Default 7DaysToDie port **required** |
-| `8080:8080/tcp` | Default 7DaysToDie port, webadmin **optional** |
+| `8080:8080/tcp` | Default 7DaysToDie webadmin port **optional**, if you use webadmin remember to change password in */path/to/ServerFiles/sdtdserver.xml* |
 | `8081:8081/tcp` | Default 7DaysToDie port, telnet **optional** |
 | `8082:8082/tcp` | Default 7DaysToDie port, [Server Fixes](https://7dtd.illy.bz/wiki/Server%20fixes) webserver **optional** |
 | `START_MODE=1` | Start mode of the container - see below for explanation  **required** |
@@ -102,7 +101,9 @@ IF YOU UPDATE FROM STABLE TO EXPERIMENTAL OR VICE VERSA, REMEMBER TO BACKUP FIRS
 
 ### ALERTS
 
-To enable alerts, modify */path/to/Alerts/common.cfg*
+LinuxGSM allows alerts to be received using various methods, should the game server require your attention
+
+Alert settings can be changed in */path/to/Alerts/common.cfg*
 
 ## User / Group Identifiers
 
