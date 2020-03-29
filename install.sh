@@ -42,7 +42,7 @@
     
         ./sdtdserver update
 
-        if [ $VERSION == 'stable'  ]
+        if [ "$VERSION" == 'stable'  ]
         then
 	    # Remove branch line
             sed -i '/branch/d' /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
@@ -68,7 +68,7 @@
             =======================================================================
             IMPORTANT:
 
-            The server have been updated to $VERSION, now switch between "START_MODE"
+            The server have been updated to $VERSION, now switch between START_MODE
             More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
             =======================================================================
             "
@@ -191,7 +191,8 @@
   case $START_MODE in
      1)
         startServer
-	if [ $TEST_ALERT == 'YES'  ] then
+	if [ "$TEST_ALERT" == 'YES'  ]
+	then
 	AlertServer
 	fi
      ;;
@@ -202,7 +203,8 @@
      3)
         update
         startServer
-	if [ $TEST_ALERT == 'YES'  ] then
+	if [ "$TEST_ALERT" == 'YES'  ]
+	then
 	AlertServer
 	fi
      ;; 
