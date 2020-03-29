@@ -46,8 +46,9 @@ RUN dpkg --add-architecture i386 && \
 		telnet \
 		expect \
 		netcat \
-		locales
-		
+		locales \
+		cron
+
 # Install latest su-exec
 RUN  set -ex; \
      \
@@ -62,9 +63,14 @@ RUN  set -ex; \
      rm /usr/local/bin/su-exec.c; \
      \
      apt-get purge -y --auto-remove $fetch_deps
-     
-# Clear unused files
 
+# Crontab
+COPY crontab/sdtdserver-monitor /etc/cron.d/sdtdserver-monitor
+
+# Give execution rights on the cron job and apply cron job
+RUN chmod 0644 /etc/cron.d/sdtdserver-monitor && crontab /etc/cron.d/sdtdserver-monitor
+
+# Clear unused files
 RUN apt clean && \
     rm -rf \
 	/tmp/* \
