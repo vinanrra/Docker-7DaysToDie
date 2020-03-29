@@ -65,7 +65,7 @@ services:
       - 8080:8080/tcp #OPTIONAL WEBADMIN
       - 8081:8081/tcp #OPTIONAL TELNET
       - 8082:8082/tcp #OPTIONAL WEBSERVER https://7dtd.illy.bz/wiki/Server%20fixes
-    restart: unless-stopped #NEVER USE WITH START_MODE= 2 or 4 
+    restart: unless-stopped #NEVER USE WITH START_MODE=4
 ```
 
 ## Parameters
@@ -88,7 +88,7 @@ services:
 | `PUID=1000` | for UserID - see below for explanation |
 | `PGID=1000` | for GroupID - see below for explanation |
 | `TimeZone=Europe/Madrid` | for TimeZone - see [TZ Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) for time zones **recomendable**|
-| `--restart unless-stopped` | Restart container always unlesss stopped manually **NEVER USE WITH START_MODE= 2 or 4** |
+| `--restart unless-stopped` | Restart container always unlesss stopped manually **NEVER USE WITH START_MODE=4** |
 
 ### START MODES:
 | START_MODE | Information |
