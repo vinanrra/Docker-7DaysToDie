@@ -11,6 +11,7 @@
 * The first time you start the container it will be auto-installed stable version.
 * If you use WebAdmin remember to change password at: http://YOUR.IP:8080 (8080 if you use default port) in *sdtdserver.xml*
 * If you want to change any server settings, edit *sdtdserver.xml* in */path/to/ServerFiles/sdtdserver.xml*
+* If you want to recieve alerts check [ALERTS](https://github.com/vinanrra/Docker-7DaysToDie#alerts).
 * If you get any errors, read everything before posting an issue.
 
 ### Docker
@@ -99,6 +100,10 @@ services:
 
 IF YOU UPDATE FROM STABLE TO EXPERIMENTAL OR VICE VERSA, REMEMBER TO BACKUP FIRST YOUR SERVER TO AVOID ANY ERRORS, and if you do not care about files atleast backup your */path/to/ServerFiles/sdtdserver.xml* yo save your server settings.
 
+### ALERTS
+
+To enable alerts, modify */path/to/Alerts/common.cfg*
+
 ## User / Group Identifiers
 
 When using volumes (`-v` flags) permissions issues can arise between the host OS and the container, we avoid this issue by allowing you to specify the user `PUID` and group `PGID`.
@@ -138,9 +143,10 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 * You can also remove the old dangling images: `docker image prune`
 
 ## Versions
-* **29/03/2020**
+* **30/03/2020**
     * Improved updated method
     * Remove useless START_MODES because of new update method
+    * Added notifications
 
 * **27/03/2020**
     * Added TimeZone
