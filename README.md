@@ -11,7 +11,7 @@
 * The first time you start the container it will be auto-installed stable version.
 * If you use WebAdmin remember to change password at: http://YOUR.IP:8080 (8080 if you use default port) in *sdtdserver.xml*
 * If you want to change any server settings, edit *sdtdserver.xml* in */path/to/ServerFiles/sdtdserver.xml*
-* This image is compatible with Mods
+* If you get any errors, read everything before posting an issue.
 
 ### Docker
 ```bash
