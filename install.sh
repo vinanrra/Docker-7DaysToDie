@@ -18,8 +18,6 @@
         sleep 2m
         
         ./sdtdserver details
-        
-        tail -f /dev/null
     
     }
     
@@ -195,6 +193,7 @@
 	then
 	AlertServer
 	fi
+	tail -f /dev/null
      ;;
      2)
         update
@@ -207,6 +206,7 @@
 	then
 	AlertServer
 	fi
+	tail -f /dev/null
      ;; 
      4)
         backupServer
