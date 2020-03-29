@@ -7,7 +7,7 @@
 
 ![Image of 7 Days To Die](https://raw.githubusercontent.com/vinanrra/Docker-7DaysToDie/master/7dtd.png)
 
-## USAGE
+## Usage
 * The first time you start the container it will be auto-installed stable version.
 * If you want to change any server settings, edit *sdtdserver.xml* in */path/to/ServerFiles/sdtdserver.xml*
 * If you want to recieve alerts check [ALERTS](https://github.com/vinanrra/Docker-7DaysToDie#alerts).
@@ -99,7 +99,7 @@ services:
 
 IF YOU UPDATE FROM STABLE TO EXPERIMENTAL OR VICE VERSA, REMEMBER TO BACKUP FIRST YOUR SERVER TO AVOID ANY ERRORS, and if you do not care about files atleast backup your */path/to/ServerFiles/sdtdserver.xml* yo save your server settings.
 
-### ALERTS
+### Alerts
 
 LinuxGSM allows alerts to be received using various methods, multiple alerts can be enable at same time:
 
