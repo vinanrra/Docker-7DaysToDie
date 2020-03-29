@@ -98,7 +98,7 @@ RUN mkdir lgsm
 ADD lgsm /home/sdtdserver/lgsm
 
 # Apply permissions
-RUN chmod +x user.sh && chmod +x install.sh
+RUN find /home/sdtdserver/ -type f -iname "*.sh" -exec chmod +x {} \;
 
 ##############EXTRA CONFIG##############
 #Ports
