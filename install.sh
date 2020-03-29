@@ -135,7 +135,7 @@
             =======================================================================
             "
 	
-            wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
+            chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver
 	
     fi
     

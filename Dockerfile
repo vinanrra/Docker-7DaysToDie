@@ -92,8 +92,10 @@ ENV LANG en_US.utf8
 WORKDIR /home/sdtdserver
 
 # Add files
-ADD install.sh user.sh /home/sdtdserver/
+ADD linuxgsm.sh install.sh user.sh /home/sdtdserver/
 ADD lgsm/config-lgsm/sdtdserver/common.cfg /home/sdtdserver/
+RUN mkdir lgsm
+ADD lgsm /home/sdtdserver/lgsm
 
 # Apply permissions
 RUN chmod +x user.sh && chmod +x install.sh
