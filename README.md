@@ -99,7 +99,7 @@ services:
 
 IF YOU UPDATE FROM STABLE TO EXPERIMENTAL OR VICE VERSA, REMEMBER TO BACKUP FIRST YOUR SERVER TO AVOID ANY ERRORS, and if you do not care about files atleast backup your */path/to/ServerFiles/sdtdserver.xml* yo save your server settings.
 
-### Alerts
+## Alerts
 
 LinuxGSM allows alerts to be received using various methods, multiple alerts can be enable at same time:
 
