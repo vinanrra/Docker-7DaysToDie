@@ -18,10 +18,11 @@
 docker run \
   --name 7dtdserver \
   --restart unless-stopped \
-  -v "/path/to/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/" \
-  -v "/path/to/ServerFiles:/home/sdtdserver/serverfiles/" \
-  -v "/path/to/LogFolder:/home/sdtdserver/log/" \
-  -v "/path/to/BackupFolder:/home/sdtdserver/lgsm/backup/" \
+  -v "./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/" \
+  -v "./ServerFiles:/home/sdtdserver/serverfiles/" \
+  -v "./LogFolder:/home/sdtdserver/log/" \
+  -v "./BackupFolder:/home/sdtdserver/lgsm/backup/" \
+  -v "./LGSM-Config:/home/sdtdserver/lgsm/config-lgsm/sdtdserver/" \
   -p 26900:26900/tcp \
   -p 26900:26900/udp \
   -p 26901:26901/udp \
@@ -51,10 +52,11 @@ services:
       - PGID=1000 # Remember to use same as your user
       - TimeZone=Europe/Madrid
     volumes:
-      - ./ServerFiles:/home/sdtdserver/serverfiles/ #Optional if you dont care about serverfiles
-      - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/ #Optional if you dont care about maps files
-      - ./log:/home/sdtdserver/log/ #Optional if you dont care about logs
-      - ./backups:/home/sdtdserver/lgsm/backup/ #Optional if you dont care about backups
+      - ./ServerFiles:/home/sdtdserver/serverfiles/ #Optional, serverfiles
+      - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/ #Optional, maps files
+      - ./log:/home/sdtdserver/log/ #Optional, logs
+      - ./backups:/home/sdtdserver/lgsm/backup/ #Optional, backups
+      - ./LGSM-Config:/home/sdtdserver/lgsm/config-lgsm/sdtdserver # Optional, alerts
     ports:
       - 26900:26900/tcp
       - 26900:26900/udp
@@ -73,6 +75,7 @@ services:
 | `/path/to/ServerFiles:/home/sdtdserver/serverfiles/` | 7DaysToDie server config files. |
 | `/path/to/Logs:/home/sdtdserver/log/` | 7DaysToDie server log files. |
 | `/path/to/BackupFolder:/home/sdtdserver/lgsm/backup/` | 7DaysToDie server backups files. |
+| `/path/to/LGSM-Config:/home/sdtdserver/lgsm/config-lgsm/sdtdserver/` | LGSM config files. |
 | `26900:26900/tcp` | Default 7DaysToDie port **required** |
 | `26900:26900/udp` | Default 7DaysToDie port **required** |
 | `26901:26901/udp` | Default 7DaysToDie port **required** |
