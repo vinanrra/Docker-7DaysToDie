@@ -96,6 +96,7 @@ services:
 ### START MODES:
 | START_MODE | Information |
 | :----: | ---- |
+| 0 | Install server |
 | 1 | Start server |
 | 2 | Update server |
 | 3 | Update server and start |
@@ -161,6 +162,9 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 * You can also remove the old dangling images: `docker image prune`
 
 ## Versions
+* **31/03/2020**
+   * Added START_MODE 0, this mode will install server and exit
+   
 * **29/03/2020**
     * Improved updated method
     * Remove useless START_MODES because of new update method
