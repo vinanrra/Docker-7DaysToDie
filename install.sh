@@ -188,6 +188,7 @@
   case $START_MODE in
      0)
         exit
+     ;;
      1)
         startServer
 	if [ "$TEST_ALERT" == 'YES'  ]
