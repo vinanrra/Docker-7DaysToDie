@@ -7,12 +7,14 @@
 
 ![Image of 7 Days To Die](https://raw.githubusercontent.com/vinanrra/Docker-7DaysToDie/master/7dtd.png)
 
-## Usage
+## Information
+* This container works with mods, if you have any problems open a [github ticket](https://github.com/vinanrra/Docker-7DaysToDie/issues).
 * The first time you start the container it will be auto-installed stable version.
 * If you want to change any server settings, edit *sdtdserver.xml* in */path/to/ServerFiles/sdtdserver.xml*
 * If you want to recieve alerts check [ALERTS](https://github.com/vinanrra/Docker-7DaysToDie#alerts).
 * Read everything to avoid any errors.
 
+## Usage
 ### Docker
 ```bash
 docker run \
