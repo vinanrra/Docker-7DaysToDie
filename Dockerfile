@@ -49,7 +49,8 @@ RUN dpkg --add-architecture i386 && \
 		netcat \
 		locales \
 		libgdiplus \
-		cron
+		cron \
+		steamcmd
 
 # Install latest su-exec
 RUN  set -ex; \
