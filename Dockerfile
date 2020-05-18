@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM steamcmd/steamcmd:ubuntu-18
 
 ##############BASE IMAGE##############
 
@@ -49,8 +49,7 @@ RUN dpkg --add-architecture i386 && \
 		netcat \
 		locales \
 		libgdiplus \
-		cron \
-		steamcmd
+		cron
 
 # Install latest su-exec
 RUN  set -ex; \
