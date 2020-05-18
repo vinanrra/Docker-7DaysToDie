@@ -69,7 +69,7 @@ services:
       - 8080:8080/tcp #OPTIONAL WEBADMIN
       - 8081:8081/tcp #OPTIONAL TELNET
       - 8082:8082/tcp #OPTIONAL WEBSERVER https://7dtd.illy.bz/wiki/Server%20fixes
-    restart: unless-stopped #NEVER USE WITH START_MODE=4
+    restart: unless-stopped #NEVER USE WITH START_MODE=4 or START_MODE=0
 ```
 
 ## Parameters
