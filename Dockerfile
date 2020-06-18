@@ -2,6 +2,10 @@ FROM steamcmd/steamcmd:ubuntu-18
 
 ##############BASE IMAGE##############
 
+####Labels####
+LABEL maintainer="vinanrra"
+LABEL build_version="version:- 0.0.7"
+
 ####Environments####
 
 ARG PUID=1000
