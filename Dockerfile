@@ -98,12 +98,14 @@ WORKDIR /home/sdtdserver
 
 # Add files
 ADD linuxgsm.sh install.sh user.sh /home/sdtdserver/
+ADD scripts /home/sdtdserver/scripts
 ADD lgsm/config-lgsm/sdtdserver/common.cfg /home/sdtdserver/
 RUN mkdir lgsm
 ADD lgsm /home/sdtdserver/lgsm
 
 # Apply permissions
 RUN chmod +x install.sh user.sh linuxgsm.sh
+RUN find /home/sdtdserver/scripts/ -type f -iname "*" -exec chmod +x {} \;
 RUN find /home/sdtdserver/lgsm/ -type f -iname "*" -exec chmod +x {} \;
 
 ##############EXTRA CONFIG##############
