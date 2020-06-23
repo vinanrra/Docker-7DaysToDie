@@ -28,7 +28,7 @@ scriptsDir="${rootDir}/scripts"
      ;;
      1)
         source $scriptsDir/server_start.sh
-	if [ "$TEST_ALERT" == 'YES'  ] then
+	if [ "$TEST_ALERT" == 'YES'  ]; then
 	    source $scriptsDir/server_alerts.sh
 	fi
 	tail -f /dev/null
@@ -41,7 +41,7 @@ scriptsDir="${rootDir}/scripts"
         source $scriptsDir/server_update.sh
 	
         source $scriptsDir/server_start.sh
-	if [ "$TEST_ALERT" == 'YES'  ] then
+	if [ "$TEST_ALERT" == 'YES'  ]; then
 	   source $scriptsDir/server_alerts.sh
 	fi
 	tail -f /dev/null
