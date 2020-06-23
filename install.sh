@@ -1,5 +1,8 @@
 #!/bin/bash
 
+rootDir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
+scriptsDir="${rootDir}/scripts"
+
     # Functions
     
     startServer () {
@@ -141,6 +144,26 @@
     # Check if server have been installed
 
     if [ ! -f serverfiles/DONT_REMOVE.txt ]; then
+    
+    	    .$scriptsDir/check_space.sh
+	    
+	    if [ "$space" == 'no'  ]
+	    
+	    echo "
+            =======================================================================
+            ERROR:
+            
+            Not enough space.
+            
+            Needed: 12GB
+            Available: $freeGB
+            
+            =======================================================================
+            "
+	    	exit
+	    fi
+	    
+	    if
 
             echo "
             =======================================================================
