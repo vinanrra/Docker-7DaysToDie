@@ -144,8 +144,8 @@ scriptsDir="${rootDir}/scripts"
     # Check if server have been installed
 
     if [ ! -f serverfiles/DONT_REMOVE.txt ]; then
-    
-    	    .$scriptsDir/check_space.sh
+	    
+	    source $scriptsDir/check_space.sh
 	    
 	    if [ "$space" == 'no'  ]; then
 	    
@@ -155,8 +155,8 @@ scriptsDir="${rootDir}/scripts"
             
             Not enough space.
             
-            Needed: 12GB
-            Available: $freeGB
+            Needed: 12 GB
+            Available: $freeGB GB
             
             =======================================================================
             "
