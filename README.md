@@ -166,6 +166,7 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 ## Versions
 * **23/06/2020**
    * Added check space
+   * Installation file has been split
    
 * **19/06/2020**
    * Added labels
