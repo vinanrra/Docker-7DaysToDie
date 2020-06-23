@@ -147,7 +147,7 @@ scriptsDir="${rootDir}/scripts"
     
     	    .$scriptsDir/check_space.sh
 	    
-	    if [ "$space" == 'no'  ]
+	    if [ "$space" == 'no'  ]; then
 	    
 	    echo "
             =======================================================================
@@ -162,8 +162,6 @@ scriptsDir="${rootDir}/scripts"
             "
 	    	exit
 	    fi
-	    
-	    if
 
             echo "
             =======================================================================
