@@ -57,6 +57,14 @@ source $scriptsDir/check_space.sh
 
         fi
 	
+	echo "
+            =======================================================================
+            IMPORTANT:
+            
+            INSTALLING: $VERSION
+            =======================================================================
+            "
+	
 	# Install 7 Days To Die Server
 
             ./sdtdserver auto-install
