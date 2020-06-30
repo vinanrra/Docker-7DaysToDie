@@ -43,6 +43,20 @@ source $scriptsDir/check_space.sh
 	
 	    mv -f common.cfg /home/sdtdserver/lgsm/config-lgsm/sdtdserver/common.cfg
 	
+	# Check version
+	
+	if [ "$VERSION" == 'stable'  ]
+        then
+	    # Remove branch line
+            sed -i '/branch/d' /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+        else
+	    # Remove branch line if exist to avoid multiple branch lines
+	    sed -i '/branch/d' /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+	    
+            echo branch='"-beta $VERSION"' >> /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+
+        fi
+	
 	# Install 7 Days To Die Server
 
             ./sdtdserver auto-install
