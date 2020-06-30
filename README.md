@@ -88,7 +88,7 @@ services:
 | `8081:8081/tcp` | Default 7DaysToDie telnet port **optional** |
 | `8082:8082/tcp` | Default [Server Fixes](https://7dtd.illy.bz/wiki/Server%20fixes) webserver port **optional** |
 | `START_MODE=1` | Start mode of the container - see below for explanation **required** |
-| `VERSION=stable` | Change between 7 days to die versions **optional** |
+| `VERSION=stable` | Change between 7 days to die versions [more info](https://steamcommunity.com/app/251570/discussions/0/2570942124844173383/) **optional** |
 | `TEST_ALERT=YES` | Test alerts at start of server **optional** |
 | `PUID=1000` | for UserID - see below for explanation |
 | `PGID=1000` | for GroupID - see below for explanation |
