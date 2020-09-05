@@ -36,7 +36,7 @@ docker run \
   -e VERSION=stable \
   -e TEST_ALERT=YES \
   -e PUID=1000 \
-  -e PUID=1000 \
+  -e PGID=1000 \
   -e TimeZone=Europe/Madrid \
   vinanrra/7dtd-server
 ```
