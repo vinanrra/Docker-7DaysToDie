@@ -164,6 +164,9 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 * You can also remove the old dangling images: `docker image prune`
 
 ## Versions
+* **24/09/2020**
+   * Updated Linuxgsm scripts
+   
 * **28/08/2020**
    * Fixed space check
 
