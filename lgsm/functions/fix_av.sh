@@ -4,14 +4,13 @@
 # Website: https://linuxgsm.com
 # Description: Resolves startup issue with Avorion
 
-local commandname="FIX"
-local commandaction="Fix"
+functionselfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
 
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${serverfiles}:${serverfiles}/linux64"
 
 if [ "${postinstall}" == "1" ]; then
 	fn_parms(){
-		parms="--datapath ${avdatapath} --galaxy-name ${avgalaxy} --init-folders-only"
+		parms="--datapath ${avdatapath} --galaxy-name ${selfname} --init-folders-only"
 	}
 
 	fn_print_information "starting ${gamename} server to generate configs."

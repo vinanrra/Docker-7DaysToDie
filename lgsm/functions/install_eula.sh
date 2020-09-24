@@ -4,6 +4,8 @@
 # Website: https://linuxgsm.com
 # Description: Gets user to accept the EULA.
 
+functionselfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
+
 if [ "${shortname}" == "ts3" ]; then
 	eulaurl="https://www.teamspeak.com/en/privacy-and-terms"
 elif [ "${shortname}" == "mc" ]; then
@@ -23,9 +25,10 @@ if [ -z "${autoinstall}" ]; then
 	echo -e "By continuing you are indicating your agreement to the EULA."
 	echo -e ""
 	if ! fn_prompt_yn "Continue?" Y; then
+		exitcode=0
 		core_exit.sh
 	fi
-elif [ "${function_selfname}" == "command_start.sh" ]; then
+elif [ "${commandname}" == "START" ]; then
 	fn_print_info "By continuing you are indicating your agreement to the EULA."
 	echo -e ""
 	sleep 5

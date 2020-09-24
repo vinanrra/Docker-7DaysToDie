@@ -4,13 +4,14 @@
 # Website: https://linuxgsm.com
 # Description: Handles updating of servers.
 
-local modulename="UPDATE"
-local commandaction="Update"
-local function_selfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
+commandname="UPDATE"
+commandaction="Updating"
+functionselfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
+fn_firstcommand_set
 
 fn_print_dots ""
 check.sh
-logs.sh
+core_logs.sh
 check_last_update.sh
 
 if [ "${shortname}" == "ts3" ]; then
@@ -25,6 +26,8 @@ elif [ "${shortname}" == "fctr" ]; then
 	update_factorio.sh
 elif [ "${shortname}" == "mta" ]; then
 	update_mta.sh
+elif [ "${shortname}" == "jk2" ]; then
+	update_jediknight2.sh
 else
 	update_steamcmd.sh
 fi

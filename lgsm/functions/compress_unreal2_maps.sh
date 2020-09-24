@@ -4,8 +4,10 @@
 # Website: https://linuxgsm.com
 # Description: Compresses unreal maps.
 
-local commandaction="Unreal Map Compressor"
-local function_selfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
+commandname="MAP-COMPRESSOR"
+commandaction="Compressing maps"
+functionselfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
+fn_firstcommand_set
 
 check.sh
 fn_print_header
@@ -18,7 +20,8 @@ echo -e ""
 echo -e "${compressedmapsdir}"
 echo -e ""
 if ! fn_prompt_yn "Start compression?" Y; then
-	return
+	exitcode=0
+	core_exit.sh
 fi
 mkdir -pv "${compressedmapsdir}" > /dev/null 2>&1
 rm -rfv "${serverfiles:?}/Maps/"*.ut2.uz2
