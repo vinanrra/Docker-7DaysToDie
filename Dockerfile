@@ -53,7 +53,8 @@ RUN dpkg --add-architecture i386 && \
 		netcat \
 		locales \
 		libgdiplus \
-		cron
+		cron \
+		tcl
 
 # Install latest su-exec
 RUN  set -ex; \
