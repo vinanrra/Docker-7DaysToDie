@@ -4,7 +4,7 @@ FROM steamcmd/steamcmd:ubuntu-18
 
 ####Labels####
 LABEL maintainer="vinanrra"
-LABEL build_version="version:- 1.1.3"
+LABEL build_version="version:- 0.1.3"
 
 ####Environments####
 
