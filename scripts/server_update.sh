@@ -27,7 +27,20 @@
             =======================================================================
             IMPORTANT:
 
-            The server have been updated to $VERSION, now switch between START_MODE
+            The server have been updated to $VERSION
             More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
             =======================================================================
             "
+
+        if [ "$ALLOC_FIXES" == 'yes'  ]
+        then
+        ./scripts/Mods/alloc_fixes.sh
+
+            echo "
+            =======================================================================
+            IMPORTANT:
+
+            Alloc Fixed updated.
+            =======================================================================
+            "
+        fi

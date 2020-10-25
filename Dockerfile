@@ -16,6 +16,7 @@ ENV START_MODE=0
 ENV TEST_ALERT=YES
 ENV TimeZone=Europe/Madrid
 ENV VERSION=stable
+ENV ALLOC_FIXES=no
 
 ##Need use xterm for LinuxGSM##
 ENV TERM=xterm
@@ -101,11 +102,13 @@ ADD linuxgsm.sh install.sh user.sh /home/sdtdserver/
 ADD scripts /home/sdtdserver/scripts
 ADD lgsm/config-lgsm/sdtdserver/common.cfg /home/sdtdserver/
 RUN mkdir lgsm
+RUN mkdir /home/sdtdserver/serverfiles/Mods
 ADD lgsm /home/sdtdserver/lgsm
 
 # Apply permissions
 RUN chmod +x install.sh user.sh linuxgsm.sh
 RUN find /home/sdtdserver/scripts/ -type f -iname "*" -exec chmod +x {} \;
+RUN find /home/sdtdserver/scripts/Mods -type f -iname "*" -exec chmod +x {} \;
 RUN find /home/sdtdserver/lgsm/ -type f -iname "*" -exec chmod +x {} \;
 
 ##############EXTRA CONFIG##############
