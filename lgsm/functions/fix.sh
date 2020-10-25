@@ -5,8 +5,7 @@
 # Description: Overall function for managing fixes.
 # Runs functions that will fix an issue.
 
-local modulename="FIX"
-local commandaction="Fix"
+functionselfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
 
 # Messages that are displayed for some fixes.
 fn_fix_msg_start(){
@@ -22,7 +21,7 @@ fn_fix_msg_start_nl(){
 }
 
 fn_fix_msg_end(){
-	if [ $? -ne 0 ]; then
+	if [ $? != 0 ]; then
 		fn_print_error_nl "Applying ${fixname} fix: ${gamename}"
 		fn_script_log_error "Applying ${fixname} fix: ${gamename}"
 	else
@@ -32,7 +31,7 @@ fn_fix_msg_end(){
 }
 
 # Fixes that are run on start.
-if [ "${function_selfname}" != "command_install.sh" ]&&[ -z "${fixbypass}" ]; then
+if [ "${commandname}" != "INSTALL" ]&&[ -z "${fixbypass}" ]; then
 	if [ "${appid}" ]; then
 		fix_steamcmd.sh
 	fi
@@ -41,8 +40,12 @@ if [ "${function_selfname}" != "command_install.sh" ]&&[ -z "${fixbypass}" ]; th
 		fix_arma3.sh
 	elif [ "${shortname}" == "ark" ]; then
 		fix_ark.sh
+	elif [ "${shortname}" == "bo" ]; then
+		fix_bo.sh
 	elif [ "${shortname}" == "csgo" ]; then
 		fix_csgo.sh
+	elif [ "${shortname}" == "cmw" ]; then
+		fix_cmw.sh
 	elif [ "${shortname}" == "dst" ]; then
 		fix_dst.sh
 	elif [ "${shortname}" == "ges" ]; then
@@ -65,16 +68,18 @@ if [ "${function_selfname}" != "command_install.sh" ]&&[ -z "${fixbypass}" ]; th
 		fix_sfc.sh
 	elif [ "${shortname}" == "sof2" ]; then
 		fix_sof2.sh
+	elif [ "${shortname}" == "squad" ]; then
+		fix_squad.sh
 	elif [ "${shortname}" == "ss3" ]; then
 		fix_ss3.sh
+	elif [ "${shortname}" == "st" ]; then
+		fix_st.sh
 	elif [ "${shortname}" == "tf2" ]; then
 		fix_tf2.sh
 	elif [ "${shortname}" == "terraria" ]; then
 		fix_terraria.sh
 	elif [ "${shortname}" == "ts3" ]; then
 		fix_ts3.sh
-	elif [ "${shortname}" == "tu" ]; then
-		fix_tu.sh
 	elif [ "${shortname}" == "mcb" ]; then
 		fix_mcb.sh
 	elif [ "${shortname}" == "mta" ]; then
@@ -89,8 +94,8 @@ if [ "${function_selfname}" != "command_install.sh" ]&&[ -z "${fixbypass}" ]; th
 fi
 
 # Fixes that are run on install only.
-if [ "${function_selfname}" == "command_install.sh" ]; then
-		if [ "${shortname}" == "av" ]||[ "${shortname}" == "kf" ]||[ "${shortname}" == "kf2" ]||[ "${shortname}" == "onset" ]||[ "${shortname}" == "ro" ]||[ "${shortname}" == "ut2k4" ]||[ "${shortname}" == "ut" ]||[ "${shortname}" == "ut3" ]; then
+if [ "${commandname}" == "INSTALL" ]; then
+		if [ "${shortname}" == "av" ]||[ "${shortname}" == "cmw" ]||[ "${shortname}" == "kf" ]||[ "${shortname}" == "kf2" ]||[ "${shortname}" == "onset" ]||[ "${shortname}" == "ro" ]||[ "${shortname}" == "ut2k4" ]||[ "${shortname}" == "ut" ]||[ "${shortname}" == "ut3" ]; then
 			echo -e ""
 			echo -e "Applying Post-Install Fixes"
 			echo -e "================================="

@@ -4,7 +4,7 @@ FROM steamcmd/steamcmd:ubuntu-18
 
 ####Labels####
 LABEL maintainer="vinanrra"
-LABEL build_version="version:- 0.0.9"
+LABEL build_version="version:- 0.1.3"
 
 ####Environments####
 
@@ -54,7 +54,8 @@ RUN dpkg --add-architecture i386 && \
 		netcat \
 		locales \
 		libgdiplus \
-		cron
+		cron \
+		tcl
 
 # Install latest su-exec
 RUN  set -ex; \

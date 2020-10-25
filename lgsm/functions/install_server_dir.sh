@@ -4,9 +4,7 @@
 # Website: https://linuxgsm.com
 # Description: Creates the server directory.
 
-local modulename="INSTALL"
-local commandaction="Install"
-local function_selfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
+functionselfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
 
 echo -e ""
 echo -e "${lightyellow}Server Directory${default}"
@@ -19,7 +17,8 @@ pwd
 echo -e ""
 if [ -z "${autoinstall}" ]; then
 	if ! fn_prompt_yn "Continue?" Y; then
-		exit
+		exitcode=0
+		core_exit.sh
 	fi
 fi
 if [ ! -d "${serverfiles}" ]; then

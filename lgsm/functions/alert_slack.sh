@@ -4,9 +4,7 @@
 # Website: https://linuxgsm.com
 # Description: Sends Slack alert.
 
-local modulename="ALERT"
-local commandaction="Alert"
-local function_selfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
+functionselfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
 
 if ! command -v jq > /dev/null; then
 	fn_print_fail_nl "Sending Slack alert: jq is missing."
@@ -15,54 +13,54 @@ fi
 
 json=$(cat <<EOF
 {
-    "attachments": [
-    	{
-    		"color": "#36a64f",
-    		"blocks": [
-    			{
-                    "type": "section",
-                    "text": {
-                        "type": "mrkdwn",
-                        "text": "*LinuxGSM Alert*"
-                    }
-                },
-                {
-                    "type": "section",
-                    "text": {
-                        "type": "mrkdwn",
-                        "text": "*${alertemoji} ${alertsubject}* \n ${alertbody}"
-                    }
-                },
-                {
-                    "type": "divider"
-                },
-                {
-                    "type": "section",
-                    "fields": [
-                        {
-                            "type": "mrkdwn",
-                            "text": "*Game:* \n ${gamename}"
-                        },
-                        {
-                            "type": "mrkdwn",
-                            "text": "*Server IP:* \n ${alertip}:${port}"
-                        },
-                        {
-                            "type": "mrkdwn",
-                            "text": "*Server Name:* \n ${servername}"
-                        }
-                    ]
-                },
-     			{
-                    "type": "section",
-                    "text": {
-                            "type": "mrkdwn",
-                            "text": "Hostname: ${HOSTNAME} / More info: ${alerturl}"
-                    }
-                }
-            ]
-    	}
-    ]
+		"attachments": [
+			{
+				"color": "#36a64f",
+				"blocks": [
+					{
+										"type": "section",
+										"text": {
+												"type": "mrkdwn",
+												"text": "*LinuxGSM Alert*"
+										}
+								},
+								{
+										"type": "section",
+										"text": {
+												"type": "mrkdwn",
+												"text": "*${alertemoji} ${alertsubject}* \n ${alertbody}"
+										}
+								},
+								{
+										"type": "divider"
+								},
+								{
+										"type": "section",
+										"fields": [
+												{
+														"type": "mrkdwn",
+														"text": "*Game:* \n ${gamename}"
+												},
+												{
+														"type": "mrkdwn",
+														"text": "*Server IP:* \n ${alertip}:${port}"
+												},
+												{
+														"type": "mrkdwn",
+														"text": "*Server Name:* \n ${servername}"
+												}
+										]
+								},
+					 {
+										"type": "section",
+										"text": {
+														"type": "mrkdwn",
+														"text": "Hostname: ${HOSTNAME} / More info: ${alerturl}"
+										}
+								}
+						]
+			}
+		]
 }
 EOF
 )
@@ -75,6 +73,6 @@ if [ "${slacksend}" == "ok" ]; then
 	fn_print_ok_nl "Sending Slack alert"
 	fn_script_log_pass "Sending Slack alert"
 else
-    fn_print_fail_nl "Sending Slack alert: ${slacksend}"
+	fn_print_fail_nl "Sending Slack alert: ${slacksend}"
 	fn_script_log_fatal "Sending Slack alert: ${slacksend}"
 fi

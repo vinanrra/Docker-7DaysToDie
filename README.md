@@ -36,7 +36,7 @@ docker run \
   -e VERSION=stable \
   -e TEST_ALERT=YES \
   -e PUID=1000 \
-  -e PUID=1000 \
+  -e PGID=1000 \
   -e TimeZone=Europe/Madrid \
   vinanrra/7dtd-server
 ```
@@ -164,6 +164,12 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 * You can also remove the old dangling images: `docker image prune`
 
 ## Versions
+* **24/09/2020**
+   * Updated Linuxgsm scripts
+   
+* **28/08/2020**
+   * Fixed space check
+
 * **30/06/2020**
    * Fixed version install
    
@@ -235,6 +241,6 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 * **[Codestation Reddit User](https://www.reddit.com/r/docker/comments/evn3st/permission_problems_with_volumes/fg16w87/)** - Permission problems with volumes
 
 ## Donations
-   If you want to pay me a beer here you can
+   If you want to buy me a beer here you can
 
    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=25XWMUHD8NZHG&source=url" rel="PayPal">![PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)
