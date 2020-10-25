@@ -103,7 +103,6 @@ ADD linuxgsm.sh install.sh user.sh /home/sdtdserver/
 ADD scripts /home/sdtdserver/scripts
 ADD lgsm/config-lgsm/sdtdserver/common.cfg /home/sdtdserver/
 RUN mkdir lgsm
-RUN mkdir /home/sdtdserver/serverfiles/Mods
 ADD lgsm /home/sdtdserver/lgsm
 
 # Apply permissions

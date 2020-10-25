@@ -79,6 +79,10 @@ source $scriptsDir/check_space.sh
             "
 	    
             echo "If this file is missing, server will be re-installed" > serverfiles/DONT_REMOVE.txt
+            
+    # Creating 7 Days to Die mod folder
+
+            mkdir /home/sdtdserver/serverfiles/Mods
 
     # Install Alloc Fixes
 
@@ -90,7 +94,15 @@ source $scriptsDir/check_space.sh
             =======================================================================
             IMPORTANT:
 
-            Alloc Fixed updated.
+            Alloc Fixes updated.
+            =======================================================================
+            "
+            else
+            echo "
+            =======================================================================
+            IMPORTANT:
+
+            Not installing Alloc Fixes.
             =======================================================================
             "
             fi

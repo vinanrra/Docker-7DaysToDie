@@ -3,23 +3,9 @@
 MODS_FOLDER=/home/sdtdserver/serverfiles/Mods
 DL_LINK="http://illy.bz/fi/7dtd/server_fixes.tar.gz"
 
-printHeader() {
-    printf '%s\n' ""
-    printf '%s\n' "##################"
-    printf '%s\n' "$1"
-    printf '%s\n' "##################"
-    printf '%s\n' ""
-}
-
 downloadRelease() {
     curl $DL_LINK -SsL -o allocs.tar.gz
 }
-
-if [ $# -eq 0 ]
-  then
-    echo "[Alloc Fixes] No arguments supplied. Please specify the path to your Mods folder as first argument."
-    exit 1
-fi
 
 clear
 

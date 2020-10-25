@@ -91,7 +91,7 @@ services:
 | `START_MODE=1` | Start mode of the container - see below for explanation **required** |
 | `VERSION=stable` | Change between 7 days to die versions [more info](https://steamcommunity.com/app/251570/discussions/0/2570942124844173383/) **optional** |
 | `TEST_ALERT=YES` | Test alerts at start of server **optional** |
-| `ALLOC_FIXES=YES` | Install/Update [Alloc Fixes](https://7dtd.illy.bz/wiki/Server%20fixes) **optional** |
+| `ALLOC_FIXES=YES` | Install/Update [Alloc Fixes](https://7dtd.illy.bz/wiki/Server%20fixes), ONLY USE WITH LATEST STABLE BUILD **optional** |
 | `PUID=1000` | for UserID - see below for explanation |
 | `PGID=1000` | for GroupID - see below for explanation |
 | `TimeZone=Europe/Madrid` | for TimeZone - see [TZ Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) for time zones **recomendable**|
