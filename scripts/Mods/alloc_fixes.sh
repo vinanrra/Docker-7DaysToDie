@@ -22,8 +22,8 @@ tar --strip-components=1 -xf allocs.tar.gz -C allocs-temp
 
 echo "[Alloc Fixes] Installing components"
 
-rm -rf $1/Allocs*
-mv allocs-temp/* $1
+rm -rf $MODS_FOLDER/Allocs*
+mv allocs-temp/* $MODS_FOLDER
 
 echo "[Alloc Fixes] Cleanup"
 
