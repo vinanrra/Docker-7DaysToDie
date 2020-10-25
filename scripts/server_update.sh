@@ -32,9 +32,9 @@
             =======================================================================
             "
 
-        if [ "$ALLOC_FIXES" == 'yes'  ]
+        if [ "$ALLOC_FIXES" == 'YES'  ]
         then
-        ./scripts/Mods/alloc_fixes.sh
+        source $scriptsDir/Mods/alloc_fixes.sh
 
             echo "
             =======================================================================

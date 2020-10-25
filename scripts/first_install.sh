@@ -2,9 +2,9 @@
 
 source $scriptsDir/check_space.sh
 	    
-	    if [ "$space" == 'no'  ]; then
+            if [ "$space" == 'no'  ]; then
 	    
-	    echo "
+            echo "
             =======================================================================
             ERROR:
             
@@ -16,7 +16,7 @@ source $scriptsDir/check_space.sh
             =======================================================================
             "
 	    	exit
-	    fi
+            fi
 
             echo "
             =======================================================================
@@ -27,7 +27,7 @@ source $scriptsDir/check_space.sh
             "
 
         # Start to create default files
-        ./sdtdserver
+            ./sdtdserver
         
             echo "
             =======================================================================
@@ -41,23 +41,23 @@ source $scriptsDir/check_space.sh
 	
 	# Add alerts examples
 	
-	    mv -f common.cfg /home/sdtdserver/lgsm/config-lgsm/sdtdserver/common.cfg
+            mv -f common.cfg /home/sdtdserver/lgsm/config-lgsm/sdtdserver/common.cfg
 	
 	# Check version
 	
-	if [ "$VERSION" == 'stable'  ]
-        then
-	    # Remove branch line
+            if [ "$VERSION" == 'stable'  ]
+            then
+            # Remove branch line
+                sed -i '/branch/d' /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+            else
+            # Remove branch line if exist to avoid multiple branch lines
             sed -i '/branch/d' /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
-        else
-	    # Remove branch line if exist to avoid multiple branch lines
-	    sed -i '/branch/d' /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
 	    
             echo branch='"-beta $VERSION"' >> /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
 
-        fi
+            fi
 	
-	echo "
+            echo "
             =======================================================================
             IMPORTANT:
             
@@ -79,3 +79,18 @@ source $scriptsDir/check_space.sh
             "
 	    
             echo "If this file is missing, server will be re-installed" > serverfiles/DONT_REMOVE.txt
+
+    # Install Alloc Fixes
+
+            if [ "$ALLOC_FIXES" == 'YES'  ]
+            then
+            source $scriptsDir/Mods/alloc_fixes.sh
+
+            echo "
+            =======================================================================
+            IMPORTANT:
+
+            Alloc Fixed updated.
+            =======================================================================
+            "
+            fi
