@@ -74,11 +74,9 @@ RUN  set -ex; \
 
 # Crontab
 COPY crontab/sdtdserver-monitor /etc/cron.hourly/sdtdserver-monitor
-RUN find /etc/cron.hourly/ -type f -iname "*" -exec chmod +x {} \;
-
 
 # Give execution rights on the cron job and apply cron job
-RUN chmod 0644 /etc/cron.d/sdtdserver-monitor && crontab /etc/cron.d/sdtdserver-monitor
+RUN find /etc/cron.hourly/ -type f -iname "*" -exec chmod +x {} \;
 
 # Clear unused files
 RUN apt clean && \
