@@ -55,7 +55,7 @@ RUN dpkg --add-architecture i386 && \
 		locales \
 		libgdiplus \
 		cron \
-		tcl
+		tclsh
 
 # Install latest su-exec
 RUN  set -ex; \
