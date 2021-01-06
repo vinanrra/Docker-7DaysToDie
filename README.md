@@ -167,7 +167,7 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 
 ## Changelog
 
-* [Changelog](/readme.md)
+* [Changelog](/Changelog.md )
 
 ## Thanks
 * **[LinuxGSM](https://linuxgsm.com/)** - For the awesome script
