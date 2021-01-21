@@ -2,7 +2,13 @@
 
 exit_handler()
 {
-	echo "Shutdown signal received.."
+	echo "
+            =======================================================================
+            
+            Shutdown signal received..
+            
+            =======================================================================
+        "
 
 	# Execute the  shutdown commands
         ./sdtdserver stop
