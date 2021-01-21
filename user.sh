@@ -14,7 +14,7 @@ exit_handler()
             7 DAYS TO DIE SERVER HAVE BEEN STOPPED
             
             =======================================================================
-            "echo "7 have been stop"
+        "
 	exit
 }
 
