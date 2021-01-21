@@ -5,7 +5,7 @@ exit_handler()
 	echo "Shutdown signal received.."
 
 	# Execute the  shutdown commands
-            ./sdtdserver stop
+        ./sdtdserver stop
 	sleep 4
 
 	echo "
