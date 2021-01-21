@@ -1,4 +1,8 @@
 ## Changelog
+* **22/01/2021**
+  * Added clean stop when Docker stop signal its send
+  * Fixed Changelog link
+  
 * **25/12/2020**
    * Updated LinuxGSM scripts
    * Added missing dependencies
