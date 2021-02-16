@@ -1,4 +1,30 @@
 #!/bin/sh
+exit_handler()
+{
+	echo "
+            =======================================================================
+            
+            Shutdown signal received..
+            
+            =======================================================================
+        "
+
+	# Execute the  shutdown commands
+        ./sdtdserver stop
+	sleep 4
+
+	echo "
+            =======================================================================
+            
+            7 DAYS TO DIE SERVER HAVE BEEN STOPPED
+            
+            =======================================================================
+        "
+	exit
+}
+
+# Trap specific signals and forward to the exit handler
+trap 'exit_handler' SIGINT SIGTERM
 
 set -eu
 
