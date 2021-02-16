@@ -20,6 +20,33 @@ scriptsDir="${rootDir}/scripts"
 	    source $scriptsDir/first_install.sh
     fi
 
+exit_handler()
+{
+	echo "
+            =======================================================================
+            
+            Shutdown signal received..
+            
+            =======================================================================
+        "
+
+	# Execute the  shutdown commands
+        ./sdtdserver stop
+	sleep 4
+
+	echo "
+            =======================================================================
+            
+            7 DAYS TO DIE SERVER HAVE BEEN STOPPED
+            
+            =======================================================================
+        "
+	exit
+}
+
+# Trap specific signals and forward to the exit handler
+trap 'exit_handler' SIGINT SIGTERM
+
 # Use of case to avoid errors if used wrong START_MODE
 
   case $START_MODE in
