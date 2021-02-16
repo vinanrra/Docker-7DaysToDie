@@ -10,6 +10,7 @@ exit_handler()
         "
 
 	# Execute the  shutdown commands
+        su-exec sdtdserver "$@"
         ./sdtdserver stop
 	sleep 60
 
