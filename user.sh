@@ -11,7 +11,7 @@ exit_handler()
 
 	# Execute the  shutdown commands
         ./sdtdserver stop
-	sleep 4
+	sleep 60
 
 	echo "
             =======================================================================
