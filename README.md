@@ -42,7 +42,7 @@ docker run \
 ```
 
 ### docker-compose
-```
+```yaml
 version: '2'
 services:
   7dtdserver:
