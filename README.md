@@ -115,7 +115,7 @@ IF YOU UPDATE FROM STABLE TO EXPERIMENTAL OR VICE VERSA, REMEMBER TO BACKUP FIRS
 LinuxGSM allows alerts to be received using various methods, multiple alerts can be enable at same time:
 
 * Discord
-* Email (Not working)
+* Email
 * IFTTT
 * Mailgun
 * Pushbullet
