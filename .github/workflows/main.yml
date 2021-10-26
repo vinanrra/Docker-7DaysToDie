@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: [Relase] Docker Image CI
 
 on:
   release:
@@ -9,6 +9,24 @@ on:
   workflow_dispatch:
 
 jobs:
+  get_latest_tag:
+    steps:
+      - uses: actions/checkout@v1
+      - name: "call action"
+        id: last_release
+        uses: InsonusK/get-latest-release@v1.0.1
+        with:
+          myToken: ${{ github.token }}
+          exclude_types: "release"
+          view_top: 1
+      - name: "Print result"
+        run: |
+          echo "id: ${{ steps.last_release.outputs.id }}"
+          echo "name: ${{ steps.last_release.outputs.name }}"
+          echo "tag_name: ${{ steps.last_release.outputs.tag_name }}"
+          echo "created_at: ${{ steps.last_release.outputs.created_atd }}"
+          echo "draft: ${{ steps.last_release.outputs.draft }}"
+          echo "prerelease: ${{ steps.last_release.outputs.prerelease }}"
   docker:
     runs-on: ubuntu-latest
     steps:
@@ -24,9 +42,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - 
-        name: Get the tag name
-        run: echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       -
         name: Echo
-        run: echo ${{ env.TAG }}
+        run: echo ${{ steps.last_release.outputs.tag_name }}
