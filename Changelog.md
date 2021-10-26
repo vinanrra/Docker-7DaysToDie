@@ -4,6 +4,7 @@
   * Update readme
   * Added automatic backup
   * Added automatic monitorization (This will restart server if goes down)
+  * Update LGSM version
 
 * **22/01/2021**
   * Added clean stop when Docker stop signal its send
