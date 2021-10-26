@@ -1,4 +1,4 @@
-name: Relase - Docker Image CI
+name: Release - Docker Image CI
 
 on:
   release:
