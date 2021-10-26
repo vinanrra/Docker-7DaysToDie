@@ -11,6 +11,7 @@
 ## Information
 
 * This container works with mods, if you have any problems open a [github ticket](https://github.com/vinanrra/Docker-7DaysToDie/issues).
+* Also this container have: Backups and auto-restart if crash.
 * The first time you start the container it will be auto-installed stable version.
 * If you want to change any server settings, edit *sdtdserver.xml* in */path/to/ServerFiles/sdtdserver.xml*
 * If you want to recieve alerts check [ALERTS](https://github.com/vinanrra/Docker-7DaysToDie#alerts).
