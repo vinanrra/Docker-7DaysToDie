@@ -1,10 +1,9 @@
 name: Docker Image CI
 
 on:
-#  push:
-#    branches: [ master ]
-  pull_request:
+  release:
     branches: [ master ]
+    types: [ published ]
 
 jobs:
   docker:
@@ -23,9 +22,16 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
+        name: Get the tag name
+        run: echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+      -
+        name: Echo
+        run: echo ${{ env.TAG }}
+      -
         name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: vinanrra/7dtd-server:test
+          tags: |
+            vinanrra/7dtd-server:${{ env.TAG }}
