@@ -1,4 +1,4 @@
-name: Relase - Test Docker Image CI
+name: Release - Test Docker Image CI
 
 on:
   release:
@@ -48,4 +48,3 @@ jobs:
           push: true
           tags: |
             vinanrra/7dtd-server:test
-            vinanrra/7dtd-server:${{ steps.last_release.outputs.tag_name }}
