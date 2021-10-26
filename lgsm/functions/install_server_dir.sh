@@ -1,6 +1,7 @@
 #!/bin/bash
-# LinuxGSM install_server_dir.sh function
+# LinuxGSM install_server_dir.sh module
 # Author: Daniel Gibbs
+# Contributors: http://linuxgsm.com/contrib
 # Website: https://linuxgsm.com
 # Description: Creates the server directory.
 
@@ -14,7 +15,6 @@ if [ -d "${serverfiles}" ]; then
 	fn_print_warning_nl "A server is already installed here."
 fi
 pwd
-echo -e ""
 if [ -z "${autoinstall}" ]; then
 	if ! fn_prompt_yn "Continue?" Y; then
 		exitcode=0

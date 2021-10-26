@@ -1,6 +1,7 @@
 #!/bin/bash
-# LinuxGSM command_update_linuxgsm.sh function
+# LinuxGSM command_update_linuxgsm.sh module
 # Author: Daniel Gibbs
+# Contributors: http://linuxgsm.com/contrib
 # Website: https://linuxgsm.com
 # Description: Deletes the functions dir to allow re-downloading of functions from GitHub.
 
@@ -10,6 +11,7 @@ functionselfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
 fn_firstcommand_set
 
 check.sh
+info_distro.sh
 
 fn_print_dots ""
 fn_script_log_info "Updating LinuxGSM"
@@ -57,7 +59,7 @@ if [ "${tmp_script_diff}" != "" ]; then
 	fn_print_update_eol_nl
 	fn_script_log_update "Checking ${remotereponame} linuxgsm.sh"
 	rm -f "${tmpdir:?}/linuxgsm.sh"
-	fn_fetch_file_github "" "linuxgsm.sh" "${tmpdir}" "nochmodx" "norun" "noforcedl" "nomd5"
+	fn_fetch_file_github "" "linuxgsm.sh" "${tmpdir}" "nochmodx" "norun" "noforcedl" "nohash"
 else
 	fn_print_ok_eol_nl
 	fn_script_log_pass "Checking ${remotereponame} linuxgsm.sh"
@@ -137,7 +139,7 @@ if [ "${config_file_diff}" != "" ]; then
 	fn_print_update_eol_nl
 	fn_script_log_update "Checking ${remotereponame} config _default.cfg"
 	rm -f "${configdirdefault:?}/config-lgsm/${gameservername:?}/_default.cfg"
-	fn_fetch_file_github "lgsm/config-default/config-lgsm/${gameservername}" "_default.cfg" "${configdirdefault}/config-lgsm/${gameservername}" "nochmodx" "norun" "noforce" "nomd5"
+	fn_fetch_file_github "lgsm/config-default/config-lgsm/${gameservername}" "_default.cfg" "${configdirdefault}/config-lgsm/${gameservername}" "nochmodx" "norun" "noforce" "nohash"
 	alert="config"
 	alert.sh
 else
@@ -145,6 +147,38 @@ else
 	fn_script_log_pass "Checking ${remotereponame} config _default.cfg"
 fi
 
+# Check distro csv. ${datadir}/${distroid}-${distroversioncsv}.csv
+if [ -f "${datadir}/${distroid}-${distroversioncsv}.csv" ]; then
+	echo -en "checking ${remotereponame} config ${distroid}-${distroversioncsv}.csv...\c"
+	fn_script_log_info "Checking ${remotereponame} ${distroid}-${distroversioncsv}.csv"
+	if [ "${remotereponame}" == "GitHub" ]; then
+		curl --connect-timeout 10 -IsfL "https://raw.githubusercontent.com/${githubuser}/${githubrepo}/${githubbranch}/lgsm/data/${distroid}-${distroversioncsv}.csv" 1>/dev/null
+	else
+		curl --connect-timeout 10 -IsfL "https://bitbucket.org/${githubuser}/${githubrepo}/raw/${githubbranch}/lgsm/data/${distroid}-${distroversioncsv}.csv" 1>/dev/null
+	fi
+	if [ $? != "0" ]; then
+		fn_print_fail_eol_nl
+		fn_script_log_fatal "Checking ${remotereponame} ${distroid}-${distroversioncsv}.csv"
+		fn_script_log_fatal "Curl returned error: $?"
+		core_exit.sh
+	fi
+
+	if [ "${remotereponame}" == "GitHub" ]; then
+		config_file_diff=$(diff "${datadir}/${distroid}-${distroversioncsv}.csv" <(curl --connect-timeout 10 -s "https://raw.githubusercontent.com/${githubuser}/${githubrepo}/${githubbranch}/lgsm/data/${distroid}-${distroversioncsv}.csv"))
+	else
+		config_file_diff=$(diff "${datadir}/${distroid}-${distroversioncsv}.csv" <(curl --connect-timeout 10 -s "https://bitbucket.org/${githubuser}/${githubrepo}/raw/${githubbranch}/lgsm/data/${distroid}-${distroversioncsv}.csv"))
+	fi
+
+	if [ "${config_file_diff}" != "" ]; then
+		fn_print_update_eol_nl
+		fn_script_log_update "Checking ${remotereponame} ${distroid}-${distroversioncsv}.csv"
+		rm -f "${datadir:?}/${distroid}-${distroversioncsv}.csv"
+		fn_fetch_file_github "lgsm/data" "${distroid}-${distroversioncsv}.csv" "${datadir}" "nochmodx" "norun" "noforce" "nohash"
+	else
+		fn_print_ok_eol_nl
+		fn_script_log_pass "Checking ${remotereponame} ${distroid}-${distroversioncsv}.csv"
+	fi
+fi
 # Check and update modules.
 if [ -n "${functionsdir}" ]; then
 	if [ -d "${functionsdir}" ]; then

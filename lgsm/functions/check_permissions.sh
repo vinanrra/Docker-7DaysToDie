@@ -1,7 +1,7 @@
 #!/bin/bash
 # LinuxGSM check_permissions.sh
 # Author: Daniel Gibbs
-# Contributor: UltimateByte
+# Contributors: http://linuxgsm.com/contrib
 # Website: https://linuxgsm.com
 # Description: Checks ownership & permissions of scripts, files and directories.
 
@@ -31,13 +31,13 @@ fn_check_ownership(){
 		{
 			echo -e "User\tGroup\tFile\n"
 			if [ "${selfownissue}" == "1" ]; then
-				find "${rootdir}/${selfname}" -not -user "$(whoami)" -printf "%u\t\t%g\t%p\n"
+				find "${rootdir}/${selfname}" -not -user "$(whoami)" -printf "%u\t%g\t%p\n"
 			fi
 			if [ "${funcownissue}" == "1" ]; then
-				find "${functionsdir}" -not -user "$(whoami)" -printf "%u\t\t%g\t%p\n"
+				find "${functionsdir}" -not -user "$(whoami)" -printf "%u\t%g\t%p\n"
 			fi
 			if [ "${filesownissue}" == "1"  ]; then
-				find "${serverfiles}" -not -user "$(whoami)" -printf "%u\t\t%g\t%p\n"
+				find "${serverfiles}" -not -user "$(whoami)" -printf "%u\t%g\t%p\n"
 			fi
 
 		} | column -s $'\t' -t | tee -a "${lgsmlog}"

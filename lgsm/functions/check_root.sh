@@ -1,6 +1,7 @@
 #!/bin/bash
-# LinuxGSM check_root.sh function
+# LinuxGSM check_root.sh module
 # Author: Daniel Gibbs
+# Contributors: http://linuxgsm.com/contrib
 # Website: https://linuxgsm.com
 # Description: Checks if the user tried to run the script as root.
 
@@ -11,6 +12,9 @@ if [ "$(whoami)" = "root" ]; then
 		fn_print_fail_nl "Do NOT run this script as root!"
 		if [ -d "${lgsmlogdir}" ]; then
 			fn_script_log_fatal "${selfname} attempted to run as root."
+		else
+			# Forces exit code is log does not yet exist.
+			exitcode=1
 		fi
 		core_exit.sh
 	fi

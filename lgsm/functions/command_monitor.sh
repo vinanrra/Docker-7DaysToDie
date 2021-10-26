@@ -1,7 +1,7 @@
 #!/bin/bash
-# LinuxGSM command_monitor.sh function
+# LinuxGSM command_monitor.sh module
 # Author: Daniel Gibbs
-# Contributor: UltimateByte
+# Contributors: http://linuxgsm.com/contrib
 # Website: https://linuxgsm.com
 # Description: Monitors server by checking for running processes
 # then passes to gamedig and gsquery.
@@ -74,12 +74,10 @@ fn_monitor_check_queryport(){
 		fn_script_log_info "Checking port: CHECKING"
 		if [ -n "${rconenabled}" ]&&[ "${rconenabled}" != "true" ]&&[ ${shortname} == "av" ]; then
 			fn_print_warn "Checking port: Unable to query, rcon is not enabled"
-			fn_print_warn_eol_nl
 			fn_script_log_warn "Checking port: Unable to query, rcon is not enabled"
 		else
 			fn_print_error "Checking port: Unable to query, queryport is not set"
 			fn_script_log_error "Checking port: Unable to query, queryport is not set"
-			fn_print_error_eol_nl
 		fi
 		core_exit.sh
 	fi
@@ -87,7 +85,7 @@ fn_monitor_check_queryport(){
 
 fn_query_gsquery(){
 	if [ ! -f "${functionsdir}/query_gsquery.py" ]; then
-		fn_fetch_file_github "lgsm/functions" "query_gsquery.py" "${functionsdir}" "chmodx" "norun" "noforce" "nomd5"
+		fn_fetch_file_github "lgsm/functions" "query_gsquery.py" "${functionsdir}" "chmodx" "norun" "noforce" "nohash"
 	fi
 	"${functionsdir}"/query_gsquery.py -a "${queryip}" -p "${queryport}" -e "${querytype}" > /dev/null 2>&1
 	querystatus="$?"
@@ -227,8 +225,7 @@ fn_monitor_loop(){
 monitorflag=1
 check.sh
 core_logs.sh
-info_config.sh
-info_parms.sh
+info_game.sh
 
 # query pre-checks
 fn_monitor_check_lockfile
