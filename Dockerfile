@@ -4,7 +4,7 @@ FROM steamcmd/steamcmd:ubuntu-18
 
 ####Labels####
 LABEL maintainer="vinanrra"
-LABEL build_version="version:- 0.1.5"
+LABEL build_version="version: 0.1.5"
 
 ####Environments####
 
@@ -13,10 +13,12 @@ ARG PGID=1000
 ENV PUID=$PUID
 ENV PGID=$PGID
 ENV START_MODE=0
-ENV TEST_ALERT=YES
+ENV TEST_ALERT=no
 ENV TimeZone=Europe/Madrid
 ENV VERSION=stable
-ENV ALLOC_FIXES=no
+ENV ALLOC_FIXES=yes
+ENV MONITOR=yes
+ENV BACKUP=yes
 
 ##Need use xterm for LinuxGSM##
 ENV TERM=xterm
@@ -71,9 +73,6 @@ RUN  set -ex; \
      rm /usr/local/bin/su-exec.c; \
      \
      apt-get purge -y --auto-remove $fetch_deps
-
-# Crontab
-COPY crontab/sdtdserver-monitor /etc/cron.hourly/sdtdserver-monitor
 
 # Give execution rights on the cron job and apply cron job
 RUN find /etc/cron.hourly/ -type f -iname "*" -exec chmod +x {} \;

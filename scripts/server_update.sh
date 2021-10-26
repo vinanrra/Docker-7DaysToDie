@@ -1,7 +1,7 @@
 #!/bin/bash
 ./sdtdserver update
 
-        if [ "$VERSION" == 'stable'  ]
+        if [ "${VERSION,,}" == 'stable'  ]
         then
 	    # Remove branch line
             sed -i '/branch/d' /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
@@ -15,7 +15,7 @@
             =======================================================================
             IMPORTANT:
             
-            Server version changed to: $VERSION
+            Server version changed to: ${VERSION,,}
             
             =======================================================================
             "
@@ -27,12 +27,12 @@
             =======================================================================
             IMPORTANT:
 
-            The server have been updated to $VERSION
+            The server have been updated to ${VERSION,,}
             More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
             =======================================================================
             "
 
-        if [ "$ALLOC_FIXES" == 'YES'  ]
+        if [ "${ALLOC_FIXES,,}" == 'yes'  ]
         then
         source $scriptsDir/Mods/alloc_fixes.sh
 

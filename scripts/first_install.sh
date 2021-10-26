@@ -2,7 +2,7 @@
 
 source $scriptsDir/check_space.sh
 	    
-            if [ "$space" == 'no'  ]; then
+            if [ "${space,,}" == 'no'  ]; then
 	    
             echo "
             =======================================================================
@@ -45,7 +45,7 @@ source $scriptsDir/check_space.sh
 	
 	# Check version
 	
-            if [ "$VERSION" == 'stable'  ]
+            if [ "${VERSION,,}" == 'stable'  ]
             then
             # Remove branch line
                 sed -i '/branch/d' /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
@@ -61,7 +61,7 @@ source $scriptsDir/check_space.sh
             =======================================================================
             IMPORTANT:
             
-            INSTALLING: $VERSION
+            INSTALLING: ${$VERSION,,}
             =======================================================================
             "
 	
@@ -86,7 +86,7 @@ source $scriptsDir/check_space.sh
 
     # Install Alloc Fixes
 
-            if [ "$ALLOC_FIXES" == 'YES'  ]
+            if [ "${ALLOC_FIXES,,}" == 'yes'  ]
             then
             source $scriptsDir/Mods/alloc_fixes.sh
 

@@ -1,2 +1,0 @@
-#!/bin/bash
-./home/username/gameserver update > /dev/null 2>&1
