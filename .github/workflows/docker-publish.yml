@@ -1,4 +1,4 @@
-name: [Relase] Docker Image CI
+name: Relase - Docker Image CI
 
 on:
   release:
@@ -9,7 +9,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  get_latest_tag:
+  docker:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - name: "call action"
@@ -27,9 +28,6 @@ jobs:
           echo "created_at: ${{ steps.last_release.outputs.created_atd }}"
           echo "draft: ${{ steps.last_release.outputs.draft }}"
           echo "prerelease: ${{ steps.last_release.outputs.prerelease }}"
-  docker:
-    runs-on: ubuntu-latest
-    steps:
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
