@@ -134,6 +134,12 @@ The backup command allows the creation of .tar.gz archives of a game server, alt
 
 Backups settings can be changed in */path/to/LGSM-Config/common.cfg*
 
+If you wants to force a backup run this command:
+
+```bash
+  docker-compose exec 7dtdserver ./sdtdserver backup
+```
+
 ## Alerts
 
 LinuxGSM allows alerts to be received using various methods, multiple alerts can be enable at same time:
