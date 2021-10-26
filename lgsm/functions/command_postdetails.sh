@@ -1,9 +1,9 @@
 #!/bin/bash
-# LinuxGSM command_postdetails.sh function
-# Author: CedarLUG
-# Contributor: CedarLUG
+# LinuxGSM command_postdetails.sh module
+# Author: Daniel Gibbs
+# Contributors: http://linuxgsm.com/contrib
 # Website: https://linuxgsm.com
-# Description: Strips sensitive information out of Details output
+# Description: Strips sensitive information out of Details output.
 
 commandname="POST-DETAILS"
 commandaction="Posting details"
@@ -31,8 +31,7 @@ if [ "${exitbypass}" ]; then
 else
 	# Run checks and gathers details to display.
 	check.sh
-	info_config.sh
-	info_parms.sh
+	info_game.sh
 	info_distro.sh
 	info_messages.sh
 	for queryip in "${queryips[@]}"
@@ -52,9 +51,9 @@ else
 		fn_info_message_backup
 		# Some game servers do not have parms.
 		if [ "${shortname}" != "jc2" ]&&[ "${shortname}" != "jc3" ]&&[ "${shortname}" != "dst" ]&&[ "${shortname}" != "pz" ]&&[ "${engine}" != "renderware" ]; then
-			fn_parms
 			fn_info_message_commandlineparms
 		fi
+		fn_info_message_ports_edit
 		fn_info_message_ports
 		fn_info_message_select_engine
 		fn_info_message_statusbottom

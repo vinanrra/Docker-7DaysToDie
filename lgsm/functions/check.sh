@@ -1,6 +1,7 @@
 #!/bin/bash
-# LinuxGSM check.sh function
+# LinuxGSM check.sh module
 # Author: Daniel Gibbs
+# Contributors: http://linuxgsm.com/contrib
 # Website: https://linuxgsm.com
 # Description: Overall function for managing checks.
 # Runs checks that will either halt on or fix an issue.
@@ -53,7 +54,7 @@ for allowed_command in "${allowed_commands_array[@]}"; do
 	fi
 done
 
-allowed_commands_array=( DEBUG START STOP )
+allowed_commands_array=( DEBUG START )
 for allowed_command in "${allowed_commands_array[@]}"; do
 	if [ "${allowed_command}" == "${commandname}" ]; then
 		check_deps.sh

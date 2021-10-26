@@ -1,13 +1,14 @@
 #!/bin/bash
-# LinuxGSM update_mta.sh function
+# LinuxGSM update_mta.sh module
 # Author: Daniel Gibbs
+# Contributors: http://linuxgsm.com/contrib
 # Website: https://linuxgsm.com
 # Description: Handles updating of Multi Theft Auto servers.
 
 functionselfname="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
 
 fn_update_mta_dl(){
-	fn_fetch_file "http://linux.mtasa.com/dl/multitheftauto_linux_x64.tar.gz" "" "" "" "${tmpdir}" "multitheftauto_linux_x64.tar.gz" "" "norun" "noforce" "nomd5"
+	fn_fetch_file "http://linux.mtasa.com/dl/multitheftauto_linux_x64.tar.gz" "" "" "" "${tmpdir}" "multitheftauto_linux_x64.tar.gz" "" "norun" "noforce" "nohash"
 	mkdir "${tmpdir}/multitheftauto_linux_x64"
 	fn_dl_extract "${tmpdir}" "multitheftauto_linux_x64.tar.gz" "${tmpdir}/multitheftauto_linux_x64"
 	echo -e "copying to ${serverfiles}...\c"
@@ -30,6 +31,7 @@ fn_update_mta_localbuild(){
 	fn_print_dots "Checking local build: ${remotelocation}"
 	# Uses log file to gather info.
 	# Gives time for log file to generate.
+	requirerestart=1
 	if [ ! -f "${serverfiles}/mods/deathmatch/logs/server.log" ]; then
 		fn_print_error "Checking local build: ${remotelocation}"
 		fn_print_error_nl "Checking local build: ${remotelocation}: no log files containing version info"
@@ -97,10 +99,7 @@ fn_update_mta_localbuild(){
 
 fn_update_mta_remotebuild(){
 	# Gets remote build info.
-	majorversion=$(curl -s https://raw.githubusercontent.com/multitheftauto/mtasa-blue/master/Server/version.h | grep "#define MTASA_VERSION_MAJOR" | awk '{ print $3 }' | sed 's/\r//g')
-	minorversion=$(curl -s https://raw.githubusercontent.com/multitheftauto/mtasa-blue/master/Server/version.h | grep "#define MTASA_VERSION_MINOR" | awk '{ print $3 }' | sed 's/\r//g')
-	maintenanceversion=$(curl -s https://raw.githubusercontent.com/multitheftauto/mtasa-blue/master/Server/version.h | grep "#define MTASA_VERSION_MAINTENANCE" | awk '{ print $3 }' | sed 's/\r//g')
-	remotebuild="${majorversion}.${minorversion}.${maintenanceversion}"
+	remotebuild=$(curl -s "https://api.github.com/repos/multitheftauto/mtasa-blue/releases/latest" | jq -r '.tag_name')
 	if [ "${firstcommandname}" != "INSTALL" ]; then
 		fn_print_dots "Checking remote build: ${remotelocation}"
 		# Checks if remotebuild variable has been set.
@@ -151,11 +150,14 @@ fn_update_mta_compare(){
 		if [ "${status}" == "0" ]; then
 			exitbypass=1
 			fn_update_mta_dl
-			exitbypass=1
-			command_start.sh
-			exitbypass=1
-			command_stop.sh
-			fn_firstcommand_reset
+			if [ "${requirerestart}" == "1" ]; then
+				exitbypass=1
+				command_start.sh
+				fn_firstcommand_reset
+				exitbypass=1
+				command_stop.sh
+				fn_firstcommand_reset
+			fi
 		# If server started.
 		else
 			fn_print_restart_warning

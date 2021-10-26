@@ -1,6 +1,7 @@
 #!/bin/bash
-# LinuxGSM alert_ifttt.sh function
+# LinuxGSM alert_ifttt.sh module
 # Author: Daniel Gibbs
+# Contributors: http://linuxgsm.com/contrib
 # Website: https://linuxgsm.com
 # Description: Sends IFTTT alert.
 
@@ -16,7 +17,7 @@ EOF
 )
 
 fn_print_dots "Sending IFTTT alert"
-iftttsend=$(curl --connect-timeout 10 -sSL -H "Content-Type: application/json" -X POST -d """${json}""" "https://maker.ifttt.com/trigger/${iftttevent}/with/key/${ifttttoken}" | grep "Bad Request")
+iftttsend=$(curl --connect-timeout 10 -sSL -H "Content-Type: application/json" -X POST -d "$(echo -n "${json}" | jq -c .)" "https://maker.ifttt.com/trigger/${iftttevent}/with/key/${ifttttoken}" | grep "Bad Request")
 
 if [ -n "${iftttsend}" ]; then
 	fn_print_fail_nl "Sending IFTTT alert: ${pushbulletsend}"

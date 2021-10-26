@@ -1,6 +1,7 @@
 #!/bin/bash
-# LinuxGSM command_test_alert.sh function
+# LinuxGSM command_test_alert.sh module
 # Author: Daniel Gibbs
+# Contributors: http://linuxgsm.com/contrib
 # Website: https://linuxgsm.com
 # Description: Sends a test alert.
 
@@ -11,7 +12,7 @@ fn_firstcommand_set
 
 fn_print_dots "${servername}"
 check.sh
-info_config.sh
+info_game.sh
 alert="test"
 alert.sh
 
