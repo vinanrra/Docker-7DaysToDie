@@ -59,7 +59,10 @@ RUN dpkg --add-architecture i386 && \
 		locales \
 		libgdiplus \
 		cron \
-		tclsh
+		tclsh \
+		cpio \
+		libsdl2-2.0-0:i386 \
+		xz-utils
 
 # Install latest su-exec
 RUN  set -ex; \
