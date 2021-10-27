@@ -1,6 +1,5 @@
 #!/bin/sh
-exit_handler()
-{
+function exit_handler {
 	echo "
             =======================================================================
             
@@ -10,9 +9,7 @@ exit_handler()
         "
 
 	# Execute the  shutdown commands
-        su-exec sdtdserver "$@"
-        ./sdtdserver stop
-	sleep 60
+        su-exec sdtdserver ./sdtdserver stop
 
 	echo "
             =======================================================================
@@ -25,7 +22,7 @@ exit_handler()
 }
 
 # Trap specific signals and forward to the exit handler
-trap 'exit_handler' SIGINT SIGTERM
+trap exit_handler EXIT SIGTERM
 
 set -eu
 

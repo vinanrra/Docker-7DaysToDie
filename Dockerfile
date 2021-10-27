@@ -1,5 +1,7 @@
 FROM steamcmd/steamcmd:ubuntu-18
 
+STOPSIGNAL SIGTERM
+
 ##############BASE IMAGE##############
 
 ####Labels####
