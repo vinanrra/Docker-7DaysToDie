@@ -47,5 +47,4 @@ jobs:
         with:
           push: true
           tags: |
-            vinanrra/7dtd-server:latest
-            vinanrra/7dtd-server:${{ steps.last_release.outputs.tag_name }}
+            vinanrra/7dtd-server:latest,vinanrra/7dtd-server:${{ steps.last_release.outputs.tag_name }}
