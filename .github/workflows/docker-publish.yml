@@ -3,7 +3,7 @@ name: Release - Docker Image CI
 on:
   release:
     branches: [ master ]
-    types: [ published, released ]
+    types: [ published ]
   
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
