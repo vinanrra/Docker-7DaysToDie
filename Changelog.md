@@ -1,4 +1,10 @@
 # Changelog
+* **26/10/2021**
+  * Fixed crontab not working
+  * MAYBE fixed 7 Days To Die server not being when container stop
+  * Added backup info in README
+  * Removed unused LGSM files
+  * Added Github Actions
 
 * **26/10/2021**
   * Update readme
