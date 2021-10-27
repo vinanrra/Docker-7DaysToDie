@@ -110,7 +110,7 @@ ADD lgsm /home/sdtdserver/lgsm
 RUN chmod +x install.sh linuxgsm.sh \
     find /home/sdtdserver/scripts/ -type f -iname "*" -exec chmod +x {} \; \
     find /home/sdtdserver/scripts/Mods -type f -iname "*" -exec chmod +x {} \; \
-    find /home/sdtdserver/lgsm/ -type f -iname "*" -exec chmod +x {} \; \
+    find /home/sdtdserver/lgsm/ -type f -iname "*" -exec chmod +x {} \;
 
 ##############EXTRA CONFIG##############
 #Ports
