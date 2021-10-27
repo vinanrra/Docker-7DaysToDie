@@ -1,23 +1,9 @@
 #!/bin/bash
 function exit_handler {
-        echo "
-                =======================================================================
-               
-                Shutdown signal received..
-                
-                =======================================================================
-        "
 
         # Execute the  shutdown commands
         su-exec sdtdserver /home/sdtdserver/sdtdserver stop
-
-        echo "
-                =======================================================================
-                
-                7 DAYS TO DIE SERVER HAVE BEEN STOPPED
-                
-                =======================================================================
-        "
+        
         exit
 }
 
