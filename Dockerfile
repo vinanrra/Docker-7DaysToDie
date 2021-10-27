@@ -79,9 +79,6 @@ RUN  set -ex; \
      \
      apt-get purge -y --auto-remove $fetch_deps
 
-# Start cron
-RUN service cron start
-
 # Clear unused files
 RUN apt clean && \
     rm -rf \
