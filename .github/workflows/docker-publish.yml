@@ -19,7 +19,7 @@ jobs:
         with:
           myToken: ${{ github.token }}
           exclude_types: "draft|prerelease"
-          view_top: 2
+          view_top: 1
 #      - name: "Print result"
 #        run: |
 #          echo "id: ${{ steps.last_release.outputs.id }}"
