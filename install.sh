@@ -19,7 +19,11 @@ if [ ! -f serverfiles/DONT_REMOVE.txt ]; then
    source $scriptsDir/first_install.sh
 fi
 
-# Use of case to avoid errors if used wrong START_MODE
+touch crontab.txt
+
+crontab crontab.txt
+
+rm crontab.txt
 
 if [ "${BACKUP,,}" == 'yes'  ]; then
       source $scriptsDir/crontab/sdtdserver-backup.sh
@@ -28,6 +32,8 @@ fi
 if [ "${MONITOR,,}" == 'yes'  ]; then
       source $scriptsDir/crontab/sdtdserver-monitor.sh
 fi
+
+# Use of case to avoid errors if used wrong START_MODE
 
 case $START_MODE in
    0)
