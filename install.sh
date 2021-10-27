@@ -1,3 +1,4 @@
+#!/bin/bash
 rootDir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 scriptsDir="${rootDir}/scripts"
     
