@@ -100,14 +100,14 @@ ENV LANG en_US.utf8
 WORKDIR /home/sdtdserver
 
 # Add files
-ADD linuxgsm.sh install.sh /home/sdtdserver/
+ADD linuxgsm.sh install.sh user.sh /home/sdtdserver/
 ADD scripts /home/sdtdserver/scripts
 ADD lgsm/config-lgsm/sdtdserver/common.cfg /home/sdtdserver/
 RUN mkdir lgsm
 ADD lgsm /home/sdtdserver/lgsm
 
 # Apply permissions
-RUN chmod +x install.sh linuxgsm.sh
+RUN chmod +x install.sh user.sh linuxgsm.sh
 RUN find /home/sdtdserver/scripts/ -type f -iname "*" -exec chmod +x {} \;
 RUN find /home/sdtdserver/scripts/Mods -type f -iname "*" -exec chmod +x {} \;
 RUN find /home/sdtdserver/lgsm/ -type f -iname "*" -exec chmod +x {} \;
@@ -118,4 +118,4 @@ EXPOSE 26900 26900/UDP 26901/UDP 26902/UDP 8082 8081 8080
 #Shared folders to host
 VOLUME /home/sdtdserver/serverfiles/ /home/sdtdserver/.local/share/7DaysToDie /home/sdtdserver/log/ /home/sdtdserver/lgsm/backup/ /home/sdtdserver/lgsm/config-lgsm/sdtdserver/
 ##############EXTRA CONFIG##############
-ENTRYPOINT ["/home/sdtdserver/install.sh"]
+ENTRYPOINT ["/home/sdtdserver/user.sh", "/home/sdtdserver/install.sh"]
