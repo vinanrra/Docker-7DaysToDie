@@ -1,28 +1,28 @@
 #!/bin/sh
-# function exit_handler {
-#         echo "
-#                 =======================================================================
-#                
-#                 Shutdown signal received..
-#                 
-#                 =======================================================================
-#         "
-# 
-#         # Execute the  shutdown commands
-#         su-exec sdtdserver /home/sdtdserver/sdtdserver stop
-# 
-#         echo "
-#                 =======================================================================
-#                 
-#                 7 DAYS TO DIE SERVER HAVE BEEN STOPPED
-#                 
-#                 =======================================================================
-#         "
-#         exit
-# }
+function exit_handler {
+        echo "
+                =======================================================================
+               
+                Shutdown signal received..
+                
+                =======================================================================
+        "
+
+        # Execute the  shutdown commands
+        su-exec sdtdserver /home/sdtdserver/sdtdserver stop
+
+        echo "
+                =======================================================================
+                
+                7 DAYS TO DIE SERVER HAVE BEEN STOPPED
+                
+                =======================================================================
+        "
+        exit
+}
 
 # Trap specific signals and forward to the exit handler
-# trap exit_handler SIGTERM
+trap exit_handler SIGTERM
 
 set -eu
 
@@ -51,7 +51,7 @@ usermod -o -u "$PUID" sdtdserver  > /dev/null 2>&1
 chown -R sdtdserver:sdtdserver /home/sdtdserver
 
 # Change user to sdtdserver
-su-exec sdtdserver "$@"
+su-exec su sdtdserver
 
 rootDir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 scriptsDir="${rootDir}/scripts"
