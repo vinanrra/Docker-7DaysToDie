@@ -22,7 +22,7 @@
 ### Docker
 
 ```bash
-docker run \
+docker run -d \
   --name 7dtdserver \
   --restart unless-stopped \
   -v "./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/" \
