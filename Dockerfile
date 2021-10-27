@@ -74,8 +74,8 @@ RUN  set -ex; \
      \
      apt-get purge -y --auto-remove $fetch_deps
 
-# Give execution rights on the cron job and apply cron job
-RUN find /etc/cron.hourly/ -type f -iname "*" -exec chmod +x {} \;
+# Start cron
+RUN service cron start
 
 # Clear unused files
 RUN apt clean && \
