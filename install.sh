@@ -38,7 +38,7 @@ case $START_MODE in
 if [ "${TEST_ALERT,,}" == 'yes'  ]; then
    source $scriptsDir/server_alerts.sh
 fi
-tail -f /dev/null
+tail -f /home/sdtdserver/log/console/sdtdserver-console.log
    ;;
    2)
       source $scriptsDir/server_update.sh
@@ -51,7 +51,7 @@ exit
 if [ "${TEST_ALERT,,}" == 'yes'  ]; then
    source $scriptsDir/server_alerts.sh
 fi
-tail -f /dev/null
+tail -f /home/sdtdserver/log/console/sdtdserver-console.log
    ;; 
    4)
       source $scriptsDir/server_backup.sh
