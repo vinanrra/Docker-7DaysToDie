@@ -42,6 +42,8 @@ source $scriptsDir/check_space.sh
 	# Add alerts examples
 	
             mv -f common.cfg /home/sdtdserver/lgsm/config-lgsm/sdtdserver/common.cfg
+	    
+	    sed -i "s/branch=".*"/branch="\"${VERSION,,}"\"/" /home/sfserver/lgsm/config-lgsm/sfserver/common.cfg
 	
 	# Check version
 	
