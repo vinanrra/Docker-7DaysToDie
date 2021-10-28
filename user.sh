@@ -29,15 +29,15 @@ https://github.com/vinanrra/Docker-7DaysToDie/blob/master/README.md
 =======================================================================
 "
 
-# Start cron
-service cron start
-
 # Set user and group ID to sdtdserver user
 groupmod -o -g "$PGID" sdtdserver  > /dev/null 2>&1
 usermod -o -u "$PUID" sdtdserver  > /dev/null 2>&1
 
 # Apply owner to the folder to avoid errors
 chown -R sdtdserver:sdtdserver /home/sdtdserver
+
+# Start cron
+service cron start
 
 # Change user to sdtdserver
 su-exec sdtdserver "$@"

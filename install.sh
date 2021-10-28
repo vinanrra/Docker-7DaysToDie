@@ -19,19 +19,21 @@ if [ ! -f serverfiles/DONT_REMOVE.txt ]; then
    source $scriptsDir/first_install.sh
 fi
 
-touch crontab.txt
+echo "# Crontab file" > crontab.txt
+
+if [ "${BACKUP,,}" == 'yes'  ]; then
+      source $scriptsDir/crontab/backup.sh
+fi
+
+if [ "${MONITOR,,}" == 'yes'  ]; then
+      source $scriptsDir/crontab/monitor.sh
+fi
+
+echo "# Don't remove the empty line at the end of this file. It is required to run the cron job" >> crontab.txt
 
 crontab crontab.txt
 
 rm crontab.txt
-
-if [ "${BACKUP,,}" == 'yes'  ]; then
-      source $scriptsDir/crontab/sdtdserver-backup.sh
-fi
-
-if [ "${MONITOR,,}" == 'yes'  ]; then
-      source $scriptsDir/crontab/sdtdserver-monitor.sh
-fi
 
 # Use of case to avoid errors if used wrong START_MODE
 
