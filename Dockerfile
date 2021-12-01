@@ -21,6 +21,8 @@ ENV VERSION=stable
 ENV ALLOC_FIXES=yes
 ENV MONITOR=yes
 ENV BACKUP=yes
+ENV HOME=/home/sdtdserver
+ENV LANG en_US.utf8
 
 ##Need use xterm for LinuxGSM##
 ENV TERM=xterm
@@ -89,10 +91,7 @@ RUN apt clean && \
 #####Dependencies####
 
 # Locale, Timezone and user
-RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
-    ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime && echo $TimeZone > /etc/timezone && \
-    adduser --disabled-password --shell /bin/bash --disabled-login --gecos "" sdtdserver
-ENV LANG en_US.utf8
+RUN adduser --home /home/sdtdserver --disabled-password --shell /bin/bash --disabled-login --gecos "" sdtdserver
 
 ##############BASE IMAGE##############
 
