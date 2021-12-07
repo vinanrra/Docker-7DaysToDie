@@ -199,10 +199,6 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
   * or update a single container: `docker-compose up -d 7dtdserver`
 * You can also remove the old dangling images: `docker image prune`
 
-## Changelog
-
-* [Changelog](https://github.com/vinanrra/Docker-7DaysToDie/blob/master/Changelog.md)
-
 ## Thanks
 
 * **[LinuxGSM](https://linuxgsm.com/)** - For the awesome script
