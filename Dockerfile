@@ -6,7 +6,7 @@ STOPSIGNAL SIGTERM
 
 ####Labels####
 LABEL maintainer="vinanrra"
-LABEL build_version="version: 0.1.6"
+LABEL build_version="version: 0.2.1"
 
 ####Environments####
 
