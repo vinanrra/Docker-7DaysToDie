@@ -118,7 +118,7 @@ services:
 | 0 | Install server |
 | 1 | Start server |
 | 2 | Update server |
-| 3 | Update server and start |
+| 3 | Update server and start, useful if you have already a 7 Days To Die server installed |
 | 4 | Backup server and STOP the container|
 
 #### WARNING
