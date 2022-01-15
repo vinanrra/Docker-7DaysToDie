@@ -1,6 +1,7 @@
 #!/bin/sh
 
 SERVERFILES_FOLDER=/home/sdtdserver/serverfiles
+CONFIG_FILE=/home/sdtdserver/serverfiles/7DaysToDieServer_Data/MonoBleedingEdge/etc/mono/config
 DL_LINK="https://ul.subquake.com/dl/dl.php?v=exp"
 
 downloadRelease() {
@@ -27,8 +28,12 @@ echo "[Undead Legacy] Cleanup"
 rm undeadlegacy.zip
 rm -rf undeadlegacy-temp
 
-echo "[Undead Legacy] Editing Linuxgsm startup script"
+echo "[Undead Legacy] Replacing 7DaysToDieServer_Data/MonoBleedingEdge/etc/mono/config"
 
-## TODO
+cp -f /home/sdtdserver/scripts/Mods/undeadLegacy/files/config $CONFIG_FILE
+
+echo "[Undead Legacy] Fixing permissions"
+
+chmod +x $SERVERFILES_FOLDER/run_bepinex_server.sh
 
 echo "[Undead Legacy] Finished! ヽ(´▽\`)/"
