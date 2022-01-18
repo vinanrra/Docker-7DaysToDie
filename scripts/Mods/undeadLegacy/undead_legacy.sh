@@ -2,6 +2,7 @@
 
 SERVERFILES_FOLDER=/home/sdtdserver/serverfiles
 CONFIG_FILE=/home/sdtdserver/serverfiles/7DaysToDieServer_Data/MonoBleedingEdge/etc/mono/config
+LSGMSDTDSERVERCFG=/home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
 DL_LINK="https://ul.subquake.com/dl/dl.php?v=${UndeadLegacyVersion}"
 
 downloadRelease() {
@@ -42,10 +43,14 @@ echo "[Undead Legacy] Fixing permissions"
 
 chmod +x $SERVERFILES_FOLDER/run_bepinex_server.sh
 
+echo "[Undead Legacy] Replacing config file used in UndeadLegacy startup script"
+
+sed -i 's/serverconfig.xml/sdtdserver.xml/' $SERVERFILES_FOLDER/run_bepinex_server.sh
+
 echo "[Undead Legacy] Replacing executable and start parameters for LinuxGSM"
 
-echo startparameters='""' >> /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
-echo executable='"./run_bepinex_server.sh"' >>  /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+echo startparameters='""' >> $LSGMSDTDSERVERCFG
+echo executable='"./run_bepinex_server.sh"' >> $LSGMSDTDSERVERCFG
 
 # Provisional, will be replaced if this work -> https://github.com/GameServerManagers/LinuxGSM/issues/3754
 #echo "[Undead Legacy] Starting the server ヽ(´▽\`)/"
