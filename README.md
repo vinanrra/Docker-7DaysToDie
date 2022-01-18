@@ -19,16 +19,11 @@
 * Automatic Backups, [more info](docs/backups.md) also check [parameters info](docs/parameters.md).
 * Monitor if server crash and restart it, [more info](docs/parameters.md).
 * Alerts if server requiere your attention, [more info](docs/alerts.md#alerts).
+* Ability to choose gui or uid, [more info](docs/user_groups_identifiers.md)
 
 ## [Usage](docs/usage.md)
 
 ## [Parameters](docs/parameters.md)
-
-## [Backups](docs/backups.md)
-
-## [Alerts](docs/alerts.md)
-
-## [User/Group Identifiers](docs/user_groups_identifiers.md)
 
 ## [Updating Info](docs/updating_info.md)
 
