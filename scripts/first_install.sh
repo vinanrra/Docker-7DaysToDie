@@ -85,25 +85,4 @@ source $scriptsDir/check_space.sh
 
             mkdir /home/sdtdserver/serverfiles/Mods
 
-    # Install Alloc Fixes
-
-            if [ "${ALLOC_FIXES,,}" == 'yes'  ]
-            then
-            source $scriptsDir/Mods/alloc_fixes.sh
-
-            echo "
-            =======================================================================
-            IMPORTANT:
-
-            Alloc Fixes updated.
-            =======================================================================
-            "
-            else
-            echo "
-            =======================================================================
-            IMPORTANT:
-
-            Not installing Alloc Fixes.
-            =======================================================================
-            "
-            fi
+source $scriptsDir/Mods/mods_install.sh
