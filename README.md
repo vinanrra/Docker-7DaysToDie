@@ -40,8 +40,10 @@ docker run -d \
   -e START_MODE=1 \
   -e VERSION=stable \
   -e TEST_ALERT=NO \
-  -e ALLOC_FIXES=YES \
-  -e BACKUP=YES \
+  -e ALLOC_FIXES=NO \
+  -e UNDEAD_LEGACY=NO \
+  -e UNDEAD_LEGACY_VERSION=stable \
+  -e BACKUP=NO \
   -e MONITOR=NO \
   -e PUID=1000 \
   -e PGID=1000 \
@@ -64,9 +66,11 @@ services:
       - PGID=1000 # Remember to use same as your user
       - TimeZone=Europe/Madrid
       - TEST_ALERT=NO
-      - ALLOC_FIXES=YES #Optional - Install ALLOC FIXES
-      - BACKUP=YES # Backup server every 7 days
-      - MONITOR=NO # Keeps server up if crash, if first boot give error read https://github.com/vinanrra/Docker-7DaysToDie/issues/47
+      - ALLOC_FIXES=NO #Optional - Install ALLOC FIXES
+      - UNDEAD_LEGACY=NO #Optional - Install Undead Legacy mod
+      - UNDEAD_LEGACY_VERSION=stable #Optional - Undead Legacy version
+      - BACKUP=NO # Backup server every 7 days
+      - MONITOR=NO # Keeps server up if crash
     volumes:
       - ./ServerFiles:/home/sdtdserver/serverfiles/ #Optional, serverfiles
       - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/ #Optional, maps files
@@ -86,8 +90,8 @@ services:
 
 ## Parameters
 
-| Parameter | Function |
-| :----: | --- |
+| Parameter | Function | Options |
+| :----: | --- | :---: |
 | `/path/to/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/` | 7DaysToDie saves, where maps are store. |
 | `/path/to/ServerFiles:/home/sdtdserver/serverfiles/` | 7DaysToDie server config files. |
 | `/path/to/Logs:/home/sdtdserver/log/` | 7DaysToDie server log files. |
@@ -100,12 +104,14 @@ services:
 | `8080:8080/tcp` | Default 7DaysToDie webadmin port **optional**, if you use webadmin remember to change password in */path/to/ServerFiles/sdtdserver.xml* |
 | `8081:8081/tcp` | Default 7DaysToDie telnet port **optional** |
 | `8082:8082/tcp` | Default [Alloc Fixes Map GUI](https://7dtd.illy.bz/wiki/Server%20fixes) webserver port **optional** |
-| `START_MODE=1` | Start mode of the container - see below for explanation **required** |
+| `START_MODE=1` | Start mode of the container - see below for explanation **required** | 0, 1, 2, 3, 4 |
 | `VERSION=stable` | Change between 7 days to die versions [more info](https://steamcommunity.com/app/251570/discussions/0/2570942124844173383/) **optional** |
-| `TEST_ALERT=YES` | Test alerts at start of server **optional** |
-| `ALLOC_FIXES=YES` | Install/Update [Alloc Fixes](https://7dtd.illy.bz/wiki/Server%20fixes), ONLY USE WITH LATEST STABLE BUILD **optional** |
-| `BACKUP=YES` | Backup server at 5 AM (Only the latest 5 backups will be keep, maximum 30 days) [More info](https://docs.linuxgsm.com/commands/backup) **optional** |
-| `MONITOR=NO` | Monitor server status, if server crash this will restart it [More info](https://docs.linuxgsm.com/commands/monitor), if map is not alread generate will give error read [#47](https://github.com/vinanrra/Docker-7DaysToDie/issues/47) **optional** |
+| `TEST_ALERT=NO` | Test alerts at start of server **optional** | YES, NO |
+| `ALLOC_FIXES=NO` | Install [Alloc Fixes](https://7dtd.illy.bz/wiki/Server%20fixes), ONLY USE WITH LATEST STABLE BUILD **optional** | YES, NO |
+| `UNDEAD_LEGACY=NO` | Install [Undead Legacy](https://ul.subquake.com/) **optional** | YES, NO |
+| `UNDEAD_LEGACY_VERSION=stable` | Install [Undead Legacy Versions](https://ul.subquake.com/download), CHECK BUILDS COMPATIBILITY **optional** | EXP, STABLE |
+| `BACKUP=NO` | Backup server at 5 AM (Only the latest 5 backups will be keep, maximum 30 days) [More info](https://docs.linuxgsm.com/commands/backup) **optional** | YES, NO |
+| `MONITOR=NO` | Monitor server status, if server crash this will restart it [More info](https://docs.linuxgsm.com/commands/monitor) **optional** | YES, NO |
 | `PUID=1000` | for UserID - see below for explanation |
 | `PGID=1000` | for GroupID - see below for explanation |
 | `TimeZone=Europe/Madrid` | for TimeZone - see [TZ Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) for time zones **recomendable**|

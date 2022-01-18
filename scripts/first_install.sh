@@ -49,14 +49,13 @@ source $scriptsDir/check_space.sh
 	
             if [ "${VERSION,,}" == 'stable'  ]
             then
-            # Remove branch line
+                # Remove branch line
                 sed -i '/branch/d' /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
             else
-            # Remove branch line if exist to avoid multiple branch lines
-            sed -i '/branch/d' /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
-	    
-            echo branch='"-beta $VERSION"' >> /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
-
+                # Remove branch line if exist to avoid multiple branch lines
+                sed -i '/branch/d' /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+            
+                echo branch='"-beta $VERSION"' >> /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
             fi
 	
             echo "
@@ -86,25 +85,4 @@ source $scriptsDir/check_space.sh
 
             mkdir /home/sdtdserver/serverfiles/Mods
 
-    # Install Alloc Fixes
-
-            if [ "${ALLOC_FIXES,,}" == 'yes'  ]
-            then
-            source $scriptsDir/Mods/alloc_fixes.sh
-
-            echo "
-            =======================================================================
-            IMPORTANT:
-
-            Alloc Fixes updated.
-            =======================================================================
-            "
-            else
-            echo "
-            =======================================================================
-            IMPORTANT:
-
-            Not installing Alloc Fixes.
-            =======================================================================
-            "
-            fi
+source $scriptsDir/Mods/mods_install.sh
