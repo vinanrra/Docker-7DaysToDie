@@ -22,8 +22,8 @@
 | `UNDEAD_LEGACY_VERSION=stable` | Install [Undead Legacy Versions](https://ul.subquake.com/download), CHECK BUILDS COMPATIBILITY **optional** | EXP, STABLE |
 | `BACKUP=NO` | Backup server at 5 AM (Only the latest 5 backups will be keep, maximum 30 days) [More info](https://docs.linuxgsm.com/commands/backup) **optional** | YES, NO |
 | `MONITOR=NO` | Monitor server status, if server crash this will restart it [More info](https://docs.linuxgsm.com/commands/monitor) **optional** | YES, NO |
-| `PUID=1000` | for UserID - see below for explanation |
-| `PGID=1000` | for GroupID - see below for explanation |
+| `PUID=1000` | for UserID, [more info](docs/user_groups_identifiers.md) |
+| `PGID=1000` | for GroupID, [more info](docs/user_groups_identifiers.md) |
 | `TimeZone=Europe/Madrid` | for TimeZone - see [TZ Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) for time zones **recomendable**|
 | `--restart unless-stopped` | Restart container always unlesss stopped manually **NEVER USE WITH START_MODE=4** |
 
