@@ -42,11 +42,16 @@ echo "[Undead Legacy] Fixing permissions"
 
 chmod +x $SERVERFILES_FOLDER/run_bepinex_server.sh
 
+echo "[Undead Legacy] Replacing executable and start parameters for LinuxGSM"
+
+echo startparameters='""' >> /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+echo executable='"./run_bepinex_server.sh"' >>  /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+
+# Provisional, will be replaced if this work -> https://github.com/GameServerManagers/LinuxGSM/issues/3754
+#echo "[Undead Legacy] Starting the server ヽ(´▽\`)/"
+
+# cd $SERVERFILES_FOLDER
+
+# bash run_bepinex_server.sh
+
 echo "[Undead Legacy] Installed ヽ(´▽\`)/"
-
-# Provisional -> https://github.com/GameServerManagers/LinuxGSM/issues/3754
-echo "[Undead Legacy] Starting the server ヽ(´▽\`)/"
-
-cd $SERVERFILES_FOLDER
-
-bash run_bepinex_server.sh
