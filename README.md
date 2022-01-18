@@ -15,22 +15,22 @@
 
 ## Features
 
-* Auto-installable mods, [more info](docs\mods_support.md).
-* Automatic Backups, [more info](docs\backups.md) also check [parameters info]((docs\parameters.md)).
-* Monitor if server crash and restart it, [more info](docs\parameters.md).
-* Alerts if server requiere your attention, [more info](docs\alerts.md#alerts).
+* Auto-installable mods, [more info](docs/mods_support.md).
+* Automatic Backups, [more info](docs/backups.md) also check [parameters info](docs/parameters.md).
+* Monitor if server crash and restart it, [more info](docs/parameters.md).
+* Alerts if server requiere your attention, [more info](docs/alerts.md#alerts).
 
-## [Usage](docs\usage.md)
+## [Usage](docs/usage.md)
 
-## [Parameters](docs\parameters.md)
+## [Parameters](docs/parameters.md)
 
-## [Backups](docs\backups.md)
+## [Backups](docs/backups.md)
 
-## [Alerts](docs\alerts.md)
+## [Alerts](docs/alerts.md)
 
-## [User/Group Identifiers](docs\user_groups_identifiers.md)
+## [User/Group Identifiers](docs/user_groups_identifiers.md)
 
-## [Updating Info](docs\updating_info.md)
+## [Updating Info](docs/updating_info.md)
 
 ## Support Info
 
