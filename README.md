@@ -69,7 +69,7 @@ services:
       - ALLOC_FIXES=NO #Optional - Install ALLOC FIXES
       - UNDEAD_LEGACY=NO #Optional - Install Undead Legacy mod
       - UNDEAD_LEGACY_VERSION=stable #Optional - Undead Legacy version
-      - BACKUP=NO # Backup server every 7 days
+      - BACKUP=NO # Backup server at 5 AM
       - MONITOR=NO # Keeps server up if crash
     volumes:
       - ./ServerFiles:/home/sdtdserver/serverfiles/ #Optional, serverfiles
