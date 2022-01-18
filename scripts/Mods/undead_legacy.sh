@@ -57,7 +57,7 @@ rm -rf undeadlegacy-temp
 
 echo "[Undead Legacy] Adding missing dll to 7DaysToDieServer_Data/MonoBleedingEdge/etc/mono/config"
 
-missingDLL=$(sed '$ i\\t<dllmap dll="dl" target="libdl.so.2"/>' copy)
+missingDLL=$(sed '$ i\\t<dllmap dll="dl" target="libdl.so.2"/>' $CONFIG_FILE)
 echo "$missingDLL" > $CONFIG_FILE
 
 echo "[Undead Legacy] Fixing permissions"
