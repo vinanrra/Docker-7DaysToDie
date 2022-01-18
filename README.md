@@ -8,11 +8,6 @@
 
 ![Image of 7 Days To Die](https://raw.githubusercontent.com/vinanrra/Docker-7DaysToDie/master/7dtd.png)
 
-## Information
-
-* If you want to change any server settings, edit `/path/to/ServerFiles/sdtdserver.xml`
-* Read EVERYTHING to avoid any errors, if you have any problems open a [github ticket](https://github.com/vinanrra/Docker-7DaysToDie/issues).
-
 ## Features
 
 * **Auto-installable mods**, [more info](docs/mods_support.md).
@@ -20,6 +15,11 @@
 * **Monitor** if server crash and restart it, [more info](docs/parameters.md).
 * **Alerts** if server requiere your attention, [more info](docs/alerts.md#alerts).
 * **User/Group Identifiers**, [more info](docs/user_groups_identifiers.md)
+
+## Information
+
+* If you want to change any server settings, edit `/path/to/ServerFiles/sdtdserver.xml`
+* Read EVERYTHING to avoid any errors, if you have any problems open a [github ticket](https://github.com/vinanrra/Docker-7DaysToDie/issues).
 
 ## [Usage](docs/usage.md)
 
