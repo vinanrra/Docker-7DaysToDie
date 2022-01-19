@@ -4,9 +4,9 @@ scriptsDir="${rootDir}/scripts"
 
 exit_handler() {
    # Execute the  shutdown commands
-   echo "[INFO] Stopping 7 Days To Die Server"
+   echo "[INFO] Stopping 7 Days To Die Server" >> /home/sdtdserver/log/console/sdtdserver-console.log
    su-exec sdtdserver /home/sdtdserver/sdtdserver stop
-   echo "[INFO] Stopping 7 Days To Die Server have been stopped"
+   echo "[INFO] Stopping 7 Days To Die Server have been stopped" >> /home/sdtdserver/log/console/sdtdserver-console.log
    exit 0
 }
 
