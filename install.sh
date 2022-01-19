@@ -2,11 +2,18 @@
 rootDir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 scriptsDir="${rootDir}/scripts"
 
+exit_handler() {
+   # Execute the  shutdown commands
+   echo "[INFO] Stopping 7 Days To Die Server"
+   su-exec sdtdserver /home/sdtdserver/sdtdserver stop
+   echo "[INFO] Stopping 7 Days To Die Server have been stopped"
+   exit 0
+}
+
 # Show log function
 show_log () {
-   i="0"
-      # -F = --follow=name --retry
-      tail -F /home/sdtdserver/log/console/sdtdserver-console.log
+   # -F = --follow=name --retry
+   tail -F /home/sdtdserver/log/console/sdtdserver-console.log
 }
 
 test_alert () {
@@ -43,6 +50,9 @@ echo "# Don't remove the empty line at the end of this file. It is required to r
 crontab crontab.txt
 
 rm crontab.txt
+
+# Trap specific signals and forward to the exit handler
+trap exit_handler SIGINT SIGTERM
 
 # Use of case to avoid errors if used wrong START_MODE
 case $START_MODE in
