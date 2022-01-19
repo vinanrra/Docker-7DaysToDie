@@ -1,7 +1,7 @@
 #!/bin/bash
 exit_handler() {
         # Execute the  shutdown commands
-        echo "Stopping 7 Days To Die Server"
+        echo "[INFO] Stopping 7 Days To Die Server" >> /home/sdtdserver/log/console/sdtdserver-console.log
         su-exec sdtdserver /home/sdtdserver/sdtdserver stop
         exit
 }
