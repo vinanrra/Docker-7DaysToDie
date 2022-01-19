@@ -42,7 +42,7 @@ echo "
 mv -f common.cfg /home/sdtdserver/lgsm/config-lgsm/sdtdserver/common.cfg
 
 # Set branch version
-sed -i "s/branch=".*"/branch="\"${VERSION,,}"\"/" /home/sfserver/lgsm/config-lgsm/sfserver/common.cfg
+sed -i "s/branch=".*"/branch="\"${VERSION,,}"\"/" /home/sdtdserver/lgsm/config-lgsm/sdtdserver/common.cfg
 
 # Check version
 
