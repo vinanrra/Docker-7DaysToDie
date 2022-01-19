@@ -40,9 +40,9 @@ unzip undeadlegacy.zip -d undeadlegacy-temp
 echo "[Undead Legacy] Installing mod"
 
 if [ "${UNDEAD_LEGACY_VERSION,,}" == 'exp'  ]; then
-    mv undeadlegacy-temp/UndeadLegacyExperimental-main/* $SERVERFILES_FOLDER
+    cp -a undeadlegacy-temp/UndeadLegacyExperimental-main/. $SERVERFILES_FOLDER
 elif  [ "${UNDEAD_LEGACY_VERSION,,}" == 'stable'  ]; then
-    mv undeadlegacy-temp/UndeadLegacy-master/* $SERVERFILES_FOLDER
+    cp -a undeadlegacy-temp/UndeadLegacyStable-main/. $SERVERFILES_FOLDER
 else
     echo "[Undead Legacy] Error wrong version selected -> ${UNDEAD_LEGACY_VERSION,,}, select exp or stable"
     echo "[Undead Legacy] Skipping installation"
