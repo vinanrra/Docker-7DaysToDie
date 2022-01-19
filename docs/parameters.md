@@ -15,7 +15,7 @@
 | `8081:8081/tcp` | Default 7DaysToDie telnet port **optional** |
 | `8082:8082/tcp` | Default [Alloc Fixes Map GUI](https://7dtd.illy.bz/wiki/Server%20fixes) webserver port **optional** |
 | `START_MODE=1` | Start mode of the container - see below for explanation **required** | 0, 1, 2, 3, 4 |
-| `VERSION=stable` | Change between 7 days to die versions [more info](https://steamcommunity.com/app/251570/discussions/0/2570942124844173383/) **optional** |
+| `VERSION=stable` | Change between 7 days to die versions/branches [more info](https://steamdb.info/app/251570/depots/) **optional** |
 | `TEST_ALERT=NO` | Test alerts at start of server **optional** | YES, NO |
 | `ALLOC_FIXES=NO` | Install [Alloc Fixes](https://7dtd.illy.bz/wiki/Server%20fixes), ONLY USE WITH LATEST STABLE BUILD **optional** | YES, NO |
 | `UNDEAD_LEGACY=NO` | Install [Undead Legacy](https://ul.subquake.com/) **optional** | YES, NO |

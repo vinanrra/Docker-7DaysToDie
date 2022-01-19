@@ -1,6 +1,6 @@
 # [vinanrra/7days-server](https://github.com/vinanrra/Docker-7DaysToDie)
 
-# 7 days to die server using LinuxGSM script in Docker with backups, monitor, auto-installable mods and more
+# 7 days to die server using LinuxGSM in Docker with backups, monitor, auto-installable mods and more
 
 [![Docker Pulls](https://img.shields.io/badge/dynamic/json?color=red&label=pulls&query=pull_count&url=https%3A%2F%2Fhub.docker.com%2Fv2%2Frepositories%2Fvinanrra%2F7dtd-server%2F?style=flat-square&color=E68523&logo=docker&logoColor=white)](https://hub.docker.com/r/vinanrra/7dtd-server)
 [![Docker Stars](https://img.shields.io/badge/dynamic/json?color=red&label=stars&query=star_count&url=https%3A%2F%2Fhub.docker.com%2Fv2%2Frepositories%2Fvinanrra%2F7dtd-server%2F?style=flat-square&color=E68523&logo=docker&logoColor=white)](https://hub.docker.com/r/vinanrra/7dtd-server)
@@ -10,11 +10,12 @@
 
 ## Features
 
+* **Multi-version** you can choose which version you want to play, [more info](docs/parameters.md) 
 * **Auto-installable mods**, [more info](docs/mods_support.md).
 * **Automatic Backups**, [more info](docs/backups.md) also check [parameters info](docs/parameters.md).
 * **Monitor** if server crash and restart it, [more info](docs/parameters.md).
 * **Alerts** if server requiere your attention, [more info](docs/alerts.md#alerts).
-* **User/Group Identifiers**, [more info](docs/user_groups_identifiers.md)
+* **User/Group Identifiers**, [more info](docs/user_groups_identifiers.md).
 
 ## Information
 
@@ -27,15 +28,7 @@
 
 ## [Updating Info](docs/updating_info.md)
 
-## Support Info
-
-* Shell access whilst the container is running: `docker exec -it 7dtdserver /bin/bash`
-* To monitor the logs of the container in realtime: `docker logs -f 7dtdserver`
-* container version number
-  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' 7dtdserver`
-* image version number
-  * `docker inspect -f '{{ index .Config.Labels "build_version" }}' vinanrra/7dtd-server`
-
+## [Support Info](docs/support.md)
 
 ## Thanks
 
