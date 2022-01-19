@@ -6,5 +6,4 @@ echo "
             LinuxGSM script is missing, downloading...
             =======================================================================
             "
-	
             chmod +x linuxgsm.sh && bash linuxgsm.sh sdtdserver

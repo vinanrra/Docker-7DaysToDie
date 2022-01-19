@@ -1,9 +1,8 @@
 #!/bin/bash
 function exit_handler {
-
         # Execute the  shutdown commands
         su-exec sdtdserver /home/sdtdserver/sdtdserver stop
-        
+
         exit
 }
 
@@ -14,19 +13,19 @@ set -eu
 
 # Print info
 echo "
-=======================================================================
-USER INFO:
+        =======================================================================
+        USER INFO:
 
-UID: $PUID
-GID: $PGID
+        UID: $PUID
+        GID: $PGID
 
-MORE INFO:
+        MORE INFO:
 
-If you have permission problems remember to use same user UID and GID.
-Check it with "id" command
-If problem persist check:
-https://github.com/vinanrra/Docker-7DaysToDie/blob/master/README.md
-=======================================================================
+        If you have permission problems remember to use same user UID and GID.
+        Check it with "id" command
+        If problem persist check:
+        https://github.com/vinanrra/Docker-7DaysToDie/blob/master/README.md
+        =======================================================================
 "
 
 # Set user and group ID to sdtdserver user
@@ -35,7 +34,7 @@ usermod -o -u "$PUID" sdtdserver  > /dev/null 2>&1
 
 # Locale, Timezone
 localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
-    ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime && echo $TimeZone > /etc/timezone
+ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime && echo $TimeZone > /etc/timezone
 
 # Apply owner to the folder to avoid errors
 chown -R sdtdserver:sdtdserver /home/sdtdserver
