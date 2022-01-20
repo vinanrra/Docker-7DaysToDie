@@ -95,23 +95,25 @@ RUN apt clean && \
 # Locale, Timezone and user
 RUN adduser --home /home/sdtdserver --disabled-password --shell /bin/bash --disabled-login --gecos "" sdtdserver
 
+# Add LinuxGSM scripts
+RUN set -ex; \
+wget https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/master/linuxgsm.sh \
+chmod +x linuxgsm.sh && su-exec sdtdserver bash linuxgsm.sh sdtdserver
+
 ##############BASE IMAGE##############
 
 # Base dir
 WORKDIR /home/sdtdserver
 
 # Add files
-ADD linuxgsm.sh install.sh user.sh /home/sdtdserver/
+ADD install.sh user.sh /home/sdtdserver/
 ADD scripts /home/sdtdserver/scripts
-ADD lgsm/config-lgsm/sdtdserver/common.cfg /home/sdtdserver/
-RUN mkdir lgsm
 ADD lgsm /home/sdtdserver/lgsm
 
 # Apply permissions
-RUN chmod +x install.sh user.sh linuxgsm.sh
+RUN chmod +x install.sh user.sh
 RUN find /home/sdtdserver/scripts/ -type f -iname "*" -exec chmod +x {} \;
 RUN find /home/sdtdserver/scripts/Mods -type f -iname "*" -exec chmod +x {} \;
-RUN find /home/sdtdserver/lgsm/ -type f -iname "*" -exec chmod +x {} \;
 
 ##############EXTRA CONFIG##############
 #Ports
