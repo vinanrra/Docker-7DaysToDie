@@ -83,11 +83,6 @@ RUN  set -ex; \
 		\
 		apt-get purge -y --auto-remove $fetch_deps
 
-# Install Tini
-ENV TINI_VERSION v0.19.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-RUN chmod +x /tini
-
 # Clear unused files
 RUN apt clean && \
     rm -rf \
@@ -125,4 +120,4 @@ EXPOSE 26900 26900/UDP 26901/UDP 26902/UDP 8082 8081 8080
 VOLUME /home/sdtdserver/serverfiles/ /home/sdtdserver/.local/share/7DaysToDie /home/sdtdserver/log/ /home/sdtdserver/lgsm/backup/ /home/sdtdserver/lgsm/config-lgsm/sdtdserver/
 ##############EXTRA CONFIG##############
 
-ENTRYPOINT ["/tini", "--", "/home/sdtdserver/user.sh"]
+ENTRYPOINT ["/home/sdtdserver/user.sh"]
