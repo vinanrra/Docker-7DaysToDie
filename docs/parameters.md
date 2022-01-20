@@ -25,7 +25,7 @@
 | `PUID=1000` | for UserID, [more info](docs/user_groups_identifiers.md) |
 | `PGID=1000` | for GroupID, [more info](docs/user_groups_identifiers.md) |
 | `TimeZone=Europe/Madrid` | for TimeZone - see [TZ Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) for time zones **recomendable**|
-| `--restart unless-stopped` | Restart container always unlesss stopped manually **NEVER USE WITH START_MODE=4** |
+| `--restart unless-stopped` | Restart container always unlesss stopped manually **NEVER USE WITH START_MODE=0 or 4** |
 
 ### START MODES
 
