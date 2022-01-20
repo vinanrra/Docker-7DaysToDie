@@ -81,7 +81,7 @@ RUN  set -ex; \
 		chmod 0755 /usr/local/bin/su-exec; \
 		rm /usr/local/bin/su-exec.c; \
 		\
-		apt-get purge -y --auto-remove $fetch_depsç
+		apt-get purge -y --auto-remove $fetch_deps
 
 # Install Tini
 ENV TINI_VERSION v0.19.0
