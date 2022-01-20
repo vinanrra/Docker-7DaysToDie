@@ -1,4 +1,13 @@
 #!/bin/bash
+
+exit_handler() {
+    # Execute the  shutdown commands
+    echo "[INFO] Stopping 7 Days To Die Server" >> /home/sdtdserver/log/console/sdtdserver-console.log
+    su-exec sdtdserver /home/sdtdserver/sdtdserver stop
+    echo "[INFO] 7 Days To Die Server have been stopped" >> /home/sdtdserver/log/console/sdtdserver-console.log
+    exit 0
+}
+
 set -eu
 
 # Print info
@@ -31,6 +40,9 @@ chown -R sdtdserver:sdtdserver /home/sdtdserver
 
 # Start cron
 service cron start
+
+# Trap specific signals and forward to the exit handler
+trap exit_handler SIGINT SIGTERM
 
 # Change user to sdtdserver
 su-exec sdtdserver bash /home/sdtdserver/install.sh
