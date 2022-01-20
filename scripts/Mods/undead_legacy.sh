@@ -6,8 +6,11 @@
 # Edit paths if used outside of the Docker
 BASEPATH=/home/sdtdserver
 SERVERFILES_FOLDER=${BASEPATH}/serverfiles
-CONFIG_FILE=${BASEPATH}/serverfiles/7DaysToDieServer_Data/MonoBleedingEdge/etc/mono/config
+CONFIG_FILE=${SERVERFILES_FOLDER}/7DaysToDieServer_Data/MonoBleedingEdge/etc/mono/config
 LSGMSDTDSERVERCFG=${BASEPATH}/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+SERVER_CONFIG=${SERVERFILES_FOLDER}/sdtdserver.xml
+
+# Dont edit nothing here unless you know what you are doing
 
 if [ "${UNDEAD_LEGACY_VERSION,,}" == 'exp'  ]; then
     echo "[Undead Legacy] Starting install of Undead Legacy ${UNDEAD_LEGACY_VERSION,,} version"
@@ -54,6 +57,11 @@ echo "[Undead Legacy] Cleanup"
 rm undeadlegacy.zip
 rm -rf undeadlegacy-temp
 
+echo "[Undead Legacy] Adding Undead Legacy default options to server configuration"
+
+sed -i 's/.*EACEnabled.*/\t<property name="EACEnabled"\t\t\t\t\tvalue="false"\/>\t\t\t\t<-- Enables\/Disables EasyAntiCheat -->/' $SERVER_CONFIG
+sed -i '$i\ '\\r\\t'<!-- Undead Legacy specific options -->'\\r\\t'<property name="RecipeFilter"\tvalue="0"/>'\\r\\t'<property name="StarterQuestEnabled"\tvalue="true"/>'\\r\\t'<property name="WanderingHordeFrequency"\tvalue="4"/>'\\r\\t'<property name="WanderingHordeRange"\tvalue="8"/>'\\r\\t'<property name="WanderingHordeEnemyCount"\tvalue="10"/>'\\r\\t'<property name="WanderingHordeEnemyRange"\tvalue="10"/>' $SERVER_CONFIG
+
 echo "[Undead Legacy] Adding missing dll to 7DaysToDieServer_Data/MonoBleedingEdge/etc/mono/config"
 
 missingDLL=$(sed '$ i\\t<dllmap dll="dl" target="libdl.so.2"/>' $CONFIG_FILE)
@@ -75,11 +83,3 @@ echo executable='"./run_bepinex_server.sh"' >> $LSGMSDTDSERVERCFG
 ## Comment if not using LinuxGSM script
 
 echo "[Undead Legacy] Installed ヽ(´▽\`)/"
-
-# Provisional, will be replaced if this work -> https://github.com/GameServerManagers/LinuxGSM/discussions/3755
-# Uncomment if not using linuxGSM script
-#echo "[Undead Legacy] Starting the server ヽ(´▽\`)/"
-
-# cd $SERVERFILES_FOLDER
-
-# bash run_bepinex_server.sh
