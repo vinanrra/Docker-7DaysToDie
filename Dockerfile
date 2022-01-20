@@ -70,18 +70,23 @@ RUN dpkg --add-architecture i386 && \
 
 # Install latest su-exec
 RUN  set -ex; \
-     \
-     curl -o /usr/local/bin/su-exec.c https://raw.githubusercontent.com/ncopa/su-exec/master/su-exec.c; \
-     \
-     fetch_deps='gcc libc-dev'; \
-     apt-get install -y --no-install-recommends $fetch_deps; \
-     gcc -Wall \
-         /usr/local/bin/su-exec.c -o/usr/local/bin/su-exec; \
-     chown root:root /usr/local/bin/su-exec; \
-     chmod 0755 /usr/local/bin/su-exec; \
-     rm /usr/local/bin/su-exec.c; \
-     \
-     apt-get purge -y --auto-remove $fetch_deps
+		\
+		curl -o /usr/local/bin/su-exec.c https://raw.githubusercontent.com/ncopa/su-exec/master/su-exec.c; \
+		\
+		fetch_deps='gcc libc-dev'; \
+		apt-get install -y --no-install-recommends $fetch_deps; \
+		gcc -Wall \
+				/usr/local/bin/su-exec.c -o/usr/local/bin/su-exec; \
+		chown root:root /usr/local/bin/su-exec; \
+		chmod 0755 /usr/local/bin/su-exec; \
+		rm /usr/local/bin/su-exec.c; \
+		\
+		apt-get purge -y --auto-remove $fetch_depsç
+
+# Install Tini
+ENV TINI_VERSION v0.19.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
 
 # Clear unused files
 RUN apt clean && \
@@ -119,4 +124,8 @@ EXPOSE 26900 26900/UDP 26901/UDP 26902/UDP 8082 8081 8080
 #Shared folders to host
 VOLUME /home/sdtdserver/serverfiles/ /home/sdtdserver/.local/share/7DaysToDie /home/sdtdserver/log/ /home/sdtdserver/lgsm/backup/ /home/sdtdserver/lgsm/config-lgsm/sdtdserver/
 ##############EXTRA CONFIG##############
-ENTRYPOINT ["/home/sdtdserver/user.sh"]
+
+ENTRYPOINT ["/tini", "--"]
+
+# Run scripts program under Tini
+CMD ["/home/sdtdserver/user.sh"]
