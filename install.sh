@@ -2,6 +2,17 @@
 rootDir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 scriptsDir="${rootDir}/scripts"
 
+exit_handler() {
+    # Execute the  shutdown commands
+    echo "[INFO] Stopping 7 Days To Die Server" >> /home/sdtdserver/log/console/sdtdserver-console.log
+    su-exec sdtdserver /home/sdtdserver/sdtdserver stop
+    echo "[INFO] 7 Days To Die Server have been stopped" >> /home/sdtdserver/log/console/sdtdserver-console.log
+    exit 0
+}
+
+# Trap specific signals and forward to the exit handler
+trap exit_handler SIGINT SIGTERM
+
 # Show log function
 show_log () {
    # -F = --follow=name --retry

@@ -125,7 +125,4 @@ EXPOSE 26900 26900/UDP 26901/UDP 26902/UDP 8082 8081 8080
 VOLUME /home/sdtdserver/serverfiles/ /home/sdtdserver/.local/share/7DaysToDie /home/sdtdserver/log/ /home/sdtdserver/lgsm/backup/ /home/sdtdserver/lgsm/config-lgsm/sdtdserver/
 ##############EXTRA CONFIG##############
 
-ENTRYPOINT ["/tini", "--"]
-
-# Run scripts program under Tini
-CMD ["/home/sdtdserver/user.sh"]
+ENTRYPOINT ["/tini", "--", "/home/sdtdserver/user.sh"]

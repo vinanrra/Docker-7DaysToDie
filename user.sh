@@ -8,6 +8,9 @@ exit_handler() {
     exit 0
 }
 
+# Trap specific signals and forward to the exit handler
+trap exit_handler SIGINT SIGTERM
+
 set -eu
 
 # Print info
@@ -40,9 +43,6 @@ chown -R sdtdserver:sdtdserver /home/sdtdserver
 
 # Start cron
 service cron start
-
-# Trap specific signals and forward to the exit handler
-trap exit_handler SIGINT SIGTERM
 
 # Change user to sdtdserver
 su-exec sdtdserver bash /home/sdtdserver/install.sh
