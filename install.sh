@@ -4,9 +4,8 @@ scriptsDir="${rootDir}/scripts"
 
 # Show log function
 show_log () {
-   i="0"
-      # -F = --follow=name --retry
-      tail -F /home/sdtdserver/log/console/sdtdserver-console.log
+   # -F = --follow=name --retry
+   tail -F /home/sdtdserver/log/console/sdtdserver-console.log
 }
 
 test_alert () {
@@ -40,8 +39,10 @@ fi
 
 echo "# Don't remove the empty line at the end of this file. It is required to run the cron job" >> crontab.txt
 
+# Add crontab
 crontab crontab.txt
 
+# Cleanup junk file
 rm crontab.txt
 
 # Use of case to avoid errors if used wrong START_MODE

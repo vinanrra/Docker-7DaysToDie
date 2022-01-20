@@ -2,13 +2,13 @@
 
 ./sdtdserver start
 
-            echo "
-            =======================================================================
-            IMPORTANT:
-            
-            Starting server...
-            Soon you will see all the info
-            =======================================================================
-            "
+echo "
+    =======================================================================
+    IMPORTANT:
 
-        ./sdtdserver details
+    Starting server...
+    Soon you will see all the info
+    =======================================================================
+"
+
+./sdtdserver details
