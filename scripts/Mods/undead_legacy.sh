@@ -23,7 +23,7 @@ else
     exit
 fi
 
-DL_LINK="https://ul.subquake.com/dl/dl.php?v=${UNDEAD_LEGACY_VERSION,,}"
+DL_LINK="https://ul.subquake.com/dl?v=${UNDEAD_LEGACY_VERSION,,}"
 
 downloadRelease() {
     curl $DL_LINK -SsL -o undeadlegacy.zip
