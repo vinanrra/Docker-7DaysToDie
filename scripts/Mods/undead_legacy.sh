@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Uncomment if used outside of the Docker
 #UNDEAD_LEGACY_VERSION=stable
@@ -13,14 +13,14 @@ SERVER_CONFIG=${SERVERFILES_FOLDER}/sdtdserver.xml
 # Dont edit nothing here unless you know what you are doing
 
 if [ "${UNDEAD_LEGACY_VERSION,,}" == 'exp'  ]; then
-    echo "[Undead Legacy] Starting install of Undead Legacy ${UNDEAD_LEGACY_VERSION,,} version"
-elif  [ "${UNDEAD_LEGACY_VERSION,,}" == 'stable'  ]; then
+        echo "[Undead Legacy] Starting install of Undead Legacy ${UNDEAD_LEGACY_VERSION,,} version"
+    elif  [ "${UNDEAD_LEGACY_VERSION,,}" == 'stable'  ]; then
 
-    echo "[Undead Legacy] Starting install of Undead Legacy ${UNDEAD_LEGACY_VERSION,,} version"
-else
-    echo "[Undead Legacy] Error wrong version selected -> ${UNDEAD_LEGACY_VERSION,,}, select exp or stable"
-    echo "[Undead Legacy] Skipping installation"
-    exit
+        echo "[Undead Legacy] Starting install of Undead Legacy ${UNDEAD_LEGACY_VERSION,,} version"
+    else
+        echo "[Undead Legacy] Error wrong version selected -> ${UNDEAD_LEGACY_VERSION,,}, select exp or stable"
+        echo "[Undead Legacy] Skipping installation"
+        exit
 fi
 
 DL_LINK="https://ul.subquake.com/dl?v=${UNDEAD_LEGACY_VERSION,,}"
@@ -43,13 +43,13 @@ unzip undeadlegacy.zip -d undeadlegacy-temp
 echo "[Undead Legacy] Installing mod"
 
 if [ "${UNDEAD_LEGACY_VERSION,,}" == 'exp'  ]; then
-    cp -a undeadlegacy-temp/UndeadLegacyExperimental-main/. $SERVERFILES_FOLDER
-elif  [ "${UNDEAD_LEGACY_VERSION,,}" == 'stable'  ]; then
-    cp -a undeadlegacy-temp/UndeadLegacyStable-main/. $SERVERFILES_FOLDER
-else
-    echo "[Undead Legacy] Error wrong version selected -> ${UNDEAD_LEGACY_VERSION,,}, select exp or stable"
-    echo "[Undead Legacy] Skipping installation"
-    exit
+        cp -a undeadlegacy-temp/UndeadLegacyExperimental-main/. $SERVERFILES_FOLDER
+    elif  [ "${UNDEAD_LEGACY_VERSION,,}" == 'stable'  ]; then
+        cp -a undeadlegacy-temp/UndeadLegacyStable-main/. $SERVERFILES_FOLDER
+    else
+        echo "[Undead Legacy] Error wrong version selected -> ${UNDEAD_LEGACY_VERSION,,}, select exp or stable"
+        echo "[Undead Legacy] Skipping installation"
+        exit
 fi
 
 echo "[Undead Legacy] Cleanup"
@@ -59,13 +59,26 @@ rm -rf undeadlegacy-temp
 
 echo "[Undead Legacy] Adding Undead Legacy default options to server configuration"
 
+if grep -R "$SERVER_CONFIG" "Undead Legacy specific options"
+    then
+        echo "[Undead Legacy] Skipping default options to server configuration, already added"
+    else
+        sed -i '$i\ '\\r\\t'<!-- Undead Legacy specific options -->'\\r\\t'<property name="RecipeFilter"\tvalue="0"/>'\\r\\t'<property name="StarterQuestEnabled"\tvalue="true"/>'\\r\\t'<property name="WanderingHordeFrequency"\tvalue="4"/>'\\r\\t'<property name="WanderingHordeRange"\tvalue="8"/>'\\r\\t'<property name="WanderingHordeEnemyCount"\tvalue="10"/>'\\r\\t'<property name="WanderingHordeEnemyRange"\tvalue="10"/>' $SERVER_CONFIG
+fi
+
+echo "[Undead Legacy] Disabling EAC"
+
 sed -i 's/.*EACEnabled.*/\t<property name="EACEnabled"\t\t\t\tvalue="false"\/>\t\t\t\t<!-- Enables\/Disables EasyAntiCheat -->/' $SERVER_CONFIG
-sed -i '$i\ '\\r\\t'<!-- Undead Legacy specific options -->'\\r\\t'<property name="RecipeFilter"\tvalue="0"/>'\\r\\t'<property name="StarterQuestEnabled"\tvalue="true"/>'\\r\\t'<property name="WanderingHordeFrequency"\tvalue="4"/>'\\r\\t'<property name="WanderingHordeRange"\tvalue="8"/>'\\r\\t'<property name="WanderingHordeEnemyCount"\tvalue="10"/>'\\r\\t'<property name="WanderingHordeEnemyRange"\tvalue="10"/>' $SERVER_CONFIG
 
 echo "[Undead Legacy] Adding missing dll to 7DaysToDieServer_Data/MonoBleedingEdge/etc/mono/config"
 
-missingDLL=$(sed '$ i\\t<dllmap dll="dl" target="libdl.so.2"/>' $CONFIG_FILE)
-echo "$missingDLL" > $CONFIG_FILE
+if grep -R "$SERVER_CONFIG" "libdl.so.2"
+    then
+        echo "[Undead Legacy] Skipping missing dll, already added"
+    else
+        missingDLL=$(sed '$ i\\t<dllmap dll="dl" target="libdl.so.2"/>' $CONFIG_FILE)
+        echo "$missingDLL" > $CONFIG_FILE
+fi
 
 echo "[Undead Legacy] Fixing permissions"
 
@@ -73,13 +86,29 @@ chmod +x $SERVERFILES_FOLDER/run_bepinex_server.sh
 
 echo "[Undead Legacy] Replacing config file used in UndeadLegacy startup script"
 
-sed -i 's/serverconfig.xml/sdtdserver.xml/' $SERVERFILES_FOLDER/run_bepinex_server.sh
+if grep -R "$SERVER_CONFIG" "sdtdserver"
+    then
+        echo "[Undead Legacy] Skiping config file changes, already replaced"
+    else
+        sed -i 's/config_file.*/config_file="sdtdserver.xml"/' $SERVERFILES_FOLDER/run_bepinex_server.sh
+fi
 
-# Comment if not using LinuxGSM script
-echo "[Undead Legacy] Replacing executable and start parameters for LinuxGSM"
+echo "[Undead Legacy] Replacing start parameters for LinuxGSM"
 
-echo startparameters='""' >> $LSGMSDTDSERVERCFG
-echo executable='"./run_bepinex_server.sh"' >> $LSGMSDTDSERVERCFG
-## Comment if not using LinuxGSM script
+if grep -R "$SERVER_CONFIG" "startparameters"
+    then
+        sed -i 's/startparameters=.*/startparameters=""/' $LSGMSDTDSERVERCFG
+    else
+        echo startparameters='""' >> $LSGMSDTDSERVERCFG
+fi
+
+echo "[Undead Legacy] Replacing executable for LinuxGSM"
+
+if grep -R "$SERVER_CONFIG" "startparameters"
+    then
+        sed -i 's/executable=.*/executable=".\/run_bepinex_server.sh"/' $LSGMSDTDSERVERCFG
+    else
+        echo executable='"./run_bepinex_server.sh"' >> $LSGMSDTDSERVERCFG
+fi
 
 echo "[Undead Legacy] Installed ヽ(´▽\`)/"
