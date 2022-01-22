@@ -60,16 +60,16 @@ rm -rf undeadlegacy-temp
 echo "[Undead Legacy] Adding Undead Legacy default options to server configuration"
 
 # grep -R "string" "filepath"
-if grep -R "Undead Legacy specific options" "$SERVER_CONFIG"
-    then
-        echo "[Undead Legacy] Skipping default options to server configuration, already added"
-    else
-        sed -i '$i\ '\\r\\t'<!-- Undead Legacy specific options -->'\\r\\t'<property name="RecipeFilter"\tvalue="0"/>'\\r\\t'<property name="StarterQuestEnabled"\tvalue="true"/>'\\r\\t'<property name="WanderingHordeFrequency"\tvalue="4"/>'\\r\\t'<property name="WanderingHordeRange"\tvalue="8"/>'\\r\\t'<property name="WanderingHordeEnemyCount"\tvalue="10"/>'\\r\\t'<property name="WanderingHordeEnemyRange"\tvalue="10"/>' $SERVER_CONFIG
-fi
+# if grep -R "Undead Legacy specific options" "$SERVER_CONFIG"
+#     then
+#         echo "[Undead Legacy] Skipping default options to server configuration, already added"
+#     else
+#         sed -i '$i\ '\\r\\t'<!-- Undead Legacy specific options -->'\\r\\t'<property name="RecipeFilter"\tvalue="0"/>'\\r\\t'<property name="StarterQuestEnabled"\tvalue="true"/>'\\r\\t'<property name="WanderingHordeFrequency"\tvalue="4"/>'\\r\\t'<property name="WanderingHordeRange"\tvalue="8"/>'\\r\\t'<property name="WanderingHordeEnemyCount"\tvalue="10"/>'\\r\\t'<property name="WanderingHordeEnemyRange"\tvalue="10"/>' $SERVER_CONFIG
+# fi
 
-echo "[Undead Legacy] Disabling EAC"
+# echo "[Undead Legacy] Disabling EAC"
 
-sed -i 's/.*EACEnabled.*/\t<property name="EACEnabled"\t\t\t\tvalue="false"\/>\t\t\t\t<!-- Enables\/Disables EasyAntiCheat -->/' $SERVER_CONFIG
+# sed -i 's/.*EACEnabled.*/\t<property name="EACEnabled"\t\t\t\tvalue="false"\/>\t\t\t\t<!-- Enables\/Disables EasyAntiCheat -->/' $SERVER_CONFIG
 
 echo "[Undead Legacy] Adding missing dll to 7DaysToDieServer_Data/MonoBleedingEdge/etc/mono/config"
 
