@@ -106,7 +106,6 @@ RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && su-exec s
 # Add files
 ADD install.sh user.sh /home/sdtdserver/
 ADD scripts /home/sdtdserver/scripts
-ADD lgsm /home/sdtdserver/lgsm
 
 # Apply permissions
 RUN chmod +x install.sh user.sh

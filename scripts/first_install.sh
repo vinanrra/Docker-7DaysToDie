@@ -37,24 +37,25 @@ echo "
     =======================================================================
 "
 
-# Add alerts examples
-
-mv -f common.cfg /home/sdtdserver/lgsm/config-lgsm/sdtdserver/common.cfg
-
-# Set branch version
-sed -i "s/branch=".*"/branch="\"${VERSION,,}"\"/" /home/sdtdserver/lgsm/config-lgsm/sdtdserver/common.cfg
-
 # Check version
 
 if [ "${VERSION,,}" == 'stable'  ]
     then
-        # Remove branch line
-        sed -i '/branch/d' /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+        if grep -R "/home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg" "branch"
+            then
+                sed -i "s/branch=.*/branch=\"\"/" $LSGMSDTDSERVERCFG
+                echo "[INFO] Version changed to ${VERSION,,}"
+            else
+                echo "[INFO] Already on ${VERSION,,}"
+        fi
     else
-        # Remove branch line if exist to avoid multiple branch lines
-        sed -i '/branch/d' /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
-    
-        echo branch='"-beta $VERSION"' >> /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+        if grep -R "/home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg" "branch"
+            then
+                sed -i 's/branch=.*/branch="$VERSION"/' $LSGMSDTDSERVERCFG
+            else
+                echo branch='"-beta $VERSION"' >> /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+                echo "[INFO] Version changed to ${VERSION,,}"
+        fi
 fi
 
 echo "
@@ -72,7 +73,7 @@ echo "
 echo "
     =======================================================================
     IMPORTANT:
-
+    
     The server have been installed.
     More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
     =======================================================================
