@@ -1,6 +1,10 @@
 #!/bin/bash
 
+BASEPATH=/home/sdtdserver
+LSGMSDTDSERVERCFG=${BASEPATH}/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+
 source $scriptsDir/check_space.sh
+
 if [ "${space,,}" == 'no'  ]; then
     echo "
         =======================================================================
@@ -37,11 +41,17 @@ echo "
     =======================================================================
 "
 
+if [ ! -f $LSGMSDTDSERVERCFG ]
+then
+    mkdir -p ${BASEPATH}/lgsm/config-lgsm/sdtdserver/
+    touch $LSGMSDTDSERVERCFG
+fi
+
 # Check version
 
 if [ "${VERSION,,}" == 'stable'  ]
     then
-        if grep -R "/home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg" "branch"
+        if grep -R "$LSGMSDTDSERVERCFG" "branch"
             then
                 sed -i "s/branch=.*/branch=\"\"/" $LSGMSDTDSERVERCFG
                 echo "[INFO] Version changed to ${VERSION,,}"
@@ -49,11 +59,11 @@ if [ "${VERSION,,}" == 'stable'  ]
                 echo "[INFO] Already on ${VERSION,,}"
         fi
     else
-        if grep -R "/home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg" "branch"
+        if grep -R "$LSGMSDTDSERVERCFG" "branch"
             then
                 sed -i 's/branch=.*/branch="$VERSION"/' $LSGMSDTDSERVERCFG
             else
-                echo branch='"-beta $VERSION"' >> /home/sdtdserver/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+                echo branch='"-beta $VERSION"' >> $LSGMSDTDSERVERCFG
                 echo "[INFO] Version changed to ${VERSION,,}"
         fi
 fi
