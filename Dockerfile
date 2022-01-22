@@ -71,8 +71,7 @@ RUN dpkg --add-architecture i386 && \
 
 # Install gamedig
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - ; \
-	apt update && apt install -y nodejs \
-	npm install gamedig -g
+	apt install -y nodejs && npm install -g gamedig
 
 # Install latest su-exec
 RUN  set -ex; \
