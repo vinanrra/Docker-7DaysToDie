@@ -105,6 +105,9 @@ RUN adduser --home /home/sdtdserver --disabled-password --shell /bin/bash --disa
 # Base dir
 WORKDIR /home/sdtdserver
 
+# Fix perms
+RUN chown -R sdtdserver:sdtdserver /home/sdtdserver
+
 # Add LinuxGSM scripts
 RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && su-exec sdtdserver bash linuxgsm.sh sdtdserver
 
