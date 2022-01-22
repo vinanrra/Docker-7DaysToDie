@@ -6,7 +6,7 @@ STOPSIGNAL SIGTERM
 
 ####Labels####
 LABEL maintainer="vinanrra"
-LABEL build_version="version: 0.2.5"
+LABEL build_version="version: 0.2.6"
 
 ####Environments####
 
@@ -34,6 +34,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 #####Dependencies####
 
+# LinuxGSM dependencies
 RUN dpkg --add-architecture i386 && \
 	apt update -y && \
 	apt install -y --no-install-recommends \
@@ -68,6 +69,10 @@ RUN dpkg --add-architecture i386 && \
 		libsdl2-2.0-0:i386 \
 		xz-utils
 
+# Install gamedig
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - ; \
+	apt install -y nodejs && npm install -g gamedig
+
 # Install latest su-exec
 RUN  set -ex; \
 		\
@@ -100,17 +105,15 @@ RUN adduser --home /home/sdtdserver --disabled-password --shell /bin/bash --disa
 # Base dir
 WORKDIR /home/sdtdserver
 
-# Add LinuxGSM scripts
-RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && su-exec sdtdserver bash linuxgsm.sh sdtdserver
-
 # Add files
 ADD install.sh user.sh /home/sdtdserver/
 ADD scripts /home/sdtdserver/scripts
 
 # Apply permissions
-RUN chmod +x install.sh user.sh
-RUN find /home/sdtdserver/scripts/ -type f -iname "*" -exec chmod +x {} \;
-RUN find /home/sdtdserver/scripts/Mods -type f -iname "*" -exec chmod +x {} \;
+RUN chown -R sdtdserver:sdtdserver /home/sdtdserver && chmod +x install.sh user.sh && find /home/sdtdserver/scripts/ -type f -exec chmod 744 {} \;
+
+# Add LinuxGSM scripts
+RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && su-exec sdtdserver bash linuxgsm.sh sdtdserver
 
 ##############EXTRA CONFIG##############
 #Ports
