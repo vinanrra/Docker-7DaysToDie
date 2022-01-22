@@ -23,7 +23,6 @@ echo "
     IMPORTANT:
 
     The server have been updated to ${VERSION,,}
-    More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
     =======================================================================
 "
 
@@ -34,5 +33,6 @@ echo "
     IMPORTANT:
 
     The server mods have been updated to latest version
+    If the server crash, check mod compatibilites
     =======================================================================
 "

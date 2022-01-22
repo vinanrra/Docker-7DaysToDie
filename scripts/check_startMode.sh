@@ -9,6 +9,6 @@ echo "
     Stopping container...
 
     Check your START_MODE, the number must be between 1 and 6
-    More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
+    More info: $startModeLink
     =======================================================================
 "

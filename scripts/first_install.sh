@@ -86,7 +86,6 @@ echo "
     IMPORTANT:
     
     The server have been installed.
-    More info: https://github.com/vinanrra/Docker-7DaysToDie#start-modes
     =======================================================================
 "
 
