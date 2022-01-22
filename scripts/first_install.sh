@@ -41,6 +41,7 @@ echo "
     =======================================================================
 "
 
+# If missing file create
 if [ ! -f $LSGMSDTDSERVERCFG ]
 then
     mkdir -p ${BASEPATH}/lgsm/config-lgsm/sdtdserver/
