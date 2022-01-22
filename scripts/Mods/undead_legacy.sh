@@ -59,7 +59,8 @@ rm -rf undeadlegacy-temp
 
 echo "[Undead Legacy] Adding Undead Legacy default options to server configuration"
 
-if grep -R "$SERVER_CONFIG" "Undead Legacy specific options"
+# grep -R "string" "filepath"
+if grep -R "Undead Legacy specific options" "$SERVER_CONFIG"
     then
         echo "[Undead Legacy] Skipping default options to server configuration, already added"
     else
@@ -72,7 +73,7 @@ sed -i 's/.*EACEnabled.*/\t<property name="EACEnabled"\t\t\t\tvalue="false"\/>\t
 
 echo "[Undead Legacy] Adding missing dll to 7DaysToDieServer_Data/MonoBleedingEdge/etc/mono/config"
 
-if grep -R "$SERVER_CONFIG" "libdl.so.2"
+if grep -R "libdl.so.2" "$SERVER_CONFIG"
     then
         echo "[Undead Legacy] Skipping missing dll, already added"
     else
@@ -86,7 +87,7 @@ chmod +x $SERVERFILES_FOLDER/run_bepinex_server.sh
 
 echo "[Undead Legacy] Replacing config file used in UndeadLegacy startup script"
 
-if grep -R "$SERVER_CONFIG" "sdtdserver"
+if grep -R "sdtdserver" "$SERVER_CONFIG"
     then
         echo "[Undead Legacy] Skiping config file changes, already replaced"
     else
@@ -95,7 +96,7 @@ fi
 
 echo "[Undead Legacy] Replacing start parameters for LinuxGSM"
 
-if grep -R "$SERVER_CONFIG" "startparameters"
+if grep -R "startparameters" "$SERVER_CONFIG"
     then
         sed -i 's/startparameters=.*/startparameters=""/' $LSGMSDTDSERVERCFG
     else
@@ -104,7 +105,7 @@ fi
 
 echo "[Undead Legacy] Replacing executable for LinuxGSM"
 
-if grep -R "$SERVER_CONFIG" "startparameters"
+if grep -R "startparameters" "$SERVER_CONFIG"
     then
         sed -i 's/executable=.*/executable=".\/run_bepinex_server.sh"/' $LSGMSDTDSERVERCFG
     else
