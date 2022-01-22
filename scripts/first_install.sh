@@ -51,7 +51,7 @@ fi
 
 if [ "${VERSION,,}" == 'stable'  ]
     then
-        if grep -R "$LSGMSDTDSERVERCFG" "branch"
+        if grep -R "branch" "$LSGMSDTDSERVERCFG"
             then
                 sed -i "s/branch=.*/branch=\"\"/" $LSGMSDTDSERVERCFG
                 echo "[INFO] Version changed to ${VERSION,,}"
@@ -59,7 +59,7 @@ if [ "${VERSION,,}" == 'stable'  ]
                 echo "[INFO] Already on ${VERSION,,}"
         fi
     else
-        if grep -R "$LSGMSDTDSERVERCFG" "branch"
+        if grep -R "branch" "$LSGMSDTDSERVERCFG"
             then
                 sed -i 's/branch=.*/branch="$VERSION"/' $LSGMSDTDSERVERCFG
             else
