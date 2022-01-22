@@ -1,13 +1,10 @@
 #!/bin/sh
 
-# Uncomment if used outside of the Docker
-#UNDEAD_LEGACY_VERSION=stable
-
-# Edit paths if used outside of the Docker
 BASEPATH=/home/sdtdserver
 SERVERFILES_FOLDER=${BASEPATH}/serverfiles
-CONFIG_FILE=${BASEPATH}/serverfiles/7DaysToDieServer_Data/MonoBleedingEdge/etc/mono/config
+CONFIG_FILE=${SERVERFILES_FOLDER}/7DaysToDieServer_Data/MonoBleedingEdge/etc/mono/config
 LSGMSDTDSERVERCFG=${BASEPATH}/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+SERVER_CONFIG=${SERVERFILES_FOLDER}/sdtdserver.xml
 
 if [ "${UNDEAD_LEGACY_VERSION,,}" == 'exp'  ]; then
     echo "[Undead Legacy] Starting install of Undead Legacy ${UNDEAD_LEGACY_VERSION,,} version"
@@ -59,6 +56,16 @@ echo "[Undead Legacy] Adding missing dll to 7DaysToDieServer_Data/MonoBleedingEd
 missingDLL=$(sed '$ i\\t<dllmap dll="dl" target="libdl.so.2"/>' $CONFIG_FILE)
 echo "$missingDLL" > $CONFIG_FILE
 
+## Adds Undead Legacy specific options to the server configuration file.
+
+echo "[Undead Legacy] Adding Undead Legacy default options to server configuration"
+
+sed -i '$i\ '\\r\\t'<!-- Undead Legacy specific options -->'\\r\\t'<property name="RecipeFilter"\tvalue="0"/>'\\r\\t'<property name="StarterQuestEnabled"\tvalue="true"/>'\\r\\t'<property name="WanderingHordeFrequency"\tvalue="4"/>'\\r\\t'<property name="WanderingHordeRange"\tvalue="8"/>'\\r\\t'<property name="WanderingHordeEnemyCount"\tvalue="10"/>'\\r\\t'<property name="WanderingHordeEnemyRange"\tvalue="10"/>' $SERVER_CONFIG
+
+echo "[Undead Legacy] Disabling EAC"
+
+sed -i 's/.*EACEnabled.*/\t<property name="EACEnabled"\t\t\t\tvalue="false"\/>\t\t\t\t<!-- Enables\/Disables EasyAntiCheat -->/' $SERVER_CONFIG
+
 echo "[Undead Legacy] Fixing permissions"
 
 chmod +x $SERVERFILES_FOLDER/run_bepinex_server.sh
@@ -67,19 +74,9 @@ echo "[Undead Legacy] Replacing config file used in UndeadLegacy startup script"
 
 sed -i 's/serverconfig.xml/sdtdserver.xml/' $SERVERFILES_FOLDER/run_bepinex_server.sh
 
-# Comment if not using LinuxGSM script
 echo "[Undead Legacy] Replacing executable and start parameters for LinuxGSM"
 
 echo startparameters='""' >> $LSGMSDTDSERVERCFG
 echo executable='"./run_bepinex_server.sh"' >> $LSGMSDTDSERVERCFG
-## Comment if not using LinuxGSM script
 
 echo "[Undead Legacy] Installed ヽ(´▽\`)/"
-
-# Provisional, will be replaced if this work -> https://github.com/GameServerManagers/LinuxGSM/discussions/3755
-# Uncomment if not using linuxGSM script
-#echo "[Undead Legacy] Starting the server ヽ(´▽\`)/"
-
-# cd $SERVERFILES_FOLDER
-
-# bash run_bepinex_server.sh

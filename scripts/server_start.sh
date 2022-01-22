@@ -10,5 +10,3 @@ echo "
     Soon you will see all the info
     =======================================================================
 "
-
-./sdtdserver details
