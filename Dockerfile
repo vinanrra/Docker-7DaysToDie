@@ -34,6 +34,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 #####Dependencies####
 
+# LinuxGSM dependencies
 RUN dpkg --add-architecture i386 && \
 	apt update -y && \
 	apt install -y --no-install-recommends \
