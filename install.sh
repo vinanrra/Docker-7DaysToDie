@@ -1,6 +1,7 @@
 #!/bin/bash
 rootDir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 scriptsDir="${rootDir}/scripts"
+startModeLink=https://github.com/vinanrra/Docker-7DaysToDie/blob/master/docs/parameters.md#start-modes
 
 # Show log function
 show_log () {
