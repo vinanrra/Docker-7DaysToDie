@@ -111,7 +111,7 @@ ADD install.sh user.sh /home/sdtdserver/
 ADD scripts /home/sdtdserver/scripts
 
 # Apply permissions
-RUN chown -R sdtdserver:sdtdserver /home/sdtdserver && chmod +x install.sh user.sh && find /home/sdtdserver/scripts/ -type f -exec chmod 744 {} \; && chmod 744 /home/sdtdserver/scripts/{Mods,crontab}
+RUN chown -R sdtdserver:sdtdserver /home/sdtdserver && chmod +x install.sh user.sh && chmod -R 755 /home/sdtdserver/scripts
 
 # Add LinuxGSM scripts
 RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && su-exec sdtdserver bash linuxgsm.sh sdtdserver
