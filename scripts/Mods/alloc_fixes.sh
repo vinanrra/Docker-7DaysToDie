@@ -3,7 +3,7 @@
 MODS_FOLDER=/home/sdtdserver/serverfiles/Mods
 
 # Change DL_LINK depending on 7 days to die branch version
-if [ "${VERSION,,}" == 'yes' ]; then
+if [ "${VERSION,,}" == 'stable' ] || [ "${VERSION,,}" == 'public' ]; then
     DL_LINK="http://illy.bz/fi/7dtd/server_fixes.tar.gz"
 elif [ "${VERSION,,}" == 'alpha19.6' ] || [ "${VERSION,,}" == 'alpha19.5' ]; then
     DL_LINK="http://illy.bz/fi/7dtd/server_fixes_v21_23_38.tar.gz"

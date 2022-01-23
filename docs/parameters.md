@@ -57,7 +57,7 @@
 ### Undead Legacy
 
 | Parameter | Function | Values |
-| :---: | --- | :---: |
+| --- | --- | :---: |
 | `UNDEAD_LEGACY=NO` | Install [Undead Legacy](https://ul.subquake.com/) **optional** | YES, NO |
 | `UNDEAD_LEGACY_VERSION=stable` | Install [Undead Legacy Versions](https://ul.subquake.com/download), CHECK BUILDS COMPATIBILITY **optional** | EXP, STABLE |
 
