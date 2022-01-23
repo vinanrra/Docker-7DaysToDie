@@ -42,7 +42,8 @@
 
 | Parameter | Function | Values |
 | --- | --- | :---: |
-| `BACKUP=NO` | Backup server at 5 AM (Only the latest 5 backups will be keep, maximum 30 days) [More info](https://docs.linuxgsm.com/commands/backup) **optional** | YES, NO |
+| `BACKUP=NO` | Backup server, by default only the latest 5 backups will be keep, maximum 30 days [More info](https://docs.linuxgsm.com/commands/backup) **optional** | YES, NO |
+| `BACKUP_TIMER=0 5 * * *` | Backup at specified time, crontab format, default 5AM **optional** | [More info](https://crontab.guru/) |
 | `MONITOR=NO` | Monitor server status, if server crash this will restart it [More info](https://docs.linuxgsm.com/commands/monitor) **optional** | YES, NO |
 | `TEST_ALERT=NO` | Test alerts at start of server **optional** | YES, NO |
 
