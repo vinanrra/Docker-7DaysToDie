@@ -25,7 +25,7 @@ downloadRelease() {
     curl $DL_LINK -SsL -o allocs.tar.gz
 }
 
-clear
+echo "[Alloc Fixes] Installing ${VERSION} version"
 
 echo "[Alloc Fixes] Downloading release from $DL_LINK"
 
