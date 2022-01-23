@@ -11,7 +11,7 @@
 ## Features
 
 * **Multi-version** you can choose which version you want to play, [more info](docs/parameters.md#7-days-to-die).
-* **Auto-installable mods**, [more info](docs/mods_support.md#mods).
+* **Auto-installable mods**, [more info](docs/mods_support.md#mods) also check [Mods parameters](docs/parameters.md#mods).
 * **Automatic Backups**, [more info](docs/backups.md) also check [LinuxGSM parameters](docs/parameters.md#linuxgsm)
 * **Monitor** if server crash will be restarted, [more info](docs/parameters.md#linuxgsm).
 * **Alerts** if server requiere your attention, [more info](docs/alerts.md#alerts) also check [LinuxGSM parameters](docs/parameters.md#linuxgsm).
