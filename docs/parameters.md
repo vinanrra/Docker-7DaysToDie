@@ -52,12 +52,12 @@
 
 | Parameter | Function | Values |
 | :---: | --- | :---: |
-| `ALLOC_FIXES=NO` | Install [Alloc Fixes](https://7dtd.illy.bz/wiki/Server%20fixes), ONLY USE WITH LATEST STABLE BUILD **optional** | YES, NO |
+| `ALLOC_FIXES=NO` | Install [Alloc Fixes](https://7dtd.illy.bz/wiki/Server%20fixes), Alloc Fixes will be installed according to 7 days to die branch version  **optional** | YES, NO |
 
 ### Undead Legacy
 
 | Parameter | Function | Values |
-| :---: | --- | :---: |
+| --- | --- | :---: |
 | `UNDEAD_LEGACY=NO` | Install [Undead Legacy](https://ul.subquake.com/) **optional** | YES, NO |
 | `UNDEAD_LEGACY_VERSION=stable` | Install [Undead Legacy Versions](https://ul.subquake.com/download), CHECK BUILDS COMPATIBILITY **optional** | EXP, STABLE |
 

@@ -50,7 +50,7 @@ fi
 
 # Check version
 
-if [ "${VERSION,,}" == 'stable'  ]
+if [ "${VERSION,,}" == 'stable'  ] || [ "${VERSION,,}" == 'public'  ]
     then
         if grep -R "branch" "$LSGMSDTDSERVERCFG"
             then
