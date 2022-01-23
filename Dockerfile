@@ -25,6 +25,7 @@ ENV MONITOR=no
 ENV BACKUP=no
 ENV HOME=/home/sdtdserver
 ENV LANG en_US.utf8
+ENV BACKUP_TIMER="0 5 * * *"
 
 ##Need use xterm for LinuxGSM##
 ENV TERM=xterm
@@ -110,7 +111,7 @@ ADD install.sh user.sh /home/sdtdserver/
 ADD scripts /home/sdtdserver/scripts
 
 # Apply permissions
-RUN chown -R sdtdserver:sdtdserver /home/sdtdserver && chmod +x install.sh user.sh && find /home/sdtdserver/scripts/ -type f -exec chmod 744 {} \;
+RUN chown -R sdtdserver:sdtdserver /home/sdtdserver && chmod +x install.sh user.sh && chmod -R 755 /home/sdtdserver/scripts
 
 # Add LinuxGSM scripts
 RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && su-exec sdtdserver bash linuxgsm.sh sdtdserver

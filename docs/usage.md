@@ -25,6 +25,7 @@ docker run -d \
   -e UNDEAD_LEGACY=NO \
   -e UNDEAD_LEGACY_VERSION=stable \
   -e BACKUP=NO \
+  -e BACKUP_TIMER=0 5 * * * \
   -e MONITOR=NO \
   -e PUID=1000 \
   -e PGID=1000 \
@@ -50,7 +51,8 @@ services:
       - ALLOC_FIXES=NO # Optional - Install ALLOC FIXES
       - UNDEAD_LEGACY=NO #O ptional - Install Undead Legacy mod
       - UNDEAD_LEGACY_VERSION=stable #Optional - Undead Legacy version
-      - BACKUP=NO # Optional - Backup server at 5 AM
+      - BACKUP=NO # Optional - Backup server
+      - BACKUP_TIMER=0 5 * * * # Optional - Backup at specified time, crontab format
       - MONITOR=NO # Optional - Keeps server up if crash
     volumes:
       - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/
