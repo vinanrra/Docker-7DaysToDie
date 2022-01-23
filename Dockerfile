@@ -25,7 +25,7 @@ ENV MONITOR=no
 ENV BACKUP=no
 ENV HOME=/home/sdtdserver
 ENV LANG en_US.utf8
-ENV BACKUP_TIMER=0 5 * * *
+ENV BACKUP_TIMER="0 5 * * *"
 
 ##Need use xterm for LinuxGSM##
 ENV TERM=xterm
