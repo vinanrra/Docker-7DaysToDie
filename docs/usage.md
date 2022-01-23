@@ -45,26 +45,26 @@ services:
       - VERSION=stable # Change between 7 days to die versions
       - PUID=1000 # Remember to use same as your user
       - PGID=1000 # Remember to use same as your user
-      - TimeZone=Europe/Madrid
-      - TEST_ALERT=NO
-      - ALLOC_FIXES=NO #Optional - Install ALLOC FIXES
-      - UNDEAD_LEGACY=NO #Optional - Install Undead Legacy mod
+      - TimeZone=Europe/Madrid # Optional - Change Timezone
+      - TEST_ALERT=NO # Optional - Send a test alert
+      - ALLOC_FIXES=NO # Optional - Install ALLOC FIXES
+      - UNDEAD_LEGACY=NO #O ptional - Install Undead Legacy mod
       - UNDEAD_LEGACY_VERSION=stable #Optional - Undead Legacy version
-      - BACKUP=NO # Backup server at 5 AM
-      - MONITOR=NO # Keeps server up if crash
+      - BACKUP=NO # Optional - Backup server at 5 AM
+      - MONITOR=NO # Optional - Keeps server up if crash
     volumes:
-      - ./ServerFiles:/home/sdtdserver/serverfiles/ #Optional, serverfiles
-      - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/ #Optional, maps files
-      - ./log:/home/sdtdserver/log/ #Optional, logs
-      - ./backups:/home/sdtdserver/lgsm/backup/ #Optional, backups
-      - ./LGSM-Config:/home/sdtdserver/lgsm/config-lgsm/sdtdserver # Optional, LGSM-Config
+      - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/
+      - ./LGSM-Config:/home/sdtdserver/lgsm/config-lgsm/sdtdserver
+      - ./ServerFiles:/home/sdtdserver/serverfiles/ #Optional - serverfiles folder
+      - ./log:/home/sdtdserver/log/ #Optional, logs folder
+      - ./backups:/home/sdtdserver/lgsm/backup/ # Optional, if BAKCUP=NO, backups folder
     ports:
-      - 26900:26900/tcp
-      - 26900:26900/udp
-      - 26901:26901/udp
-      - 26902:26902/udp
-      - 8080:8080/tcp #OPTIONAL WEBADMIN
-      - 8081:8081/tcp #OPTIONAL TELNET
-      - 8082:8082/tcp #OPTIONAL WEBSERVER https://7dtd.illy.bz/wiki/Server%20fixes
-    restart: unless-stopped #NEVER USE WITH START_MODE=4 or START_MODE=0
+      - 26900:26900/tcp # Default game ports
+      - 26900:26900/udp # Default game ports
+      - 26901:26901/udp # Default game ports
+      - 26902:26902/udp # Default game ports
+      - 8080:8080/tcp # OPTIONAL - WEBADMIN
+      - 8081:8081/tcp # OPTIONAL - TELNET
+      - 8082:8082/tcp # OPTIONAL - WEBSERVER https://7dtd.illy.bz/wiki/Server%20fixes
+    restart: unless-stopped # INFO - NEVER USE WITH START_MODE=4 or START_MODE=0
 ```
