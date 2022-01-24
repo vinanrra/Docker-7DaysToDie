@@ -48,10 +48,10 @@ if [ "$?" -eq "0" ]
 then
    echo "[INFO] Backup timer setup correctly"
 else
-  rm crontab.txt
-  echo "[ERROR] Check your crontab format isn't valid: ${BACKUP_TIMER}"
-  echo "[ERROR] For more info check https://github.com/vinanrra/Docker-7DaysToDie/blob/master/docs/parameters.md#linuxgsm"
-  exit 0
+   rm crontab.txt
+   echo "[ERROR] Check your crontab format isn't valid: ${BACKUP_TIMER}"
+   echo "[ERROR] For more info check https://github.com/vinanrra/Docker-7DaysToDie/blob/master/docs/parameters.md#linuxgsm"
+   exit 0
 fi
 
 # Cleanup junk file
