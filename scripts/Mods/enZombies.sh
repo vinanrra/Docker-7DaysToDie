@@ -8,19 +8,19 @@ DL_LINK_ROBELOTO_ADDON="https://docs.google.com/uc?export=download&id=1vgk31jxL6
 DL_LINK_NONUDES_ADDON="https://docs.google.com/uc?export=download&id=1W8ZyFOE7BXfz3xXRPrZzRP9ZEPc5wchf"
 
 downloadRelease() {
-    wget --no-check-certificate ${DL_LINK} -O enZombies.zip
+    wget --quiet --no-check-certificate ${DL_LINK} -O enZombies.zip
 }
 
 downloadRelease_Snufkin() {
-    wget --no-check-certificate ${DL_LINK_SNUFKIN_ADDON} -O enZombiesSnufkinAddon.zip
+    wget --quiet --no-check-certificate ${DL_LINK_SNUFKIN_ADDON} -O enZombiesSnufkinAddon.zip
 }
 
 downloadRelease_Robeloto() {
-    wget --no-check-certificate ${DL_LINK_ROBELOTO_ADDON} -O enZombiesRobelotoAddon.zip
+    wget --quiet --no-check-certificate ${DL_LINK_ROBELOTO_ADDON} -O enZombiesRobelotoAddon.zip
 }
 
 downloadRelease_NoNudes() {
-    wget --no-check-certificate ${DL_LINK_NONUDES_ADDON} -O enZombiesNoNudesAddon.zip
+    wget --quiet --no-check-certificate ${DL_LINK_NONUDES_ADDON} -O enZombiesNoNudesAddon.zip
 }
 
 echo "[enZombies] Downloading release from ${DL_LINK}"
