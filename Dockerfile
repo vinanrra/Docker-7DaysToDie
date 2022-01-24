@@ -114,7 +114,7 @@ ADD scripts /home/sdtdserver/scripts
 RUN chown -R sdtdserver:sdtdserver /home/sdtdserver && chmod +x install.sh user.sh && chmod -R 755 /home/sdtdserver/scripts
 
 # Add LinuxGSM scripts
-RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && su-exec sdtdserver bash linuxgsm.sh sdtdserver
+RUN su-exec sdtdserver wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && su-exec sdtdserver bash linuxgsm.sh sdtdserver
 
 ##############EXTRA CONFIG##############
 #Ports
