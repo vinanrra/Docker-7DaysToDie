@@ -25,7 +25,7 @@ docker run -d \
   -e UNDEAD_LEGACY=NO \
   -e UNDEAD_LEGACY_VERSION=stable \
   -e BACKUP=NO \
-  -e BACKUP_TIMER=0 5 * * * \
+  -e BACKUP_TIMER="0 5 * * *" \
   -e MONITOR=NO \
   -e PUID=1000 \
   -e PGID=1000 \
