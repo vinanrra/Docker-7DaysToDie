@@ -10,29 +10,14 @@ LABEL build_version="version: 0.2.9"
 
 ####Environments####
 
-ARG PUID=1000
-ARG PGID=1000
-ENV PUID=$PUID
-ENV PGID=$PGID
-ENV START_MODE=0
-ENV TEST_ALERT=no
-ENV TimeZone=Europe/Madrid
-ENV VERSION=stable
-ENV ALLOC_FIXES=no
-ENV UNDEAD_LEGACY=no
-ENV UNDEAD_LEGACY_VERSION=stable
-ENV ENZOMBIES=no
-ENV ENZOMBIES_ADDON_SNUFKIN=no
-ENV ENZOMBIES_ADDON_ROBELOTO=no
-ENV ENZOMBIES_ADDON_NONUDES=no
-ENV MONITOR=no
-ENV BACKUP=no
-ENV HOME=/home/sdtdserver
-ENV LANG en_US.utf8
-
 ##Need use xterm for LinuxGSM##
-ENV TERM=xterm
-ENV DEBIAN_FRONTEND noninteractive
+ENV PUID=1000 PGID=1000 TimeZone=Europe/Madrid HOME=/home/sdtdserver LANG=en_US.utf8 TERM=xterm DEBIAN_FRONTEND=noninteractive \
+	START_MODE=0 \
+	TEST_ALERT=no MONITOR=no BACKUP=no\
+	VERSION=stable \
+	ALLOC_FIXES=no \
+	UNDEAD_LEGACY=no UNDEAD_LEGACY_VERSION=stable \
+	ENZOMBIES=no ENZOMBIES_ADDON_SNUFKIN=no ENZOMBIES_ADDON_ROBELOTO=no ENZOMBIES_ADDON_NONUDES=no
 
 ####Environments####
 
@@ -101,8 +86,9 @@ RUN apt clean && \
 		
 #####Dependencies####
 
-# Locale, Timezone and user
-RUN adduser --home /home/sdtdserver --disabled-password --shell /bin/bash --disabled-login --gecos "" sdtdserver
+# Create user and fix permissions - chown shouldn't be necessary check adduser command
+RUN adduser --home /home/sdtdserver --disabled-password --shell /bin/bash --disabled-login --gecos "" sdtdserver \
+	&& chown -R sdtdserver:sdtdserver /home/sdtdserver
 
 ##############BASE IMAGE##############
 
@@ -110,18 +96,16 @@ RUN adduser --home /home/sdtdserver --disabled-password --shell /bin/bash --disa
 WORKDIR /home/sdtdserver
 
 # Add files
-ADD install.sh user.sh /home/sdtdserver/
-ADD scripts /home/sdtdserver/scripts
+COPY --chmod=755 install.sh user.sh /home/sdtdserver/
+COPY --chmod=755 scripts/ /home/sdtdserver/scripts
 
-# Apply permissions
-RUN chown -R sdtdserver:sdtdserver /home/sdtdserver && chmod +x install.sh user.sh && find /home/sdtdserver/scripts/ -type f -exec chmod 744 {} \;
-
-# Add LinuxGSM scripts
+# Download LinuxGSM scripts
 RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && su-exec sdtdserver bash linuxgsm.sh sdtdserver
 
 ##############EXTRA CONFIG##############
 #Ports
 EXPOSE 26900 26900/UDP 26901/UDP 26902/UDP 8082 8081 8080
+
 #Shared folders to host
 VOLUME /home/sdtdserver/serverfiles/ /home/sdtdserver/.local/share/7DaysToDie /home/sdtdserver/log/ /home/sdtdserver/lgsm/backup/ /home/sdtdserver/lgsm/config-lgsm/sdtdserver/
 ##############EXTRA CONFIG##############
