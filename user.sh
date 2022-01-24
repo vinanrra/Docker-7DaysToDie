@@ -40,7 +40,7 @@ ln -snf /usr/share/zoneinfo/$TimeZone /etc/localtime && echo $TimeZone > /etc/ti
 
 # Fix permissions
 chown -R sdtdserver:sdtdserver /home/sdtdserver
-chmod -R 755 /home/sdtdserver/
+chmod -R 755 /home/sdtdserver
 
 # Start cron
 service cron start
