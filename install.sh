@@ -41,7 +41,17 @@ fi
 echo "# Don't remove the empty line at the end of this file. It is required to run the cron job" >> crontab.txt
 
 # Add crontab
-crontab crontab.txt || rm crontab.txt && echo "[ERROR] Check your crontab format" && exit 0
+crontab crontab.txt
+
+# Catch exit code from last command 
+if [ "$?" -eq "0" ]
+then
+  rm crontab.txt
+  echo "[ERROR] Check your crontab format isn't valid: ${BACKUP_TIMER}"
+  exit 0
+else
+  echo "Fail"
+fi
 
 # Cleanup junk file
 rm crontab.txt
