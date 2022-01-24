@@ -66,6 +66,9 @@
 | Parameter | Function | Values |
 | --- | --- | :---: |
 | `ENZOMBIES=NO` | Install [enZombies](https://community.7daystodie.com/topic/24594-enzombies-more-zombie-variations/) **optional** | YES, NO |
+| `ENZOMBIES_ADDON_SNUFKIN=NO` | Install [enZombies - Snufkin Zombies Add-on](https://community.7daystodie.com/topic/24594-enzombies-more-zombie-variations/) **optional** | YES, NO |
+| `ENZOMBIES_ADDON_ROBELOTO=NO` | Install [enZombies - Robeloto Zombies Add-on](https://community.7daystodie.com/topic/24594-enzombies-more-zombie-variations/) **optional** | YES, NO |
+| `ENZOMBIES_ADDON_NONUDES=NO` | Install [enZombies - No Nudes Add-on](https://community.7daystodie.com/topic/24594-enzombies-more-zombie-variations/) **optional** | YES, NO |
 
 ### START MODES
 
