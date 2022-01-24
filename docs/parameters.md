@@ -61,15 +61,21 @@
 | `UNDEAD_LEGACY=NO` | Install [Undead Legacy](https://ul.subquake.com/) **optional** | YES, NO |
 | `UNDEAD_LEGACY_VERSION=stable` | Install [Undead Legacy Versions](https://ul.subquake.com/download), CHECK BUILDS COMPATIBILITY **optional** | EXP, STABLE |
 
+### enZombies
+
+| Parameter | Function | Values |
+| --- | --- | :---: |
+| `ENZOMBIES=NO` | Install [enZombies](https://community.7daystodie.com/topic/24594-enzombies-more-zombie-variations/) **optional** | YES, NO |
+
 ### START MODES
 
 | START_MODE | Information |
 | :----: | ---- |
-| 0 | Install server |
+| 0 | Install server and STOP the container |
 | 1 | Start server |
-| 2 | Update server |
-| 3 | Update server and start, useful if you have already a 7 Days To Die server installed |
-| 4 | Backup server and STOP the container|
+| 2 | Update server and STOP the container |
+| 3 | Update and start start |
+| 4 | Backup server and STOP the container |
 
 #### WARNING
 
