@@ -6,7 +6,7 @@ STOPSIGNAL SIGTERM
 
 ####Labels####
 LABEL maintainer="vinanrra"
-LABEL build_version="version: 0.2.8"
+LABEL build_version="version: 0.2.9"
 
 ####Environments####
 
@@ -21,6 +21,10 @@ ENV VERSION=stable
 ENV ALLOC_FIXES=no
 ENV UNDEAD_LEGACY=no
 ENV UNDEAD_LEGACY_VERSION=stable
+ENV ENZOMBIES=no
+ENV ENZOMBIES_ADDON_SNUFKIN=no
+ENV ENZOMBIES_ADDON_ROBELOTO=no
+ENV ENZOMBIES_ADDON_NONUDES=no
 ENV MONITOR=no
 ENV BACKUP=no
 ENV HOME=/home/sdtdserver
