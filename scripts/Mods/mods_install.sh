@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Install Alloc Fixes
 
 if [ "${CPM,,}" == 'yes'  ]
