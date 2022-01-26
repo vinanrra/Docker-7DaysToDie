@@ -15,9 +15,13 @@
     - ENZOMBIES_ADDON_SNUFKIN
     - ENZOMBIES_ADDON_ROBELOTO
     - ENZOMBIES_ADDON_NONUDES
+- [CSMM Patron's Mod (CPM)](https://docs.csmm.app/en/cpm/)
+  - Environments:
+    - ENZOMBIES
 - [DarknessFalls](https://community.7daystodie.com/topic/4941-darkness-falls-they-mostly-come-out-at-night/) (Planned)
 - [Ravenheartst](https://community.7daystodie.com/topic/4508-ravenhearst-mod/) (Planned)
 - [War of the Walkers Mod](https://community.7daystodie.com/topic/4098-war-of-the-walkers-mod/) (Planned)
+- [Age of Oblivion](https://community.7daystodie.com/topic/23943-age-of-oblivion-alpha-401-a20/) (Planned)
 
 ## Manual Mods
 

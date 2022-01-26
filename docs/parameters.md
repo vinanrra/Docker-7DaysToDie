@@ -52,7 +52,7 @@
 
 | Parameter | Function | Values |
 | :---: | --- | :---: |
-| `ALLOC_FIXES=NO` | Install [Alloc Fixes](https://7dtd.illy.bz/wiki/Server%20fixes), Alloc Fixes will be installed according to 7 days to die branch version  **optional** | YES, NO |
+| `ALLOC_FIXES=NO` | Install [Alloc Fixes](https://7dtd.illy.bz/wiki/Server%20fixes), Alloc Fixes version will be installed according to 7 days to die branch version  **optional** | YES, NO |
 
 ### Undead Legacy
 
@@ -69,6 +69,12 @@
 | `ENZOMBIES_ADDON_SNUFKIN=NO` | Install [enZombies - Snufkin Zombies Add-on](https://community.7daystodie.com/topic/24594-enzombies-more-zombie-variations/) **optional** | YES, NO |
 | `ENZOMBIES_ADDON_ROBELOTO=NO` | Install [enZombies - Robeloto Zombies Add-on](https://community.7daystodie.com/topic/24594-enzombies-more-zombie-variations/) **optional** | YES, NO |
 | `ENZOMBIES_ADDON_NONUDES=NO` | Install [enZombies - No Nudes Add-on](https://community.7daystodie.com/topic/24594-enzombies-more-zombie-variations/) **optional** | YES, NO |
+
+### CSMM Patron's Mod (CPM)
+
+| Parameter | Function | Values |
+| --- | --- | :---: |
+| `CPM=NO` | Install [CPM](https://docs.csmm.app/en/cpm/), CPM version will be installed according to 7 days to die branch version **optional** | YES, NO |
 
 ### START MODES
 

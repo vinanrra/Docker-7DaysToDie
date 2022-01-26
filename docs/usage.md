@@ -6,11 +6,11 @@
 docker run -d \
   --name 7dtdserver \
   --restart unless-stopped \
-  -v "./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/" \
-  -v "./ServerFiles:/home/sdtdserver/serverfiles/" \
-  -v "./LogFolder:/home/sdtdserver/log/" \
-  -v "./BackupFolder:/home/sdtdserver/lgsm/backup/" \
-  -v "./LGSM-Config:/home/sdtdserver/lgsm/config-lgsm/sdtdserver/" \
+  -v "/path/to/folder/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/" \
+  -v "/path/to/folder/ServerFiles:/home/sdtdserver/serverfiles/" \
+  -v "/path/to/folder/LogFolder:/home/sdtdserver/log/" \
+  -v "/path/to/folder/BackupFolder:/home/sdtdserver/lgsm/backup/" \
+  -v "/path/to/folder/LGSM-Config:/home/sdtdserver/lgsm/config-lgsm/sdtdserver/" \
   -p 26900:26900/tcp \
   -p 26900:26900/udp \
   -p 26901:26901/udp \
@@ -24,6 +24,7 @@ docker run -d \
   -e ALLOC_FIXES=NO \
   -e UNDEAD_LEGACY=NO \
   -e UNDEAD_LEGACY_VERSION=stable \
+  -e CPM=NO \
   -e BACKUP=NO \
   -e MONITOR=NO \
   -e PUID=1000 \
@@ -50,14 +51,15 @@ services:
       - ALLOC_FIXES=NO # Optional - Install ALLOC FIXES
       - UNDEAD_LEGACY=NO #O ptional - Install Undead Legacy mod
       - UNDEAD_LEGACY_VERSION=stable #Optional - Undead Legacy version
+      - CPM=NO # Optional - CSMM Patron's Mod (CPM)
       - BACKUP=NO # Optional - Backup server at 5 AM
       - MONITOR=NO # Optional - Keeps server up if crash
     volumes:
-      - ./7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/
-      - ./LGSM-Config:/home/sdtdserver/lgsm/config-lgsm/sdtdserver
-      - ./ServerFiles:/home/sdtdserver/serverfiles/ #Optional - serverfiles folder
-      - ./log:/home/sdtdserver/log/ #Optional, logs folder
-      - ./backups:/home/sdtdserver/lgsm/backup/ # Optional, if BAKCUP=NO, backups folder
+      - /path/to/folder/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/
+      - /path/to/folder/LGSM-Config:/home/sdtdserver/lgsm/config-lgsm/sdtdserver
+      - /path/to/folder/ServerFiles:/home/sdtdserver/serverfiles/ #Optional - serverfiles folder
+      - /path/to/folder/log:/home/sdtdserver/log/ #Optional, logs folder
+      - /path/to/folder/backups:/home/sdtdserver/lgsm/backup/ # Optional, if BAKCUP=NO, backups folder
     ports:
       - 26900:26900/tcp # Default game ports
       - 26900:26900/udp # Default game ports
