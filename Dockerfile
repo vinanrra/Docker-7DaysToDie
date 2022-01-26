@@ -91,14 +91,14 @@ ENV PUID=1000 PGID=1000 TimeZone=Europe/Madrid HOME=/home/sdtdserver LANG=en_US.
 # Base dir
 WORKDIR /home/sdtdserver
 
+# Download LinuxGSM scripts
+RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && su-exec sdtdserver bash linuxgsm.sh sdtdserver
+
 ##############BASE IMAGE##############
 
 # Add files
 COPY --chmod=755 install.sh user.sh /home/sdtdserver/
 COPY --chmod=755 scripts/ /home/sdtdserver/scripts
-
-# Download LinuxGSM scripts
-RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && su-exec sdtdserver bash linuxgsm.sh sdtdserver
 
 ##############EXTRA CONFIG##############
 #Ports
