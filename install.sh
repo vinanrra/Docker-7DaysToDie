@@ -42,13 +42,21 @@ if [ ! -f sdtdserver ]; then
    source "$scriptsDir/check_script.sh"
 fi
 
-# Check if server have been installed
+# Check if server have been installed, if missing file
 if [ ! -f serverfiles/DONT_REMOVE.txt ]; then
    source "$scriptsDir/first_install.sh"
 fi
 
-# Install/Update mods mods at start
-source "$scriptsDir/Mods/mods_install.sh"
+# This will install or update mods at start but not on first install
+if [ "${UPDATE_MODS,,}" == 'yes'  ] && [ ! -f serverfiles/MOD_BLOCK.txt ]; then
+   echo "[INFO] Updating mods"
+   source "$scriptsDir/Mods/mods_update.sh"
+fi
+
+# Remove update mod block on first install
+if [ -f serverfiles/MOD_BLOCK.txt ] ; then
+   rm serverfiles/MOD_BLOCK.txt
+fi
 
 crontab_func
 

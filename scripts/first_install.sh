@@ -91,6 +91,8 @@ echo "
 
 echo "If this file is missing, server will be re-installed" > serverfiles/DONT_REMOVE.txt
 
+echo "To prevent double mod install at first start" > serverfiles/MOD_BLOCK.txt
+
 # Creating 7 Days to Die mod folder
 mkdir /home/sdtdserver/serverfiles/Mods
 
