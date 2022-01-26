@@ -16,7 +16,7 @@ if [ "${CPM,,}" == 'yes'  ] && [ "${CPM_UPDATE,,}" == 'yes'  ]
     # Install Allocs Fixes if missing
     echo "[CSMM - CPM] Checking if Allocs Fixes it is installed"
     if [ ! -d "$MODS_FOLDER/Allocs_CommandExtensions" ] || [ ! -d "$MODS_FOLDER/Allocs_CommonFunc" ] || [ ! -d "$MODS_FOLDER/Allocs_WebAndMapRendering" ]; then
-      # Take action if $DIR exists. #
+      # Take action if $DIR not exists
       echo "[CSMM - CPM] Allocs fixes missing, installing it"
       source $scriptsDir/Mods/alloc_fixes.sh
 
