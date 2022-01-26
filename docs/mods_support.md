@@ -8,6 +8,8 @@ Before activating or auto-updating any mods, check version compatibily, some mod
 - [CSMM Patron's Mod (CPM)](https://docs.csmm.app/en/cpm/)
 - [Undead Legacy](https://ul.subquake.com/), only works with `stable` version of 7 days to die, but SOMETIMES will work with penultimate version, [check builds compatibily](https://ul.subquake.com/download)
 
+Remember that some mods can't be installed with others, if you have problems with two mods installed create a [GitHub ticket](https://github.com/vinanrra/Docker-7DaysToDie/issues) and I will add a check so they can't be installed at same time.
+
 ## Auto-installable
 
 - [Alloc Fixes](https://7dtd.illy.bz/wiki/Server%20fixes)
