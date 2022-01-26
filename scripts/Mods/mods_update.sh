@@ -5,11 +5,20 @@
 # Enable auto update mod with UPDATE_MODS=yes
 # Enable per mod update with their *_UPDATE
 
+BASEPATH=/home/sdtdserver
+MODS_FOLDER=${BASEPATH}/Mods
+
 echo "[INFO] Updating/Installing mods"
 
 if [ "${CPM,,}" == 'yes'  ] && [ "${CPM_UPDATE,,}" == 'yes'  ]
   then
     source $scriptsDir/Mods/cpm.sh
+    # Install Allocs Fixes if missing
+    if [ -d "$MODS_FOLDER/Allocs_CommandExtensions" ] || [ -d "$MODS_FOLDER/Allocs_CommonFunc" ] || [ -d "$MODS_FOLDER/Allocs_WebAndMapRendering" ]; then
+      # Take action if $DIR exists. #
+      echo "[CSMM - CPM] Allocs fixes missing, installing it"
+      source $scriptsDir/Mods/alloc_fixes.sh
+    fi
 fi
 
 # Install Alloc Fixes, always after CPM, because CPM requiere Alloc fixes
