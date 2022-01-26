@@ -8,21 +8,6 @@ STOPSIGNAL SIGTERM
 LABEL maintainer="vinanrra"
 LABEL build_version="version: 0.2.9"
 
-####Environments####
-
-##Need use xterm for LinuxGSM##
-ENV PUID=1000 PGID=1000 TimeZone=Europe/Madrid HOME=/home/sdtdserver LANG=en_US.utf8 TERM=xterm DEBIAN_FRONTEND=noninteractive \
-	START_MODE=0 \
-	TEST_ALERT=no MONITOR=no BACKUP=no\
-	VERSION=stable \
-	UPDATE_MODS=no \
-	ALLOC_FIXES=no ALLOC_FIXES_UPDATE=no \
-	UNDEAD_LEGACY=no UNDEAD_LEGACY_VERSION=stable UNDEAD_LEGACY_UPDATE=no \
-	ENZOMBIES=no ENZOMBIES_ADDON_SNUFKIN=no ENZOMBIES_ADDON_ROBELOTO=no ENZOMBIES_ADDON_NONUDES=no ENZOMBIES_UPDATE=no \
-	CPM=no CPM_UPDATE=no
-
-####Environments####
-
 #####Dependencies####
 
 # LinuxGSM dependencies
@@ -92,10 +77,21 @@ RUN apt clean && \
 RUN adduser --home /home/sdtdserver --disabled-password --shell /bin/bash --disabled-login --gecos "" sdtdserver \
 	&& chown -R sdtdserver:sdtdserver /home/sdtdserver
 
-##############BASE IMAGE##############
+##Need use xterm for LinuxGSM##
+ENV PUID=1000 PGID=1000 TimeZone=Europe/Madrid HOME=/home/sdtdserver LANG=en_US.utf8 TERM=xterm DEBIAN_FRONTEND=noninteractive \
+	START_MODE=0 \
+	TEST_ALERT=no MONITOR=no BACKUP=no\
+	VERSION=stable \
+	UPDATE_MODS=no \
+	ALLOC_FIXES=no ALLOC_FIXES_UPDATE=no \
+	UNDEAD_LEGACY=no UNDEAD_LEGACY_VERSION=stable UNDEAD_LEGACY_UPDATE=no \
+	ENZOMBIES=no ENZOMBIES_ADDON_SNUFKIN=no ENZOMBIES_ADDON_ROBELOTO=no ENZOMBIES_ADDON_NONUDES=no ENZOMBIES_UPDATE=no \
+	CPM=no CPM_UPDATE=no
 
 # Base dir
 WORKDIR /home/sdtdserver
+
+##############BASE IMAGE##############
 
 # Add files
 COPY --chmod=755 install.sh user.sh /home/sdtdserver/
