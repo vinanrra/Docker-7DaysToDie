@@ -1,4 +1,13 @@
+#!/bin/bash
+
 # Install Alloc Fixes
+
+if [ "${CPM,,}" == 'yes'  ]
+  then
+    source $scriptsDir/Mods/cpm.sh
+    # To force install of Alloc Fixes
+    ALLOC_FIXES=yes
+fi
 
 if [ "${ALLOC_FIXES,,}" == 'yes'  ]
   then

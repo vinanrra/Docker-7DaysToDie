@@ -20,7 +20,7 @@ fi
 DL_LINK="https://ul.subquake.com/dl?v=${UNDEAD_LEGACY_VERSION,,}"
 
 downloadRelease() {
-    curl $DL_LINK -SsL -o undeadlegacy.zip
+    curl "$DL_LINK" -SsL -o undeadlegacy.zip
 }
 
 echo "[Undead Legacy] Downloading release from $DL_LINK"
