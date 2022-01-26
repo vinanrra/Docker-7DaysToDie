@@ -6,40 +6,16 @@ LSGMSDTDSERVERCFG=${BASEPATH}/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
 source $scriptsDir/check_space.sh
 
 if [ "${space,,}" == 'no'  ]; then
-    echo "
-        =======================================================================
-        ERROR:
-
-        Not enough space.
-
-        Needed: 12 GB
-        Available: $freeGB GB
-
-        =======================================================================
-    "
+    echo "[ERROR] Not enough space, needed: 12 GB, available: $freeGB GB"
     exit
 fi
 
-echo "
-    =======================================================================
-    IMPORTANT:
-
-    It seems to be the first installation, making preparations...
-    =======================================================================
-"
+echo "[INFO] It seems to be the first installation, making preparations..."
 
 # Start to create default files
 ./sdtdserver
 
-echo "
-    =======================================================================
-    IMPORTANT:
-
-    PREPARATIONS COMPLETED
-
-    Making first server installation.
-    =======================================================================
-"
+echo "[INFO] Making first server installation"
 
 # If missing file create
 if [ ! -f $LSGMSDTDSERVERCFG ]
@@ -69,25 +45,13 @@ if [ "${VERSION,,}" == 'stable'  ] || [ "${VERSION,,}" == 'public'  ]
         fi
 fi
 
-echo "
-    =======================================================================
-    IMPORTANT:
-
-    INSTALLING: ${VERSION,,}
-    =======================================================================
-"
+echo "[INFO] Installing 7 days to die ${VERSION,,} version"
 
 # Install 7 Days To Die Server
 
 ./sdtdserver auto-install
 
-echo "
-    =======================================================================
-    IMPORTANT:
-    
-    The server have been installed.
-    =======================================================================
-"
+echo "[INFO] The server have been installed."
 
 echo "If this file is missing, server will be re-installed" > serverfiles/DONT_REMOVE.txt
 

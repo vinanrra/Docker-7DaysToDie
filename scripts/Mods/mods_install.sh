@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "[INFO] Installing mods after first start"
+
 if [ "${CPM,,}" == 'yes'  ]
   then
     source $scriptsDir/Mods/cpm.sh

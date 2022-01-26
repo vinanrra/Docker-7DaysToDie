@@ -49,7 +49,6 @@ fi
 
 # This will install or update mods at start but not on first install
 if [ "${UPDATE_MODS,,}" == 'yes'  ] && [ ! -f serverfiles/MOD_BLOCK.txt ]; then
-   echo "[INFO] Updating mods"
    source "$scriptsDir/Mods/mods_update.sh"
 fi
 

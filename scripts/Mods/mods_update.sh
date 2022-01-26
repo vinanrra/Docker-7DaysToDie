@@ -5,6 +5,8 @@
 # Enable auto update mod with UPDATE_MODS=yes
 # Enable per mod update with their *_UPDATE
 
+echo "[INFO] Updating/Installing mods"
+
 if [ "${CPM,,}" == 'yes'  ] && [ "${CPM_UPDATE,,}" == 'yes'  ]
   then
     source $scriptsDir/Mods/cpm.sh
