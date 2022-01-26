@@ -34,7 +34,7 @@ echo "[enZombies] Extracting files"
 mkdir -p enZombies-temp
 unzip -q enZombies.zip -d enZombies-temp
 
-echo "[enZombies] Removing older enZombies version"
+echo "[enZombies] Removing older version"
 
 rm -rf $MODS_FOLDER/enZombies
 

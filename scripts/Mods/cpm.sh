@@ -34,7 +34,7 @@ echo "[CSMM - CPM] Extracting files"
 mkdir -p CPM-temp
 unzip -q CPM.zip -d CPM-temp
 
-echo "[CSMM - CPM] Removing older enZombies version"
+echo "[CSMM - CPM] Removing older version"
 
 rm -rf $MODS_FOLDER/1CSMM_Patrons
 
