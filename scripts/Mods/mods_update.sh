@@ -47,3 +47,5 @@ if [ "${ENZOMBIES,,}" == 'yes'  ] && [ "${ENZOMBIES_UPDATE,,}" == 'yes'  ]
   then
     source $scriptsDir/Mods/enZombies.sh
 fi
+
+echo "[INFO] Updating/Installing mods finished"
