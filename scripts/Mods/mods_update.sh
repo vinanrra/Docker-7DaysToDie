@@ -10,8 +10,6 @@ echo "[INFO] Updating/Installing mods"
 if [ "${CPM,,}" == 'yes'  ] && [ "${CPM_UPDATE,,}" == 'yes'  ]
   then
     source $scriptsDir/Mods/cpm.sh
-    # To force install of Alloc Fixes
-    ALLOC_FIXES=yes
 fi
 
 # Install Alloc Fixes, always after CPM, because CPM requiere Alloc fixes
