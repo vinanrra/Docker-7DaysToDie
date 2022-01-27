@@ -61,7 +61,7 @@
 | --- | --- | :---: |
 | `UNDEAD_LEGACY=NO` | Install [Undead Legacy](https://ul.subquake.com/) **optional** | YES, NO |
 | `UNDEAD_LEGACY_VERSION=stable` | Install [Undead Legacy Versions](https://ul.subquake.com), [CHECK BUILDS COMPATIBILITY](https://ul.subquake.com/download) **optional** | EXP, STABLE |
-| `UNDEAD_LEGACY_UPDATE=NO` | Update [Undead Legacy](https://ul.subquake.com/patch-notes), on server install, requiere UPDATE_MODS=YES **optional** | YES, NO |
+| `UNDEAD_LEGACY_UPDATE=NO` | Update [Undead Legacy](https://ul.subquake.com/patch-notes), on server install, requiere UPDATE_MODS=YES, ff you enable this environment, the mod will be update every time you start the server and will take sometime. **optional** | YES, NO |
 
 ### enZombies
 
