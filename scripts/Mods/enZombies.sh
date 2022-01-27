@@ -135,7 +135,7 @@ if [ "${UNDEAD_LEGACY,,}" == 'yes' ]; then
 
     echo "[enZombies] Downloading Undead Legacy patch files"
 
-    downloadRelease_NoNudes
+    downloadRelease_UndeadLegacy_Patch
 
     echo "[enZombies] Extracting files"
 
