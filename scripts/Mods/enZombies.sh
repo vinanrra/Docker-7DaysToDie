@@ -66,7 +66,7 @@ if [ "${ENZOMBIES_ADDON_SNUFKIN,,}" == 'yes' ]; then
 
     echo "[enZombies] Removing older enZombies Snufkin Addon version"
 
-    rm -rf $MODS_FOLDER/enZombiesAddon1Snufkin
+    rm -rf $MODS_FOLDER/enZombiesAddon1Snufkin-main
 
     echo "[enZombies] Installing components"
 
@@ -92,7 +92,7 @@ if [ "${ENZOMBIES_ADDON_ROBELOTO,,}" == 'yes' ]; then
 
     echo "[enZombies] Removing older enZombies Robeloto Addon version"
 
-    rm -rf $MODS_FOLDER/enZombiesAddon2Robeloto
+    rm -rf $MODS_FOLDER/enZombiesAddon2Robeloto-main
 
     echo "[enZombies] Installing components"
 
@@ -118,7 +118,7 @@ if [ "${ENZOMBIES_ADDON_NONUDES,,}" == 'yes' ]; then
 
     echo "[enZombies] Removing older enZombies No Nudes Addon version"
 
-    rm -rf $MODS_FOLDER/enZombiesNoNudes
+    rm -rf $MODS_FOLDER/enZombiesNoNudes-main
 
     echo "[enZombies] Installing components"
 
@@ -144,7 +144,7 @@ if [ "${UNDEAD_LEGACY,,}" == 'yes' ]; then
 
     echo "[enZombies] Installing components"
 
-    cp -a enZombiesUndeadLegacy-temp/. $MODS_FOLDER
+    cp -a enZombiesUndeadLegacy-temp/enZombiesUndeadLegacyPatch-main/. $MODS_FOLDER
 
     echo "[enZombies] Undead Legacy patch Cleanup"
 
