@@ -6,40 +6,16 @@ LSGMSDTDSERVERCFG=${BASEPATH}/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
 source $scriptsDir/check_space.sh
 
 if [ "${space,,}" == 'no'  ]; then
-    echo "
-        =======================================================================
-        ERROR:
-
-        Not enough space.
-
-        Needed: 12 GB
-        Available: $freeGB GB
-
-        =======================================================================
-    "
+    echo "[ERROR] Not enough space, needed: 12 GB, available: $freeGB GB"
     exit
 fi
 
-echo "
-    =======================================================================
-    IMPORTANT:
-
-    It seems to be the first installation, making preparations...
-    =======================================================================
-"
+echo "[INFO] Executing LinuxGSM script to get default files"
 
 # Start to create default files
 ./sdtdserver
 
-echo "
-    =======================================================================
-    IMPORTANT:
-
-    PREPARATIONS COMPLETED
-
-    Making first server installation.
-    =======================================================================
-"
+echo "[INFO] Changing 7 days to die server version to install"
 
 # If missing file create
 if [ ! -f $LSGMSDTDSERVERCFG ]
@@ -57,7 +33,7 @@ if [ "${VERSION,,}" == 'stable'  ] || [ "${VERSION,,}" == 'public'  ]
                 sed -i "s/branch=.*/branch=\"\"/" $LSGMSDTDSERVERCFG
                 echo "[INFO] Version changed to ${VERSION,,}"
             else
-                echo "[INFO] Already on ${VERSION,,}"
+                echo "[INFO] Selecting 7 days to die ${VERSION,,} version"
         fi
     else
         if grep -R "branch" "$LSGMSDTDSERVERCFG"
@@ -65,31 +41,21 @@ if [ "${VERSION,,}" == 'stable'  ] || [ "${VERSION,,}" == 'public'  ]
                 sed -i 's/branch=.*/branch="$VERSION"/' $LSGMSDTDSERVERCFG
             else
                 echo branch='"-beta $VERSION"' >> $LSGMSDTDSERVERCFG
-                echo "[INFO] Version changed to ${VERSION,,}"
+                echo "[INFO] Selecting 7 days to die ${VERSION,,} version"
         fi
 fi
 
-echo "
-    =======================================================================
-    IMPORTANT:
-
-    INSTALLING: ${VERSION,,}
-    =======================================================================
-"
+echo "[INFO] Installing 7 days to die ${VERSION,,} version"
 
 # Install 7 Days To Die Server
 
 ./sdtdserver auto-install
 
-echo "
-    =======================================================================
-    IMPORTANT:
-    
-    The server have been installed.
-    =======================================================================
-"
+echo "[INFO] The server have been installed."
 
 echo "If this file is missing, server will be re-installed" > serverfiles/DONT_REMOVE.txt
+
+echo "To prevent double mod install at first start" > serverfiles/MOD_BLOCK.txt
 
 # Creating 7 Days to Die mod folder
 mkdir /home/sdtdserver/serverfiles/Mods

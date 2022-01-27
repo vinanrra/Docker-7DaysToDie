@@ -52,14 +52,16 @@
 
 | Parameter | Function | Values |
 | :---: | --- | :---: |
-| `ALLOC_FIXES=NO` | Install [Alloc Fixes](https://7dtd.illy.bz/wiki/Server%20fixes), Alloc Fixes version will be installed according to 7 days to die branch version  **optional** | YES, NO |
+| `ALLOC_FIXES=NO` | Install [Allocs Fixes](https://7dtd.illy.bz/wiki/Server%20fixes), Alloc Fixes version will be installed according to 7 days to die branch version  **optional** | YES, NO |
+| `ALLOC_FIXES_UPDATE=NO` | Update [Allocs Fixes](https://7dtd.illy.bz/wiki/Server%20fixes), depending of your 7 days to die version, on server install, requiere UPDATE_MODS=YES **optional** | YES, NO |YES, NO |
 
 ### Undead Legacy
 
 | Parameter | Function | Values |
 | --- | --- | :---: |
 | `UNDEAD_LEGACY=NO` | Install [Undead Legacy](https://ul.subquake.com/) **optional** | YES, NO |
-| `UNDEAD_LEGACY_VERSION=stable` | Install [Undead Legacy Versions](https://ul.subquake.com/download), CHECK BUILDS COMPATIBILITY **optional** | EXP, STABLE |
+| `UNDEAD_LEGACY_VERSION=stable` | Install [Undead Legacy Versions](https://ul.subquake.com), [CHECK BUILDS COMPATIBILITY](https://ul.subquake.com/download) **optional** | EXP, STABLE |
+| `UNDEAD_LEGACY_UPDATE=NO` | Update [Undead Legacy](https://ul.subquake.com/patch-notes), on server install, requiere UPDATE_MODS=YES **optional** | YES, NO |
 
 ### enZombies
 
@@ -69,12 +71,14 @@
 | `ENZOMBIES_ADDON_SNUFKIN=NO` | Install [enZombies - Snufkin Zombies Add-on](https://community.7daystodie.com/topic/24594-enzombies-more-zombie-variations/) **optional** | YES, NO |
 | `ENZOMBIES_ADDON_ROBELOTO=NO` | Install [enZombies - Robeloto Zombies Add-on](https://community.7daystodie.com/topic/24594-enzombies-more-zombie-variations/) **optional** | YES, NO |
 | `ENZOMBIES_ADDON_NONUDES=NO` | Install [enZombies - No Nudes Add-on](https://community.7daystodie.com/topic/24594-enzombies-more-zombie-variations/) **optional** | YES, NO |
+| `ENZOMBIES_UPDATE=NO` | Update [enZombies](https://community.7daystodie.com/topic/24594-enzombies-more-zombie-variations/), enZombies + Addons on server install, requiere UPDATE_MODS=YES **optional** | YES, NO |
 
 ### CSMM Patron's Mod (CPM)
 
 | Parameter | Function | Values |
 | --- | --- | :---: |
-| `CPM=NO` | Install [CPM](https://docs.csmm.app/en/cpm/), CPM version will be installed according to 7 days to die branch version **optional** | YES, NO |
+| `CPM=NO` | Install [CPM](https://docs.csmm.app/en/cpm/), CPM version will be installed according to 7 days to die branch version, this will also install Allocs Fixes **optional** | YES, NO |
+| `CPM_UPDATE=NO` | Update [CPM](https://docs.csmm.app/en/cpm/), CPM on every server start, depending of your 7 days to die version, requiere UPDATE_MODS=YES **optional** | YES, NO |
 
 ### START MODES
 

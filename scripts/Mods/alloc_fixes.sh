@@ -38,9 +38,12 @@ echo "[Alloc Fixes] Extracting files"
 mkdir -p allocs-temp
 tar --strip-components=1 -xf allocs.tar.gz -C allocs-temp 
 
-echo "[Alloc Fixes] Installing components"
+echo "[Alloc Fixes] Removing older version"
 
 rm -rf $MODS_FOLDER/Allocs*
+
+echo "[Alloc Fixes] Installing components"
+
 mv allocs-temp/* $MODS_FOLDER
 
 echo "[Alloc Fixes] Cleanup"

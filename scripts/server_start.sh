@@ -1,12 +1,5 @@
 #!/bin/bash
 
+echo "[INFO] Starting server..."
+
 ./sdtdserver start
-
-echo "
-    =======================================================================
-    IMPORTANT:
-
-    Starting server...
-    Soon you will see all the info
-    =======================================================================
-"

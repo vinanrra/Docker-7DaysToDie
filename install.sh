@@ -1,7 +1,6 @@
 #!/bin/bash
 rootDir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 scriptsDir="${rootDir}/scripts"
-startModeLink=https://github.com/vinanrra/Docker-7DaysToDie/blob/master/docs/parameters.md#start-modes
 
 # Show log function
 show_log () {
@@ -11,40 +10,54 @@ show_log () {
 
 test_alert () {
    if [ "${TEST_ALERT,,}" == 'yes'  ]; then
-      source $scriptsDir/server_alerts.sh
+      source "$scriptsDir/server_alerts.sh"
    fi
+}
+
+crontab_func (){
+   # Crontab
+   echo "# Crontab file" > crontab.txt
+
+   if [ "${BACKUP,,}" == 'yes'  ]; then
+      source "$scriptsDir/crontab/backup.sh"
+   fi
+
+   if [ "${MONITOR,,}" == 'yes'  ]; then
+      source "$scriptsDir/crontab/monitor.sh"
+   fi
+
+   echo "# Don't remove the empty line at the end of this file. It is required to run the cron job" >> crontab.txt
+
+   # Add crontab
+   crontab crontab.txt
+
+   # Cleanup junk file
+   rm crontab.txt
 }
 
 # Check requeriments
 
 # Check if script is missing
 if [ ! -f sdtdserver ]; then
-   source $scriptsDir/check_script.sh
+   source "$scriptsDir/check_script.sh"
 fi
 
-# Check if server have been installed
+# Check if server have been installed, if missing file
 if [ ! -f serverfiles/DONT_REMOVE.txt ]; then
-   source $scriptsDir/first_install.sh
+   source "$scriptsDir/first_install.sh"
 fi
 
-# Crontab
-echo "# Crontab file" > crontab.txt
-
-if [ "${BACKUP,,}" == 'yes'  ]; then
-   source $scriptsDir/crontab/backup.sh
+# This will install or update mods at start but not on first install
+if [ "${UPDATE_MODS,,}" == 'yes'  ] && [ ! -f serverfiles/MOD_BLOCK.txt ]; then
+   source "$scriptsDir/Mods/mods_update.sh"
 fi
 
-if [ "${MONITOR,,}" == 'yes'  ]; then
-   source $scriptsDir/crontab/monitor.sh
+# Remove update mod block on first install
+if [ -f serverfiles/MOD_BLOCK.txt ] ; then
+   rm serverfiles/MOD_BLOCK.txt
 fi
 
-echo "# Don't remove the empty line at the end of this file. It is required to run the cron job" >> crontab.txt
-
-# Add crontab
-crontab crontab.txt
-
-# Cleanup junk file
-rm crontab.txt
+crontab_func
 
 # Use of case to avoid errors if used wrong START_MODE
 case $START_MODE in
@@ -52,26 +65,26 @@ case $START_MODE in
       exit
    ;;
    1)
-      source $scriptsDir/server_start.sh
+      source "$scriptsDir/server_start.sh"
       test_alert
       show_log
    ;;
    2)
-      source $scriptsDir/server_update.sh
+      source "$scriptsDir/server_update.sh"
       exit
    ;;
    3)
-      source $scriptsDir/server_update.sh
-      source $scriptsDir/server_start.sh
+      source "$scriptsDir/server_update.sh"
+      source "$scriptsDir/server_start.sh"
       test_alert
       show_log
    ;; 
    4)
-      source $scriptsDir/server_backup.sh
+      source "$scriptsDir/server_backup.sh"
       exit
    ;;
    *)
-      source $scriptsDir/check_startMode.sh
+      source "$scriptsDir/check_startMode.sh"
       exit
    ;;
 esac

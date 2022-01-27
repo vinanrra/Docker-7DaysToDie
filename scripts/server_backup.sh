@@ -1,12 +1,5 @@
 #!/bin/bash
-echo "
-    =======================================================================
-    IMPORTANT:
-
-    This backup will create a complete tar bzip2 archive of the whole server.
-
-    =======================================================================
-"
+echo "[INFO] Starting backup, this backup will create a complete tar bzip2 archive of the whole server"
 
 sleep 3s
 
@@ -14,11 +7,4 @@ sleep 3s
 
 sleep 3s
 
-echo "
-    =======================================================================
-    IMPORTANT:
-    
-    Backup complete.
-    
-    =======================================================================
-"
+echo "[INFO] Backup complete"
