@@ -2,25 +2,30 @@
 
 MODS_FOLDER=/home/sdtdserver/serverfiles/Mods
 
-DL_LINK="https://docs.google.com/uc?export=download&id=1rnEwPPPWWAEBzJijUSpwa40aZmvp5vp0"
-DL_LINK_SNUFKIN_ADDON="https://docs.google.com/uc?export=download&id=1_WIy-M_4uJWXCrwCFVxlsyoYlPhqfpWz"
-DL_LINK_ROBELOTO_ADDON="https://docs.google.com/uc?export=download&id=1vgk31jxL6Xamw2Oxoc6qTgZQfInF3csF"
-DL_LINK_NONUDES_ADDON="https://docs.google.com/uc?export=download&id=1W8ZyFOE7BXfz3xXRPrZzRP9ZEPc5wchf"
+DL_LINK="https://github.com/ErrorNull0/enZombies/archive/refs/heads/main.zip"
+DL_LINK_SNUFKIN_ADDON="https://github.com/ErrorNull0/enZombiesSnufkinAddon/archive/refs/heads/main.zip"
+DL_LINK_ROBELOTO_ADDON="https://github.com/ErrorNull0/enZombiesRobelotoAddon/archive/refs/heads/main.zip"
+DL_LINK_NONUDES_ADDON="https://github.com/ErrorNull0/enZombiesNoNudes/archive/refs/heads/main.zip"
+DL_LINK_UNDEADLEGACY_PATCH="https://github.com/ErrorNull0/enZombiesUndeadLegacyPatch/archive/refs/heads/main.zip"
 
 downloadRelease() {
-    wget --quiet --no-check-certificate "${DL_LINK}" -O enZombies.zip
+    curl "$DL_LINK" -SsL -o enZombies.zip
 }
 
 downloadRelease_Snufkin() {
-    wget --quiet --no-check-certificate "${DL_LINK_SNUFKIN_ADDON}" -O enZombiesSnufkinAddon.zip
+    curl "$DL_LINK_SNUFKIN_ADDON" -SsL -o enZombiesSnufkinAddon.zip
 }
 
 downloadRelease_Robeloto() {
-    wget --quiet --no-check-certificate "${DL_LINK_ROBELOTO_ADDON}" -O enZombiesRobelotoAddon.zip
+    curl "$DL_LINK_ROBELOTO_ADDON" -SsL -o enZombiesRobelotoAddon.zip
 }
 
 downloadRelease_NoNudes() {
-    wget --quiet --no-check-certificate "${DL_LINK_NONUDES_ADDON}" -O enZombiesNoNudesAddon.zip
+    curl "$DL_LINK_NONUDES_ADDON" -SsL -o enZombiesNoNudesAddon.zip
+}
+
+downloadRelease_UndeadLegacy_Patch() {
+    curl "$DL_LINK_UNDEADLEGACY_PATCH" -SsL -o enZombiesUndeadLegacy.zip
 }
 
 echo "[enZombies] Downloading release from ${DL_LINK}"
@@ -123,6 +128,28 @@ if [ "${ENZOMBIES_ADDON_NONUDES,,}" == 'yes' ]; then
 
     rm enZombiesNoNudesAddon.zip
     rm -rf enZombiesNoNudesAddon-temp
+fi
+
+if [ "${UNDEAD_LEGACY,,}" == 'yes' ]; then
+    echo "[enZombies] Downloading Undead Legacy patch from ${DL_LINK_UNDEADLEGACY_PATCH}"
+
+    echo "[enZombies] Downloading Undead Legacy patch files"
+
+    downloadRelease_NoNudes
+
+    echo "[enZombies] Extracting files"
+
+    mkdir -p enZombiesUndeadLegacy-temp
+    unzip -q enZombiesUndeadLegacy.zip -d enZombiesUndeadLegacy-temp
+
+    echo "[enZombies] Installing components"
+
+    cp -a enZombiesUndeadLegacy-temp/. $MODS_FOLDER
+
+    echo "[enZombies] Undead Legacy patch Cleanup"
+
+    rm enZombiesUndeadLegacy.zip
+    rm -rf enZombiesUndeadLegacy-temp
 fi
 
 echo "[enZombies] Finished! ヽ(´▽\`)/"
