@@ -90,9 +90,9 @@ echo "[Undead Legacy] Replacing Monitoring start time for LinuxGSM"
 
 if grep -q "querydelay" $LSGMSDTDSERVERCFG
     then
-        sed -i 's/querydelay=.*/querydelay="5"/' $LSGMSDTDSERVERCFG
+        sed -i 's/querydelay=.*/querydelay="10"/' $LSGMSDTDSERVERCFG
     else
-        echo querydelay='"5"' >> $LSGMSDTDSERVERCFG
+        echo querydelay='"10"' >> $LSGMSDTDSERVERCFG
 fi
 
 echo "[Undead Legacy] Replacing start parameters for LinuxGSM"
