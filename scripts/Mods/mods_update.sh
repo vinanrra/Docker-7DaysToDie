@@ -10,7 +10,7 @@ MODS_FOLDER=${BASEPATH}/Mods
 
 echo "[INFO] Updating/Installing mods"
 
-if [ "${CPM,,}" == 'yes'  ] && [ "${CPM_UPDATE,,}" == 'yes'  ]
+if [ "${CPM,,}" == 'yes' ] && [ "${CPM_UPDATE,,}" == 'yes' ]
   then
     source $scriptsDir/Mods/cpm.sh
     # Install Allocs Fixes if missing
@@ -28,22 +28,27 @@ fi
 
 # Install Alloc Fixes, always after CPM, because CPM requiere Alloc fixes
 
-if [ "${ALLOC_FIXES,,}" == 'yes'  ] && [ "${ALLOC_FIXES_UPDATE,,}" == 'yes'  ]
+if [ "${ALLOC_FIXES,,}" == 'yes' ] && [ "${ALLOC_FIXES_UPDATE,,}" == 'yes' ]
   then
     source $scriptsDir/Mods/alloc_fixes.sh
 fi
 
 # Install Undead Legacy
 
-if [ "${UNDEAD_LEGACY,,}" == 'yes'  ] && [ "${UNDEAD_LEGACY_UPDATE,,}" == 'yes'  ]
+if [ "${UNDEAD_LEGACY,,}" == 'yes' ] && [ "${UNDEAD_LEGACY_UPDATE,,}" == 'yes' ]
   then
     source $scriptsDir/Mods/undead_legacy.sh
 fi
 
 # Install enZombies + addons always after Undead Legacy, because if installed with Undead Legacy need a patch
-if [ "${ENZOMBIES,,}" == 'yes'  ] && [ "${ENZOMBIES_UPDATE,,}" == 'yes'  ]
+if [ "${ENZOMBIES,,}" == 'yes' ] && [ "${ENZOMBIES_UPDATE,,}" == 'yes' ]
   then
     source $scriptsDir/Mods/enZombies.sh
+fi
+
+if [ "${BEPINEX,,}" == 'yes' ] && [ "${BEPINEX_UPDATE,,}" == 'yes' ] && [ "${UNDEAD_LEGACY,,}" == 'no' ]
+  then
+    source $scriptsDir/Mods/bepinex.sh
 fi
 
 echo "[INFO] Updating/Installing mods finished"
