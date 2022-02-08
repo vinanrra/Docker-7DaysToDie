@@ -34,6 +34,16 @@ echo "[Undead Legacy] Extracting files"
 mkdir -p undeadlegacy-temp
 unzip -q undeadlegacy.zip -d undeadlegacy-temp
 
+echo "[Undead Legacy] Removing existing BepInEx"
+
+if [ -d "$SERVERFILES_FOLDER/BepInEx" ]
+then
+    rm -rf $SERVERFILES_FOLDER/BepInEx
+    rm -rf $SERVERFILES_FOLDER/doorstop_libs
+else
+    echo "[Undead Legacy] BepInEx not found"
+fi
+
 echo "[Undead Legacy] Installing mod"
 
 if [ "${UNDEAD_LEGACY_VERSION,,}" == 'exp'  ]; then
