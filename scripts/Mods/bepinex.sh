@@ -1,9 +1,9 @@
 #!/bin/bash
 
-BASEPATH=/home/sdtdserver
-SERVERFILES_FOLDER=${BASEPATH}/serverfiles
-BEPINEX_SH=${SERVERFILES_FOLDER}/run_bepinex.sh
-LSGMSDTDSERVERCFG=${BASEPATH}/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+BASEPATH="/home/sdtdserver"
+SERVERFILES_FOLDER="${BASEPATH}/serverfiles"
+BEPINEX_SH="${SERVERFILES_FOLDER}/run_bepinex.sh"
+LSGMSDTDSERVERCFG="${BASEPATH}/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg"
 
 # Get latest version
 DL_LINK=$(curl -L -s https://api.github.com/repos/BepInEx/BepInEx/releases/latest | grep -o -E "https://github.com/BepInEx/BepInEx/releases/download/(.*)/BepInEx_unix_(.*).zip")
@@ -34,6 +34,8 @@ cp -a BepInEx-temp/. $SERVERFILES_FOLDER
 
 echo "[BepInEx] Editing run_bepinex.sh"
 
+echo "[BepInEx] Editing executable_name"
+
 if grep -q "7DaysToDieServer.x86_64" $BEPINEX_SH
     then
         echo "[BepInEx] Skiping executable_name changes, already replaced"
@@ -41,14 +43,19 @@ if grep -q "7DaysToDieServer.x86_64" $BEPINEX_SH
         sed -i '/.*executable_name="".*/ s/""/"7DaysToDieServer.x86_64"/' $BEPINEX_SH
 fi
 
+echo "[BepInEx] Editing command last execution"
+
 if grep -q "sdtdserver.xml" $BEPINEX_SH
     then
-        sed -i '/.*config_file="".*/ s/""/sdtdserver.xml/' $BEPINEX_SH
-        sed -i '/"${executable_path}"/ s/"${executable_path}"/"${executable_path}" -configfile=$config_file/' $BEPINEX_SH
+        sed -i '/.*config_file=""/ s/""/sdtdserver.xml/' $BEPINEX_SH
     else
-        sed -i '$i\config_file="sdtdserver.xml"' $BEPINEX_SH
+        sed -i '/^.*NEEDED.*/a config_file="sdtdserver.xml"' $BEPINEX_SH
         sed -i '/"${executable_path}"/ s/"${executable_path}"/"${executable_path}" -configfile=$config_file/' $BEPINEX_SH
 fi
+
+echo "[BepInEx] Fixing executable_type"
+
+sed -i 's/executable_type=.*/executable_type=$(LD_PRELOAD="" file -b "${executable_path}")/' $BEPINEX_SH
 
 echo "[BepInEx] Replacing start parameters for LinuxGSM"
 
@@ -70,7 +77,7 @@ fi
 
 echo "[BepInEx] Applying executable permssions"
 
-chmod +x $LSGMSDTDSERVERCFG
+chmod u+x $BEPINEX_SH
 
 echo "[BepInEx] Cleanup"
 
