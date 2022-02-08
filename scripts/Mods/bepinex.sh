@@ -2,6 +2,7 @@
 
 BASEPATH=/home/sdtdserver
 SERVERFILES_FOLDER=${BASEPATH}/serverfiles
+BEPINEX_SH=${SERVERFILES_FOLDER}/run_bepinex.sh
 
 # Get latest version
 DL_LINK=$(curl -L -s https://api.github.com/repos/BepInEx/BepInEx/releases/latest | grep -o -E "https://github.com/BepInEx/BepInEx/releases/download/(.*)/BepInEx_unix_(.*).zip")
@@ -25,11 +26,46 @@ echo "[BepInEx] Removing older version"
 
 rm -rf $SERVERFILES_FOLDER/BepInEx
 rm -rf $SERVERFILES_FOLDER/doorstop_libs
-rm 
 
 echo "[BepInEx] Installing components"
 
 cp -a BepInEx-temp/. $SERVERFILES_FOLDER
+
+echo "[BepInEx] Editing run_bepinex.sh"
+
+if grep -q "7DaysToDieServer.x86_64" $BEPINEX_SH
+    then
+        echo "[BepInEx] Skiping executable_name changes, already replaced"
+    else
+        sed -i '/.*executable_name="".*/ s/""/"7DaysToDieServer.x86_64"/' $BEPINEX_SH
+fi
+
+if grep -q "sdtdserver.xml" $BEPINEX_SH
+    then
+        sed -i '/.*config_file="".*/ s/""/sdtdserver.xml/' $BEPINEX_SH
+        sed -i '/"${executable_path}"/ s/"${executable_path}"/"${executable_path}" -configfile=$config_file/' $BEPINEX_SH
+    else
+        sed -i '$i\config_file="sdtdserver.xml"' $BEPINEX_SH
+        sed -i '/"${executable_path}"/ s/"${executable_path}"/"${executable_path}" -configfile=$config_file/' $BEPINEX_SH
+fi
+
+echo "[BepInEx] Replacing start parameters for LinuxGSM"
+
+if grep -q "startparameters" $LSGMSDTDSERVERCFG
+    then
+        sed -i 's/startparameters=.*/startparameters=""/' $LSGMSDTDSERVERCFG
+    else
+        echo startparameters='""' >> $LSGMSDTDSERVERCFG
+fi
+
+echo "[BepInEx] Replacing executable for LinuxGSM"
+
+if grep -q "executable" $LSGMSDTDSERVERCFG
+    then
+        sed -i 's/executable=.*/executable=".\/run_bepinex.sh"/' $LSGMSDTDSERVERCFG
+    else
+        echo executable='"./run_bepinex.sh"' >> $LSGMSDTDSERVERCFG
+fi
 
 echo "[BepInEx] Cleanup"
 
