@@ -3,6 +3,7 @@
 BASEPATH=/home/sdtdserver
 SERVERFILES_FOLDER=${BASEPATH}/serverfiles
 BEPINEX_SH=${SERVERFILES_FOLDER}/run_bepinex.sh
+LSGMSDTDSERVERCFG=${BASEPATH}/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
 
 # Get latest version
 DL_LINK=$(curl -L -s https://api.github.com/repos/BepInEx/BepInEx/releases/latest | grep -o -E "https://github.com/BepInEx/BepInEx/releases/download/(.*)/BepInEx_unix_(.*).zip")
