@@ -67,6 +67,10 @@ if grep -q "executable" $LSGMSDTDSERVERCFG
         echo executable='"./run_bepinex.sh"' >> $LSGMSDTDSERVERCFG
 fi
 
+echo "[BepInEx] Applying executable permssions"
+
+chmod +x $LSGMSDTDSERVERCFG
+
 echo "[BepInEx] Cleanup"
 
 rm BepInEx.zip
