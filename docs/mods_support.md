@@ -34,6 +34,10 @@ Remember that some mods can't be installed with others, if you have problems wit
   - Environments:
     - CPM
     - CPM_UPDATE
+- [BepInEz](https://github.com/BepInEx/BepInEx)
+  - Environments:
+    - BEPINEX
+    - BEPINEX_UPDATE
 - [DarknessFalls](https://community.7daystodie.com/topic/4941-darkness-falls-they-mostly-come-out-at-night/) (Planned)
 - [Ravenheartst](https://community.7daystodie.com/topic/4508-ravenhearst-mod/) (Planned)
 - [War of the Walkers Mod](https://community.7daystodie.com/topic/4098-war-of-the-walkers-mod/) (Planned)

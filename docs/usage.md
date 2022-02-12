@@ -1,5 +1,7 @@
 # Usage
 
+Examples with all parameters supported
+
 ## Docker
 
 ```bash
@@ -22,9 +24,19 @@ docker run -d \
   -e VERSION=stable \
   -e TEST_ALERT=NO \
   -e ALLOC_FIXES=NO \
+  -e ALLOC_FIXES_UPDATE=NO \
   -e UNDEAD_LEGACY=NO \
   -e UNDEAD_LEGACY_VERSION=stable \
+  -e UNDEAD_LEGACY_UPDATE=NO \
+  -e ENZOMBIES=NO \
+  -e ENZOMBIES_ADDON_SNUFKIN=NO \
+  -e ENZOMBIES_ADDON_ROBELOTO=NO \
+  -e ENZOMBIES_ADDON_NONUDES=NO \
+  -e ENZOMBIES_UPDATE=NO \
   -e CPM=NO \
+  -e CPM_UPDATE=NO \
+  -e BEPINEX=NO \
+  -e BEPINEX_UPDATE=NO \
   -e BACKUP=NO \
   -e MONITOR=NO \
   -e PUID=1000 \
@@ -49,17 +61,27 @@ services:
       - TimeZone=Europe/Madrid # Optional - Change Timezone
       - TEST_ALERT=NO # Optional - Send a test alert
       - ALLOC_FIXES=NO # Optional - Install ALLOC FIXES
-      - UNDEAD_LEGACY=NO #O ptional - Install Undead Legacy mod
-      - UNDEAD_LEGACY_VERSION=stable #Optional - Undead Legacy version
+      - ALLOC_FIXES_UPDATE # Optional - Update Allocs Fixes before server start
+      - UNDEAD_LEGACY=NO # Optional - Install Undead Legacy mod
+      - UNDEAD_LEGACY_VERSION=stable # Optional - Undead Legacy version
+      - UNDEAD_LEGACY_UPDATE=NO # Optional - Update Undead Legacy mod before server start
+      - ENZOMBIES=NO # Optional - Install EnZombies mod
+      - ENZOMBIES_ADDON_SNUFKIN # Optional - Install EnZombies addon mod
+      - ENZOMBIES_ADDON_ROBELOTO # Optional - Install EnZombies addon mod
+      - ENZOMBIES_ADDON_NONUDES # Optional - Install EnZombies addon mod
+      - ENZOMBIES_UPDATE=NO # Optional - Update EnZombies mod and addons before server start
       - CPM=NO # Optional - CSMM Patron's Mod (CPM)
+      - CPM_UPDATE=NO # Optional - Update BepInEx before server start
+      - BEPINEX=NO # Optional - BepInEx
+      - BEPINEX_UPDATE=NO # Optional - Update BepInEx before server start
       - BACKUP=NO # Optional - Backup server at 5 AM
       - MONITOR=NO # Optional - Keeps server up if crash
     volumes:
       - /path/to/folder/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/
       - /path/to/folder/LGSM-Config:/home/sdtdserver/lgsm/config-lgsm/sdtdserver
-      - /path/to/folder/ServerFiles:/home/sdtdserver/serverfiles/ #Optional - serverfiles folder
-      - /path/to/folder/log:/home/sdtdserver/log/ #Optional, logs folder
-      - /path/to/folder/backups:/home/sdtdserver/lgsm/backup/ # Optional, if BAKCUP=NO, backups folder
+      - /path/to/folder/ServerFiles:/home/sdtdserver/serverfiles/ # Optional - serverfiles folder
+      - /path/to/folder/log:/home/sdtdserver/log/ # Optional - Logs folder
+      - /path/to/folder/backups:/home/sdtdserver/lgsm/backup/ # Optional - If BAKCUP=NO, backups folder
     ports:
       - 26900:26900/tcp # Default game ports
       - 26900:26900/udp # Default game ports
