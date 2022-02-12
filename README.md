@@ -6,7 +6,7 @@
 [![Docker Stars](https://img.shields.io/badge/dynamic/json?color=red&label=stars&query=star_count&url=https%3A%2F%2Fhub.docker.com%2Fv2%2Frepositories%2Fvinanrra%2F7dtd-server%2F?style=flat-square&color=E68523&logo=docker&logoColor=white)](https://hub.docker.com/r/vinanrra/7dtd-server)
 [![Docker Last Updated](https://img.shields.io/badge/dynamic/json?color=red&label=Last%20Update&query=last_updated&url=https%3A%2F%2Fhub.docker.com%2Fv2%2Frepositories%2Fvinanrra%2F7dtd-server%2F?style=flat-square&color=E68523&logo=docker&logoColor=white)](https://hub.docker.com/r/vinanrra/7dtd-server)
 
-<img src="https://raw.githubusercontent.com/vinanrra/Docker-7DaysToDie/master/7dtd.png" data-canonical-src="https://raw.githubusercontent.com/vinanrra/Docker-7DaysToDie/master/7dtd.png" width="443" height="190" />
+![7DaysToDie](https://raw.githubusercontent.com/vinanrra/Docker-7DaysToDie/master/7dtd.png)
 
 ## Features
 
