@@ -30,15 +30,16 @@
 
 ## [Support Info](docs/support.md)
 
+## Donations
+
+   If you want to buy me a beer here you can
+
+   <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=25XWMUHD8NZHG&source=url" rel="PayPal">![PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)
+
 ## Thanks
 
 * **[LinuxGSM](https://linuxgsm.com/)** - For the awesome script
 * **[Linuxserver](https://www.linuxserver.io/)** - For readme structure and all the info.
 * **[Linuxserver Base Image](https://github.com/linuxserver/docker-baseimage-ubuntu/blob/bionic/root/etc/cont-init.d/10-adduser)** - For the user script.
 * **[Codestation Reddit User](https://www.reddit.com/r/docker/comments/evn3st/permission_problems_with_volumes/fg16w87/)** - Permission problems with volumes
-
-## Donations
-
-   If you want to buy me a beer here you can
-
-   <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=25XWMUHD8NZHG&source=url" rel="PayPal">![PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)
+* **All contributors**
