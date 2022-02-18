@@ -48,12 +48,18 @@
 
 ## Mods
 
+### Global
+
+| Parameter | Function | Values |
+| :---: | --- | :---: |
+| `UPDATE_MODS=NO` | Allow mods to be update before server start must be used with each mod XXX_UPDATE=YES **optional** | YES, NO |
+
 ### Alloc Fixes
 
 | Parameter | Function | Values |
 | :---: | --- | :---: |
 | `ALLOC_FIXES=NO` | Install [Allocs Fixes](https://7dtd.illy.bz/wiki/Server%20fixes), Alloc Fixes version will be installed according to 7 days to die branch version  **optional** | YES, NO |
-| `ALLOC_FIXES_UPDATE=NO` | Update [Allocs Fixes](https://7dtd.illy.bz/wiki/Server%20fixes), depending of your 7 days to die version, on server install, requiere UPDATE_MODS=YES **optional** | YES, NO |YES, NO |
+| `ALLOC_FIXES_UPDATE=NO` | Update [Allocs Fixes](https://7dtd.illy.bz/wiki/Server%20fixes), depending of your 7 days to die version, on server install, requiere UPDATE_MODS=YES **optional** | YES, NO |
 
 ### Undead Legacy
 
