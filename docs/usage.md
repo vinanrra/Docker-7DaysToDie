@@ -66,9 +66,9 @@ services:
       - UNDEAD_LEGACY_VERSION=stable # Optional - Undead Legacy version
       - UNDEAD_LEGACY_UPDATE=NO # Optional - Update Undead Legacy mod before server start
       - ENZOMBIES=NO # Optional - Install EnZombies mod
-      - ENZOMBIES_ADDON_SNUFKIN # Optional - Install EnZombies addon mod
-      - ENZOMBIES_ADDON_ROBELOTO # Optional - Install EnZombies addon mod
-      - ENZOMBIES_ADDON_NONUDES # Optional - Install EnZombies addon mod
+      - ENZOMBIES_ADDON_SNUFKIN=NO # Optional - Install EnZombies addon mod
+      - ENZOMBIES_ADDON_ROBELOTO=NO # Optional - Install EnZombies addon mod
+      - ENZOMBIES_ADDON_NONUDES=NO # Optional - Install EnZombies addon mod
       - ENZOMBIES_UPDATE=NO # Optional - Update EnZombies mod and addons before server start
       - CPM=NO # Optional - CSMM Patron's Mod (CPM)
       - CPM_UPDATE=NO # Optional - Update BepInEx before server start
