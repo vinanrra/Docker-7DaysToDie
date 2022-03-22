@@ -31,6 +31,7 @@
 | `PUID=1000` | for UserID | [More info](user_groups_identifiers.md) |
 | `PGID=1000` | for GroupID | [More info](user_groups_identifiers.md) |
 | `--restart unless-stopped` | Restart container always unlesss stopped manually **NEVER USE WITH START_MODE=0, 2 or 4** | [Restart Policy](https://docs.docker.com/config/containers/start-containers-automatically/#use-a-restart-policy) |
+| `CHANGE_CONFIG_DIR_OWNERSHIP` | Disable chown of config dirs | [More info](parameters.md#directory-ownership) 
 
 ## 7 Days to Die
 
@@ -102,6 +103,10 @@
 | 2 | Update server and STOP the container |
 | 3 | Update and start start |
 | 4 | Backup server and STOP the container |
+
+
+### DIRECTORY OWNERSHIP ### 
+Sometimes if you're running some of your volumes on a NAS, you wont be the owner of the volumes you mount, and wont have access to change their ownership. This setting will bypass trying to change ownership, otherwise the startup will fail. 
 
 #### WARNING
 
