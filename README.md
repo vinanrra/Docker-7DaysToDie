@@ -1,4 +1,4 @@
-# [vinanrra/7days-server](https://github.com/vinanrra/Docker-7DaysToDie)
+# [vinanrra/7dtd-server](https://github.com/vinanrra/Docker-7DaysToDie)
 
 # 7 days to die server using LinuxGSM in Docker with backups, monitor, auto-installable mods and more
 
