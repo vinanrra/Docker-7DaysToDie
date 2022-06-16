@@ -5,6 +5,8 @@ MODS_FOLDER=/home/sdtdserver/serverfiles/Mods
 # Change DL_LINK depending on 7 days to die branch version
 if [ "${VERSION,,}" == 'stable' ] || [ "${VERSION,,}" == 'public' ]; then
     DL_LINK=$(curl -L -s https://api.github.com/repos/Prisma501/CSMM-Patrons-Mod/releases/latest | grep -o -E "https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download(.*).zip")
+elif [ "${VERSION,,}" == 'alpha20.4' ]; then
+    DL_LINK="https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download/A20.4-v21.8.1/CPM_21.8.1.zip"
 elif [ "${VERSION,,}" == 'alpha20.3' ]; then
     DL_LINK="https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download/A20.3-v21.4/CPM_21.4.zip"
 elif [ "${VERSION,,}" == 'alpha19.6' ]; then
