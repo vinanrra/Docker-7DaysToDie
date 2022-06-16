@@ -43,7 +43,8 @@ RUN dpkg --add-architecture i386 && \
 		tclsh \
 		cpio \
 		libsdl2-2.0-0:i386 \
-		xz-utils
+		xz-utils \
+		distro-info
 
 # Install gamedig
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - ; \
