@@ -1,12 +1,25 @@
 #!/bin/bash
 ./sdtdserver update
 
-if [ "${VERSION,,}" == 'stable'  ]
+LSGMSDTDSERVERCFG=${BASEPATH}/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
+
+if [ "${VERSION,,}" == 'stable'  ] || [ "${VERSION,,}" == 'public'  ]
     then
-        sed -i 's/branch=".*"/branch=""/' /home/sdtdserver/lgsm/config-lgsm/sdtdserver/common.cfg
+        if grep -R "branch" "$LSGMSDTDSERVERCFG"
+            then
+                sed -i "s/branch=.*/branch=\"\"/" $LSGMSDTDSERVERCFG
+                echo "[INFO] Version changed to ${VERSION,,}"
+            else
+                echo "[INFO] Selecting 7 days to die ${VERSION,,} version"
+        fi
     else
-        sed -i "s/branch=".*"/branch="\"${VERSION,,}"\"/" /home/sdtdserver/lgsm/config-lgsm/sdtdserver/common.cfg
-        echo "[INFO] Server version changed to: ${VERSION,,}"
+        if grep -R "branch" "$LSGMSDTDSERVERCFG"
+            then
+                sed -i 's/branch=.*/branch="$VERSION"/' $LSGMSDTDSERVERCFG
+            else
+                echo branch='"-beta $VERSION"' >> $LSGMSDTDSERVERCFG
+                echo "[INFO] Selecting 7 days to die ${VERSION,,} version"
+        fi
 fi
 
 ./sdtdserver update
