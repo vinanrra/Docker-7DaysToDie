@@ -16,9 +16,9 @@ if [ "${VERSION,,}" == 'stable'  ] || [ "${VERSION,,}" == 'public'  ]
     else
         if grep -R "branch" "$LSGMSDTDSERVERCFG"
             then
-                sed -i "s/branch=".*"/branch="\"${VERSION,,}"\"/" $LSGMSDTDSERVERCFG
+                sed -i "s/branch=".*"/branch=\"-beta ${VERSION,,}"\"/ $LSGMSDTDSERVERCFG
             else
-                echo branch='"-beta $VERSION"' >> $LSGMSDTDSERVERCFG
+                echo branch=\"-beta "${VERSION}"\" >> $LSGMSDTDSERVERCFG
                 echo "[INFO] Selecting 7 days to die ${VERSION,,} version"
         fi
 fi
