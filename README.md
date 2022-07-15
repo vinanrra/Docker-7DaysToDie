@@ -1,6 +1,6 @@
 # [vinanrra/7dtd-server](https://github.com/vinanrra/Docker-7DaysToDie)
 
-# 7 days to die server using LinuxGSM in Docker with backups, monitor, auto-installable mods and more
+# 7 Days To Die server using LinuxGSM in Docker with backups, monitor, auto-installable mods and more
 
 [![Docker Pulls](https://img.shields.io/badge/dynamic/json?color=red&label=pulls&query=pull_count&url=https%3A%2F%2Fhub.docker.com%2Fv2%2Frepositories%2Fvinanrra%2F7dtd-server%2F?style=flat-square&color=E68523&logo=docker&logoColor=white)](https://hub.docker.com/r/vinanrra/7dtd-server)
 [![Docker Stars](https://img.shields.io/badge/dynamic/json?color=red&label=stars&query=star_count&url=https%3A%2F%2Fhub.docker.com%2Fv2%2Frepositories%2Fvinanrra%2F7dtd-server%2F?style=flat-square&color=E68523&logo=docker&logoColor=white)](https://hub.docker.com/r/vinanrra/7dtd-server)
@@ -13,8 +13,8 @@
 * **Multi-version** you can choose which version you want to play, [more info](docs/parameters.md#7-days-to-die).
 * **Auto-installable mods**, [more info](docs/mods_support.md#mods) also check [Mods parameters](docs/parameters.md#mods).
 * **Automatic Backups**, [more info](docs/backups.md) also check [LinuxGSM parameters](docs/parameters.md#linuxgsm)
-* **Monitor** if server crash will be restarted, [more info](docs/parameters.md#linuxgsm).
-* **Alerts** if server requiere your attention, [more info](docs/alerts.md#alerts) also check [LinuxGSM parameters](docs/parameters.md#linuxgsm).
+* **Monitor** if server crashes it will be restarted, [more info](docs/parameters.md#linuxgsm).
+* **Alerts** if server requires your attention, [more info](docs/alerts.md#alerts) also check [LinuxGSM parameters](docs/parameters.md#linuxgsm).
 * **User/Group Identifiers**, [more info](docs/user_groups_identifiers.md).
 
 ## Information
