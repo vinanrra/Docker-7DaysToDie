@@ -21,11 +21,9 @@ fi
 if [ "${UNDEAD_LEGACY,,}" == 'yes'  ]
   then
     source $scriptsDir/Mods/undead_legacy.sh
-    # To install fix for enZombies with Undead Legacy
-    ENZOMBIES_UL_PATCH=yes
 fi
 
-# Install enZombies + addons always after Undead Legacy, because if installed with Undead Legacy need a patch
+# Install enZombies + addons
 if [ "${ENZOMBIES,,}" == 'yes'  ]
   then
     source $scriptsDir/Mods/enZombies.sh
