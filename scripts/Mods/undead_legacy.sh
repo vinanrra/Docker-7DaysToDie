@@ -8,19 +8,27 @@ SERVER_CONFIG=${SERVERFILES_FOLDER}/sdtdserver.xml
 
 if [ "${UNDEAD_LEGACY_VERSION,,}" == 'exp'  ]; then
         echo "[Undead Legacy] Starting install of Undead Legacy ${UNDEAD_LEGACY_VERSION,,} version"
-    elif  [ "${UNDEAD_LEGACY_VERSION,,}" == 'stable'  ]; then
+        MIRROR_EXT=zip
 
+    elif  [ "${UNDEAD_LEGACY_VERSION,,}" == 'stable'  ]; then
         echo "[Undead Legacy] Starting install of Undead Legacy ${UNDEAD_LEGACY_VERSION,,} version"
+        MIRROR_EXT=zip
+
+    elif  [ "${UNDEAD_LEGACY_VERSION,,}" == 'stable2'  ]; then
+        echo "[Undead Legacy] Starting install of Undead Legacy ${UNDEAD_LEGACY_VERSION,,} version from mirror"
+        MIRROR_EXT=tar
+
     else
         echo "[Undead Legacy] Error wrong version selected -> ${UNDEAD_LEGACY_VERSION,,}, select exp or stable"
         echo "[Undead Legacy] Skipping installation"
         exit
 fi
 
+MIRROR_FILE=undeadlegacy.${MIRROR_EXT}
 DL_LINK="https://ul.subquake.com/dl?v=${UNDEAD_LEGACY_VERSION,,}"
 
 downloadRelease() {
-    curl "$DL_LINK" -SsL -o undeadlegacy.zip
+    curl "$DL_LINK" -SsL -o ${MIRROR_FILE}
 }
 
 echo "[Undead Legacy] Downloading release from $DL_LINK"
@@ -32,7 +40,12 @@ downloadRelease
 echo "[Undead Legacy] Extracting files"
 
 mkdir -p undeadlegacy-temp
-unzip -q undeadlegacy.zip -d undeadlegacy-temp
+
+if [ "${MIRROR_EXT}" == 'tar'  ]; then
+        tar -xf ${MIRROR_FILE} -C undeadlegacy-temp
+    else
+        unzip -q ${MIRROR_FILE} -d undeadlegacy-temp
+fi
 
 if [ -d "$SERVERFILES_FOLDER/BepInEx" ]
 then
@@ -47,6 +60,8 @@ if [ "${UNDEAD_LEGACY_VERSION,,}" == 'exp'  ]; then
         cp -a undeadlegacy-temp/UndeadLegacyExperimental-main/. $SERVERFILES_FOLDER
     elif  [ "${UNDEAD_LEGACY_VERSION,,}" == 'stable'  ]; then
         cp -a undeadlegacy-temp/UndeadLegacyStable-main/. $SERVERFILES_FOLDER
+    elif  [ "${UNDEAD_LEGACY_VERSION,,}" == 'stable2'  ]; then
+        cp -a undeadlegacy-temp/UndeadLegacyStable-main/. $SERVERFILES_FOLDER
     else
         echo "[Undead Legacy] Error wrong version selected -> ${UNDEAD_LEGACY_VERSION,,}, select exp or stable"
         echo "[Undead Legacy] Skipping installation"
@@ -55,7 +70,7 @@ fi
 
 echo "[Undead Legacy] Cleanup"
 
-rm undeadlegacy.zip
+rm ${MIRROR_FILE}
 rm -rf undeadlegacy-temp
 
 echo "[Undead Legacy] Adding Undead Legacy default options to server configuration"
