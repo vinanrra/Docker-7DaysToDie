@@ -25,14 +25,14 @@ fi
 
 ./sdtdserver update
 
-update_code=$?
+#update_code=$?
 
-if update_code -eq 0
-then
-    echo "[INFO] The server have been updated to ${VERSION,,}"
-else
-	echo "[INFO] There was a problem updating the server to ${VERSION,,}"
-fi
+#if update_code -eq 0
+#then
+#    echo "[INFO] The server have been updated to ${VERSION,,}"
+#else
+#	echo "[INFO] There was a problem updating the server to ${VERSION,,}"
+#fi
 
 source $scriptsDir/Mods/mods_install.sh
 
