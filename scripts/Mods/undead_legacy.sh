@@ -73,7 +73,7 @@ echo "[Undead Legacy] Cleanup"
 rm ${MIRROR_FILE}
 rm -rf undeadlegacy-temp
 
-echo "[Undead Legacy] Adding Undead Legacy default options to server configuration"
+# echo "[Undead Legacy] Adding Undead Legacy default options to server configuration"
 
 # if grep -q "Undead Legacy specific options" $SERVER_CONFIG
 #     then
