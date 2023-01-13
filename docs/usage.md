@@ -73,7 +73,7 @@ services:
       - ENZOMBIES_ADDON_NONUDES=NO # Optional - Install EnZombies addon mod
       - ENZOMBIES_UPDATE=NO # Optional - Update EnZombies mod and addons before server start
       - CPM=NO # Optional - CSMM Patron's Mod (CPM)
-      - CPM_UPDATE=NO # Optional - Update BepInEx before server start
+      - CPM_UPDATE=NO # Optional - Update CPM before server start
       - BEPINEX=NO # Optional - BepInEx
       - BEPINEX_UPDATE=NO # Optional - Update BepInEx before server start
       - BACKUP=NO # Optional - Backup server at 5 AM
