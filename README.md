@@ -1,5 +1,11 @@
 # [vinanrra/7dtd-server](https://github.com/vinanrra/Docker-7DaysToDie)
 
+## Donations
+
+   If you want to buy me a beer here you can
+
+   <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=25XWMUHD8NZHG&source=url" rel="PayPal">![PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)
+
 # 7 Days To Die server using LinuxGSM in Docker with backups, monitor, auto-installable mods and more
 
 [![Docker Pulls](https://img.shields.io/badge/dynamic/json?color=red&label=pulls&query=pull_count&url=https%3A%2F%2Fhub.docker.com%2Fv2%2Frepositories%2Fvinanrra%2F7dtd-server%2F?style=flat-square&color=E68523&logo=docker&logoColor=white)](https://hub.docker.com/r/vinanrra/7dtd-server)
@@ -29,12 +35,6 @@
 ## [Updating Info](docs/updating_info.md)
 
 ## [Support Info](docs/support.md)
-
-## Donations
-
-   If you want to buy me a beer here you can
-
-   <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=25XWMUHD8NZHG&source=url" rel="PayPal">![PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)
 
 ## Thanks
 
