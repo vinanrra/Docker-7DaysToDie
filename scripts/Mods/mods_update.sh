@@ -35,9 +35,9 @@ fi
 
 # Check if UL and Darkness Fall are both active and print error to only allow 
 
-if [ "${UNDEAD_LEGACY,,}" == 'yes' ] && [ "${DARKNESS_FALL,,}" == 'yes' ]
+if [ "${UNDEAD_LEGACY,,}" == 'yes' ] && [ "${DARKNESS_FALLS,,}" == 'yes' ]
   then
-    echo "[ERROR] Aborting overhaul mods installation, you can't install two overhaul mods at same time enable Undead Legacy or Darkness fall, not both"
+    echo "[ERROR] Aborting overhaul mods installation, you can't install two overhaul mods at same time enable Undead Legacy or Darkness falls, not both"
 else
   # Install Undead Legacy
 
@@ -48,9 +48,9 @@ else
 
   # Install Darkness Fall
 
-  if [ "${DARKNESS_FALL,,}" == 'yes' ] && [ "${DARKNESS_FALL_UPDATE,,}" == 'yes' ]
+  if [ "${DARKNESS_FALLS,,}" == 'yes' ] && [ "${DARKNESS_FALLS_UPDATE,,}" == 'yes' ]
     then
-      source $scriptsDir/Mods/darkness_fall.sh
+      source $scriptsDir/Mods/darkness_falls.sh
   fi
 fi
 
