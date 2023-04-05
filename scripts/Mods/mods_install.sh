@@ -16,11 +16,21 @@ if [ "${ALLOC_FIXES,,}" == 'yes'  ]
     source $scriptsDir/Mods/alloc_fixes.sh
 fi
 
-# Install Undead Legacy
-
-if [ "${UNDEAD_LEGACY,,}" == 'yes'  ]
+if [ "${UNDEAD_LEGACY,,}" == 'yes' ] && [ "${DARKNESS_FALL,,}" == 'yes' ]
   then
-    source $scriptsDir/Mods/undead_legacy.sh
+    echo "[ERROR] Aborting overhaul mods installation, you can't install two overhaul mods at same time enable Undead Legacy or Darkness fall, not both"
+else
+  # Install Undead Legacy
+
+  if [ "${UNDEAD_LEGACY,,}" == 'yes'  ]
+    then
+      source $scriptsDir/Mods/undead_legacy.sh
+  fi
+
+  if [ "${DARKNESS_FALL,,}" == 'yes'  ]
+    then
+      source $scriptsDir/Mods/darkness_fall.sh
+  fi
 fi
 
 # Install enZombies + addons
