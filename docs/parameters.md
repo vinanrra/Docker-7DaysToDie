@@ -55,20 +55,30 @@
 | :---: | --- | :---: |
 | `UPDATE_MODS=NO` | Allow mods to be update before server start must be used with each mod XXX_UPDATE=YES **optional** | YES, NO |
 
+### Overhaul mods
+
+#### Undead Legacy
+
+| Parameter | Function | Values |
+| --- | --- | :---: |
+| `UNDEAD_LEGACY=NO` | Install [Undead Legacy](https://ul.subquake.com/), if DARKNESS_FALLS it's enable too will not be installed  **optional** | YES, NO |
+| `UNDEAD_LEGACY_VERSION=stable` | Install [Undead Legacy Versions](https://ul.subquake.com), [CHECK BUILDS COMPATIBILITY](https://ul.subquake.com/download) **optional** | EXP, STABLE |
+| `UNDEAD_LEGACY_UPDATE=NO` | Update [Undead Legacy](https://ul.subquake.com/patch-notes), on server install, requiere UPDATE_MODS=YES, if you enable this environment, the mod will be update every time you start the server and will take sometime. **optional** | YES, NO |
+
+#### Darkness Fall
+
+| Parameter | Function | Values |
+| --- | --- | :---: |
+| `DARKNESS_FALLS=NO` | Install [Darkness Falls](https://community.7daystodie.com/topic/4941-darkness-falls-they-mostly-come-out-at-night/), if UNDEAD_LEGACY it's enable too will not be installed **optional** | YES, NO |
+| `DARKNESS_FALLS_UPDATE=NO` | Update [Darkness Falls](https://community.7daystodie.com/topic/4941-darkness-falls-they-mostly-come-out-at-night/), on server install, requiere UPDATE_MODS=YES, if you enable this environment, the mod will be update every time you start the server and will take sometime. **optional** | YES, NO |
+| `DARKNESS_FALLS_URL=False` | Install a custom [Darkness Falls Version](https://community.7daystodie.com/topic/4941-darkness-falls-they-mostly-come-out-at-night/), [CHECK BUILDS COMPATIBILITY](https://community.7daystodie.com/topic/4941-darkness-falls-they-mostly-come-out-at-night/) **optional** | A git url |
+
 ### Alloc Fixes
 
 | Parameter | Function | Values |
 | :---: | --- | :---: |
 | `ALLOC_FIXES=NO` | Install [Allocs Fixes](https://7dtd.illy.bz/wiki/Server%20fixes), Alloc Fixes version will be installed according to 7 days to die branch version  **optional** | YES, NO |
 | `ALLOC_FIXES_UPDATE=NO` | Update [Allocs Fixes](https://7dtd.illy.bz/wiki/Server%20fixes), depending of your 7 days to die version, on server install, requiere UPDATE_MODS=YES **optional** | YES, NO |
-
-### Undead Legacy
-
-| Parameter | Function | Values |
-| --- | --- | :---: |
-| `UNDEAD_LEGACY=NO` | Install [Undead Legacy](https://ul.subquake.com/) **optional** | YES, NO |
-| `UNDEAD_LEGACY_VERSION=stable` | Install [Undead Legacy Versions](https://ul.subquake.com), [CHECK BUILDS COMPATIBILITY](https://ul.subquake.com/download) **optional** | EXP, STABLE |
-| `UNDEAD_LEGACY_UPDATE=NO` | Update [Undead Legacy](https://ul.subquake.com/patch-notes), on server install, requiere UPDATE_MODS=YES, ff you enable this environment, the mod will be update every time you start the server and will take sometime. **optional** | YES, NO |
 
 ### enZombies
 

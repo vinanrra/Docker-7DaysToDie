@@ -38,7 +38,11 @@ Remember that some mods can't be installed with others, if you have problems wit
   - Environments:
     - BEPINEX
     - BEPINEX_UPDATE
-- [DarknessFalls](https://community.7daystodie.com/topic/4941-darkness-falls-they-mostly-come-out-at-night/) (Planned)
+- [Darkness Falls](https://community.7daystodie.com/topic/4941-darkness-falls-they-mostly-come-out-at-night/)
+  - Environments:
+    - DARKNESS_FALLS
+    - DARKNESS_FALLS_UPDATE
+    - DARKNESS_FALLS_URL
 - [Ravenheartst](https://community.7daystodie.com/topic/4508-ravenhearst-mod/) (Planned)
 - [War of the Walkers Mod](https://community.7daystodie.com/topic/4098-war-of-the-walkers-mod/) (Planned)
 - [Age of Oblivion](https://community.7daystodie.com/topic/23943-age-of-oblivion-alpha-401-a20/) (Planned)
