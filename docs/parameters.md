@@ -65,7 +65,7 @@
 | `UNDEAD_LEGACY_VERSION=stable` | Install [Undead Legacy Versions](https://ul.subquake.com), [CHECK BUILDS COMPATIBILITY](https://ul.subquake.com/download) **optional** | EXP, STABLE |
 | `UNDEAD_LEGACY_UPDATE=NO` | Update [Undead Legacy](https://ul.subquake.com/patch-notes), on server install, requiere UPDATE_MODS=YES, if you enable this environment, the mod will be update every time you start the server and will take sometime. **optional** | YES, NO |
 
-#### Darkness Fall
+#### Darkness Falls
 
 | Parameter | Function | Values |
 | --- | --- | :---: |

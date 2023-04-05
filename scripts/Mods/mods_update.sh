@@ -33,7 +33,7 @@ if [ "${ALLOC_FIXES,,}" == 'yes' ] && [ "${ALLOC_FIXES_UPDATE,,}" == 'yes' ]
     source $scriptsDir/Mods/alloc_fixes.sh
 fi
 
-# Check if UL and Darkness Fall are both active and print error to only allow 
+# Check if UL and Darkness Falls are both active and print error to only allow 
 
 if [ "${UNDEAD_LEGACY,,}" == 'yes' ] && [ "${DARKNESS_FALLS,,}" == 'yes' ]
   then
@@ -46,7 +46,7 @@ else
       source $scriptsDir/Mods/undead_legacy.sh
   fi
 
-  # Install Darkness Fall
+  # Install Darkness Falls
 
   if [ "${DARKNESS_FALLS,,}" == 'yes' ] && [ "${DARKNESS_FALLS_UPDATE,,}" == 'yes' ]
     then
