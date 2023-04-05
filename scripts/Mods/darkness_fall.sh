@@ -5,7 +5,7 @@ VERSION=${VERSION,,}
 
 
 # Change DL_LINK depending on 7 days to die branch version
-if [ "${DARKNESS_FALL_URL,,}" != "False"  ]; then
+if [ "${DARKNESS_FALL_URL}" != "False"  ]; then
     DL_LINK=$DARKNESS_FALL_URL
     echo "[Darkness Fall] Using custom provided url $DARKNESS_FALL_URL , if this fails check if you can git clone the URL"
 else
