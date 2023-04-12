@@ -33,11 +33,25 @@ if [ "${ALLOC_FIXES,,}" == 'yes' ] && [ "${ALLOC_FIXES_UPDATE,,}" == 'yes' ]
     source $scriptsDir/Mods/alloc_fixes.sh
 fi
 
-# Install Undead Legacy
+# Check if UL and Darkness Falls are both active and print error to only allow 
 
-if [ "${UNDEAD_LEGACY,,}" == 'yes' ] && [ "${UNDEAD_LEGACY_UPDATE,,}" == 'yes' ]
+if [ "${UNDEAD_LEGACY,,}" == 'yes' ] && [ "${DARKNESS_FALLS,,}" == 'yes' ]
   then
-    source $scriptsDir/Mods/undead_legacy.sh
+    echo "[ERROR] Aborting overhaul mods installation, you can't install two overhaul mods at same time enable Undead Legacy or Darkness falls, not both"
+else
+  # Install Undead Legacy
+
+  if [ "${UNDEAD_LEGACY,,}" == 'yes' ] && [ "${UNDEAD_LEGACY_UPDATE,,}" == 'yes' ]
+    then
+      source $scriptsDir/Mods/undead_legacy.sh
+  fi
+
+  # Install Darkness Falls
+
+  if [ "${DARKNESS_FALLS,,}" == 'yes' ] && [ "${DARKNESS_FALLS_UPDATE,,}" == 'yes' ]
+    then
+      source $scriptsDir/Mods/darkness_falls.sh
+  fi
 fi
 
 # Install enZombies + addons always after Undead Legacy, because if installed with Undead Legacy need a patch

@@ -6,7 +6,10 @@ STOPSIGNAL SIGTERM
 
 ####Labels####
 LABEL maintainer="vinanrra"
-LABEL build_version="version: 0.4.4"
+LABEL build_version="version: 0.5.0"
+
+####Environments ####
+ENV TimeZone=Europe/Madrid HOME=/home/sdtdserver LANG=en_US.utf8 TERM=xterm DEBIAN_FRONTEND=noninteractive
 
 #####Dependencies####
 
@@ -44,7 +47,8 @@ RUN dpkg --add-architecture i386 && \
 		cpio \
 		libsdl2-2.0-0:i386 \
 		xz-utils \
-		distro-info
+		distro-info \
+		git
 
 # Install gamedig
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - ; \
@@ -71,7 +75,7 @@ RUN apt clean && \
 	/tmp/* \
 	/var/lib/apt/lists/* \
 	/var/tmp/*
-		
+
 #####Dependencies####
 
 # Create user and fix permissions - chown shouldn't be necessary check adduser command
@@ -79,7 +83,7 @@ RUN adduser --home /home/sdtdserver --disabled-password --shell /bin/bash --disa
 	&& chown -R sdtdserver:sdtdserver /home/sdtdserver
 
 ##Need use xterm for LinuxGSM##
-ENV PUID=1000 PGID=1000 TimeZone=Europe/Madrid HOME=/home/sdtdserver LANG=en_US.utf8 TERM=xterm DEBIAN_FRONTEND=noninteractive \
+ENV PUID=1000 PGID=1000 \
 	START_MODE=0 \
 	TEST_ALERT=no MONITOR=no BACKUP=no\
 	VERSION=stable \
@@ -89,7 +93,8 @@ ENV PUID=1000 PGID=1000 TimeZone=Europe/Madrid HOME=/home/sdtdserver LANG=en_US.
 	ENZOMBIES=no ENZOMBIES_ADDON_SNUFKIN=no ENZOMBIES_ADDON_ROBELOTO=no ENZOMBIES_ADDON_NONUDES=no ENZOMBIES_UPDATE=no \
 	CPM=no CPM_UPDATE=no \
 	BEPINEX=no BEPINEX_UPDATE=no \
-	CHANGE_CONFIG_DIR_OWNERSHIP=YES
+	CHANGE_CONFIG_DIR_OWNERSHIP=YES \
+	DARKNESS_FALLS_URL=False DARKNESS_FALLS=no DARKNESS_FALLS_UPDATE=no
 
 # Base dir
 WORKDIR /home/sdtdserver

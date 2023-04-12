@@ -28,6 +28,9 @@ docker run -d \
   -e ALLOC_FIXES_UPDATE=NO \
   -e UNDEAD_LEGACY=NO \
   -e UNDEAD_LEGACY_VERSION=stable \
+  -e DARKNESS_FALLS=NO \
+  -e DARKNESS_FALLS_UPDATE=NO \
+  -e DARKNESS_FALLS_URL=False \
   -e UNDEAD_LEGACY_UPDATE=NO \
   -e ENZOMBIES=NO \
   -e ENZOMBIES_ADDON_SNUFKIN=NO \
@@ -64,9 +67,12 @@ services:
       - UPDATE_MODS=NO # Optional - This will allow mods to be update on start, each mod also need to have XXXX_UPDATE=YES to update on start
       - ALLOC_FIXES=NO # Optional - Install ALLOC FIXES
       - ALLOC_FIXES_UPDATE # Optional - Update Allocs Fixes before server start
-      - UNDEAD_LEGACY=NO # Optional - Install Undead Legacy mod
+      - UNDEAD_LEGACY=NO # Optional - Install Undead Legacy mod, if DARKNESS_FALLS it's enable will not install anything
       - UNDEAD_LEGACY_VERSION=stable # Optional - Undead Legacy version
       - UNDEAD_LEGACY_UPDATE=NO # Optional - Update Undead Legacy mod before server start
+      - DARKNESS_FALLS=NO # Optional - Install Darkness Falls mod, if UNDEAD_LEGACY it's enable will not install anything
+      - DARKNESS_FALLS_UPDATE=NO  # Optional - Update Darkness Falls mod before server start
+      - DARKNESS_FALLS_URL=False # Optional - Install the provided Darkness Falls url
       - ENZOMBIES=NO # Optional - Install EnZombies mod
       - ENZOMBIES_ADDON_SNUFKIN=NO # Optional - Install EnZombies addon mod
       - ENZOMBIES_ADDON_ROBELOTO=NO # Optional - Install EnZombies addon mod
