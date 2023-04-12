@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MODS_FOLDER=/home/sdtdserver/serverfiles/Mods
+SERVER_FOLDER=/home/sdtdserver/serverfiles
 VERSION=${VERSION,,}
 
 
@@ -22,25 +22,34 @@ else
 fi
 
 downloadRelease() {
-    git clone $DL_LINK darknessFalls-temp/
+    git clone --progress "$DL_LINK" darknessFalls-temp/
 }
 
-echo "[Darkness Falls] Downloading release from $DARKNESS_FALL_URL"
+echo "[Darkness Falls] Downloading release from $DL_LINK"
 
 # TODO - Catch if fails and print msg
 downloadRelease
 
 echo "[Darkness Falls] Installing"
 
-cp -a darknessFalls-temp/Mods/. serverfiles/Mods
+cp -a darknessFalls-temp/Mods/. $SERVER_FOLDER/Mods
 
 echo "[Darkness Falls] Copying Darkness Falls worlds"
 
-cp -r darknessFalls-temp/Mods/0-DarknessFallsCore/Worlds/* serverfiles/Data/Worlds/
+cp -r darknessFalls-temp/Mods/0-DarknessFallsCore/Worlds/* $SERVER_FOLDER/Data/Worlds/
 
-echo "[Darkness Falls] Copying Darkness Falls server settings"
+echo "[Darkness Falls] Change Darkness Falls server settings"
 
-cp darknessFalls-temp/DarknessFallsConfig.xml serverfiles/sdtdserver.xml
+cp darknessFalls-temp/DarknessFallsConfig.xml $SERVER_FOLDER/sdtdserver.xml
+
+echo "[Darkness Falls] Change default map"
+
+sed -i '/.*GameWorld.*/ s/DFalls-Small1-NoCP/DFalls-Small1-NoPEP/' $SERVER_FOLDER/sdtdserver.xml
+
+echo "[Darkness Falls] Remove folder and file localtions"
+
+sed -i '/UserDataFolder/s/\(^.*$\)//' $SERVER_FOLDER/sdtdserver.xml
+sed -i '/SaveGameFolder/s/\(^.*$\)//' $SERVER_FOLDER/sdtdserver.xml
 
 echo "[Darkness Falls] Cleanup"
 
