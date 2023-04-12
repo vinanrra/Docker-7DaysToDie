@@ -12,7 +12,7 @@ else
     # Change DL_LINK depending on 7 days to die branch version
     if [ "${VERSION,,}" == 'stable' ] || [ "${VERSION,,}" == 'public' ]; then
         DL_LINK="https://dev.azure.com/KhaineUK/_git/DarknessFallsA20"
-    elif [ "${VERSION::7}" == 'alpha20.6' ]; then
+    elif [ "${VERSION::7}" == 'alpha20' ]; then
         DL_LINK="https://dev.azure.com/KhaineUK/_git/DarknessFallsA20"
     else
         echo "[Darkness Falls] No version found compatible with version ${VERSION}"
