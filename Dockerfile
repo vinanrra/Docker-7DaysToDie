@@ -8,6 +8,9 @@ STOPSIGNAL SIGTERM
 LABEL maintainer="vinanrra"
 LABEL build_version="version: 0.4.4"
 
+####Environments ####
+ENV TimeZone=Europe/Madrid HOME=/home/sdtdserver LANG=en_US.utf8 TERM=xterm DEBIAN_FRONTEND=noninteractive
+
 #####Dependencies####
 
 # LinuxGSM dependencies
@@ -72,7 +75,7 @@ RUN apt clean && \
 	/tmp/* \
 	/var/lib/apt/lists/* \
 	/var/tmp/*
-		
+
 #####Dependencies####
 
 # Create user and fix permissions - chown shouldn't be necessary check adduser command
@@ -80,7 +83,7 @@ RUN adduser --home /home/sdtdserver --disabled-password --shell /bin/bash --disa
 	&& chown -R sdtdserver:sdtdserver /home/sdtdserver
 
 ##Need use xterm for LinuxGSM##
-ENV PUID=1000 PGID=1000 TimeZone=Europe/Madrid HOME=/home/sdtdserver LANG=en_US.utf8 TERM=xterm DEBIAN_FRONTEND=noninteractive \
+ENV PUID=1000 PGID=1000 \
 	START_MODE=0 \
 	TEST_ALERT=no MONITOR=no BACKUP=no\
 	VERSION=stable \
