@@ -37,6 +37,7 @@ RUN dpkg --add-architecture i386 && \
 		lib32stdc++6 \
 		libstdc++6 \
 		libstdc++6:i386 \
+		libxml2-utils \
 		telnet \
 		expect \
 		netcat \
@@ -48,7 +49,7 @@ RUN dpkg --add-architecture i386 && \
 		libsdl2-2.0-0:i386 \
 		xz-utils \
 		distro-info \
-		git
+		git \ 
 
 # Install gamedig
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - ; \
