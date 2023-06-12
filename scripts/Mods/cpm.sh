@@ -26,10 +26,11 @@ else
     echo "[CSMM - CPM] No version found compatible with version ${VERSION}"
     echo "[CSMM - CPM] If there is a compatible version check -> https://github.com/Prisma501/CSMM-Patrons-Mod/releases and install it manually"
     echo "[CSMM - CPM] Omitting installation"
+    exit
 fi
 
 downloadRelease() {
-    curl $DL_LINK -SsL -o CPM.zip
+    curl "$DL_LINK" -SsL -o CPM.zip
 }
 
 echo "[CSMM - CPM] Downloading release from ${DL_LINK}"
