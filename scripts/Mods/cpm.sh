@@ -1,21 +1,26 @@
 #!/bin/bash
 
 MODS_FOLDER=/home/sdtdserver/serverfiles/Mods
+VERSION=
 
 # Change DL_LINK depending on 7 days to die branch version
-if [ "${VERSION,,}" == 'stable' ] || [ "${VERSION,,}" == 'public' ]; then
+if [ "${VERSION}" == 'stable' ] || [ "${VERSION}" == 'public' ]; then
     DL_LINK=$(curl -L -s https://api.github.com/repos/Prisma501/CSMM-Patrons-Mod/releases/latest | grep -o -E "https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download(.*).zip")
-elif [ "${VERSION,,}" == 'alpha20.4' ]; then
+elif [ "${VERSION}" == 'alpha20.6' ] || [ "${VERSION}" == 'alpha20.7' ]; then
+    DL_LINK="https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download/A20.6-v22.4.1/CPM_22.4.1.zip"
+elif [ "${VERSION}" == 'alpha20.5' ]; then
+    DL_LINK="https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download/A20.5-v22.1/CPM_22.1.zip"
+elif [ "${VERSION}" == 'alpha20.4' ]; then
     DL_LINK="https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download/A20.4-v21.8.1/CPM_21.8.1.zip"
-elif [ "${VERSION,,}" == 'alpha20.3' ]; then
+elif [ "${VERSION}" == 'alpha20.3' ]; then
     DL_LINK="https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download/A20.3-v21.4/CPM_21.4.zip"
-elif [ "${VERSION,,}" == 'alpha19.6' ]; then
+elif [ "${VERSION}" == 'alpha19.6' ]; then
     DL_LINK="https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download/A19.6-v19.8.1/CPM_19.8.1.zip"
-elif [ "${VERSION,,}" == 'alpha19.5' ]; then
+elif [ "${VERSION}" == 'alpha19.5' ]; then
     DL_LINK="https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download/A19.5-v19.5/CPM_19.5.zip"
-elif [ "${VERSION,,}" == 'alpha19.4' ]; then
+elif [ "${VERSION}" == 'alpha19.4' ]; then
     DL_LINK="https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download/A19.4-v19.0/CPM_19.0.zip"
-elif [ "${VERSION,,}" == 'alpha19.3' ]; then
+elif [ "${VERSION}" == 'alpha19.3' ]; then
     DL_LINK="https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download/A19.3-v18.6/CPM_18.6.zip"
 else
     echo "[CSMM - CPM] No version found compatible with version ${VERSION}"
