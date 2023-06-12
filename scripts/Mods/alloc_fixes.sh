@@ -5,19 +5,21 @@ VERSION=${VERSION,,}
 
 
 # Change DL_LINK depending on 7 days to die branch version
-if [ "${VERSION,,}" == 'stable' ] || [ "${VERSION,,}" == 'public' ]; then
+if [ "${VERSION}" == 'stable' ] || [ "${VERSION}" == 'public' ]; then
+    DL_LINK="http://illy.bz/fi/7dtd/server_fixes.tar.gz"
+elif [ "${VERSION::7}" == 'alpha21' ]; then
     DL_LINK="http://illy.bz/fi/7dtd/server_fixes.tar.gz"
 elif [ "${VERSION::7}" == 'alpha20' ]; then
-    DL_LINK="http://illy.bz/fi/7dtd/server_fixes.tar.gz"
-elif [ "${VERSION,,}" == 'alpha19.6' ] || [ "${VERSION,,}" == 'alpha19.5' ]; then
+    DL_LINK="http://illy.bz/fi/7dtd/server_fixes_v22_24_39.tar.gz"
+elif [ "${VERSION}" == 'alpha19.6' ] || [ "${VERSION}" == 'alpha19.5' ]; then
     DL_LINK="http://illy.bz/fi/7dtd/server_fixes_v21_23_38.tar.gz"
-elif [ "${VERSION,,}" == 'alpha19.0' ] || [ "${VERSION,,}" == 'alpha19.2' ] || [ "${VERSION,,}" == 'alpha19.3' ] || [ "${VERSION,,}" == 'alpha19.4' ]; then
+elif [ "${VERSION}" == 'alpha19.0' ] || [ "${VERSION}" == 'alpha19.2' ] || [ "${VERSION}" == 'alpha19.3' ] || [ "${VERSION}" == 'alpha19.4' ]; then
     DL_LINK="http://illy.bz/fi/7dtd/server_fixes_v21_23_38.tar.gz"
-elif [ "${VERSION,,}" == 'alpha18.4' ]; then
+elif [ "${VERSION::7}" == 'alpha18' ]; then
     DL_LINK="http://illy.bz/fi/7dtd/server_fixes_v20_23_33.tar.gz"
-elif [ "${VERSION,,}" == 'alpha17.4' ]; then
+elif [ "${VERSION::7}" == 'alpha17' ]; then
     DL_LINK="http://illy.bz/fi/7dtd/server_fixes_v18_21_31.tar.gz"
-elif [ "${VERSION,,}" == 'alpha16.4' ]; then
+elif [ "${VERSION::7}" == 'alpha16' ]; then
     DL_LINK="http://illy.bz/fi/7dtd/server_fixes_v14_17_26.tar.gz"
 else
     echo "[Alloc Fixes] No version found compatible with version ${VERSION}"
