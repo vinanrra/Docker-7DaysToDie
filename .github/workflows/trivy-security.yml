@@ -1,7 +1,7 @@
 name: trivy-security
 
 on:
-  on: workflow_dispatch
+  workflow_dispatch:
   schedule:
     # run weekly on Mondays
     - cron: "0 13 * * 1"
