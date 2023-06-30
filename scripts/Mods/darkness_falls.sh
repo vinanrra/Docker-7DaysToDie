@@ -11,12 +11,15 @@ if [ "${DARKNESS_FALLS_URL}" != "False"  ]; then
 else
     # Change DL_LINK depending on 7 days to die branch version
     if [ "${VERSION}" == 'stable' ] || [ "${VERSION}" == 'public' ]; then
-        DL_LINK="https://dev.azure.com/KhaineUK/_git/DarknessFallsA20"
+        echo "[Darkness Falls] No version found compatible with version ${VERSION}"
+        echo "[Darkness Falls] If there is a compatible version check -> https://community.7daystodie.com/topic/4941-darkness-falls-they-mostly-come-out-at-night/ and install it manually or using DARKNESS_FALLS_URL"
+        echo "[Darkness Falls] Omitting installation"
+        exit
     elif [ "${VERSION::7}" == 'alpha20' ]; then
         DL_LINK="https://dev.azure.com/KhaineUK/_git/DarknessFallsA20"
     else
         echo "[Darkness Falls] No version found compatible with version ${VERSION}"
-        echo "[Darkness Falls] If there is a compatible version check -> https://community.7daystodie.com/topic/4941-darkness-falls-they-mostly-come-out-at-night/ and install it manually"
+        echo "[Darkness Falls] If there is a compatible version check -> https://community.7daystodie.com/topic/4941-darkness-falls-they-mostly-come-out-at-night/ and install it manually or using DARKNESS_FALLS_URL"
         echo "[Darkness Falls] Omitting installation"
         exit
     fi

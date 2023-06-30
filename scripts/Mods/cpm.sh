@@ -6,8 +6,12 @@ VERSION=
 # Change DL_LINK depending on 7 days to die branch version
 if [ "${VERSION}" == 'stable' ] || [ "${VERSION}" == 'public' ]; then
     DL_LINK=$(curl -L -s https://api.github.com/repos/Prisma501/CSMM-Patrons-Mod/releases/latest | grep -o -E "https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download(.*).zip")
-elif [ "${VERSION}" == 'alpha20.6' ] || [ "${VERSION}" == 'alpha20.7' ]; then
-    DL_LINK="https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download/A20.6-v22.4.1/CPM_22.4.1.zip"
+elif [ "${VERSION}" == 'latest_experimental' ]; then
+    DL_LINK="http://illy.bz/fi/7dtd/server_fixes.tar.gz"
+elif [ "${VERSION}" == 'alpha20.7' ] || [ "${VERSION}" == 'alpha20.7' ]; then
+    DL_LINK="https://api.github.com/repos/Prisma501/CSMM-Patrons-Mod/releases/latest"
+elif [ "${VERSION}" == 'alpha20.6' ]; then
+    DL_LINK="https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download/A21-v23.3/CPM_23.3.zip"
 elif [ "${VERSION}" == 'alpha20.5' ]; then
     DL_LINK="https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download/A20.5-v22.1/CPM_22.1.zip"
 elif [ "${VERSION}" == 'alpha20.4' ]; then
