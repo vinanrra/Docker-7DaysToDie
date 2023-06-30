@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: "call action"
         id: last_release
-        uses: InsonusK/get-latest-release@v1.0.1
+        uses: pozetroninc/github-action-get-latest-release@master
         with:
           myToken: ${{ github.token }}
           exclude_types: "draft|prerelease"
@@ -47,4 +47,4 @@ jobs:
         with:
           push: true
           tags: |
-            vinanrra/7dtd-server:latest,vinanrra/7dtd-server:${{ steps.last_release.outputs.tag_name }}
+            vinanrra/7dtd-server:latest,vinanrra/7dtd-server:${{ steps.last_release.outputs.release }}
