@@ -1,6 +1,4 @@
 #!/bin/bash
-./sdtdserver update
-
 BASEPATH=/home/sdtdserver
 LSGMSDTDSERVERCFG=${BASEPATH}/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
 
