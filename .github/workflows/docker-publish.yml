@@ -17,7 +17,7 @@ jobs:
         id: last_release
         uses: pozetroninc/github-action-get-latest-release@v0.7.0
         with:
-          owner: vinanrra 
+          owner: jam2jam 
           repo: Docker-7DaysToDie
       -
         name: Set up QEMU
@@ -38,4 +38,4 @@ jobs:
         with:
           push: true
           tags: |
-            vinanrra/7dtd-server:latest,vinanrra/7dtd-server:${{ steps.last_release.outputs.release }}
+            jam2jam/7dtd-server:latest,jam2jam/7dtd-server:${{ steps.last_release.outputs.release }}

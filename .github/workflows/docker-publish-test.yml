@@ -31,4 +31,4 @@ jobs:
         with:
           push: true
           tags: |
-            vinanrra/7dtd-server:test
+            jam2jam/7dtd-server:test

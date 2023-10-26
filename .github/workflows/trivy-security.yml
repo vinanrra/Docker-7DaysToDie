@@ -18,7 +18,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           ignore-unfixed: true
-          image-ref: 'vinanrra/7dtd-server:latest'
+          image-ref: 'jam2jam/7dtd-server:latest'
           format: 'sarif'
           output: 'trivy-results.sarif'
       - name: Upload Trivy scan results to GitHub Security tab
