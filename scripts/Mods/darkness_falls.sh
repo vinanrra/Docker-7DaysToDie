@@ -26,7 +26,14 @@ else
 fi
 
 downloadRelease() {
-    git clone --progress "$DL_LINK" darknessFalls-temp/
+    $regex_pattern="zip$"
+    if [[ "$DL_LINK" =~ $regex_pattern ]]; then
+        curl "$DL_LINK" --output df-mod.zip -d darknessFalls-temp/
+        unzip "$DL_LINK" -d darknessFalls-temp/
+        rm df-mod.zip
+    else
+        git clone --progress "$DL_LINK" darknessFalls-temp/
+    fi
 }
 
 echo "[Darkness Falls] Downloading release from $DL_LINK"
@@ -50,7 +57,7 @@ echo "[Darkness Falls] Change default map"
 
 sed -i '/.*GameWorld.*/ s/DFalls-Small1-NoCP/DFalls-Small1-NoPEP/' $SERVER_FOLDER/sdtdserver.xml
 
-echo "[Darkness Falls] Remove folder and file localtions"
+echo "[Darkness Falls] Remove folder and file locations"
 
 sed -i '/UserDataFolder/s/\(^.*$\)//' $SERVER_FOLDER/sdtdserver.xml
 sed -i '/SaveGameFolder/s/\(^.*$\)//' $SERVER_FOLDER/sdtdserver.xml
