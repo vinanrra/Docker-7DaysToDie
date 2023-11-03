@@ -28,9 +28,13 @@ fi
 downloadRelease() {
     $regex_pattern="zip$"
     if [[ "$DL_LINK" =~ $regex_pattern ]]; then
-        curl "$DL_LINK" --output df-mod.zip -d darknessFalls-temp/
-        unzip "$DL_LINK" -d darknessFalls-temp/
-        rm df-mod.zip
+        if ![[ -f $DL_LINK ]]; then
+            touch $DL_LINK
+            curl "$DL_LINK" --output df-mod.zip -d darknessFalls-temp/
+            unzip "$DL_LINK" -d darknessFalls-temp/
+            rm df-mod.zip
+        else
+            echo "[Darkness Falls] Already downloaded zipped release, skipping..."
     else
         git clone --progress "$DL_LINK" darknessFalls-temp/
     fi
