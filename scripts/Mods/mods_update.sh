@@ -60,9 +60,4 @@ if [ "${ENZOMBIES,,}" == 'yes' ] && [ "${ENZOMBIES_UPDATE,,}" == 'yes' ]
     source $scriptsDir/Mods/enZombies.sh
 fi
 
-if [ "${BEPINEX,,}" == 'yes' ] && [ "${BEPINEX_UPDATE,,}" == 'yes' ] && [ "${UNDEAD_LEGACY,,}" == 'no' ]
-  then
-    source $scriptsDir/Mods/bepinex.sh
-fi
-
 echo "[INFO] Updating/Installing mods finished"
