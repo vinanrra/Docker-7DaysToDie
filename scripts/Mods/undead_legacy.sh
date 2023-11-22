@@ -55,13 +55,6 @@ if [ "${MIRROR_EXT}" == 'tar'  ]; then
         unzip -q "${MIRROR_FILE}" -d undeadlegacy-temp
 fi
 
-if [ -d "$SERVERFILES_FOLDER/BepInEx" ]
-then
-    echo "[Undead Legacy] Removing existing BepInEx, because Undead Legacy already come with BepInEx"
-    rm -rf $SERVERFILES_FOLDER/BepInEx
-    rm -rf $SERVERFILES_FOLDER/doorstop_libs
-fi
-
 echo "[Undead Legacy] Installing mod"
 
 if [ "${UNDEAD_LEGACY_VERSION}" == 'exp'  ]; then

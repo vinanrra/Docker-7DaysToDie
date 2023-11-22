@@ -39,8 +39,6 @@ docker run -d \
   -e ENZOMBIES_UPDATE=NO \
   -e CPM=NO \
   -e CPM_UPDATE=NO \
-  -e BEPINEX=NO \
-  -e BEPINEX_UPDATE=NO \
   -e BACKUP=NO \
   -e MONITOR=NO \
   -e PUID=1000 \
@@ -80,8 +78,6 @@ services:
       - ENZOMBIES_UPDATE=NO # Optional - Update EnZombies mod and addons before server start
       - CPM=NO # Optional - CSMM Patron's Mod (CPM)
       - CPM_UPDATE=NO # Optional - Update CPM before server start
-      - BEPINEX=NO # Optional - BepInEx
-      - BEPINEX_UPDATE=NO # Optional - Update BepInEx before server start
       - BACKUP=NO # Optional - Backup server at 5 AM
       - MONITOR=NO # Optional - Keeps server up if crash
     volumes:
