@@ -5,7 +5,7 @@ SERVERFILES_FOLDER="${BASEPATH}/serverfiles"
 BEPINEX_SH="${SERVERFILES_FOLDER}/run_bepinex.sh"
 LSGMSDTDSERVERCFG="${BASEPATH}/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg"
 
-# Change DL_LINK depending on 7 days to die branch version
+# Check if it's compatible
 if [ "${VERSION}" == 'stable' ] || [ "${VERSION}" == 'public' ]; then
     echo "BepInEx isn't support with Alpha 21 or above"
     exit
