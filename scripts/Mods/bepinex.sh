@@ -5,9 +5,20 @@ SERVERFILES_FOLDER="${BASEPATH}/serverfiles"
 BEPINEX_SH="${SERVERFILES_FOLDER}/run_bepinex.sh"
 LSGMSDTDSERVERCFG="${BASEPATH}/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg"
 
-# Get latest version (Removed until fix https://github.com/BepInEx/BepInEx/issues/592)
-#DL_LINK=$(curl -L -s https://api.github.com/repos/BepInEx/BepInEx/releases/latest | grep -o -E "https://github.com/BepInEx/BepInEx/releases/download/(.*)/BepInEx_unix_(.*).zip")
-DL_LINK="https://github.com/BepInEx/BepInEx/releases/download/v5.4.5/BepInEx_unix_5.4.5.0.zip"
+# Check if it's compatible
+if [ "${VERSION}" == 'stable' ] || [ "${VERSION}" == 'public' ]; then
+    echo "BepInEx isn't support with Alpha 21 or above"
+    exit
+elif [ "${VERSION}" == 'latest_experimental' ]; then
+    echo "BepInEx isn't support with Alpha 21 or above"
+    exit
+elif [ "${VERSION::7}" == 'alpha21' ]; then
+    echo "BepInEx isn't support with Alpha 21 or above"
+    exit
+fi
+
+# Get latest version
+DL_LINK=$(curl -L -s https://api.github.com/repos/BepInEx/BepInEx/releases/latest | grep -o -E "https://github.com/BepInEx/BepInEx/releases/download/(.*)/BepInEx_unix_(.*).zip")
 
 downloadRelease() {
     curl "$DL_LINK" -SsL -o BepInEx.zip
