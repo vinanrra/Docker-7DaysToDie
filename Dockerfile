@@ -51,9 +51,14 @@ RUN dpkg --add-architecture i386 && \
 		distro-info \
 		git
 
+# Install NodeJS
+RUN curl -SLO https://deb.nodesource.com/nsolid_setup_deb.sh \
+	chmod 500 nsolid_setup_deb.sh \
+	./nsolid_setup_deb.sh 21 \
+	apt-get install nodejs -y
+
 # Install gamedig
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - ; \
-	apt install -y nodejs && npm install -g gamedig
+RUN  install -g gamedig
 
 # Install latest su-exec
 RUN  set -ex; \
