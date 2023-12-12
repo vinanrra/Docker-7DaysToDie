@@ -58,6 +58,12 @@ RUN curl -SLO https://deb.nodesource.com/nsolid_setup_deb.sh; \
 		./nsolid_setup_deb.sh 21; \
 		apt-get install nodejs -y
 
+# Install NodeJS
+RUN curl -SLO https://deb.nodesource.com/nsolid_setup_deb.sh \
+	chmod 500 nsolid_setup_deb.sh \
+	./nsolid_setup_deb.sh 21 \
+	apt-get install nodejs -y
+
 # Install gamedig
 RUN  npm install -g gamedig
 
