@@ -5,6 +5,18 @@ SERVERFILES_FOLDER="${BASEPATH}/serverfiles"
 BEPINEX_SH="${SERVERFILES_FOLDER}/run_bepinex.sh"
 LSGMSDTDSERVERCFG="${BASEPATH}/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg"
 
+# Change DL_LINK depending on 7 days to die branch version
+if [ "${VERSION}" == 'stable' ] || [ "${VERSION}" == 'public' ]; then
+    echo "BepInEx isn't support with Alpha 21 or above"
+    exit
+elif [ "${VERSION}" == 'latest_experimental' ]; then
+    echo "BepInEx isn't support with Alpha 21 or above"
+    exit
+elif [ "${VERSION::7}" == 'alpha21' ]; then
+    echo "BepInEx isn't support with Alpha 21 or above"
+    exit
+fi
+
 # Get latest version
 DL_LINK=$(curl -L -s https://api.github.com/repos/BepInEx/BepInEx/releases/latest | grep -o -E "https://github.com/BepInEx/BepInEx/releases/download/(.*)/BepInEx_unix_(.*).zip")
 
