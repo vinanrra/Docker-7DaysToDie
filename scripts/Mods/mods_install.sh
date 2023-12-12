@@ -39,3 +39,7 @@ if [ "${ENZOMBIES,,}" == 'yes'  ]
     source $scriptsDir/Mods/enZombies.sh
 fi
 
+if [ "${BEPINEX,,}" == 'yes'  ] && [ "${UNDEAD_LEGACY,,}" == 'no'  ]
+  then
+    source $scriptsDir/Mods/bepinex.sh
+fi
