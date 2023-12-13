@@ -25,6 +25,7 @@ RUN dpkg --add-architecture i386 && \
 		bzip2 \
 		gzip \
 		unzip \
+		unrar \
 		bsdmainutils \
 		python3 \
 		util-linux \
