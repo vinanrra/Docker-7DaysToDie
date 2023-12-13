@@ -87,16 +87,6 @@
 | `ALLOC_FIXES=NO` | Install [Allocs Fixes](https://7dtd.illy.bz/wiki/Server%20fixes), Alloc Fixes version will be installed according to 7 days to die branch version  **optional** | YES, NO |
 | `ALLOC_FIXES_UPDATE=NO` | Update [Allocs Fixes](https://7dtd.illy.bz/wiki/Server%20fixes), depending of your 7 days to die version, on server install, requiere UPDATE_MODS=YES **optional** | YES, NO |
 
-### enZombies
-
-| Parameter | Function | Values |
-| --- | --- | :---: |
-| `ENZOMBIES=NO` | Install [enZombies](https://community.7daystodie.com/topic/24594-enzombies-more-zombie-variations/) **optional** | YES, NO |
-| `ENZOMBIES_ADDON_SNUFKIN=NO` | Install [enZombies - Snufkin Zombies Add-on](https://community.7daystodie.com/topic/24594-enzombies-more-zombie-variations/) **optional** | YES, NO |
-| `ENZOMBIES_ADDON_ROBELOTO=NO` | Install [enZombies - Robeloto Zombies Add-on](https://community.7daystodie.com/topic/24594-enzombies-more-zombie-variations/) **optional** | YES, NO |
-| `ENZOMBIES_ADDON_NONUDES=NO` | Install [enZombies - No Nudes Add-on](https://community.7daystodie.com/topic/24594-enzombies-more-zombie-variations/) **optional** | YES, NO |
-| `ENZOMBIES_UPDATE=NO` | Update [enZombies](https://community.7daystodie.com/topic/24594-enzombies-more-zombie-variations/), enZombies + Addons on server install, requiere UPDATE_MODS=YES **optional** | YES, NO |
-
 ### CSMM Patron's Mod (CPM)
 
 | Parameter | Function | Values |
