@@ -6,6 +6,9 @@ MODS_FOLDER="/home/sdtdserver/serverfiles/Mods"
 # Create the Mods folder if it doesn't exist
 mkdir -p "$MODS_FOLDER"
 
+# Remove quotes and potential leading/trailing whitespace from MODS_URLS
+MODS_URLS=$(echo "$MODS_URLS" | sed -e 's/^ *//;s/ *$//' | tr -d '"')
+
 # Split the comma-separated URLs into an array
 IFS=', ' read -r -a urls <<< "$MODS_URLS"
 
