@@ -7,6 +7,7 @@ Before activating or auto-updating any mods, check version compatibily, some mod
 - [Alloc Fixes](https://7dtd.illy.bz/wiki/Server%20fixes)
 - [CSMM Patron's Mod (CPM)](https://docs.csmm.app/en/cpm/)
 - [Undead Legacy](https://ul.subquake.com/), only works with `stable` version of 7 days to die, but SOMETIMES will work with penultimate version, [check builds compatibily](https://ul.subquake.com/download)
+- [Darkness Falls](https://community.7daystodie.com/topic/4941-darkness-falls-they-mostly-come-out-at-night/)
 
 Remember that some mods can't be installed with others, if you have problems with two mods installed create a [GitHub ticket](https://github.com/vinanrra/Docker-7DaysToDie/issues) and I will add a check so they can't be installed at same time.
 
@@ -16,6 +17,7 @@ Remember that some mods can't be installed with others, if you have problems wit
   - Environments:
     - ALLOC_FIXES
     - ALLOC_FIXES_UPDATE
+      - If you enable this environment, the mod will be update every time you start the server and will take sometime.
 - [Undead Legacy](https://ul.subquake.com/)
   - Environments:
     - UNDEAD_LEGACY
@@ -26,15 +28,18 @@ Remember that some mods can't be installed with others, if you have problems wit
   - Environments:
     - CPM
     - CPM_UPDATE
+      - If you enable this environment, the mod will be update every time you start the server and will take sometime.
 - [BepInEx](https://github.com/BepInEx/BepInEx)
   - Environments:
     - BEPINEX
     - BEPINEX_UPDATE
+      - If you enable this environment, the mod will be update every time you start the server and will take sometime.
 - [Darkness Falls](https://community.7daystodie.com/topic/4941-darkness-falls-they-mostly-come-out-at-night/)
   - Environments:
     - DARKNESS_FALLS
-    - DARKNESS_FALLS_UPDATE
     - DARKNESS_FALLS_URL
+    - DARKNESS_FALLS_UPDATE
+      - If you enable this environment, the mod will be update every time you start the server and will take sometime.
 - [Ravenheartst](https://community.7daystodie.com/topic/4508-ravenhearst-mod/) (Planned)
 - [War of the Walkers Mod](https://community.7daystodie.com/topic/4098-war-of-the-walkers-mod/) (Planned)
 - [Age of Oblivion](https://community.7daystodie.com/topic/23943-age-of-oblivion-alpha-401-a20/) (Planned)
