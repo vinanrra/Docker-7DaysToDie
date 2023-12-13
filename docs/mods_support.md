@@ -50,6 +50,7 @@ Remember that some mods can't be installed with others, if you have problems wit
 ## Automatic user mods
 
 ⚠️ **This only support zip and rar files**
+⚠️ **If you remove an URL, you will need to MANUALLY remove the folder at the mods folder**
 
 You can use the following docker variable `MODS_URLS`, where you can place the URLs of the mods and the script will automatically download, uncompress, install and remove leftovers, here it's an example:
 Place the URLs and separate each one with `,`.
