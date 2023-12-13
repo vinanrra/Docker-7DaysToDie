@@ -55,6 +55,12 @@
 | :---: | --- | :---: |
 | `UPDATE_MODS=NO` | Allow mods to be update before server start must be used with each mod XXX_UPDATE=YES **optional** | YES, NO |
 
+### Provided user mods
+
+| Parameter | Function | Values |
+| :---: | --- | :---: |
+| `MODS_URL=""` | Allow mods to be installed from URL, support zip and rar **optional** | "URL1,URL2" |
+
 ### Overhaul mods
 
 #### Undead Legacy

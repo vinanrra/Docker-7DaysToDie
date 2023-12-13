@@ -47,6 +47,21 @@ Remember that some mods can't be installed with others, if you have problems wit
 - [War of the Walkers Mod](https://community.7daystodie.com/topic/4098-war-of-the-walkers-mod/) (Planned)
 - [Age of Oblivion](https://community.7daystodie.com/topic/23943-age-of-oblivion-alpha-401-a20/) (Planned)
 
+## Automatic user mods
+
+⚠️ **This only support zip and rar files**
+
+You can use the following docker variable `MODS_URLS`, where you can place the URLs of the mods and the script will automatically download, uncompress, install and remove leftovers, here it's an example:
+Place the URLs and separate each one with `,`.
+
+**Example:**
+`MODS_URL="URL1,URL2"`
+
+**Real world usage:**
+`MODS_URL="https://github.com/ErrorNull0/enZombies/archive/refs/heads/main.zip,https://github.com/ErrorNull0/enZombiesSnufkinAddon/archive/refs/heads/main.zip"`
+
+If something fails you will see a message at the logs, open a [github ticket](https://github.com/vinanrra/Docker-7DaysToDie/issues) if a mod isn't automatically installing and I will check it.
+
 ## Manual Mods
 
 Just drop the mods inside the Mods folder in `/path/to/ServerFiles/Mods`, restart the container and the server will automatically load them.
