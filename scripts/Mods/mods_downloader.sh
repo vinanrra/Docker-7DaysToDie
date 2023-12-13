@@ -42,6 +42,8 @@ for url in "${urls[@]}"; do
         mod_folder=$(find "$MODS_FOLDER" -type f -iname "Modinfo.xml" -exec dirname {} \;)
 
         if [ -n "$mod_folder" ]; then
+            # Remove the old mod version
+            rm -rf $MODS_FOLDER/"$mod_folder"
             # Move the folder to MODS_FOLDER
             mv "$mod_folder" "$MODS_FOLDER"
             echo "INFO: Mod folder moved to $MODS_FOLDER"
