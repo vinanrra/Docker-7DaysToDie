@@ -39,7 +39,7 @@ for url in "${urls[@]}"; do
         fi
 
         # Find the folder containing Modinfo.xml
-        mod_folder=$(find "$MODS_FOLDER" -type f -name "Modinfo.xml" -exec dirname {} \;)
+        mod_folder=$(find "$MODS_FOLDER" -type f -iname "Modinfo.xml" -exec dirname {} \;)
 
         if [ -n "$mod_folder" ]; then
             # Move the folder to MODS_FOLDER
