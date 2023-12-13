@@ -26,7 +26,7 @@ Remember that some mods can't be installed with others, if you have problems wit
   - Environments:
     - CPM
     - CPM_UPDATE
-- [BepInEz](https://github.com/BepInEx/BepInEx)
+- [BepInEx](https://github.com/BepInEx/BepInEx)
   - Environments:
     - BEPINEX
     - BEPINEX_UPDATE
