@@ -55,10 +55,10 @@ You can use the following docker variable `MODS_URLS`, where you can place the U
 Place the URLs and separate each one with `,`.
 
 **Example:**
-`MODS_URL="URL1,URL2"`
+`MODS_URLS="URL1,URL2"`
 
 **Real world usage:**
-`MODS_URL="https://github.com/ErrorNull0/enZombies/archive/refs/heads/main.zip,https://github.com/ErrorNull0/enZombiesSnufkinAddon/archive/refs/heads/main.zip"`
+`MODS_URLS="https://github.com/ErrorNull0/enZombies/archive/refs/heads/main.zip,https://github.com/ErrorNull0/enZombiesSnufkinAddon/archive/refs/heads/main.zip"`
 
 If something fails you will see a message at the logs, open a [github ticket](https://github.com/vinanrra/Docker-7DaysToDie/issues) if a mod isn't automatically installing and I will check it.
 

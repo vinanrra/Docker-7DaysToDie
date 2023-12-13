@@ -24,7 +24,7 @@ docker run -d \
   -e VERSION=stable \
   -e TEST_ALERT=NO \
   -e UPDATE_MODS=NO \
-  -e - MODS_URL="" \
+  -e - MODS_URLS="" \
   -e ALLOC_FIXES=NO \
   -e ALLOC_FIXES_UPDATE=NO \
   -e UNDEAD_LEGACY=NO \
@@ -66,7 +66,7 @@ services:
       - TimeZone=Europe/Madrid # Optional - Change Timezone
       - TEST_ALERT=NO # Optional - Send a test alert
       - UPDATE_MODS=NO # Optional - This will allow mods to be update on start, each mod also need to have XXXX_UPDATE=YES to update on start
-      - MODS_URL="" # Optional - Mods urls to install, must be ZIP or RAR.
+      - MODS_URLS="" # Optional - Mods urls to install, must be ZIP or RAR.
       - ALLOC_FIXES=NO # Optional - Install ALLOC FIXES
       - ALLOC_FIXES_UPDATE # Optional - Update Allocs Fixes before server start
       - UNDEAD_LEGACY=NO # Optional - Install Undead Legacy mod, if DARKNESS_FALLS it's enable will not install anything

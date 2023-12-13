@@ -59,7 +59,7 @@
 
 | Parameter | Function | Values |
 | :---: | --- | :---: |
-| `MODS_URL=""` | Allow mods to be installed from URL, support zip and rar **optional** | "URL1,URL2" |
+| `MODS_URLS=""` | Allow mods to be installed from URL, support zip and rar **optional** | "URL1,URL2" |
 
 ### Overhaul mods
 
