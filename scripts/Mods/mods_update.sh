@@ -54,12 +54,6 @@ else
   fi
 fi
 
-# Install enZombies + addons always after Undead Legacy, because if installed with Undead Legacy need a patch
-if [ "${ENZOMBIES,,}" == 'yes' ] && [ "${ENZOMBIES_UPDATE,,}" == 'yes' ]
-  then
-    source $scriptsDir/Mods/enZombies.sh
-fi
-
 if [ "${BEPINEX,,}" == 'yes' ] && [ "${BEPINEX_UPDATE,,}" == 'yes' ] && [ "${UNDEAD_LEGACY,,}" == 'no' ]
   then
     source $scriptsDir/Mods/bepinex.sh
