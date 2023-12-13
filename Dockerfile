@@ -6,7 +6,7 @@ STOPSIGNAL SIGTERM
 
 ####Labels####
 LABEL maintainer="vinanrra"
-LABEL build_version="version: 0.6.2"
+LABEL build_version="version: 0.7.0"
 
 ####Environments ####
 ENV TimeZone=Europe/Madrid HOME=/home/sdtdserver LANG=en_US.utf8 TERM=xterm DEBIAN_FRONTEND=noninteractive
@@ -25,6 +25,7 @@ RUN dpkg --add-architecture i386 && \
 		bzip2 \
 		gzip \
 		unzip \
+		unrar \
 		bsdmainutils \
 		python3 \
 		util-linux \
@@ -57,12 +58,6 @@ RUN curl -SLO https://deb.nodesource.com/nsolid_setup_deb.sh; \
 		chmod 500 nsolid_setup_deb.sh; \
 		./nsolid_setup_deb.sh 21; \
 		apt-get install nodejs -y
-
-# Install NodeJS
-RUN curl -SLO https://deb.nodesource.com/nsolid_setup_deb.sh \
-	chmod 500 nsolid_setup_deb.sh \
-	./nsolid_setup_deb.sh 21 \
-	apt-get install nodejs -y
 
 # Install gamedig
 RUN  npm install -g gamedig

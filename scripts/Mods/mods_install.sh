@@ -43,3 +43,7 @@ if [ "${BEPINEX,,}" == 'yes'  ] && [ "${UNDEAD_LEGACY,,}" == 'no'  ]
   then
     source $scriptsDir/Mods/bepinex.sh
 fi
+
+if [ "$MODS_URLS" != "" ]; then
+    source $scriptsDir/Mods/mods_downloader.sh
+fi

@@ -65,4 +65,9 @@ if [ "${BEPINEX,,}" == 'yes' ] && [ "${BEPINEX_UPDATE,,}" == 'yes' ] && [ "${UND
     source $scriptsDir/Mods/bepinex.sh
 fi
 
+if [ "$MODS_URLS" != "" ]; then
+    echo "INFO: Updating custom mods from URLs"
+    source $scriptsDir/Mods/mods_downloader.sh
+fi
+
 echo "[INFO] Updating/Installing mods finished"
