@@ -63,7 +63,7 @@ services:
       - UPDATE_MODS=NO # Optional - This will allow mods to be update on start, each mod also need to have XXXX_UPDATE=YES to update on start
       - MODS_URLS="" # Optional - Mods urls to install, must be ZIP or RAR.
       - ALLOC_FIXES=NO # Optional - Install ALLOC FIXES
-      - ALLOC_FIXES_UPDATE # Optional - Update Allocs Fixes before server start
+      - ALLOC_FIXES_UPDATE=NO # Optional - Update Allocs Fixes before server start
       - UNDEAD_LEGACY=NO # Optional - Install Undead Legacy mod, if DARKNESS_FALLS it's enable will not install anything
       - UNDEAD_LEGACY_VERSION=stable # Optional - Undead Legacy version
       - UNDEAD_LEGACY_UPDATE=NO # Optional - Update Undead Legacy mod before server start
