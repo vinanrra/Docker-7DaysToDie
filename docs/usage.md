@@ -24,7 +24,7 @@ docker run -d \
   -e VERSION=stable \
   -e TEST_ALERT=NO \
   -e UPDATE_MODS=NO \
-  -e - MODS_URLS="" \
+  -e MODS_URLS="" \
   -e ALLOC_FIXES=NO \
   -e ALLOC_FIXES_UPDATE=NO \
   -e UNDEAD_LEGACY=NO \
