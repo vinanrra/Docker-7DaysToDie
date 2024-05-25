@@ -48,7 +48,11 @@ cp -r darknessFalls-temp/Mods/0-DarknessFallsCore/Worlds/* $SERVER_FOLDER/Data/W
 
 echo "[Darkness Falls] Change Darkness Falls server settings"
 
-cp darknessFalls-temp/$DF_CONFIG $SERVER_FOLDER/sdtdserver.xml
+if [ "${VERSION::7}" == 'alpha21' ]; then
+    cp darknessFalls-temp/Mods/$DF_CONFIG $SERVER_FOLDER/sdtdserver.xml
+elif [ "${VERSION::7}" == 'alpha20' ]; then
+    cp darknessFalls-temp/$DF_CONFIG $SERVER_FOLDER/sdtdserver.xml
+fi
 
 echo "[Darkness Falls] Change default map"
 
