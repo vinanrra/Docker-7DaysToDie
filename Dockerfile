@@ -1,4 +1,4 @@
-FROM steamcmd/steamcmd:ubuntu-22
+FROM steamcmd/steamcmd:ubuntu-24
 
 STOPSIGNAL SIGTERM
 
@@ -41,7 +41,7 @@ RUN dpkg --add-architecture i386 && \
 		libxml2-utils \
 		telnet \
 		expect \
-		netcat \
+		netcat-openbsd \
 		locales \
 		libgdiplus \
 		cron \
@@ -57,7 +57,7 @@ RUN dpkg --add-architecture i386 && \
 # Install NodeJS
 RUN curl -SLO https://deb.nodesource.com/nsolid_setup_deb.sh; \
 		chmod 500 nsolid_setup_deb.sh; \
-		./nsolid_setup_deb.sh 21; \
+		./nsolid_setup_deb.sh 22; \
 		apt-get install nodejs -y
 
 # Install gamedig
