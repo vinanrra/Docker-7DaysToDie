@@ -2,24 +2,7 @@
 BASEPATH=/home/sdtdserver
 LSGMSDTDSERVERCFG=${BASEPATH}/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
 
-if [ "${VERSION,,}" == 'stable'  ] || [ "${VERSION,,}" == 'public'  ]
-    then
-        if grep -R "branch" "$LSGMSDTDSERVERCFG"
-            then
-                sed -i "s/branch=.*/branch=\"\"/" $LSGMSDTDSERVERCFG
-                echo "[INFO] Version changed to ${VERSION,,}"
-            else
-                echo "[INFO] Selecting 7 days to die ${VERSION,,} version"
-        fi
-    else
-        if grep -R "branch" "$LSGMSDTDSERVERCFG"
-            then
-                sed -i "s/branch=".*"/branch=\"-beta ${VERSION,,}"\"/ $LSGMSDTDSERVERCFG
-            else
-                echo branch=\"-beta "${VERSION}"\" >> $LSGMSDTDSERVERCFG
-                echo "[INFO] Selecting 7 days to die ${VERSION,,} version"
-        fi
-fi
+source $scriptsDir/utils/set_version.sh
 
 ./sdtdserver update
 
