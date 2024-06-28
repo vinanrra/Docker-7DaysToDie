@@ -14,27 +14,6 @@ test_alert () {
    fi
 }
 
-crontab_func (){
-   # Crontab
-   echo "# Crontab file" > crontab.txt
-
-   if [ "${BACKUP,,}" == 'yes'  ]; then
-      source "$scriptsDir/crontab/backup.sh"
-   fi
-
-   if [ "${MONITOR,,}" == 'yes'  ]; then
-      source "$scriptsDir/crontab/monitor.sh"
-   fi
-
-   echo "# Don't remove the empty line at the end of this file. It is required to run the cron job" >> crontab.txt
-
-   # Add crontab
-   crontab crontab.txt
-
-   # Cleanup junk file
-   rm crontab.txt
-}
-
 # Check requeriments
 
 # Check if script is missing
@@ -57,7 +36,7 @@ if [ -f serverfiles/MOD_BLOCK.txt ] ; then
    rm serverfiles/MOD_BLOCK.txt
 fi
 
-crontab_func
+source "$scriptsDir/utils/crontab.sh"
 
 # Use of case to avoid errors if used wrong START_MODE
 case $START_MODE in
