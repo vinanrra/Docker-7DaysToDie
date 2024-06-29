@@ -30,25 +30,4 @@ sleep 3s
 
 echo "[INFO] Backup complete"
 
-# Find all .tar.gz files in the backup directory
-backups=( "$BACKUP_DESTINATION"/*.tar.gz )
-
-if [[ ${#backups[@]} -eq 0 ]]; then
-  echo "No backup files found in $BACKUP_DESTINATION"
-  exit 0
-fi
-
-# Sort backups by modification time (newest first)
-shopt -s nullglob  # Allow sorting empty arrays
-backups=($(sort -r --key='{}' <<< "${backups[@]}"))  # Double quotes for filenames with spaces
-
-# Keep only the most recent 7 backups
-backups_to_keep=("${backups[@]:0:$BACKUP_MAX}")
-
-# Delete remaining backups
-for backup in "${backups[@]:$BACKUP_MAX}"; do
-  rm -f "$backup"
-  echo "Deleted backup: $backup"
-done
-
-echo "Kept ${#backups_to_keep[@]} backups and deleted ${#backups[@]} - ${#backups_to_keep[@]} older ones."
+find "$BACKUP_DESTINATION" -type f -name "*.tar.gz" -mtime +7 -delete
