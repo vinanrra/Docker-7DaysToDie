@@ -4,6 +4,7 @@ sleep 3s
 
 BACKUP_FOLDER="/home/sdtdserver/.local/share/7DaysToDie/"
 BACKUP_DESTINATION="/home/sdtdserver/lgsm/backup/"
+scriptsDir="/home/sdtdserver/scripts"
 
 echo "Stopping 7 Days To Die"
 ./sdtdserver stop

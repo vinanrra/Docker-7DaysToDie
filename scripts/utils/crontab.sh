@@ -1,3 +1,5 @@
+scriptsDir="/home/sdtdserver/scripts"
+
 echo "# Crontab file" > crontab.txt
 
 if [ "${BACKUP,,}" == 'yes'  ]; then
