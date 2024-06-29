@@ -52,7 +52,7 @@ RUN dpkg --add-architecture i386 && \
 		distro-info \
 		git \
 		uuid-runtime \
-                pigz
+    pigz
 
 # Install NodeJS
 RUN curl -SLO https://deb.nodesource.com/nsolid_setup_deb.sh; \
@@ -87,6 +87,9 @@ RUN apt clean && \
 
 #####Dependencies####
 
+# Remove default user ubuntu
+RUN sudo deluser --remove-home ubuntu
+
 # Create user and fix permissions - chown shouldn't be necessary check adduser command
 RUN adduser --home /home/sdtdserver --disabled-password --shell /bin/bash --disabled-login --gecos "" sdtdserver \
 	&& chown -R sdtdserver:sdtdserver /home/sdtdserver
@@ -94,7 +97,8 @@ RUN adduser --home /home/sdtdserver --disabled-password --shell /bin/bash --disa
 ##Need use xterm for LinuxGSM##
 ENV PUID=1000 PGID=1000 \
 	START_MODE=0 \
-	TEST_ALERT=no MONITOR=no BACKUP=no\
+	TEST_ALERT=no MONITOR=no \
+	BACKUP=no BACKUP_HOUR=5 BACKUP_MAX=7 \
 	VERSION=stable \
 	UPDATE_MODS=no \
 	ALLOC_FIXES=no ALLOC_FIXES_UPDATE=no \
