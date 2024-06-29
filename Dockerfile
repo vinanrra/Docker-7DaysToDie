@@ -88,7 +88,7 @@ RUN apt clean && \
 #####Dependencies####
 
 # Remove default user ubuntu
-RUN sudo deluser --remove-home ubuntu
+RUN deluser --remove-home ubuntu
 
 # Create user and fix permissions - chown shouldn't be necessary check adduser command
 RUN adduser --home /home/sdtdserver --disabled-password --shell /bin/bash --disabled-login --gecos "" sdtdserver \
