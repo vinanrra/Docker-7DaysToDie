@@ -15,8 +15,13 @@ IFS=', ' read -r -a urls <<< "$MODS_URLS"
 
 # Iterate over the URLs and download/extract/copy each file
 for url in "${urls[@]}"; do
-    # Extract filename from URL
-    filename=$(basename "$url")
+    # Extract filename from the server
+    filename=$(curl -sIL "$url" | grep -i -o -E 'content-disposition:.*filename="?([^"]*)"?' | sed -E 's/.*filename="?([^"]*)"?/\1/')
+
+    # Fallback to extracting from URL if necessary
+    if [ -z "$filename" ]; then
+        filename=$(basename "${url%%\?*}")
+    fi
 
     # Download the file
     echo "INFO: Downloading $filename from $url..."
