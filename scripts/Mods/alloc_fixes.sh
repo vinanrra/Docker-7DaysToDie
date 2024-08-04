@@ -7,6 +7,8 @@ VERSION=${VERSION,,}
 # Change DL_LINK depending on 7 days to die branch version
 if [ "${VERSION}" == 'stable' ] || [ "${VERSION}" == 'public' ]; then
     DL_LINK="http://illy.bz/fi/7dtd/server_fixes.tar.gz"
+elif [ "${VERSION}" == 'v1.0' ]; then
+    DL_LINK="http://illy.bz/fi/7dtd/server_fixes.tar.gz"
 elif [ "${VERSION}" == 'latest_experimental' ]; then
     DL_LINK="http://illy.bz/fi/7dtd/server_fixes.tar.gz"
 elif [ "${VERSION::7}" == 'alpha21' ]; then
