@@ -94,6 +94,9 @@ RUN deluser --remove-home ubuntu
 RUN adduser --home /home/sdtdserver --disabled-password --shell /bin/bash --disabled-login --gecos "" sdtdserver \
 	&& chown -R sdtdserver:sdtdserver /home/sdtdserver
 
+#Set ulimit as recommended by the game.
+RUN  echo 'sdtdserver soft nofile 10240' >> /etc/security/limits.conf
+
 ##Need use xterm for LinuxGSM##
 ENV PUID=1000 PGID=1000 \
 	START_MODE=0 \
