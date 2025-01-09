@@ -9,7 +9,12 @@ LABEL maintainer="vinanrra"
 LABEL build_version="version: 0.7.8"
 
 ####Environments ####
-ENV TimeZone=Europe/Madrid HOME=/home/sdtdserver LANG=en_US.utf8 TERM=xterm DEBIAN_FRONTEND=noninteractive
+##Need use xterm for LinuxGSM##
+ENV DEBIAN_FRONTEND=noninteractive \
+	HOME=/home/sdtdserver \
+	LANG=en_US.utf8 \
+	TERM=xterm \
+	TimeZone=Europe/Madrid
 
 #####Dependencies####
 
@@ -17,41 +22,41 @@ ENV TimeZone=Europe/Madrid HOME=/home/sdtdserver LANG=en_US.utf8 TERM=xterm DEBI
 RUN dpkg --add-architecture i386 && \
 	apt update -y && \
 	apt install -y --no-install-recommends \
-		nano \
-		iproute2 \
-		curl \
-		wget \
-		file \
-		bzip2 \
-		gzip \
-		unzip \
-		unrar \
-		bsdmainutils \
-		python3 \
-		util-linux \
-		ca-certificates \
-		binutils \
 		bc \
+		binutils \
+		bsdmainutils \
+		bzip2 \
+		ca-certificates \
+		cpio \
+		cron \
+		curl \
+		distro-info \
+		expect \
+		file \
+		git \
+		gzip \
+		iproute2 \
 		jq \
-		tmux \
 		lib32gcc-s1 \
 		lib32stdc++6 \
+		libgdiplus \
+		libsdl2-2.0-0:i386 \
 		libstdc++6 \
 		libstdc++6:i386 \
 		libxml2-utils \
-		telnet \
-		expect \
-		netcat-openbsd \
 		locales \
-		libgdiplus \
-		cron \
+		nano \
+		netcat-openbsd \
+		python3 \
 		tclsh \
-		cpio \
-		libsdl2-2.0-0:i386 \
-		xz-utils \
-		distro-info \
-		git \
+		telnet \
+		tmux \
+		unrar \
+		unzip \
+		util-linux \
 		uuid-runtime \
+		wget \
+		xz-utils \
     pigz
 
 # Install NodeJS
@@ -87,6 +92,20 @@ RUN apt clean && \
 
 #####Dependencies####
 
+ENV ALLOC_FIXES=no ALLOC_FIXES_UPDATE=no \
+	BACKUP=no BACKUP_HOUR=5 BACKUP_MAX=7 \
+	BEPINEX=no BEPINEX_UPDATE=no \
+	CHANGE_CONFIG_DIR_OWNERSHIP=YES \
+	CPM=no CPM_UPDATE=no \
+	DARKNESS_FALLS_URL=False DARKNESS_FALLS=no DARKNESS_FALLS_UPDATE=no \
+	LINUXGSM_VERSION=v24.3.4 \
+	PUID=1000 PGID=1000 \
+	START_MODE=0 \
+	TEST_ALERT=no MONITOR=no \
+	UNDEAD_LEGACY=no UNDEAD_LEGACY_VERSION=stable UNDEAD_LEGACY_UPDATE=no UNDEAD_LEGACY_URL=False \
+	UPDATE_MODS=no \
+	VERSION=stable
+
 # Remove default user ubuntu
 RUN deluser --remove-home ubuntu
 
@@ -97,25 +116,12 @@ RUN adduser --home /home/sdtdserver --disabled-password --shell /bin/bash --disa
 #Set ulimit as recommended by the game.
 RUN  echo 'sdtdserver soft nofile 10240' >> /etc/security/limits.conf
 
-##Need use xterm for LinuxGSM##
-ENV PUID=1000 PGID=1000 \
-	START_MODE=0 \
-	TEST_ALERT=no MONITOR=no \
-	BACKUP=no BACKUP_HOUR=5 BACKUP_MAX=7 \
-	VERSION=stable \
-	UPDATE_MODS=no \
-	ALLOC_FIXES=no ALLOC_FIXES_UPDATE=no \
-	UNDEAD_LEGACY=no UNDEAD_LEGACY_VERSION=stable UNDEAD_LEGACY_UPDATE=no UNDEAD_LEGACY_URL=False \
-	CPM=no CPM_UPDATE=no \
-	BEPINEX=no BEPINEX_UPDATE=no \
-	CHANGE_CONFIG_DIR_OWNERSHIP=YES \
-	DARKNESS_FALLS_URL=False DARKNESS_FALLS=no DARKNESS_FALLS_UPDATE=no
-
 # Base dir
 WORKDIR /home/sdtdserver
 
 # Download LinuxGSM scripts
-RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && su-exec sdtdserver bash linuxgsm.sh sdtdserver
+RUN git clone --depth 1 --branch $LINUXGSM_VERSION https://github.com/GameServerManagers/LinuxGSM.git
+RUN cp LinuxGSM/linuxgsm.sh linuxgsm.sh && chmod +x linuxgsm.sh && su-exec sdtdserver bash linuxgsm.sh sdtdserver
 
 ##############BASE IMAGE##############
 

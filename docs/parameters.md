@@ -5,10 +5,10 @@
 | Parameter | Function |
 | --- | --- |
 | `/path/to/7DaysToDie:/home/sdtdserver/.local/share/7DaysToDie/` | 7DaysToDie saves, where maps are store. |
-| `/path/to/ServerFiles:/home/sdtdserver/serverfiles/` | 7DaysToDie server config files. |
-| `/path/to/Logs:/home/sdtdserver/log/` | 7DaysToDie server log files. |
 | `/path/to/BackupFolder:/home/sdtdserver/lgsm/backup/` | 7DaysToDie server backups files. |
 | `/path/to/LGSM-Config:/home/sdtdserver/lgsm/config-lgsm/sdtdserver/` | LGSM config files. [More info](https://docs.linuxgsm.com/commands/monitor) |
+| `/path/to/Logs:/home/sdtdserver/log/` | 7DaysToDie server log files. |
+| `/path/to/ServerFiles:/home/sdtdserver/serverfiles/` | 7DaysToDie server config files. |
 
 ## Ports
 
@@ -26,12 +26,13 @@
 
 | Parameter | Function | Values |
 | --- | --- | :---: |
+| `CHANGE_CONFIG_DIR_OWNERSHIP` | Disable chown of config dirs | [More info](parameters.md#directory-ownership) |
+| `LINUXGSM_VERSION=v24.3.4` | Allow to change LinuxGSM script version, you can use a tag or a branch | [More info](https://github.com/GameServerManagers/LinuxGSM/tags) |
+| `PGID=1000` | for GroupID | [More info](user_groups_identifiers.md) |
+| `PUID=1000` | for UserID | [More info](user_groups_identifiers.md) |
 | `START_MODE=1` | Start mode of the container **required** | [Start Modes](parameters.md#start-modes) |
 | `TimeZone=Europe/Madrid` | for TimeZone **recomendable**| [TZ Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) |
-| `PUID=1000` | for UserID | [More info](user_groups_identifiers.md) |
-| `PGID=1000` | for GroupID | [More info](user_groups_identifiers.md) |
 | `--restart unless-stopped` | Restart container always unlesss stopped manually **NEVER USE WITH START_MODE=0, 2 or 4** | [Restart Policy](https://docs.docker.com/config/containers/start-containers-automatically/#use-a-restart-policy) |
-| `CHANGE_CONFIG_DIR_OWNERSHIP` | Disable chown of config dirs | [More info](parameters.md#directory-ownership) 
 
 ## 7 Days to Die
 
@@ -111,8 +112,8 @@
 | 3 | Update and start start |
 | 4 | Backup server and STOP the container |
 
+### DIRECTORY OWNERSHIP
 
-### DIRECTORY OWNERSHIP ### 
 Sometimes if you're running some of your volumes on a NAS, you wont be the owner of the volumes you mount, and wont have access to change their ownership. This setting will bypass trying to change ownership, otherwise the startup will fail. 
 
 #### WARNING
