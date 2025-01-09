@@ -14,13 +14,6 @@ test_alert () {
    fi
 }
 
-# Check requeriments
-
-# Check if script is missing
-if [ ! -f sdtdserver ]; then
-   source "$scriptsDir/check_script.sh"
-fi
-
 # Check if server have been installed, if missing file
 if [ ! -f serverfiles/DONT_REMOVE.txt ]; then
    source "$scriptsDir/first_install.sh"

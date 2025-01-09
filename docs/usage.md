@@ -11,6 +11,7 @@ services:
     image: vinanrra/7dtd-server
     container_name: 7dtdserver
     environment:
+      - LINUXGSM_VERSION=v24.3.4      # Change to use another version of LinuxGSM
       - START_MODE=1                 # Change between START MODES
       - VERSION=stable               # Change between 7 days to die versions
       - PUID=1000                    # Remember to use same as your user
