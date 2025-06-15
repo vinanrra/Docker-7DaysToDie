@@ -41,7 +41,7 @@ services:
       - /path/to/folder/LGSM-Config:/home/sdtdserver/lgsm/config-lgsm/sdtdserver # LGSM config folder
       - /path/to/folder/ServerFiles:/home/sdtdserver/serverfiles/                # Optional - serverfiles folder
       - /path/to/folder/log:/home/sdtdserver/log/                                # Optional - Logs folder
-      - /path/to/folder/backups:/home/sdtdserver/lgsm/backup/                    # Optional - If BACKUP=NO, backups folder
+      - /path/to/folder/backups:/home/sdtdserver/lgsm/backup/                    # Optional - If BACKUP=YES, backups folder
     ports:
       - 26900:26900/tcp # Default game ports
       - 26900:26900/udp # Default game ports
