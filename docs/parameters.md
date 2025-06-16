@@ -109,7 +109,7 @@
 | 0 | Install server and STOP the container |
 | 1 | Start server |
 | 2 | Update server and STOP the container |
-| 3 | Update and start start |
+| 3 | Update server and START the container (useful if you have already a 7 Days To Die server installed) |
 | 4 | Backup server and STOP the container |
 
 ### DIRECTORY OWNERSHIP
