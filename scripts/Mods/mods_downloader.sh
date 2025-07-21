@@ -23,6 +23,9 @@ for url in "${urls[@]}"; do
         filename=$(basename "${url%%\?*}")
     fi
 
+    # clean filename: remove carriage returns and newlines, trim leading/trailing spaces
+    filename=$(echo "$filename" | tr -d '\r\n' | sed -e 's/^ *//;s/ *$//')
+
     # Download the file
     echo "INFO: Downloading $filename from $url..."
     curl "$url" -SsL -o "${filename}"
