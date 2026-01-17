@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # I prefer that people tripple check their mods with the following steps, to avoid issues:
 # Enable mod per environment

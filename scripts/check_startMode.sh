@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 echo "
     =======================================================================
@@ -12,3 +13,5 @@ echo "
     More info: https://github.com/vinanrra/Docker-7DaysToDie/blob/master/docs/parameters.md#start-modes
     =======================================================================
 "
+
+exit 1

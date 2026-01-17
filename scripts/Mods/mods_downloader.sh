@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Set the MODS_FOLDER
 MODS_FOLDER="/home/sdtdserver/serverfiles/Mods"

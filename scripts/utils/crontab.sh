@@ -1,3 +1,5 @@
+#!/bin/bash
+set -e
 scriptsDir="/home/sdtdserver/scripts"
 
 echo "# Crontab file" > crontab.txt
