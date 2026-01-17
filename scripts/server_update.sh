@@ -6,7 +6,12 @@ LSGMSDTDSERVERCFG=${BASEPATH}/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
 
 source "$scriptsDir/utils/set_version.sh"
 
-./sdtdserver update
+if ./sdtdserver update; then
+    echo "[INFO] The server has been updated successfully to ${VERSION,,}"
+else
+    echo "[ERROR] There was a problem updating the server to ${VERSION,,}"
+    exit 1
+fi
 
 source "$scriptsDir/Mods/mods_install.sh"
 
