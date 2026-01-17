@@ -13,13 +13,13 @@ echo "[INFO] Updating/Installing mods"
 
 if [ "${CPM,,}" == 'yes' ] && [ "${CPM_UPDATE,,}" == 'yes' ]
   then
-    source $scriptsDir/Mods/cpm.sh
+    source "$scriptsDir/Mods/cpm.sh"
     # Install Allocs Fixes if missing
     echo "[CSMM - CPM] Checking if Allocs Fixes it is installed"
     if [ ! -d "$MODS_FOLDER/Allocs_CommandExtensions" ] || [ ! -d "$MODS_FOLDER/Allocs_CommonFunc" ] || [ ! -d "$MODS_FOLDER/Allocs_WebAndMapRendering" ]; then
       # Take action if $DIR not exists
       echo "[CSMM - CPM] Allocs fixes missing, installing it"
-      source $scriptsDir/Mods/alloc_fixes.sh
+      source "$scriptsDir/Mods/alloc_fixes.sh"
 
       else
       echo "[CSMM - CPM] Allocs Fixes it is already installed"
@@ -31,7 +31,7 @@ fi
 
 if [ "${ALLOC_FIXES,,}" == 'yes' ] && [ "${ALLOC_FIXES_UPDATE,,}" == 'yes' ]
   then
-    source $scriptsDir/Mods/alloc_fixes.sh
+    source "$scriptsDir/Mods/alloc_fixes.sh"
 fi
 
 # Check if UL and Darkness Falls are both active and print error to only allow 
@@ -44,25 +44,25 @@ else
 
   if [ "${UNDEAD_LEGACY,,}" == 'yes' ] && [ "${UNDEAD_LEGACY_UPDATE,,}" == 'yes' ]
     then
-      source $scriptsDir/Mods/undead_legacy.sh
+      source "$scriptsDir/Mods/undead_legacy.sh"
   fi
 
   # Install Darkness Falls
 
   if [ "${DARKNESS_FALLS,,}" == 'yes' ] && [ "${DARKNESS_FALLS_UPDATE,,}" == 'yes' ]
     then
-      source $scriptsDir/Mods/darkness_falls.sh
+      source "$scriptsDir/Mods/darkness_falls.sh"
   fi
 fi
 
 if [ "${BEPINEX,,}" == 'yes' ] && [ "${BEPINEX_UPDATE,,}" == 'yes' ] && [ "${UNDEAD_LEGACY,,}" == 'no' ]
   then
-    source $scriptsDir/Mods/bepinex.sh
+    source "$scriptsDir/Mods/bepinex.sh"
 fi
 
 if [ "$MODS_URLS" != "" ]; then
-    echo "INFO: Updating custom mods from URLs"
-    source $scriptsDir/Mods/mods_downloader.sh
+    echo "[INFO] Updating custom mods from URLs"
+    source "$scriptsDir/Mods/mods_downloader.sh"
 fi
 
 echo "[INFO] Updating/Installing mods finished"

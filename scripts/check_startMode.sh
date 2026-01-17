@@ -5,7 +5,7 @@ echo "
     =======================================================================
     IMPORTANT:
 
-    START_MODE $START_MODE UNKNOWN
+    START_MODE "$START_MODE" UNKNOWN
 
     Stopping container...
 
