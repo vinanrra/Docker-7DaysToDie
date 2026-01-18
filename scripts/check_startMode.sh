@@ -1,10 +1,11 @@
 #!/bin/bash
+set -e
 
 echo "
     =======================================================================
     IMPORTANT:
 
-    START_MODE $START_MODE UNKNOWN
+    START_MODE "$START_MODE" UNKNOWN
 
     Stopping container...
 
@@ -12,3 +13,5 @@ echo "
     More info: https://github.com/vinanrra/Docker-7DaysToDie/blob/master/docs/parameters.md#start-modes
     =======================================================================
 "
+
+exit 1

@@ -1,14 +1,15 @@
 #!/bin/bash
+set -e
 
 MODS_FOLDER=/home/sdtdserver/serverfiles/Mods
 VERSION=${VERSION,,}
 
 # Change DL_LINK depending on 7 days to die branch version
 if [ "${VERSION}" == 'stable' ] || [ "${VERSION}" == 'public' ]; then
-    DL_LINK=$(curl -L -s https://api.github.com/repos/Prisma501/CSMM-Patrons-Mod/releases/latest | grep -o -E "https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download(.*).zip" | grep -v Naiwazi)
+    DL_LINK=$(curl -fsSL https://api.github.com/repos/Prisma501/CSMM-Patrons-Mod/releases/latest | grep -o -E "https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download(.*).zip" | grep -v Naiwazi)
 elif [ "${VERSION}" == 'latest_experimental' ]; then
     DL_LINK="http://illy.bz/fi/7dtd/server_fixes.tar.gz"
-elif [ "${VERSION}" == 'alpha20.7' ] || [ "${VERSION}" == 'alpha20.7' ]; then
+elif [ "${VERSION}" == 'alpha20.7' ]; then
     DL_LINK="https://api.github.com/repos/Prisma501/CSMM-Patrons-Mod/releases/latest"
 elif [ "${VERSION}" == 'alpha20.6' ]; then
     DL_LINK="https://github.com/Prisma501/CSMM-Patrons-Mod/releases/download/A21-v23.3/CPM_23.3.zip"
@@ -30,11 +31,11 @@ else
     echo "[CSMM - CPM] No version found compatible with version ${VERSION}"
     echo "[CSMM - CPM] If there is a compatible version check -> https://github.com/Prisma501/CSMM-Patrons-Mod/releases and install it manually"
     echo "[CSMM - CPM] Omitting installation"
-    exit
+    exit 0
 fi
 
 downloadRelease() {
-    curl "$DL_LINK" -SsL -o CPM.zip
+    curl "$DL_LINK" -fsSL -o CPM.zip
 }
 
 echo "[CSMM - CPM] Downloading release from ${DL_LINK}"
@@ -50,11 +51,11 @@ unzip -q CPM.zip -d CPM-temp
 
 echo "[CSMM - CPM] Removing older version"
 
-rm -rf $MODS_FOLDER/1CSMM_Patrons
+rm -rf "$MODS_FOLDER/1CSMM_Patrons"
 
 echo "[CSMM - CPM] Installing components"
 
-mv CPM-temp/* $MODS_FOLDER
+mv CPM-temp/* "$MODS_FOLDER"
 
 echo "[CSMM - CPM] Cleanup"
 

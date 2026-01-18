@@ -1,20 +1,18 @@
 #!/bin/bash
+set -e
+
 BASEPATH=/home/sdtdserver
 LSGMSDTDSERVERCFG=${BASEPATH}/lgsm/config-lgsm/sdtdserver/sdtdserver.cfg
 
-source $scriptsDir/utils/set_version.sh
+source "$scriptsDir/utils/set_version.sh"
 
-./sdtdserver update
+if ./sdtdserver update; then
+    echo "[INFO] The server has been updated successfully to ${VERSION,,}"
+else
+    echo "[ERROR] There was a problem updating the server to ${VERSION,,}"
+    exit 1
+fi
 
-#update_code=$?
+source "$scriptsDir/Mods/mods_install.sh"
 
-#if update_code -eq 0
-#then
-#    echo "[INFO] The server have been updated to ${VERSION,,}"
-#else
-#	echo "[INFO] There was a problem updating the server to ${VERSION,,}"
-#fi
-
-source $scriptsDir/Mods/mods_install.sh
-
-echo "[INFO] The server mods have been updated to latest version, if the server crash, check mod compatibilites"
+echo "[INFO] The server mods have been updated to latest version; if the server crashes, check mod compatibilities."

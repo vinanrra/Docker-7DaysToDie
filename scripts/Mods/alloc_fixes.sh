@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 MODS_FOLDER=/home/sdtdserver/serverfiles/Mods
 VERSION=${VERSION,,}
@@ -29,10 +30,11 @@ else
     echo "[Alloc Fixes] No version found compatible with version ${VERSION}"
     echo "[Alloc Fixes] If there is a compatible version check -> https://7dtd.illy.bz/wiki/Server%20fixes#a7DaystoDievsModversioncompatibility and install it manually"
     echo "[Alloc Fixes] Omitting installation"
+    exit 0
 fi
 
 downloadRelease() {
-    curl $DL_LINK -SsL -o allocs.tar.gz
+    curl "$DL_LINK" -fSsL -o allocs.tar.gz
 }
 
 echo "[Alloc Fixes] Installing ${VERSION} version"
@@ -50,11 +52,11 @@ tar --strip-components=1 -xf allocs.tar.gz -C allocs-temp
 
 echo "[Alloc Fixes] Removing older version"
 
-rm -rf $MODS_FOLDER/Allocs*
+rm -rf "$MODS_FOLDER"/Allocs*
 
 echo "[Alloc Fixes] Installing components"
 
-mv allocs-temp/* $MODS_FOLDER
+mv allocs-temp/* "$MODS_FOLDER"
 
 echo "[Alloc Fixes] Cleanup"
 

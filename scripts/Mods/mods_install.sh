@@ -1,10 +1,11 @@
 #!/bin/bash
+set -e
 
 echo "[INFO] Installing mods after first start"
 
 if [ "${CPM,,}" == 'yes'  ]
   then
-    source $scriptsDir/Mods/cpm.sh
+    source "$scriptsDir/Mods/cpm.sh"
     # To force install of Alloc Fixes
     ALLOC_FIXES=yes
 fi
@@ -13,7 +14,7 @@ fi
 
 if [ "${ALLOC_FIXES,,}" == 'yes'  ]
   then
-    source $scriptsDir/Mods/alloc_fixes.sh
+    source "$scriptsDir/Mods/alloc_fixes.sh"
 fi
 
 if [ "${UNDEAD_LEGACY,,}" == 'yes' ] && [ "${DARKNESS_FALLS,,}" == 'yes' ]
@@ -24,20 +25,20 @@ else
 
   if [ "${UNDEAD_LEGACY,,}" == 'yes'  ]
     then
-      source $scriptsDir/Mods/undead_legacy.sh
+      source "$scriptsDir/Mods/undead_legacy.sh"
   fi
 
   if [ "${DARKNESS_FALLS,,}" == 'yes'  ]
     then
-      source $scriptsDir/Mods/darkness_falls.sh
+      source "$scriptsDir/Mods/darkness_falls.sh"
   fi
 fi
 
 if [ "${BEPINEX,,}" == 'yes'  ] && [ "${UNDEAD_LEGACY,,}" == 'no'  ]
   then
-    source $scriptsDir/Mods/bepinex.sh
+    source "$scriptsDir/Mods/bepinex.sh"
 fi
 
 if [ "$MODS_URLS" != "" ]; then
-    source $scriptsDir/Mods/mods_downloader.sh
+    source "$scriptsDir/Mods/mods_downloader.sh"
 fi
