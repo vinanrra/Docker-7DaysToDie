@@ -6,7 +6,7 @@ STOPSIGNAL SIGTERM
 
 ####Labels####
 LABEL maintainer="vinanrra"
-LABEL build_version="version: 0.7.8"
+LABEL build_version="version: 0.8.0"
 
 ####Environments ####
 ##Need use xterm for LinuxGSM##
@@ -22,70 +22,70 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN dpkg --add-architecture i386 && \
 	apt update -y && \
 	apt install -y --no-install-recommends \
-		bc \
-		binutils \
-		bsdmainutils \
-		bzip2 \
-		ca-certificates \
-		cpio \
-		cron \
-		curl \
-		distro-info \
-		expect \
-		file \
-		git \
-		gzip \
-		iproute2 \
-		jq \
-		lib32gcc-s1 \
-		lib32stdc++6 \
-		libgdiplus \
-		libsdl2-2.0-0:i386 \
-		libstdc++6 \
-		libstdc++6:i386 \
-		libxml2-utils \
-		locales \
-		nano \
-		netcat-openbsd \
-		python3 \
-		tclsh \
-		telnet \
-		tmux \
-		unrar \
-		unzip \
-		util-linux \
-		uuid-runtime \
-		wget \
-		xz-utils \
-    pigz
+	bc \
+	binutils \
+	bsdmainutils \
+	bzip2 \
+	ca-certificates \
+	cpio \
+	cron \
+	curl \
+	distro-info \
+	expect \
+	file \
+	git \
+	gzip \
+	iproute2 \
+	jq \
+	lib32gcc-s1 \
+	lib32stdc++6 \
+	libgdiplus \
+	libsdl2-2.0-0:i386 \
+	libstdc++6 \
+	libstdc++6:i386 \
+	libxml2-utils \
+	locales \
+	nano \
+	netcat-openbsd \
+	python3 \
+	tclsh \
+	telnet \
+	tmux \
+	unrar \
+	unzip \
+	util-linux \
+	uuid-runtime \
+	wget \
+	xz-utils \
+	pigz
 
 # Install NodeJS
 RUN curl -SLO https://deb.nodesource.com/nsolid_setup_deb.sh; \
-		chmod 500 nsolid_setup_deb.sh; \
-		./nsolid_setup_deb.sh 22; \
-		apt-get install nodejs -y
+	chmod 500 nsolid_setup_deb.sh; \
+	./nsolid_setup_deb.sh 22; \
+	apt-get install nodejs -y
 
 # Install gamedig
 RUN  npm install -g gamedig
 
 # Install latest su-exec
 RUN  set -ex; \
-		\
-		curl -o /usr/local/bin/su-exec.c https://raw.githubusercontent.com/ncopa/su-exec/master/su-exec.c; \
-		\
-		fetch_deps='gcc libc-dev'; \
-		apt-get install -y --no-install-recommends $fetch_deps; \
-		gcc -Wall \
-				/usr/local/bin/su-exec.c -o/usr/local/bin/su-exec; \
-		chown root:root /usr/local/bin/su-exec; \
-		chmod 0755 /usr/local/bin/su-exec; \
-		rm /usr/local/bin/su-exec.c; \
-		\
-		apt-get purge -y --auto-remove $fetch_deps
+	\
+	curl -o /usr/local/bin/su-exec.c https://raw.githubusercontent.com/ncopa/su-exec/master/su-exec.c; \
+	\
+	fetch_deps='gcc libc-dev'; \
+	apt-get install -y --no-install-recommends $fetch_deps; \
+	gcc -Wall \
+	/usr/local/bin/su-exec.c -o/usr/local/bin/su-exec; \
+	chown root:root /usr/local/bin/su-exec; \
+	chmod 0755 /usr/local/bin/su-exec; \
+	rm /usr/local/bin/su-exec.c; \
+	\
+	apt-get purge -y --auto-remove $fetch_deps
 
 # Clear unused files
 RUN apt clean && \
-    rm -rf \
+	rm -rf \
 	/tmp/* \
 	/var/lib/apt/lists/* \
 	/var/tmp/*
@@ -98,7 +98,7 @@ ENV ALLOC_FIXES=no ALLOC_FIXES_UPDATE=no \
 	CHANGE_CONFIG_DIR_OWNERSHIP=YES \
 	CPM=no CPM_UPDATE=no \
 	DARKNESS_FALLS_URL=False DARKNESS_FALLS=no DARKNESS_FALLS_UPDATE=no \
-	LINUXGSM_VERSION=v24.3.4 \
+	LINUXGSM_VERSION=v25.2.0 \
 	PUID=1000 PGID=1000 \
 	START_MODE=0 \
 	TEST_ALERT=no MONITOR=no \
