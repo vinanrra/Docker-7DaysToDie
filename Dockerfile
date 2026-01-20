@@ -6,7 +6,7 @@ STOPSIGNAL SIGTERM
 
 ####Labels####
 LABEL maintainer="vinanrra"
-LABEL build_version="version: 0.8.0"
+LABEL build_version="version: 0.9.3"
 
 ####Environments ####
 ##Need use xterm for LinuxGSM##
