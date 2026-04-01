@@ -1,4 +1,4 @@
-# Udating Info
+# Udating Info - Docker Files
 
 ## Via Docker Run/Create
 
@@ -16,3 +16,13 @@
 * Let compose update all containers as necessary: `docker-compose up -d`
   * or update a single container: `docker-compose up -d 7dtdserver`
 * You can also remove the old dangling images: `docker image prune`
+
+#Updating Info - Game files
+
+## Updating existing server to new game version
+
+* Modify `docker-compose.yml`
+ * Change `startmode` to 2 (Update game and stop)
+ * Run `docker-compose up` and wait for files to be updated
+ * Run `docker-compose down`
+ * Change `startmode` to 1 (Run game
