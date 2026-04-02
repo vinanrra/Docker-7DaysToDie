@@ -50,6 +50,8 @@ services:
       - 8080:8080/tcp   # OPTIONAL - WEBADMIN
       - 8081:8081/tcp   # OPTIONAL - TELNET
       - 8082:8082/tcp   # OPTIONAL - WEBSERVER https://7dtd.illy.bz/wiki/Server%20fixes
+    dns:
+      - 8.8.8.8
     ulimits:
       nofile:
         soft: "10240"
