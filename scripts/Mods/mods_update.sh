@@ -11,23 +11,7 @@ MODS_FOLDER=${BASEPATH}/Mods
 
 echo "[INFO] Updating/Installing mods"
 
-if [ "${CPM,,}" == 'yes' ] && [ "${CPM_UPDATE,,}" == 'yes' ]
-  then
-    source "$scriptsDir/Mods/cpm.sh"
-    # Install Allocs Fixes if missing
-    echo "[CSMM - CPM] Checking if Allocs Fixes it is installed"
-    if [ ! -d "$MODS_FOLDER/Allocs_CommandExtensions" ] || [ ! -d "$MODS_FOLDER/Allocs_CommonFunc" ] || [ ! -d "$MODS_FOLDER/Allocs_WebAndMapRendering" ]; then
-      # Take action if $DIR not exists
-      echo "[CSMM - CPM] Allocs fixes missing, installing it"
-      source "$scriptsDir/Mods/alloc_fixes.sh"
-
-      else
-      echo "[CSMM - CPM] Allocs Fixes it is already installed"
-    fi
-    
-fi
-
-# Install Alloc Fixes, always after CPM, because CPM requiere Alloc fixes
+# Install Alloc Fixes
 
 if [ "${ALLOC_FIXES,,}" == 'yes' ] && [ "${ALLOC_FIXES_UPDATE,,}" == 'yes' ]
   then

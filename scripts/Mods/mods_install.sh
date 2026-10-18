@@ -3,14 +3,7 @@ set -e
 
 echo "[INFO] Installing mods after first start"
 
-if [ "${CPM,,}" == 'yes'  ]
-  then
-    source "$scriptsDir/Mods/cpm.sh"
-    # To force install of Alloc Fixes
-    ALLOC_FIXES=yes
-fi
-
-# Install Alloc Fixes, always after CPM, because CPM requiere Alloc fixes
+# Install Alloc Fixes
 
 if [ "${ALLOC_FIXES,,}" == 'yes'  ]
   then
