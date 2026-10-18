@@ -28,8 +28,6 @@ services:
       - DARKNESS_FALLS=NO            # Optional - Install Darkness Falls mod, if UNDEAD_LEGACY it's enable will not install anything
       - DARKNESS_FALLS_UPDATE=NO     # Optional - Update Darkness Falls mod before server start
       - DARKNESS_FALLS_URL=False     # Optional - Install the provided Darkness Falls url
-      - CPM=NO                       # Optional - CSMM Patron's Mod (CPM)
-      - CPM_UPDATE=NO                # Optional - Update CPM before server start
       - BEPINEX=NO                   # Optional - BepInEx
       - BEPINEX_UPDATE=NO            # Optional - Update BepInEx before server start
       - BACKUP=NO                    # Optional - Backup server

@@ -5,7 +5,6 @@
 Before activating or auto-updating any mods, check version compatibily, some mods will check your 7 days to die server version to install the proper version:
 
 - [Alloc Fixes](https://7dtd.illy.bz/wiki/Server%20fixes)
-- [CSMM Patron's Mod (CPM)](https://docs.csmm.app/en/cpm/)
 - [Undead Legacy](https://ul.subquake.com/), only works with `stable` version of 7 days to die, but SOMETIMES will work with penultimate version, [check builds compatibily](https://ul.subquake.com/download)
 - [Darkness Falls](https://community.7daystodie.com/topic/4941-darkness-falls-they-mostly-come-out-at-night/)
 
@@ -23,11 +22,6 @@ Remember that some mods can't be installed with others, if you have problems wit
     - UNDEAD_LEGACY
     - UNDEAD_LEGACY_VERSION
     - UNDEAD_LEGACY_UPDATE
-      - If you enable this environment, the mod will be update every time you start the server and will take sometime.
-- [CSMM Patron's Mod (CPM)](https://docs.csmm.app/en/cpm/)
-  - Environments:
-    - CPM
-    - CPM_UPDATE
       - If you enable this environment, the mod will be update every time you start the server and will take sometime.
 - [BepInEx](https://github.com/BepInEx/BepInEx)
   - Environments:
