@@ -55,3 +55,7 @@ services:
 
     restart: unless-stopped # INFO - NEVER USE WITH START_MODE=4 or START_MODE=0
 ```
+
+## Deploy on Sealos
+
+For a community-maintained deployment using this Docker image, see the [Sealos guide](sealos.md) for setup, public game ports, and persistent storage.
